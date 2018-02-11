@@ -1,0 +1,1388 @@
+nuke_authors
+	aid||varchar(25)||NO||PRI||No Default||No Extra
+	name||varchar(50)||YES||NO||No Default||No Extra
+	url||varchar(255)||NO||NO||No Default||No Extra
+	email||varchar(255)||NO||NO||No Default||No Extra
+	pwd||varchar(40)||YES||NO||No Default||No Extra
+	counter||int(11)||NO||NO||No Default||No Extra
+	radminsuper||tinyint(1)||NO||NO||1||No Extra
+	admlanguage||varchar(30)||NO||NO||No Default||No Extra
+nuke_autonews
+	anid||int(11)||NO||PRI||No Default||auto_increment
+	catid||int(11)||NO||NO||No Default||No Extra
+	aid||varchar(25)||NO||NO||No Default||No Extra
+	title||varchar(80)||NO||NO||No Default||No Extra
+	time||varchar(19)||NO||NO||No Default||No Extra
+	hometext||text||NO||NO||No Default||No Extra
+	bodytext||text||NO||NO||No Default||No Extra
+	topic||int(3)||NO||NO||1||No Extra
+	informant||varchar(25)||NO||NO||No Default||No Extra
+	notes||text||NO||NO||No Default||No Extra
+	ihome||int(1)||NO||NO||No Default||No Extra
+	alanguage||varchar(30)||NO||NO||No Default||No Extra
+	acomm||int(1)||NO||NO||No Default||No Extra
+	associated||text||NO||NO||No Default||No Extra
+nuke_banned_ip
+	id||int(11)||NO||PRI||No Default||auto_increment
+	ip_address||varchar(15)||NO||NO||No Default||No Extra
+	reason||varchar(255)||NO||NO||No Default||No Extra
+	date||date||NO||NO||0000-00-00||No Extra
+nuke_banner
+	bid||int(11)||NO||PRI||No Default||auto_increment
+	cid||int(11)||NO||MUL||No Default||No Extra
+	name||varchar(50)||NO||NO||No Default||No Extra
+	imptotal||int(11)||NO||NO||No Default||No Extra
+	impmade||int(11)||NO||NO||No Default||No Extra
+	clicks||int(11)||NO||NO||No Default||No Extra
+	imageurl||varchar(100)||NO||NO||No Default||No Extra
+	clickurl||varchar(200)||NO||NO||No Default||No Extra
+	alttext||varchar(255)||NO||NO||No Default||No Extra
+	date||datetime||YES||NO||No Default||No Extra
+	dateend||datetime||YES||NO||No Default||No Extra
+	position||int(10)||NO||NO||No Default||No Extra
+	active||tinyint(1)||NO||NO||1||No Extra
+	ad_class||varchar(5)||NO||NO||No Default||No Extra
+	ad_code||text||NO||NO||No Default||No Extra
+	ad_width||int(4)||YES||NO||No Default||No Extra
+	ad_height||int(4)||YES||NO||No Default||No Extra
+nuke_banner_clients
+	cid||int(11)||NO||PRI||No Default||auto_increment
+	name||varchar(60)||NO||NO||No Default||No Extra
+	contact||varchar(60)||NO||NO||No Default||No Extra
+	email||varchar(60)||NO||NO||No Default||No Extra
+	login||varchar(10)||NO||NO||No Default||No Extra
+	passwd||varchar(10)||NO||NO||No Default||No Extra
+	extrainfo||text||NO||NO||No Default||No Extra
+nuke_banner_plans
+	pid||int(10)||NO||PRI||No Default||auto_increment
+	active||tinyint(1)||NO||NO||No Default||No Extra
+	name||varchar(255)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+	delivery||varchar(10)||NO||NO||No Default||No Extra
+	delivery_type||varchar(25)||NO||NO||No Default||No Extra
+	price||varchar(25)||NO||NO||No Default||No Extra
+	buy_links||text||NO||NO||No Default||No Extra
+nuke_banner_positions
+	apid||int(10)||NO||PRI||No Default||auto_increment
+	position_number||int(5)||NO||MUL||No Default||No Extra
+	position_name||varchar(255)||NO||NO||No Default||No Extra
+nuke_banner_terms
+	terms_body||text||NO||NO||No Default||No Extra
+	country||varchar(255)||NO||NO||No Default||No Extra
+nuke_bbattach_quota
+	user_id||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	group_id||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	quota_type||smallint(2)||NO||MUL||No Default||No Extra
+	quota_limit_id||mediumint(8) unsigned||NO||NO||No Default||No Extra
+nuke_bbattachments
+	attach_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	post_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	privmsgs_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	user_id_1||mediumint(8)||NO||NO||No Default||No Extra
+	user_id_2||mediumint(8)||NO||NO||No Default||No Extra
+nuke_bbattachments_config
+	config_name||varchar(255)||NO||PRI||No Default||No Extra
+	config_value||varchar(255)||NO||NO||No Default||No Extra
+nuke_bbattachments_desc
+	attach_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	physical_filename||varchar(255)||NO||MUL||No Default||No Extra
+	real_filename||varchar(255)||NO||NO||No Default||No Extra
+	download_count||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	comment||varchar(255)||YES||NO||No Default||No Extra
+	extension||varchar(100)||YES||NO||No Default||No Extra
+	mimetype||varchar(100)||YES||NO||No Default||No Extra
+	filesize||int(20)||NO||MUL||No Default||No Extra
+	filetime||int(11)||NO||MUL||No Default||No Extra
+	thumbnail||tinyint(1)||NO||NO||No Default||No Extra
+nuke_bbauth_access
+	group_id||mediumint(8)||NO||MUL||No Default||No Extra
+	forum_id||smallint(5) unsigned||NO||MUL||No Default||No Extra
+	auth_view||tinyint(1)||NO||NO||No Default||No Extra
+	auth_read||tinyint(1)||NO||NO||No Default||No Extra
+	auth_post||tinyint(1)||NO||NO||No Default||No Extra
+	auth_reply||tinyint(1)||NO||NO||No Default||No Extra
+	auth_edit||tinyint(1)||NO||NO||No Default||No Extra
+	auth_delete||tinyint(1)||NO||NO||No Default||No Extra
+	auth_sticky||tinyint(1)||NO||NO||No Default||No Extra
+	auth_announce||tinyint(1)||NO||NO||No Default||No Extra
+	auth_vote||tinyint(1)||NO||NO||No Default||No Extra
+	auth_pollcreate||tinyint(1)||NO||NO||No Default||No Extra
+	auth_attachments||tinyint(1)||NO||NO||No Default||No Extra
+	auth_mod||tinyint(1)||NO||NO||No Default||No Extra
+	auth_download||tinyint(1)||NO||NO||No Default||No Extra
+nuke_bbbanlist
+	ban_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	ban_userid||mediumint(8)||NO||NO||No Default||No Extra
+	ban_ip||varchar(8)||NO||MUL||No Default||No Extra
+	ban_email||varchar(255)||YES||NO||No Default||No Extra
+	ban_time||int(11)||YES||NO||No Default||No Extra
+	ban_expire_time||int(11)||YES||NO||No Default||No Extra
+	ban_by_userid||mediumint(8)||YES||NO||No Default||No Extra
+	ban_priv_reason||text||YES||NO||No Default||No Extra
+	ban_pub_reason_mode||tinyint(1)||YES||NO||No Default||No Extra
+	ban_pub_reason||text||YES||NO||No Default||No Extra
+nuke_bbcategories
+	cat_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	cat_title||varchar(100)||YES||NO||No Default||No Extra
+	cat_order||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+nuke_bbconfig
+	config_name||varchar(255)||NO||PRI||No Default||No Extra
+	config_value||varchar(255)||NO||NO||No Default||No Extra
+nuke_bbconfirm
+	confirm_id||char(32)||NO||PRI||No Default||No Extra
+	session_id||char(32)||NO||PRI||No Default||No Extra
+	code||char(6)||NO||NO||No Default||No Extra
+nuke_bbdisallow
+	disallow_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	disallow_username||varchar(25)||YES||NO||No Default||No Extra
+nuke_bbextension_groups
+	group_id||mediumint(8)||NO||PRI||No Default||auto_increment
+	group_name||char(20)||NO||NO||No Default||No Extra
+	cat_id||tinyint(2)||NO||NO||No Default||No Extra
+	allow_group||tinyint(1)||NO||NO||No Default||No Extra
+	download_mode||tinyint(1) unsigned||NO||NO||1||No Extra
+	upload_icon||varchar(100)||YES||NO||No Default||No Extra
+	max_filesize||int(20)||NO||NO||No Default||No Extra
+	forum_permissions||varchar(255)||NO||NO||No Default||No Extra
+nuke_bbextensions
+	ext_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	group_id||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	extension||varchar(100)||NO||NO||No Default||No Extra
+	comment||varchar(100)||YES||NO||No Default||No Extra
+nuke_bbforbidden_extensions
+	ext_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	extension||varchar(100)||NO||NO||No Default||No Extra
+nuke_bbforum_prune
+	prune_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	forum_id||smallint(5) unsigned||NO||MUL||No Default||No Extra
+	prune_days||tinyint(4) unsigned||NO||NO||No Default||No Extra
+	prune_freq||tinyint(4) unsigned||NO||NO||No Default||No Extra
+nuke_bbforums
+	forum_id||smallint(5) unsigned||NO||PRI||No Default||auto_increment
+	cat_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	forum_name||varchar(150)||YES||NO||No Default||No Extra
+	forum_desc||text||YES||NO||No Default||No Extra
+	forum_status||tinyint(4)||NO||NO||No Default||No Extra
+	forum_order||mediumint(8) unsigned||NO||MUL||1||No Extra
+	forum_posts||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	forum_topics||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	forum_last_post_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	prune_next||int(11)||YES||NO||No Default||No Extra
+	prune_enable||tinyint(1)||NO||NO||1||No Extra
+	auth_view||tinyint(2)||NO||NO||No Default||No Extra
+	auth_read||tinyint(2)||NO||NO||No Default||No Extra
+	auth_post||tinyint(2)||NO||NO||No Default||No Extra
+	auth_reply||tinyint(2)||NO||NO||No Default||No Extra
+	auth_edit||tinyint(2)||NO||NO||No Default||No Extra
+	auth_delete||tinyint(2)||NO||NO||No Default||No Extra
+	auth_sticky||tinyint(2)||NO||NO||No Default||No Extra
+	auth_announce||tinyint(2)||NO||NO||No Default||No Extra
+	auth_vote||tinyint(2)||NO||NO||No Default||No Extra
+	auth_pollcreate||tinyint(2)||NO||NO||No Default||No Extra
+	auth_attachments||tinyint(2)||NO||NO||No Default||No Extra
+	auth_download||tinyint(2)||NO||NO||No Default||No Extra
+	attached_forum_id||mediumint(8)||NO||NO||-1||No Extra
+nuke_bbgroups
+	group_id||mediumint(8)||NO||PRI||No Default||auto_increment
+	group_type||tinyint(4)||NO||NO||1||No Extra
+	group_name||varchar(40)||NO||NO||No Default||No Extra
+	group_description||varchar(255)||NO||NO||No Default||No Extra
+	group_moderator||mediumint(8)||NO||NO||No Default||No Extra
+	group_single_user||tinyint(1)||NO||MUL||1||No Extra
+nuke_bbposts
+	post_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	topic_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	forum_id||smallint(5) unsigned||NO||MUL||No Default||No Extra
+	poster_id||mediumint(8)||NO||MUL||No Default||No Extra
+	post_time||int(11)||NO||MUL||No Default||No Extra
+	poster_ip||varchar(8)||NO||NO||No Default||No Extra
+	post_username||varchar(25)||YES||NO||No Default||No Extra
+	enable_bbcode||tinyint(1)||NO||NO||1||No Extra
+	enable_html||tinyint(1)||NO||NO||No Default||No Extra
+	enable_smilies||tinyint(1)||NO||NO||1||No Extra
+	enable_sig||tinyint(1)||NO||NO||1||No Extra
+	post_edit_time||int(11)||YES||NO||No Default||No Extra
+	post_edit_count||smallint(5) unsigned||NO||NO||No Default||No Extra
+	post_attachment||tinyint(1)||NO||NO||No Default||No Extra
+nuke_bbposts_text
+	post_id||mediumint(8) unsigned||NO||PRI||No Default||No Extra
+	bbcode_uid||varchar(10)||NO||NO||No Default||No Extra
+	post_subject||varchar(60)||YES||NO||No Default||No Extra
+	post_text||text||YES||NO||No Default||No Extra
+nuke_bbprivmsgs
+	privmsgs_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	privmsgs_type||tinyint(4)||NO||NO||No Default||No Extra
+	privmsgs_subject||varchar(255)||NO||NO||No Default||No Extra
+	privmsgs_from_userid||mediumint(8)||NO||MUL||No Default||No Extra
+	privmsgs_to_userid||mediumint(8)||NO||MUL||No Default||No Extra
+	privmsgs_date||int(11)||NO||NO||No Default||No Extra
+	privmsgs_ip||varchar(8)||NO||NO||No Default||No Extra
+	privmsgs_enable_bbcode||tinyint(1)||NO||NO||1||No Extra
+	privmsgs_enable_html||tinyint(1)||NO||NO||No Default||No Extra
+	privmsgs_enable_smilies||tinyint(1)||NO||NO||1||No Extra
+	privmsgs_attach_sig||tinyint(1)||NO||NO||1||No Extra
+	privmsgs_attachment||tinyint(1)||NO||NO||No Default||No Extra
+nuke_bbprivmsgs_text
+	privmsgs_text_id||mediumint(8) unsigned||NO||PRI||No Default||No Extra
+	privmsgs_bbcode_uid||varchar(10)||NO||NO||No Default||No Extra
+	privmsgs_text||text||YES||NO||No Default||No Extra
+nuke_bbquota_limits
+	quota_limit_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	quota_desc||varchar(20)||NO||NO||No Default||No Extra
+	quota_limit||bigint(20) unsigned||NO||NO||No Default||No Extra
+nuke_bbranks
+	rank_id||smallint(5) unsigned||NO||PRI||No Default||auto_increment
+	rank_title||varchar(50)||NO||NO||No Default||No Extra
+	rank_min||mediumint(8)||NO||NO||No Default||No Extra
+	rank_max||mediumint(8)||NO||NO||No Default||No Extra
+	rank_special||tinyint(1)||YES||NO||No Default||No Extra
+	rank_image||varchar(255)||YES||NO||No Default||No Extra
+nuke_bbsearch_results
+	search_id||int(11) unsigned||NO||PRI||No Default||No Extra
+	session_id||varchar(32)||NO||MUL||No Default||No Extra
+	search_array||text||NO||NO||No Default||No Extra
+	search_time||int(11)||NO||NO||No Default||No Extra
+nuke_bbsearch_wordlist
+	word_text||varchar(50)||NO||PRI||No Default||No Extra
+	word_id||mediumint(8) unsigned||NO||MUL||No Default||auto_increment
+	word_common||tinyint(1) unsigned||NO||NO||No Default||No Extra
+nuke_bbsearch_wordmatch
+	post_id||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	word_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	title_match||tinyint(1)||NO||NO||No Default||No Extra
+nuke_bbsessions
+	session_id||char(32)||NO||MUL||No Default||No Extra
+	session_user_id||mediumint(8)||NO||MUL||No Default||No Extra
+	session_start||int(11)||NO||NO||No Default||No Extra
+	session_time||int(11)||NO||NO||No Default||No Extra
+	session_ip||char(8)||NO||MUL||No Default||No Extra
+	session_page||int(11)||NO||NO||No Default||No Extra
+	session_logged_in||tinyint(1)||NO||NO||No Default||No Extra
+	session_admin||tinyint(2)||NO||NO||No Default||No Extra
+nuke_bbsessions_keys
+	key_id||varchar(32)||NO||PRI||No Default||No Extra
+	user_id||mediumint(8)||NO||PRI||No Default||No Extra
+	last_ip||varchar(8)||NO||NO||No Default||No Extra
+	last_login||int(11)||NO||MUL||No Default||No Extra
+nuke_bbsmilies
+	smilies_id||smallint(5) unsigned||NO||PRI||No Default||auto_increment
+	code||varchar(50)||YES||NO||No Default||No Extra
+	smile_url||varchar(100)||YES||NO||No Default||No Extra
+	emoticon||varchar(75)||YES||NO||No Default||No Extra
+nuke_bbthemes
+	themes_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	template_name||varchar(30)||NO||NO||No Default||No Extra
+	style_name||varchar(30)||NO||NO||No Default||No Extra
+	head_stylesheet||varchar(100)||YES||NO||No Default||No Extra
+	body_background||varchar(100)||YES||NO||No Default||No Extra
+	body_bgcolor||varchar(6)||YES||NO||No Default||No Extra
+	body_text||varchar(6)||YES||NO||No Default||No Extra
+	body_link||varchar(6)||YES||NO||No Default||No Extra
+	body_vlink||varchar(6)||YES||NO||No Default||No Extra
+	body_alink||varchar(6)||YES||NO||No Default||No Extra
+	body_hlink||varchar(6)||YES||NO||No Default||No Extra
+	tr_color1||varchar(6)||YES||NO||No Default||No Extra
+	tr_color2||varchar(6)||YES||NO||No Default||No Extra
+	tr_color3||varchar(6)||YES||NO||No Default||No Extra
+	tr_class1||varchar(25)||YES||NO||No Default||No Extra
+	tr_class2||varchar(25)||YES||NO||No Default||No Extra
+	tr_class3||varchar(25)||YES||NO||No Default||No Extra
+	th_color1||varchar(6)||YES||NO||No Default||No Extra
+	th_color2||varchar(6)||YES||NO||No Default||No Extra
+	th_color3||varchar(6)||YES||NO||No Default||No Extra
+	th_class1||varchar(25)||YES||NO||No Default||No Extra
+	th_class2||varchar(25)||YES||NO||No Default||No Extra
+	th_class3||varchar(25)||YES||NO||No Default||No Extra
+	td_color1||varchar(6)||YES||NO||No Default||No Extra
+	td_color2||varchar(6)||YES||NO||No Default||No Extra
+	td_color3||varchar(6)||YES||NO||No Default||No Extra
+	td_class1||varchar(25)||YES||NO||No Default||No Extra
+	td_class2||varchar(25)||YES||NO||No Default||No Extra
+	td_class3||varchar(25)||YES||NO||No Default||No Extra
+	fontface1||varchar(50)||YES||NO||No Default||No Extra
+	fontface2||varchar(50)||YES||NO||No Default||No Extra
+	fontface3||varchar(50)||YES||NO||No Default||No Extra
+	fontsize1||tinyint(4)||YES||NO||No Default||No Extra
+	fontsize2||tinyint(4)||YES||NO||No Default||No Extra
+	fontsize3||tinyint(4)||YES||NO||No Default||No Extra
+	fontcolor1||varchar(6)||YES||NO||No Default||No Extra
+	fontcolor2||varchar(6)||YES||NO||No Default||No Extra
+	fontcolor3||varchar(6)||YES||NO||No Default||No Extra
+	span_class1||varchar(25)||YES||NO||No Default||No Extra
+	span_class2||varchar(25)||YES||NO||No Default||No Extra
+	span_class3||varchar(25)||YES||NO||No Default||No Extra
+	img_size_poll||smallint(5) unsigned||YES||NO||No Default||No Extra
+	img_size_privmsg||smallint(5) unsigned||YES||NO||No Default||No Extra
+nuke_bbthemes_name
+	themes_id||smallint(5) unsigned||NO||PRI||No Default||No Extra
+	tr_color1_name||char(50)||YES||NO||No Default||No Extra
+	tr_color2_name||char(50)||YES||NO||No Default||No Extra
+	tr_color3_name||char(50)||YES||NO||No Default||No Extra
+	tr_class1_name||char(50)||YES||NO||No Default||No Extra
+	tr_class2_name||char(50)||YES||NO||No Default||No Extra
+	tr_class3_name||char(50)||YES||NO||No Default||No Extra
+	th_color1_name||char(50)||YES||NO||No Default||No Extra
+	th_color2_name||char(50)||YES||NO||No Default||No Extra
+	th_color3_name||char(50)||YES||NO||No Default||No Extra
+	th_class1_name||char(50)||YES||NO||No Default||No Extra
+	th_class2_name||char(50)||YES||NO||No Default||No Extra
+	th_class3_name||char(50)||YES||NO||No Default||No Extra
+	td_color1_name||char(50)||YES||NO||No Default||No Extra
+	td_color2_name||char(50)||YES||NO||No Default||No Extra
+	td_color3_name||char(50)||YES||NO||No Default||No Extra
+	td_class1_name||char(50)||YES||NO||No Default||No Extra
+	td_class2_name||char(50)||YES||NO||No Default||No Extra
+	td_class3_name||char(50)||YES||NO||No Default||No Extra
+	fontface1_name||char(50)||YES||NO||No Default||No Extra
+	fontface2_name||char(50)||YES||NO||No Default||No Extra
+	fontface3_name||char(50)||YES||NO||No Default||No Extra
+	fontsize1_name||char(50)||YES||NO||No Default||No Extra
+	fontsize2_name||char(50)||YES||NO||No Default||No Extra
+	fontsize3_name||char(50)||YES||NO||No Default||No Extra
+	fontcolor1_name||char(50)||YES||NO||No Default||No Extra
+	fontcolor2_name||char(50)||YES||NO||No Default||No Extra
+	fontcolor3_name||char(50)||YES||NO||No Default||No Extra
+	span_class1_name||char(50)||YES||NO||No Default||No Extra
+	span_class2_name||char(50)||YES||NO||No Default||No Extra
+	span_class3_name||char(50)||YES||NO||No Default||No Extra
+nuke_bbtopics
+	topic_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	forum_id||smallint(8) unsigned||NO||MUL||No Default||No Extra
+	topic_title||char(60)||NO||NO||No Default||No Extra
+	topic_poster||mediumint(8)||NO||NO||No Default||No Extra
+	topic_time||int(11)||NO||NO||No Default||No Extra
+	topic_views||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	topic_replies||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	topic_status||tinyint(3)||NO||MUL||No Default||No Extra
+	topic_vote||tinyint(1)||NO||NO||No Default||No Extra
+	topic_type||tinyint(3)||NO||MUL||No Default||No Extra
+	topic_last_post_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	topic_first_post_id||mediumint(8) unsigned||NO||NO||No Default||No Extra
+	topic_moved_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	topic_attachment||tinyint(1)||NO||NO||No Default||No Extra
+nuke_bbtopics_watch
+	topic_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	user_id||mediumint(8)||NO||MUL||No Default||No Extra
+	notify_status||tinyint(1)||NO||MUL||No Default||No Extra
+nuke_bbuser_group
+	group_id||mediumint(8)||NO||MUL||No Default||No Extra
+	user_id||mediumint(8)||NO||MUL||No Default||No Extra
+	user_pending||tinyint(1)||YES||NO||No Default||No Extra
+nuke_bbvote_desc
+	vote_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	topic_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	vote_text||text||NO||NO||No Default||No Extra
+	vote_start||int(11)||NO||NO||No Default||No Extra
+	vote_length||int(11)||NO||NO||No Default||No Extra
+nuke_bbvote_results
+	vote_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	vote_option_id||tinyint(4) unsigned||NO||MUL||No Default||No Extra
+	vote_option_text||varchar(255)||NO||NO||No Default||No Extra
+	vote_result||int(11)||NO||NO||No Default||No Extra
+nuke_bbvote_voters
+	vote_id||mediumint(8) unsigned||NO||MUL||No Default||No Extra
+	vote_user_id||mediumint(8)||NO||MUL||No Default||No Extra
+	vote_user_ip||char(8)||NO||MUL||No Default||No Extra
+nuke_bbwords
+	word_id||mediumint(8) unsigned||NO||PRI||No Default||auto_increment
+	word||char(100)||NO||NO||No Default||No Extra
+	replacement||char(100)||NO||NO||No Default||No Extra
+nuke_blocks
+	bid||int(10)||NO||PRI||No Default||auto_increment
+	bkey||varchar(15)||NO||NO||No Default||No Extra
+	title||varchar(60)||NO||MUL||No Default||No Extra
+	content||text||NO||NO||No Default||No Extra
+	url||varchar(200)||NO||NO||No Default||No Extra
+	bposition||char(1)||NO||NO||No Default||No Extra
+	weight||int(10)||NO||NO||1||No Extra
+	active||int(1)||NO||NO||1||No Extra
+	refresh||int(10)||NO||NO||No Default||No Extra
+	time||varchar(14)||NO||NO||No Default||No Extra
+	blanguage||varchar(30)||NO||NO||No Default||No Extra
+	blockfile||varchar(255)||NO||NO||No Default||No Extra
+	view||int(1)||NO||NO||No Default||No Extra
+	groups||text||NO||NO||No Default||No Extra
+	expire||varchar(14)||NO||NO||No Default||No Extra
+	action||char(1)||NO||NO||No Default||No Extra
+	subscription||int(1)||NO||NO||No Default||No Extra
+	max_rss_items||int(5)||NO||NO||No Default||No Extra
+nuke_comments
+	tid||int(11)||NO||PRI||No Default||auto_increment
+	pid||int(11)||NO||MUL||No Default||No Extra
+	sid||int(11)||NO||MUL||No Default||No Extra
+	date||datetime||YES||NO||No Default||No Extra
+	name||varchar(60)||NO||NO||No Default||No Extra
+	email||varchar(60)||YES||NO||No Default||No Extra
+	url||varchar(60)||YES||NO||No Default||No Extra
+	host_name||varchar(60)||YES||NO||No Default||No Extra
+	subject||varchar(85)||NO||NO||No Default||No Extra
+	comment||text||NO||NO||No Default||No Extra
+	score||tinyint(4)||NO||NO||No Default||No Extra
+	reason||tinyint(4)||NO||NO||No Default||No Extra
+nuke_config
+	sitename||varchar(255)||NO||PRI||No Default||No Extra
+	nukeurl||varchar(255)||NO||NO||No Default||No Extra
+	site_logo||varchar(255)||NO||NO||No Default||No Extra
+	slogan||varchar(255)||NO||NO||No Default||No Extra
+	startdate||varchar(50)||NO||NO||No Default||No Extra
+	adminmail||varchar(255)||NO||NO||No Default||No Extra
+	anonpost||tinyint(1)||NO||NO||No Default||No Extra
+	Default_Theme||varchar(255)||NO||NO||No Default||No Extra
+	foot1||text||NO||NO||No Default||No Extra
+	foot2||text||NO||NO||No Default||No Extra
+	foot3||text||NO||NO||No Default||No Extra
+	commentlimit||int(9)||NO||NO||4096||No Extra
+	anonymous||varchar(255)||NO||NO||No Default||No Extra
+	minpass||tinyint(1)||NO||NO||8||No Extra
+	pollcomm||tinyint(1)||NO||NO||1||No Extra
+	articlecomm||tinyint(1)||NO||NO||1||No Extra
+	broadcast_msg||tinyint(1)||NO||NO||1||No Extra
+	my_headlines||tinyint(1)||NO||NO||1||No Extra
+	top||int(3)||NO||NO||10||No Extra
+	storyhome||int(2)||NO||NO||10||No Extra
+	user_news||tinyint(1)||NO||NO||1||No Extra
+	oldnum||int(2)||NO||NO||30||No Extra
+	banners||tinyint(1)||NO||NO||1||No Extra
+	backend_title||varchar(255)||NO||NO||No Default||No Extra
+	backend_language||varchar(10)||NO||NO||No Default||No Extra
+	language||varchar(100)||NO||NO||No Default||No Extra
+	locale||varchar(10)||NO||NO||No Default||No Extra
+	multilingual||tinyint(1)||NO||NO||No Default||No Extra
+	useflags||tinyint(1)||NO||NO||No Default||No Extra
+	notify||tinyint(1)||NO||NO||No Default||No Extra
+	notify_email||varchar(255)||NO||NO||No Default||No Extra
+	notify_subject||varchar(255)||NO||NO||No Default||No Extra
+	notify_message||varchar(255)||NO||NO||No Default||No Extra
+	notify_from||varchar(255)||NO||NO||No Default||No Extra
+	moderate||tinyint(1)||NO||NO||No Default||No Extra
+	admingraphic||tinyint(1)||NO||NO||1||No Extra
+	CensorMode||tinyint(1)||NO||NO||3||No Extra
+	CensorReplace||varchar(10)||NO||NO||No Default||No Extra
+	copyright||text||NO||NO||No Default||No Extra
+	Version_Num||varchar(10)||NO||NO||No Default||No Extra
+nuke_confirm
+	confirm_id||char(32)||NO||PRI||No Default||No Extra
+	session_id||char(32)||NO||PRI||No Default||No Extra
+	code||char(6)||NO||NO||No Default||No Extra
+nuke_counter
+	type||varchar(80)||NO||PRI||No Default||No Extra
+	var||varchar(80)||NO||PRI||No Default||No Extra
+	count||int(10) unsigned||NO||NO||No Default||No Extra
+nuke_encyclopedia
+	eid||int(10)||NO||PRI||No Default||auto_increment
+	title||varchar(255)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+	elanguage||varchar(30)||NO||NO||No Default||No Extra
+	active||int(1)||NO||NO||No Default||No Extra
+nuke_encyclopedia_text
+	tid||int(10)||NO||PRI||No Default||auto_increment
+	eid||int(10)||NO||MUL||No Default||No Extra
+	title||varchar(255)||NO||MUL||No Default||No Extra
+	text||text||NO||NO||No Default||No Extra
+	counter||int(10)||NO||NO||No Default||No Extra
+nuke_faqanswer
+	id||tinyint(4)||NO||PRI||No Default||auto_increment
+	id_cat||tinyint(4)||NO||MUL||No Default||No Extra
+	question||varchar(255)||YES||NO||No Default||No Extra
+	answer||text||YES||NO||No Default||No Extra
+nuke_faqcategories
+	id_cat||tinyint(3)||NO||PRI||No Default||auto_increment
+	categories||varchar(255)||YES||NO||No Default||No Extra
+	flanguage||varchar(30)||NO||NO||No Default||No Extra
+nuke_gcal_cat_group
+	id||int(11)||NO||PRI||No Default||auto_increment
+	cat_id||int(11)||NO||MUL||No Default||No Extra
+	group_id||int(11)||NO||MUL||No Default||No Extra
+nuke_gcal_category
+	id||int(11)||NO||PRI||No Default||auto_increment
+	name||varchar(128)||NO||NO||No Default||No Extra
+nuke_gcal_config
+	id||int(11)||NO||PRI||No Default||auto_increment
+	title||varchar(128)||NO||NO||Calendar of Events||No Extra
+	image||varchar(255)||NO||NO||No Default||No Extra
+	min_year||int(10) unsigned||NO||NO||2006||No Extra
+	max_year||int(10) unsigned||NO||NO||2037||No Extra
+	user_submit||enum('off','members','anyone','groups')||NO||NO||off||No Extra
+	req_approval||tinyint(1)||NO||NO||1||No Extra
+	allowed_tags||text||NO||NO||No Default||No Extra
+	allowed_attrs||text||NO||NO||No Default||No Extra
+	version||varchar(16)||NO||NO||No Default||No Extra
+	time_in_24||tinyint(1)||NO||NO||No Default||No Extra
+	short_date_format||varchar(16)||NO||NO||No Default||No Extra
+	reg_date_format||varchar(16)||NO||NO||No Default||No Extra
+	long_date_format||varchar(16)||NO||NO||No Default||No Extra
+	first_day_of_week||tinyint(1)||NO||NO||No Default||No Extra
+	auto_link||tinyint(1)||NO||NO||No Default||No Extra
+	location_required||tinyint(1)||NO||NO||No Default||No Extra
+	details_required||tinyint(1)||NO||NO||No Default||No Extra
+	email_notify||tinyint(1)||NO||NO||No Default||No Extra
+	email_to||varchar(255)||NO||NO||No Default||No Extra
+	email_subject||varchar(255)||NO||NO||No Default||No Extra
+	email_msg||varchar(255)||NO||NO||No Default||No Extra
+	email_from||varchar(255)||NO||NO||No Default||No Extra
+	show_cat_legend||tinyint(1)||NO||NO||1||No Extra
+	wysiwyg||tinyint(1)||NO||NO||No Default||No Extra
+	user_update||tinyint(1)||NO||NO||No Default||No Extra
+	weekends||set('0','1','2','3','4','5','6')||NO||NO||0,6||No Extra
+	rsvp||enum('off','on','email')||NO||NO||off||No Extra
+	rsvp_email_subject||varchar(255)||NO||NO||Event RSVP Notification||No Extra
+	groups_submit||text||NO||NO||No Default||No Extra
+	groups_no_approval||text||NO||NO||No Default||No Extra
+nuke_gcal_event
+	id||int(11)||NO||PRI||No Default||auto_increment
+	title||varchar(255)||NO||NO||No Default||No Extra
+	no_time||tinyint(1)||NO||NO||1||No Extra
+	start_time||time||NO||NO||00:00:00||No Extra
+	end_time||time||NO||NO||00:00:00||No Extra
+	location||text||NO||NO||No Default||No Extra
+	category||int(11)||NO||NO||No Default||No Extra
+	repeat_type||enum('none','daily','weekly','monthly','yearly')||NO||MUL||none||No Extra
+	details||text||NO||NO||No Default||No Extra
+	interval_val||int(11)||NO||NO||No Default||No Extra
+	no_end_date||tinyint(1)||NO||NO||1||No Extra
+	start_date||date||NO||MUL||0000-00-00||No Extra
+	end_date||date||NO||NO||0000-00-00||No Extra
+	weekly_days||set('0','1','2','3','4','5','6')||NO||NO||No Default||No Extra
+	monthly_by_day||tinyint(1)||NO||NO||No Default||No Extra
+	submitted_by||varchar(25)||NO||NO||No Default||No Extra
+	approved||tinyint(1)||NO||MUL||No Default||No Extra
+	rsvp||enum('off','on','email')||NO||NO||off||No Extra
+nuke_gcal_exception
+	id||int(11)||NO||PRI||No Default||auto_increment
+	event_id||int(11)||NO||MUL||No Default||No Extra
+	date||date||NO||MUL||0000-00-00||No Extra
+nuke_gcal_rsvp
+	id||int(11)||NO||PRI||No Default||auto_increment
+	event_id||int(11)||NO||MUL||No Default||No Extra
+	user_id||int(11)||NO||NO||No Default||No Extra
+nuke_groups
+	id||int(10)||NO||PRI||No Default||auto_increment
+	name||varchar(255)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+	points||int(10)||NO||NO||No Default||No Extra
+nuke_groups_points
+	id||int(10)||NO||PRI||No Default||auto_increment
+	points||int(10)||NO||NO||No Default||No Extra
+nuke_headlines
+	hid||int(11)||NO||PRI||No Default||auto_increment
+	sitename||varchar(30)||NO||NO||No Default||No Extra
+	headlinesurl||varchar(200)||NO||NO||No Default||No Extra
+nuke_hnl_categories
+	cid||int(11)||NO||PRI||No Default||auto_increment
+	ctitle||varchar(50)||NO||NO||No Default||No Extra
+	cdescription||text||NO||NO||No Default||No Extra
+	cblocklimit||int(4)||NO||NO||10||No Extra
+nuke_hnl_cfg
+	cfg_nm||varchar(255)||NO||PRI||No Default||No Extra
+	cfg_val||longtext||NO||NO||No Default||No Extra
+nuke_hnl_newsletters
+	nid||int(11)||NO||PRI||No Default||auto_increment
+	cid||int(11)||NO||MUL||1||No Extra
+	topic||varchar(100)||NO||NO||No Default||No Extra
+	sender||varchar(20)||NO||NO||No Default||No Extra
+	filename||varchar(32)||NO||NO||No Default||No Extra
+	datesent||date||YES||NO||No Default||No Extra
+	view||int(1)||NO||NO||No Default||No Extra
+	groups||text||NO||NO||No Default||No Extra
+	hits||int(11)||NO||NO||No Default||No Extra
+nuke_legal_cfg
+	contact_email||varchar(255)||NO||NO||legal@MySite.com||No Extra
+	contact_subject||varchar(255)||NO||NO||Legal Notice Inquiry||No Extra
+	country||varchar(255)||NO||NO||United States of America||No Extra
+nuke_legal_docs
+	did||int(11)||NO||PRI||No Default||auto_increment
+	doc_name||varchar(32)||NO||NO||No Default||No Extra
+	doc_status||tinyint(4)||NO||NO||No Default||No Extra
+nuke_legal_text
+	tid||int(11)||NO||PRI||No Default||auto_increment
+	doc_text||text||NO||NO||No Default||No Extra
+nuke_legal_text_map
+	mid||mediumint(9)||NO||PRI||No Default||No Extra
+	did||int(11)||NO||PRI||No Default||No Extra
+	tid||int(11)||NO||PRI||No Default||No Extra
+	language||varchar(32)||NO||NO||english||No Extra
+nuke_links_categories
+	cid||int(11)||NO||PRI||No Default||auto_increment
+	title||varchar(50)||NO||NO||No Default||No Extra
+	cdescription||text||NO||NO||No Default||No Extra
+	parentid||int(11)||NO||NO||No Default||No Extra
+nuke_links_editorials
+	linkid||int(11)||NO||PRI||No Default||No Extra
+	adminid||varchar(60)||NO||NO||No Default||No Extra
+	editorialtimestamp||datetime||NO||NO||0000-00-00 00:00:00||No Extra
+	editorialtext||text||NO||NO||No Default||No Extra
+	editorialtitle||varchar(100)||NO||NO||No Default||No Extra
+nuke_links_links
+	lid||int(11)||NO||PRI||No Default||auto_increment
+	cid||int(11)||NO||MUL||No Default||No Extra
+	sid||int(11)||NO||MUL||No Default||No Extra
+	title||varchar(100)||NO||NO||No Default||No Extra
+	url||varchar(100)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+	date||datetime||YES||NO||No Default||No Extra
+	name||varchar(100)||NO||NO||No Default||No Extra
+	email||varchar(100)||NO||NO||No Default||No Extra
+	hits||int(11)||NO||NO||No Default||No Extra
+	submitter||varchar(60)||NO||NO||No Default||No Extra
+	linkratingsummary||double(6,4)||NO||NO||0.0000||No Extra
+	totalvotes||int(11)||NO||NO||No Default||No Extra
+	totalcomments||int(11)||NO||NO||No Default||No Extra
+nuke_links_modrequest
+	requestid||int(11)||NO||PRI||No Default||auto_increment
+	lid||int(11)||NO||NO||No Default||No Extra
+	cid||int(11)||NO||NO||No Default||No Extra
+	sid||int(11)||NO||NO||No Default||No Extra
+	title||varchar(100)||NO||NO||No Default||No Extra
+	url||varchar(100)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+	modifysubmitter||varchar(60)||NO||NO||No Default||No Extra
+	brokenlink||int(3)||NO||NO||No Default||No Extra
+nuke_links_newlink
+	lid||int(11)||NO||PRI||No Default||auto_increment
+	cid||int(11)||NO||MUL||No Default||No Extra
+	sid||int(11)||NO||MUL||No Default||No Extra
+	title||varchar(100)||NO||NO||No Default||No Extra
+	url||varchar(100)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+	name||varchar(100)||NO||NO||No Default||No Extra
+	email||varchar(100)||NO||NO||No Default||No Extra
+	submitter||varchar(60)||NO||NO||No Default||No Extra
+nuke_links_votedata
+	ratingdbid||int(11)||NO||PRI||No Default||auto_increment
+	ratinglid||int(11)||NO||NO||No Default||No Extra
+	ratinguser||varchar(60)||NO||NO||No Default||No Extra
+	rating||int(11)||NO||NO||No Default||No Extra
+	ratinghostname||varchar(60)||NO||NO||No Default||No Extra
+	ratingcomments||text||NO||NO||No Default||No Extra
+	ratingtimestamp||datetime||NO||NO||0000-00-00 00:00:00||No Extra
+nuke_mail_config
+	active||tinyint(1)||NO||NO||No Default||No Extra
+	mailer||tinyint(1)||NO||PRI||1||No Extra
+	smtp_host||varchar(255)||NO||NO||No Default||No Extra
+	smtp_helo||varchar(255)||NO||NO||No Default||No Extra
+	smtp_port||int(10)||NO||NO||25||No Extra
+	smtp_auth||tinyint(1)||NO||NO||No Default||No Extra
+	smtp_uname||varchar(255)||NO||NO||No Default||No Extra
+	smtp_passw||varchar(255)||NO||NO||No Default||No Extra
+	sendmail_path||varchar(255)||NO||NO||/usr/sbin/sendmail||No Extra
+	smtp_encrypt||tinyint(4)||NO||NO||No Default||No Extra
+	smtp_encrypt_method||tinyint(4)||NO||NO||No Default||No Extra
+	reply_to||varchar(255)||NO||NO||No Default||No Extra
+	debug_level||tinyint(4)||NO||NO||No Default||No Extra
+nuke_main
+	main_module||varchar(255)||NO||NO||No Default||No Extra
+nuke_message
+	mid||int(11)||NO||PRI||No Default||auto_increment
+	title||varchar(100)||NO||NO||No Default||No Extra
+	content||text||NO||NO||No Default||No Extra
+	date||varchar(14)||NO||NO||No Default||No Extra
+	expire||int(7)||NO||NO||No Default||No Extra
+	active||int(1)||NO||NO||1||No Extra
+	view||int(1)||NO||NO||1||No Extra
+	groups||text||NO||NO||No Default||No Extra
+	mlanguage||varchar(30)||NO||NO||No Default||No Extra
+nuke_modules
+	mid||int(10)||NO||PRI||No Default||auto_increment
+	title||varchar(255)||NO||MUL||No Default||No Extra
+	custom_title||varchar(255)||NO||MUL||No Default||No Extra
+	active||int(1)||NO||NO||No Default||No Extra
+	view||int(1)||NO||NO||No Default||No Extra
+	groups||text||NO||NO||No Default||No Extra
+	inmenu||tinyint(1)||NO||NO||1||No Extra
+	mod_group||int(10)||YES||NO||No Default||No Extra
+	admins||varchar(255)||NO||NO||No Default||No Extra
+nuke_newpages
+	pid||int(10)||NO||PRI||No Default||auto_increment
+	cid||int(10)||NO||MUL||No Default||No Extra
+	title||varchar(255)||NO||NO||No Default||No Extra
+	subtitle||varchar(255)||NO||NO||No Default||No Extra
+	tags||varchar(255)||NO||NO||No Default||No Extra
+	page_header||text||NO||NO||No Default||No Extra
+	text||text||NO||NO||No Default||No Extra
+	page_footer||text||NO||NO||No Default||No Extra
+	signature||text||NO||NO||No Default||No Extra
+	uname||varchar(40)||NO||NO||No Default||No Extra
+	date||datetime||NO||NO||0000-00-00 00:00:00||No Extra
+	clanguage||varchar(30)||NO||NO||No Default||No Extra
+nuke_nsngd_accesses
+	username||varchar(60)||NO||PRI||No Default||No Extra
+	downloads||int(11)||NO||NO||No Default||No Extra
+	uploads||int(11)||NO||NO||No Default||No Extra
+nuke_nsngd_categories
+	cid||int(11)||NO||PRI||No Default||auto_increment
+	title||varchar(50)||NO||MUL||No Default||No Extra
+	cdescription||text||NO||NO||No Default||No Extra
+	parentid||int(11)||NO||NO||No Default||No Extra
+	whoadd||tinyint(2)||NO||NO||No Default||No Extra
+	uploaddir||varchar(255)||NO||NO||No Default||No Extra
+	canupload||tinyint(2)||NO||NO||No Default||No Extra
+	active||tinyint(2)||NO||NO||1||No Extra
+nuke_nsngd_config
+	config_name||varchar(255)||NO||PRI||No Default||No Extra
+	config_value||text||NO||NO||No Default||No Extra
+nuke_nsngd_downloads
+	lid||int(11)||NO||PRI||No Default||auto_increment
+	cid||int(11)||NO||MUL||No Default||No Extra
+	sid||int(11)||NO||MUL||No Default||No Extra
+	title||varchar(100)||NO||MUL||No Default||No Extra
+	url||varchar(255)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+	date||datetime||NO||NO||0000-00-00 00:00:00||No Extra
+	name||varchar(100)||NO||NO||No Default||No Extra
+	email||varchar(100)||NO||NO||No Default||No Extra
+	hits||int(11)||NO||NO||No Default||No Extra
+	submitter||varchar(60)||NO||NO||No Default||No Extra
+	sub_ip||varchar(16)||NO||NO||0.0.0.0||No Extra
+	filesize||bigint(20)||NO||NO||No Default||No Extra
+	version||varchar(20)||NO||NO||No Default||No Extra
+	homepage||varchar(255)||NO||NO||No Default||No Extra
+	active||tinyint(2)||NO||NO||1||No Extra
+nuke_nsngd_extensions
+	eid||int(11)||NO||PRI||No Default||auto_increment
+	ext||varchar(6)||NO||NO||No Default||No Extra
+	file||tinyint(1)||NO||NO||No Default||No Extra
+	image||tinyint(1)||NO||NO||No Default||No Extra
+nuke_nsngd_mods
+	rid||int(11)||NO||PRI||No Default||auto_increment
+	lid||int(11)||NO||NO||No Default||No Extra
+	cid||int(11)||NO||NO||No Default||No Extra
+	sid||int(11)||NO||NO||No Default||No Extra
+	title||varchar(100)||NO||NO||No Default||No Extra
+	url||varchar(255)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+	modifier||varchar(60)||NO||NO||No Default||No Extra
+	sub_ip||varchar(16)||NO||NO||0.0.0.0||No Extra
+	brokendownload||int(3)||NO||NO||No Default||No Extra
+	name||varchar(100)||NO||NO||No Default||No Extra
+	email||varchar(100)||NO||NO||No Default||No Extra
+	filesize||bigint(20)||NO||NO||No Default||No Extra
+	version||varchar(20)||NO||NO||No Default||No Extra
+	homepage||varchar(255)||NO||NO||No Default||No Extra
+nuke_nsngd_new
+	lid||int(11)||NO||PRI||No Default||auto_increment
+	cid||int(11)||NO||MUL||No Default||No Extra
+	sid||int(11)||NO||MUL||No Default||No Extra
+	title||varchar(100)||NO||MUL||No Default||No Extra
+	url||varchar(255)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+	date||datetime||NO||NO||0000-00-00 00:00:00||No Extra
+	name||varchar(100)||NO||NO||No Default||No Extra
+	email||varchar(100)||NO||NO||No Default||No Extra
+	submitter||varchar(60)||NO||NO||No Default||No Extra
+	sub_ip||varchar(16)||NO||NO||0.0.0.0||No Extra
+	filesize||bigint(20)||NO||NO||No Default||No Extra
+	version||varchar(20)||NO||NO||No Default||No Extra
+	homepage||varchar(255)||NO||NO||No Default||No Extra
+nuke_nsngr_config
+	config_name||varchar(255)||NO||PRI||No Default||No Extra
+	config_value||text||NO||NO||No Default||No Extra
+nuke_nsngr_groups
+	gid||int(11)||NO||PRI||No Default||auto_increment
+	gname||varchar(32)||NO||NO||No Default||No Extra
+	gdesc||text||NO||NO||No Default||No Extra
+	gpublic||tinyint(1)||NO||NO||No Default||No Extra
+	glimit||int(11)||NO||NO||No Default||No Extra
+	phpBB||int(11)||NO||NO||No Default||No Extra
+	muid||int(11)||NO||NO||No Default||No Extra
+nuke_nsngr_users
+	gid||int(11)||NO||PRI||No Default||No Extra
+	uid||int(11)||NO||PRI||No Default||No Extra
+	trial||tinyint(1)||NO||NO||No Default||No Extra
+	notice||tinyint(1)||NO||NO||No Default||No Extra
+	sdate||int(14)||NO||NO||No Default||No Extra
+	edate||int(14)||NO||NO||No Default||No Extra
+nuke_nsnpj_config
+	config_name||varchar(255)||NO||NO||No Default||No Extra
+	config_value||text||NO||NO||No Default||No Extra
+nuke_nsnpj_members
+	member_id||int(11)||NO||PRI||No Default||auto_increment
+	member_name||varchar(255)||NO||NO||No Default||No Extra
+	member_email||varchar(255)||NO||NO||No Default||No Extra
+nuke_nsnpj_members_positions
+	position_id||int(11)||NO||PRI||No Default||auto_increment
+	position_name||varchar(255)||NO||NO||No Default||No Extra
+	position_weight||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_projects
+	project_id||int(11)||NO||PRI||No Default||auto_increment
+	project_name||varchar(255)||NO||NO||No Default||No Extra
+	project_description||text||NO||NO||No Default||No Extra
+	project_site||varchar(255)||NO||NO||No Default||No Extra
+	priority_id||int(11)||NO||NO||No Default||No Extra
+	status_id||int(11)||NO||NO||No Default||No Extra
+	project_percent||float||NO||NO||No Default||No Extra
+	weight||int(11)||NO||NO||No Default||No Extra
+	featured||tinyint(2)||NO||NO||No Default||No Extra
+	allowreports||tinyint(2)||NO||NO||No Default||No Extra
+	allowrequests||tinyint(2)||NO||NO||No Default||No Extra
+	date_created||int(14)||NO||NO||No Default||No Extra
+	date_started||int(14)||NO||NO||No Default||No Extra
+	date_finished||int(14)||NO||NO||No Default||No Extra
+nuke_nsnpj_projects_members
+	project_id||int(11)||NO||MUL||No Default||No Extra
+	member_id||int(11)||NO||MUL||No Default||No Extra
+	position_id||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_projects_priorities
+	priority_id||int(11)||NO||PRI||No Default||auto_increment
+	priority_name||varchar(30)||NO||NO||No Default||No Extra
+	priority_weight||int(11)||NO||NO||1||No Extra
+nuke_nsnpj_projects_status
+	status_id||int(11)||NO||PRI||No Default||auto_increment
+	status_name||varchar(255)||NO||NO||No Default||No Extra
+	status_weight||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_reports
+	report_id||int(11)||NO||PRI||No Default||auto_increment
+	project_id||int(11)||NO||NO||No Default||No Extra
+	type_id||int(11)||NO||NO||No Default||No Extra
+	status_id||int(11)||NO||NO||No Default||No Extra
+	report_name||varchar(255)||NO||NO||No Default||No Extra
+	report_description||text||NO||NO||No Default||No Extra
+	submitter_name||varchar(32)||NO||NO||No Default||No Extra
+	submitter_email||varchar(255)||NO||NO||No Default||No Extra
+	submitter_ip||varchar(20)||NO||NO||0.0.0.0||No Extra
+	date_submitted||int(14)||NO||NO||No Default||No Extra
+	date_commented||int(14)||NO||NO||No Default||No Extra
+	date_modified||int(14)||NO||NO||No Default||No Extra
+nuke_nsnpj_reports_comments
+	comment_id||int(11)||NO||PRI||No Default||auto_increment
+	report_id||int(11)||NO||NO||No Default||No Extra
+	commenter_name||varchar(32)||NO||NO||No Default||No Extra
+	commenter_email||varchar(255)||NO||NO||No Default||No Extra
+	commenter_ip||varchar(20)||NO||NO||0.0.0.0||No Extra
+	comment_description||text||NO||NO||No Default||No Extra
+	date_commented||int(14)||NO||NO||No Default||No Extra
+nuke_nsnpj_reports_members
+	report_id||int(11)||NO||MUL||No Default||No Extra
+	member_id||int(11)||NO||MUL||No Default||No Extra
+	position_id||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_reports_status
+	status_id||int(11)||NO||PRI||No Default||auto_increment
+	status_name||varchar(255)||NO||NO||No Default||No Extra
+	status_weight||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_reports_types
+	type_id||int(11)||NO||PRI||No Default||auto_increment
+	type_name||varchar(255)||NO||NO||No Default||No Extra
+	type_weight||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_requests
+	request_id||int(11)||NO||PRI||No Default||auto_increment
+	project_id||int(11)||NO||NO||No Default||No Extra
+	type_id||int(11)||NO||NO||No Default||No Extra
+	status_id||int(11)||NO||NO||No Default||No Extra
+	request_name||varchar(255)||NO||NO||No Default||No Extra
+	request_description||text||NO||NO||No Default||No Extra
+	submitter_name||varchar(32)||NO||NO||No Default||No Extra
+	submitter_email||varchar(255)||NO||NO||No Default||No Extra
+	submitter_ip||varchar(20)||NO||NO||0.0.0.0||No Extra
+	date_submitted||int(14)||NO||NO||No Default||No Extra
+	date_commented||int(14)||NO||NO||No Default||No Extra
+	date_modified||int(14)||NO||NO||No Default||No Extra
+nuke_nsnpj_requests_comments
+	comment_id||int(11)||NO||PRI||No Default||auto_increment
+	request_id||int(11)||NO||NO||No Default||No Extra
+	commenter_name||varchar(32)||NO||NO||No Default||No Extra
+	commenter_email||varchar(255)||NO||NO||No Default||No Extra
+	commenter_ip||varchar(20)||NO||NO||0.0.0.0||No Extra
+	comment_description||text||NO||NO||No Default||No Extra
+	date_commented||int(14)||NO||NO||No Default||No Extra
+nuke_nsnpj_requests_members
+	request_id||int(11)||NO||MUL||No Default||No Extra
+	member_id||int(11)||NO||MUL||No Default||No Extra
+	position_id||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_requests_status
+	status_id||int(11)||NO||PRI||No Default||auto_increment
+	status_name||varchar(255)||NO||NO||No Default||No Extra
+	status_weight||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_requests_types
+	type_id||int(11)||NO||PRI||No Default||auto_increment
+	type_name||varchar(255)||NO||NO||No Default||No Extra
+	type_weight||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_tasks
+	task_id||int(11)||NO||PRI||No Default||auto_increment
+	project_id||int(11)||NO||NO||No Default||No Extra
+	task_name||varchar(255)||NO||NO||No Default||No Extra
+	task_description||text||NO||NO||No Default||No Extra
+	priority_id||int(11)||NO||NO||1||No Extra
+	status_id||int(11)||NO||NO||No Default||No Extra
+	task_percent||float||NO||NO||No Default||No Extra
+	date_created||int(14)||NO||NO||No Default||No Extra
+	date_started||int(14)||NO||NO||No Default||No Extra
+	date_finished||int(14)||NO||NO||No Default||No Extra
+nuke_nsnpj_tasks_members
+	task_id||int(11)||NO||MUL||No Default||No Extra
+	member_id||int(11)||NO||MUL||No Default||No Extra
+	position_id||int(11)||NO||NO||No Default||No Extra
+nuke_nsnpj_tasks_priorities
+	priority_id||int(11)||NO||PRI||No Default||auto_increment
+	priority_name||varchar(30)||NO||NO||No Default||No Extra
+	priority_weight||int(11)||NO||NO||1||No Extra
+nuke_nsnpj_tasks_status
+	status_id||int(11)||NO||PRI||No Default||auto_increment
+	status_name||varchar(255)||NO||NO||No Default||No Extra
+	status_weight||int(11)||NO||NO||No Default||No Extra
+nuke_nsnst_admins
+	aid||varchar(25)||NO||PRI||No Default||No Extra
+	login||varchar(25)||NO||NO||No Default||No Extra
+	password||varchar(40)||NO||NO||No Default||No Extra
+	password_md5||varchar(60)||NO||NO||No Default||No Extra
+	password_crypt||varchar(60)||NO||NO||No Default||No Extra
+	protected||tinyint(2)||NO||NO||No Default||No Extra
+nuke_nsnst_blocked_ips
+	ip_addr||varchar(15)||NO||PRI||No Default||No Extra
+	ip_long||int(10) unsigned||NO||MUL||No Default||No Extra
+	user_id||int(11)||NO||NO||1||No Extra
+	username||varchar(60)||NO||NO||No Default||No Extra
+	user_agent||text||NO||NO||No Default||No Extra
+	date||int(20)||NO||MUL||No Default||No Extra
+	notes||text||NO||NO||No Default||No Extra
+	reason||tinyint(1)||NO||MUL||No Default||No Extra
+	query_string||text||NO||NO||No Default||No Extra
+	get_string||text||NO||NO||No Default||No Extra
+	post_string||text||NO||NO||No Default||No Extra
+	x_forward_for||varchar(32)||NO||NO||No Default||No Extra
+	client_ip||varchar(32)||NO||NO||No Default||No Extra
+	remote_addr||varchar(32)||NO||NO||No Default||No Extra
+	remote_port||varchar(11)||NO||NO||No Default||No Extra
+	request_method||varchar(10)||NO||NO||No Default||No Extra
+	expires||int(20)||NO||MUL||No Default||No Extra
+	c2c||char(2)||NO||MUL||00||No Extra
+nuke_nsnst_blocked_ranges
+	ip_lo||int(10) unsigned||NO||PRI||No Default||No Extra
+	ip_hi||int(10) unsigned||NO||PRI||No Default||No Extra
+	date||int(20)||NO||MUL||No Default||No Extra
+	notes||text||NO||NO||No Default||No Extra
+	reason||tinyint(1)||NO||MUL||No Default||No Extra
+	expires||int(20)||NO||MUL||No Default||No Extra
+	c2c||char(2)||NO||MUL||00||No Extra
+nuke_nsnst_blockers
+	blocker||int(4)||NO||PRI||No Default||No Extra
+	block_name||varchar(20)||NO||NO||No Default||No Extra
+	activate||int(4)||NO||NO||No Default||No Extra
+	block_type||int(4)||NO||NO||No Default||No Extra
+	email_lookup||int(4)||NO||NO||No Default||No Extra
+	forward||varchar(255)||NO||NO||No Default||No Extra
+	reason||varchar(20)||NO||NO||No Default||No Extra
+	template||varchar(255)||NO||NO||No Default||No Extra
+	duration||int(20)||NO||NO||No Default||No Extra
+	htaccess||int(4)||NO||NO||No Default||No Extra
+	list||longtext||NO||NO||No Default||No Extra
+nuke_nsnst_cidrs
+	cidr||int(2)||NO||PRI||No Default||No Extra
+	hosts||int(10)||NO||NO||No Default||No Extra
+	mask||varchar(15)||NO||NO||No Default||No Extra
+nuke_nsnst_config
+	config_name||varchar(255)||NO||PRI||No Default||No Extra
+	config_value||longtext||NO||NO||No Default||No Extra
+nuke_nsnst_countries
+	c2c||char(2)||NO||PRI||No Default||No Extra
+	country||varchar(60)||NO||NO||No Default||No Extra
+nuke_nsnst_excluded_ranges
+	ip_lo||int(10) unsigned||NO||PRI||No Default||No Extra
+	ip_hi||int(10) unsigned||NO||PRI||No Default||No Extra
+	date||int(20)||NO||MUL||No Default||No Extra
+	notes||text||NO||NO||No Default||No Extra
+	c2c||char(2)||NO||MUL||00||No Extra
+nuke_nsnst_harvesters
+	hid||int(2)||NO||MUL||No Default||auto_increment
+	harvester||varchar(255)||NO||PRI||No Default||No Extra
+nuke_nsnst_ip2country
+	ip_lo||int(10) unsigned||NO||PRI||No Default||No Extra
+	ip_hi||int(10) unsigned||NO||PRI||No Default||No Extra
+	date||int(20)||NO||NO||No Default||No Extra
+	c2c||char(2)||NO||PRI||No Default||No Extra
+nuke_nsnst_protected_ranges
+	ip_lo||int(10) unsigned||NO||PRI||No Default||No Extra
+	ip_hi||int(10) unsigned||NO||PRI||No Default||No Extra
+	date||int(20)||NO||MUL||No Default||No Extra
+	notes||text||NO||NO||No Default||No Extra
+	c2c||char(2)||NO||MUL||00||No Extra
+nuke_nsnst_referers
+	rid||int(2)||NO||MUL||No Default||auto_increment
+	referer||varchar(255)||NO||PRI||No Default||No Extra
+nuke_nsnst_strings
+	sid||int(2)||NO||MUL||No Default||auto_increment
+	string||varchar(255)||NO||PRI||No Default||No Extra
+nuke_nsnst_tracked_ips
+	tid||int(10)||NO||PRI||No Default||auto_increment
+	ip_addr||varchar(15)||NO||MUL||No Default||No Extra
+	ip_long||int(10) unsigned||NO||MUL||No Default||No Extra
+	user_id||int(11)||NO||MUL||1||No Extra
+	username||varchar(60)||NO||MUL||No Default||No Extra
+	user_agent||text||NO||MUL||No Default||No Extra
+	refered_from||text||NO||MUL||No Default||No Extra
+	date||int(20)||NO||MUL||No Default||No Extra
+	page||text||NO||MUL||No Default||No Extra
+	x_forward_for||varchar(32)||NO||NO||No Default||No Extra
+	client_ip||varchar(32)||NO||NO||No Default||No Extra
+	remote_addr||varchar(32)||NO||NO||No Default||No Extra
+	remote_port||varchar(11)||NO||NO||No Default||No Extra
+	request_method||varchar(10)||NO||NO||No Default||No Extra
+	c2c||char(2)||NO||MUL||00||No Extra
+nuke_pages
+	pid||int(10)||NO||PRI||No Default||auto_increment
+	cid||int(10)||NO||MUL||No Default||No Extra
+	title||varchar(255)||NO||NO||No Default||No Extra
+	subtitle||varchar(255)||NO||NO||No Default||No Extra
+	tags||varchar(255)||NO||NO||No Default||No Extra
+	active||int(1)||NO||NO||No Default||No Extra
+	page_header||text||NO||NO||No Default||No Extra
+	text||text||NO||NO||No Default||No Extra
+	page_footer||text||NO||NO||No Default||No Extra
+	signature||text||NO||NO||No Default||No Extra
+	date||datetime||NO||NO||0000-00-00 00:00:00||No Extra
+	counter||int(10)||NO||NO||No Default||No Extra
+	clanguage||varchar(30)||NO||NO||No Default||No Extra
+	uname||varchar(40)||NO||NO||No Default||No Extra
+nuke_pages_categories
+	cid||int(10)||NO||PRI||No Default||auto_increment
+	cimg||varchar(255)||NO||NO||No Default||No Extra
+	title||varchar(255)||NO||NO||No Default||No Extra
+	description||text||NO||NO||No Default||No Extra
+nuke_pages_feat
+	cid||int(10)||NO||NO||No Default||No Extra
+	pid||int(10)||NO||NO||No Default||No Extra
+nuke_poll_check
+	ip||varchar(20)||NO||PRI||No Default||No Extra
+	time||varchar(14)||NO||NO||No Default||No Extra
+	pollID||int(10)||NO||PRI||No Default||No Extra
+nuke_poll_data
+	pollID||int(11)||NO||NO||No Default||No Extra
+	optionText||char(50)||NO||NO||No Default||No Extra
+	optionCount||int(11)||NO||NO||No Default||No Extra
+	voteID||int(11)||NO||NO||No Default||No Extra
+nuke_poll_desc
+	pollID||int(11)||NO||PRI||No Default||auto_increment
+	pollTitle||varchar(100)||NO||NO||No Default||No Extra
+	timeStamp||int(11)||NO||NO||No Default||No Extra
+	voters||mediumint(9)||NO||NO||No Default||No Extra
+	planguage||varchar(30)||NO||NO||No Default||No Extra
+	artid||int(10)||NO||NO||No Default||No Extra
+nuke_pollcomments
+	tid||int(11)||NO||PRI||No Default||auto_increment
+	pid||int(11)||NO||MUL||No Default||No Extra
+	pollID||int(11)||NO||MUL||No Default||No Extra
+	date||datetime||YES||NO||No Default||No Extra
+	name||varchar(60)||NO||NO||No Default||No Extra
+	email||varchar(60)||YES||NO||No Default||No Extra
+	url||varchar(60)||YES||NO||No Default||No Extra
+	host_name||varchar(60)||YES||NO||No Default||No Extra
+	subject||varchar(60)||NO||NO||No Default||No Extra
+	comment||text||NO||NO||No Default||No Extra
+	score||tinyint(4)||NO||NO||No Default||No Extra
+	reason||tinyint(4)||NO||NO||No Default||No Extra
+nuke_public_messages
+	mid||int(10)||NO||PRI||No Default||auto_increment
+	content||varchar(255)||NO||NO||No Default||No Extra
+	date||varchar(14)||YES||NO||No Default||No Extra
+	who||varchar(25)||NO||NO||No Default||No Extra
+nuke_queue
+	qid||smallint(5) unsigned||NO||PRI||No Default||auto_increment
+	uid||mediumint(9)||NO||MUL||No Default||No Extra
+	uname||varchar(40)||NO||MUL||No Default||No Extra
+	subject||varchar(100)||NO||NO||No Default||No Extra
+	story||text||YES||NO||No Default||No Extra
+	storyext||text||NO||NO||No Default||No Extra
+	timestamp||datetime||NO||NO||0000-00-00 00:00:00||No Extra
+	topic||varchar(20)||NO||NO||No Default||No Extra
+	alanguage||varchar(30)||NO||NO||No Default||No Extra
+nuke_related
+	rid||int(11)||NO||PRI||No Default||auto_increment
+	tid||int(11)||NO||MUL||No Default||No Extra
+	name||varchar(30)||NO||NO||No Default||No Extra
+	url||varchar(200)||NO||NO||No Default||No Extra
+nuke_reviews
+	id||int(10)||NO||PRI||No Default||auto_increment
+	date||date||NO||NO||0000-00-00||No Extra
+	title||varchar(150)||NO||NO||No Default||No Extra
+	text||text||NO||NO||No Default||No Extra
+	reviewer||varchar(25)||YES||NO||No Default||No Extra
+	email||varchar(60)||YES||NO||No Default||No Extra
+	score||int(10)||NO||NO||No Default||No Extra
+	cover||varchar(100)||NO||NO||No Default||No Extra
+	url||varchar(100)||NO||NO||No Default||No Extra
+	url_title||varchar(50)||NO||NO||No Default||No Extra
+	hits||int(10)||NO||NO||No Default||No Extra
+	rlanguage||varchar(30)||NO||NO||No Default||No Extra
+nuke_reviews_add
+	id||int(10)||NO||PRI||No Default||auto_increment
+	date||date||YES||NO||No Default||No Extra
+	title||varchar(150)||NO||NO||No Default||No Extra
+	text||text||NO||NO||No Default||No Extra
+	reviewer||varchar(25)||NO||NO||No Default||No Extra
+	email||varchar(60)||YES||NO||No Default||No Extra
+	score||int(10)||NO||NO||No Default||No Extra
+	url||varchar(100)||NO||NO||No Default||No Extra
+	url_title||varchar(50)||NO||NO||No Default||No Extra
+	rlanguage||varchar(30)||NO||NO||No Default||No Extra
+nuke_reviews_comments
+	cid||int(10)||NO||PRI||No Default||auto_increment
+	rid||int(10)||NO||MUL||No Default||No Extra
+	userid||varchar(25)||NO||MUL||No Default||No Extra
+	date||datetime||YES||NO||No Default||No Extra
+	comments||text||YES||NO||No Default||No Extra
+	score||int(10)||NO||NO||No Default||No Extra
+nuke_reviews_main
+	title||varchar(100)||YES||NO||No Default||No Extra
+	description||text||YES||NO||No Default||No Extra
+nuke_seo_config
+	config_type||varchar(150)||NO||PRI||No Default||No Extra
+	config_name||varchar(150)||NO||PRI||No Default||No Extra
+	config_value||text||NO||NO||No Default||No Extra
+nuke_seo_dh
+	dhid||int(11)||NO||PRI||No Default||auto_increment
+	levelsort||int(1)||NO||MUL||No Default||No Extra
+	title||varchar(255)||NO||NO||No Default||No Extra
+	id||int(11)||NO||NO||No Default||No Extra
+	mid||int(11)||NO||NO||No Default||No Extra
+	lang||varchar(30)||NO||NO||No Default||No Extra
+	active||int(1)||NO||NO||No Default||No Extra
+	metavalue||text||NO||NO||No Default||No Extra
+nuke_seo_dh_master
+	mid||int(11)||NO||PRI||No Default||auto_increment
+	order||int(5)||NO||MUL||No Default||No Extra
+	type||varchar(50)||NO||NO||No Default||No Extra
+	name||varchar(50)||NO||NO||No Default||No Extra
+	default||varchar(255)||NO||NO||No Default||No Extra
+	active||int(1)||NO||NO||No Default||No Extra
+nuke_seo_disabled_modules
+	title||varchar(100)||NO||PRI||No Default||No Extra
+	seo_module||varchar(100)||NO||PRI||No Default||No Extra
+nuke_seo_feed
+	fid||int(6)||NO||PRI||No Default||auto_increment
+	content||varchar(20)||NO||MUL||No Default||No Extra
+	name||varchar(20)||NO||NO||No Default||No Extra
+	level||varchar(20)||NO||NO||No Default||No Extra
+	lid||int(6)||NO||NO||No Default||No Extra
+	title||varchar(50)||NO||NO||No Default||No Extra
+	desc||text||NO||NO||No Default||No Extra
+	order||varchar(20)||NO||NO||No Default||No Extra
+	howmany||char(3)||NO||NO||No Default||No Extra
+	active||int(1)||NO||NO||No Default||No Extra
+	desclimit||varchar(5)||NO||NO||No Default||No Extra
+	securitycode||varchar(50)||NO||NO||No Default||No Extra
+	cachetime||varchar(6)||NO||NO||No Default||No Extra
+	feedburner_address||varchar(100)||NO||NO||No Default||No Extra
+nuke_seo_subscriptions
+	sid||int(6)||NO||PRI||No Default||auto_increment
+	type||varchar(255)||NO||NO||No Default||No Extra
+	name||varchar(60)||NO||NO||No Default||No Extra
+	tagline||varchar(60)||NO||NO||No Default||No Extra
+	image||varchar(255)||NO||NO||No Default||No Extra
+	icon||varchar(255)||NO||NO||No Default||No Extra
+	url||varchar(255)||NO||NO||No Default||No Extra
+	active||int(1)||NO||NO||No Default||No Extra
+nuke_session
+	uname||varchar(25)||NO||MUL||No Default||No Extra
+	time||varchar(14)||NO||MUL||No Default||No Extra
+	host_addr||varchar(48)||NO||NO||No Default||No Extra
+	guest||int(1)||NO||MUL||No Default||No Extra
+nuke_stats_date
+	year||smallint(6)||NO||PRI||No Default||No Extra
+	month||tinyint(4)||NO||PRI||No Default||No Extra
+	date||tinyint(4)||NO||PRI||No Default||No Extra
+	hits||bigint(20)||NO||NO||No Default||No Extra
+nuke_stats_hour
+	year||smallint(6)||NO||PRI||No Default||No Extra
+	month||tinyint(4)||NO||PRI||No Default||No Extra
+	date||tinyint(4)||NO||PRI||No Default||No Extra
+	hour||tinyint(4)||NO||PRI||No Default||No Extra
+	hits||int(11)||NO||NO||No Default||No Extra
+nuke_stats_month
+	year||smallint(6)||NO||PRI||No Default||No Extra
+	month||tinyint(4)||NO||PRI||No Default||No Extra
+	hits||bigint(20)||NO||NO||No Default||No Extra
+nuke_stats_year
+	year||smallint(6)||NO||PRI||No Default||No Extra
+	hits||bigint(20)||NO||NO||No Default||No Extra
+nuke_stories
+	sid||int(11)||NO||PRI||No Default||auto_increment
+	catid||int(11)||NO||MUL||No Default||No Extra
+	aid||varchar(25)||NO||NO||No Default||No Extra
+	title||varchar(80)||YES||NO||No Default||No Extra
+	time||datetime||YES||NO||No Default||No Extra
+	hometext||text||YES||NO||No Default||No Extra
+	bodytext||text||NO||NO||No Default||No Extra
+	comments||int(11)||YES||NO||No Default||No Extra
+	counter||mediumint(8) unsigned||YES||MUL||No Default||No Extra
+	topic||int(3)||NO||MUL||1||No Extra
+	informant||varchar(25)||NO||NO||No Default||No Extra
+	notes||text||NO||NO||No Default||No Extra
+	ihome||int(1)||NO||NO||No Default||No Extra
+	alanguage||varchar(30)||NO||NO||No Default||No Extra
+	acomm||int(1)||NO||NO||No Default||No Extra
+	haspoll||int(1)||NO||NO||No Default||No Extra
+	pollID||int(10)||NO||NO||No Default||No Extra
+	score||int(10)||NO||NO||No Default||No Extra
+	ratings||int(10)||NO||NO||No Default||No Extra
+	associated||text||NO||NO||No Default||No Extra
+nuke_stories_cat
+	catid||int(11)||NO||PRI||No Default||auto_increment
+	title||varchar(20)||NO||NO||No Default||No Extra
+	counter||int(11)||NO||NO||No Default||No Extra
+nuke_subscriptions
+	id||int(10)||NO||PRI||No Default||auto_increment
+	userid||int(10)||NO||PRI||No Default||No Extra
+	subscription_expire||varchar(50)||NO||NO||No Default||No Extra
+nuke_tags
+	tag||varchar(25)||NO||NO||No Default||No Extra
+	cid||int(10)||NO||NO||No Default||No Extra
+	whr||int(1)||NO||NO||No Default||No Extra
+nuke_tags_temp
+	tag||varchar(25)||NO||NO||No Default||No Extra
+	cid||int(10)||NO||NO||No Default||No Extra
+	whr||int(1)||NO||NO||No Default||No Extra
+nuke_themes
+	theme||varchar(25)||NO||PRI||No Default||No Extra
+	themename||varchar(25)||NO||NO||No Default||No Extra
+	active||tinyint(1)||NO||NO||No Default||No Extra
+	default||tinyint(1)||NO||NO||No Default||No Extra
+	guest||tinyint(1)||NO||NO||No Default||No Extra
+	moveableblocks||tinyint(1)||NO||NO||No Default||No Extra
+	collapsibleblocks||tinyint(1)||NO||NO||No Default||No Extra
+	compatible||tinyint(1)||NO||NO||No Default||No Extra
+nuke_ton
+	newsrows||int(1)||NO||NO||No Default||No Extra
+	bookmark||int(1)||NO||NO||No Default||No Extra
+	rblocks||int(1)||NO||NO||No Default||No Extra
+	linklocation||varchar(6)||NO||NO||No Default||No Extra
+	articlelink||int(1)||NO||NO||No Default||No Extra
+	artview||varchar(3)||NO||NO||No Default||No Extra
+	TON_useTitleLink||int(1)||NO||NO||No Default||No Extra
+	TON_usePDF||int(1)||NO||NO||No Default||No Extra
+	TON_useRating||int(1)||NO||NO||No Default||No Extra
+	TON_useSendToFriend||int(1)||NO||NO||No Default||No Extra
+	showtags||int(1)||NO||NO||No Default||No Extra
+	TON_useCharLimit||int(1)||NO||NO||No Default||No Extra
+	TON_CharLimit||int(3)||NO||NO||No Default||No Extra
+	topadact||int(1)||NO||NO||No Default||No Extra
+	topad||int(3)||NO||NO||No Default||No Extra
+	bottomadact||int(1)||NO||NO||No Default||No Extra
+	bottomad||int(3)||NO||NO||No Default||No Extra
+	usedisqus||int(1)||NO||NO||No Default||No Extra
+	shortname||varchar(25)||NO||NO||No Default||No Extra
+	googlapi||varchar(44)||YES||NO||No Default||No Extra
+	usegooglsb||int(1)||NO||NO||No Default||No Extra
+	usegooglart||int(1)||NO||NO||No Default||No Extra
+nuke_topics
+	topicid||int(3)||NO||PRI||No Default||auto_increment
+	topicname||varchar(20)||YES||NO||No Default||No Extra
+	topicimage||varchar(20)||YES||NO||No Default||No Extra
+	topictext||varchar(40)||YES||NO||No Default||No Extra
+	counter||int(11)||NO||NO||No Default||No Extra
+nuke_users
+	user_id||int(11)||NO||PRI||No Default||auto_increment
+	name||varchar(60)||NO||NO||No Default||No Extra
+	username||varchar(25)||NO||MUL||No Default||No Extra
+	user_email||varchar(255)||NO||NO||No Default||No Extra
+	femail||varchar(255)||NO||NO||No Default||No Extra
+	user_website||varchar(255)||NO||NO||No Default||No Extra
+	user_avatar||varchar(255)||NO||NO||No Default||No Extra
+	user_regdate||varchar(20)||NO||NO||No Default||No Extra
+	user_icq||varchar(15)||YES||NO||No Default||No Extra
+	user_occ||varchar(100)||YES||NO||No Default||No Extra
+	user_from||varchar(100)||YES||NO||No Default||No Extra
+	user_interests||varchar(150)||NO||NO||No Default||No Extra
+	user_sig||varchar(255)||YES||NO||No Default||No Extra
+	user_viewemail||tinyint(2)||YES||NO||No Default||No Extra
+	user_theme||int(3)||YES||NO||No Default||No Extra
+	user_aim||varchar(18)||YES||NO||No Default||No Extra
+	user_yim||varchar(25)||YES||NO||No Default||No Extra
+	user_msnm||varchar(25)||YES||NO||No Default||No Extra
+	user_password||varchar(40)||NO||NO||No Default||No Extra
+	storynum||tinyint(4)||NO||NO||10||No Extra
+	umode||varchar(10)||NO||NO||No Default||No Extra
+	uorder||tinyint(1)||NO||NO||No Default||No Extra
+	thold||tinyint(1)||NO||NO||No Default||No Extra
+	noscore||tinyint(1)||NO||NO||No Default||No Extra
+	bio||tinytext||YES||NO||No Default||No Extra
+	ublockon||tinyint(1)||NO||NO||No Default||No Extra
+	ublock||tinytext||YES||NO||No Default||No Extra
+	theme||varchar(255)||NO||NO||No Default||No Extra
+	commentmax||int(11)||NO||NO||4096||No Extra
+	counter||int(11)||NO||NO||No Default||No Extra
+	newsletter||int(1)||NO||NO||No Default||No Extra
+	user_posts||int(10)||NO||NO||No Default||No Extra
+	user_attachsig||int(2)||NO||NO||No Default||No Extra
+	user_rank||int(10)||NO||NO||No Default||No Extra
+	user_level||int(10)||NO||NO||1||No Extra
+	broadcast||tinyint(1)||NO||NO||1||No Extra
+	popmeson||tinyint(1)||NO||NO||No Default||No Extra
+	user_active||tinyint(1)||YES||NO||1||No Extra
+	user_session_time||int(11)||NO||MUL||No Default||No Extra
+	user_session_page||smallint(5)||NO||NO||No Default||No Extra
+	user_lastvisit||int(11)||NO||NO||No Default||No Extra
+	user_timezone||tinyint(4)||NO||NO||10||No Extra
+	user_style||tinyint(4)||YES||NO||No Default||No Extra
+	user_lang||varchar(255)||NO||NO||english||No Extra
+	user_dateformat||varchar(14)||NO||NO||D M d, Y g:i a||No Extra
+	user_new_privmsg||smallint(5) unsigned||NO||NO||No Default||No Extra
+	user_unread_privmsg||smallint(5) unsigned||NO||NO||No Default||No Extra
+	user_last_privmsg||int(11)||NO||NO||No Default||No Extra
+	user_emailtime||int(11)||YES||NO||No Default||No Extra
+	user_allowhtml||tinyint(1)||YES||NO||1||No Extra
+	user_allowbbcode||tinyint(1)||YES||NO||1||No Extra
+	user_allowsmile||tinyint(1)||YES||NO||1||No Extra
+	user_allowavatar||tinyint(1)||NO||NO||1||No Extra
+	user_allow_pm||tinyint(1)||NO||NO||1||No Extra
+	user_allow_viewonline||tinyint(1)||NO||NO||1||No Extra
+	user_notify||tinyint(1)||NO||NO||No Default||No Extra
+	user_notify_pm||tinyint(1)||NO||NO||No Default||No Extra
+	user_popup_pm||tinyint(1)||NO||NO||No Default||No Extra
+	user_avatar_type||tinyint(4)||NO||NO||3||No Extra
+	user_sig_bbcode_uid||varchar(10)||YES||NO||No Default||No Extra
+	user_actkey||varchar(32)||YES||NO||No Default||No Extra
+	user_newpasswd||varchar(32)||YES||NO||No Default||No Extra
+	points||int(10)||YES||NO||No Default||No Extra
+	last_ip||varchar(15)||NO||NO||No Default||No Extra
+	user_login_tries||smallint(5) unsigned||NO||NO||No Default||No Extra
+	user_last_login_try||int(11)||NO||NO||No Default||No Extra
+	agreedtos||tinyint(1)||NO||NO||No Default||No Extra
+	lastsitevisit||int(11)||NO||NO||No Default||No Extra
+nuke_users_config
+	config_name||varchar(255)||NO||PRI||No Default||No Extra
+	config_value||longtext||YES||NO||No Default||No Extra
+nuke_users_field_values
+	vid||int(10)||NO||PRI||No Default||auto_increment
+	uid||int(10)||NO||NO||No Default||No Extra
+	fid||int(10)||NO||MUL||No Default||No Extra
+	value||varchar(255)||YES||NO||No Default||No Extra
+nuke_users_fields
+	fid||int(10)||NO||PRI||No Default||auto_increment
+	name||varchar(255)||NO||NO||field||No Extra
+	value||varchar(255)||YES||NO||No Default||No Extra
+	size||int(3)||YES||NO||No Default||No Extra
+	need||int(1)||NO||NO||1||No Extra
+	pos||int(3)||YES||NO||No Default||No Extra
+	public||int(1)||NO||NO||1||No Extra
+nuke_users_temp
+	user_id||int(10)||NO||PRI||No Default||auto_increment
+	username||varchar(25)||NO||NO||No Default||No Extra
+	name||varchar(255)||NO||NO||No Default||No Extra
+	user_email||varchar(255)||NO||NO||No Default||No Extra
+	femail||varchar(255)||NO||NO||No Default||No Extra
+	user_website||varchar(255)||NO||NO||No Default||No Extra
+	user_password||varchar(40)||NO||NO||No Default||No Extra
+	user_regdate||varchar(20)||NO||NO||No Default||No Extra
+	user_icq||varchar(15)||YES||NO||No Default||No Extra
+	user_occ||varchar(100)||YES||NO||No Default||No Extra
+	user_from||varchar(100)||YES||NO||No Default||No Extra
+	user_interests||varchar(150)||NO||NO||No Default||No Extra
+	user_sig||varchar(255)||YES||NO||No Default||No Extra
+	user_viewemail||tinyint(2)||YES||NO||No Default||No Extra
+	user_aim||varchar(18)||YES||NO||No Default||No Extra
+	user_yim||varchar(25)||YES||NO||No Default||No Extra
+	user_msnm||varchar(25)||YES||NO||No Default||No Extra
+	bio||tinytext||YES||NO||No Default||No Extra
+	newsletter||int(1)||NO||NO||No Default||No Extra
+	user_allow_viewonline||tinyint(1)||NO||NO||1||No Extra
+	user_sig_bbcode_uid||varchar(10)||YES||NO||No Default||No Extra
+	check_num||varchar(50)||NO||NO||No Default||No Extra
+	time||varchar(14)||NO||NO||No Default||No Extra
+	requestor||varchar(25)||NO||NO||No Default||No Extra
+	admin_approve||tinyint(1)||NO||NO||No Default||No Extra
+nuke_users_temp_field_values
+	vid||int(10)||NO||PRI||No Default||auto_increment
+	uid||int(10)||NO||NO||No Default||No Extra
+	fid||int(10)||NO||NO||No Default||No Extra
+	value||varchar(255)||YES||NO||No Default||No Extra
+nuke_wiw_m
+	who||varchar(20)||YES||NO||No Default||No Extra
+	mn||varchar(20)||YES||NO||No Default||No Extra
