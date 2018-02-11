@@ -1,0 +1,25 @@
+/* Overrides */
+th.ui-state-default, tf.ui-state-default {
+	font-size: 10px;
+}
+.ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: inherit;
+	font-size: inherit;
+}
+.dataTable th {
+	background: inherit;
+	text-align: left;
+}
+.dt-print-view {
+	background: none;
+	font-size: 10px;
+	font-family: Arial,Helvetica,sans-serif;
+}
+.dt-print-view h1 {
+	letter-spacing: inherit;
+	font-family: inherit;
+}

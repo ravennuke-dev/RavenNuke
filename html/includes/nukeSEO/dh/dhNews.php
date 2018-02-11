@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhNews extends dhclass {
-	function dhNews () {
+	function __construct() {
 		global $prefix;
 		$this->content_id        = 'sid';
 		$this->content_table     = $prefix.'_stories';

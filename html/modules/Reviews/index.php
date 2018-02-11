@@ -93,7 +93,7 @@ function alpha() {
 	$num = count($alphabet) - 1;
 	echo '[ ';
 	$counter = 0;
-	while (list(, $ltr) = each($alphabet)) {
+	foreach ($alphabet as $ltr => $value) {
 		echo '<a href="modules.php?name=' . $module_name . '&amp;rop=' . $ltr . '">' . $ltr . '</a>';
 		if ($counter == round($num/2)) {
 			echo ' ]' . "\n" . '<br />' . "\n" . '[ ';

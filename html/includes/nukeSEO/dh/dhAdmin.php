@@ -10,7 +10,7 @@
 /************************************************************************/
 
 class dhAdmin extends dhclass {
-	function dhAdmin () {
+	function __construct() {
 	}
 	function getModuleTitlePrefix() {
 		global $sitename;

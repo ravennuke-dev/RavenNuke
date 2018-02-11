@@ -282,8 +282,14 @@ function bbencode_first_pass($text, $uid)
 	$text = preg_replace("#\[i\](.*?)\[/i\]#si", "[i:$uid]\\1[/i:$uid]", $text);
 
 	// [img]image_url_here[/img] code..
-	$text = preg_replace("#\[img\]((http|ftp|https|ftps)://)([^ \?&=\#\"\n\r\t<]*?(\.(jpg|jpeg|gif|png)))\[/img\]#sie", "'[img:$uid]\\1' . str_replace(' ', '%20', '\\3') . '[/img:$uid]'", $text);
-
+	# PHP7 fix: http://php.net/manual/en/reference.pcre.pattern.modifiers.php
+	$text = preg_replace_callback(
+		"#\[img\]((http|ftp|https|ftps)://)([^ \?&=\#\"\n\r\t<]*?(\.(jpg|jpeg|gif|png)))\[/img\]#si",
+		function ($m) use ($uid) {
+			return "[img:$uid]$m[1]" . str_replace(' ', '%20', $m[3]) . "[/img:$uid]";
+		},
+		$text
+	);
 	// Remove our padding from the string..
 	return substr($text, 1);;
 

@@ -43,7 +43,7 @@ define('_rnNSADMIN_ALLOWED_USERID_CHARACTERS','[a-zA-Z0-9@_.]*'); //From admin.p
 /*********************************************************************************
 * ABSOLUTELY! Do NOT change these settings unless advised to do so by the RavenNuke(tm) Team!
 **********************************************************************************/
-if (!defined('RAVENNUKE_VERSION_FRIENDLY')) define('RAVENNUKE_VERSION_FRIENDLY', '2.51.00');
+if (!defined('RAVENNUKE_VERSION_FRIENDLY')) define('RAVENNUKE_VERSION_FRIENDLY', '2.52.00');
 define('RAVENNUKE_VERSION_CONFIG', 'rn'.RAVENNUKE_VERSION_FRIENDLY);
 define('NUKESENTINEL_VERSION', '2.6.03');
 define('PHPBB_VERSION', '.0.23');
@@ -74,5 +74,6 @@ $rndb_valid_versions = array(
 	'rn2.30.02' =>  'rn23002',
 	'rn2.40.00' =>  'rn24000',
 	'rn2.40.01' =>  'rn24001',
-	'rn2.50.00' =>  'rn25000');
+	'rn2.50.00' =>  'rn25000',
+	'rn2.51.00' =>  'rn25100');
 ?>

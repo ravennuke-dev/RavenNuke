@@ -247,7 +247,8 @@ function putpoll($pollTitle, $optionText) {
 		.'<br /><br />'._POLLTITLE.': <input type="text" name="pollTitle" size="50" maxlength="100" value="'.$pollTitle.'" /><br /><br /></span>'
 		.'<span class="content">'._POLLEACHFIELD.'</span>'
 		.'<ul>';
-	 for($i = 1; $i <= 12; $i++)    {
+	if (!is_array($optionText)) $optionText = array();
+	 for($i = 1; $i <= 12; $i++) {
 		if (!isset($optionText[$i])) { $optionText[$i] = ''; }
 		echo '<li style="list-style:none">'._OPTION.' '.$i.': <input type="text" name="optionText['.$i.']" size="50" maxlength="50" value="'.$optionText[$i].'" /></li>';
 	}
@@ -628,7 +629,7 @@ function autoSaveEdit($anid, $year, $day, $month, $hour, $min, $story_title, $ho
 }
 
 function displayStory($qid) {
-	global $user, $subject, $story, $bgcolor1, $bgcolor2, $anonymous, $db, $user_prefix, $prefix, $multilingual, $admin_file;
+	global $user, $subject, $story, $bgcolor1, $bgcolor2, $anonymous, $db, $user_prefix, $prefix, $multilingual, $admin_file, $language;
 	include_once 'header.php';
 	GraphicAdmin();
 	OpenTable();
@@ -788,8 +789,8 @@ function displayStory($qid) {
 	if (!isset($pollTitle)) {$pollTitle = '';  }
 	if (!isset($optionText)) {$optionText = ''; }
 	putpoll($pollTitle, $optionText);
-         echo '</form>';
-        CloseTable();
+	echo '</form>';
+	CloseTable();
 	include_once 'footer.php';
 }
 

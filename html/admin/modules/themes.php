@@ -62,7 +62,7 @@ function themes($status = '') {
 
 	addCSSToHead('includes/jquery/css/colorbox.css','file');
 	addJSToHead('includes/jquery/jquery.js', 'file');
-	addJSToHead('includes/jquery/jquery.cookie.min.js', 'file');
+	addJSToHead('includes/jquery/jquery.cookie.js', 'file');
 	addJSToHead('includes/jquery/jquery.colorbox-min.js','file');
 	$inlineJS = '
 	<script type="text/javascript">
@@ -89,13 +89,13 @@ function themes($status = '') {
 			var theme = $(this).attr("id");
 			theme = theme.substr(1);
 			var url = $(this).attr("href");
-			$.fn.colorbox({
+			$.colorbox({
 				href: url,
 				width:"95%",
 				height:"95%",
 				iframe:true,
-				onOpen:function(){ $.cookie(setCookieName, theme, { expires: setCookieExpire, path: setCookiePath, domain: setCookieDomain, secure: setCookieSecure }); },
-				onCleanup:function(){ $.cookie(setCookieName, "0", { expires: -1, path: setCookiePath, domain: setCookieDomain, secure: setCookieSecure }); }
+				onOpen:function(){ Cookies.set(setCookieName, theme, { expires: setCookieExpire, path: setCookiePath, domain: setCookieDomain, secure: setCookieSecure }); },
+				onCleanup:function(){ Cookies.set(setCookieName, "0", { expires: -1, path: setCookiePath, domain: setCookieDomain, secure: setCookieSecure }); }
 			});
 			return false;
 		});
@@ -217,7 +217,7 @@ function addThemes() {
 	$result = $db->sql_query('SELECT `theme` FROM `' . $prefix . '_themes`');
 	$row = $db->sql_fetchrowset($result, SQL_NUM);
 	$row = is_array($row) ? $row : array();
-	while ( list($id, $theme) = each($themelist) ) {
+	foreach ($themelist as $id => $theme) {
 		if ($theme != '') {
 			if (!in_array(array($theme), $row)) {
 				$theme = addslashes(check_html($theme, 'nohtml'));
@@ -252,7 +252,7 @@ function addThemes() {
 		$db->sql_query($sql);
 		$sql = 'SELECT `theme` FFROM `' . $prefix . '_themes` WHERE `default`=1';
 		$row = $db->sql_fetchrowset($db->query($sql), SQL_ASSOC);
-		$sql = 'UPDATE `' . $user_prefix . '_users` SET `theme`="' . $row['theme'] . '" WHERE `theme`IN(' . $values_del . ')';
+		$sql = 'UPDATE `' . $user_prefix . '_users` SET `theme`="' . $row['theme'] . '" WHERE `theme` IN(' . $values_del . ')';
 		$db->sql_query($sql);
 	}
 }

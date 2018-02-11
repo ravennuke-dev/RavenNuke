@@ -120,6 +120,9 @@ if(is_mod_admin($module_name)) {
 		case 'NSNGroupsView':
 			include_once ('modules/Groups/admin/NSNGroupsView.php');
 			break;
+		case 'NSNGroupsMemberships':
+			include_once ('modules/Groups/admin/NSNGroupsMemberships.php');
+			break;
 	}
 } else {
 	echo 'Access Denied';

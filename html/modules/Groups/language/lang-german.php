@@ -140,5 +140,5 @@ define('_MVSUBUSERS','Nur Abonnenten');
 define('_SOCOOL','Du bist so cool...');
 define('_WHATGRDESC','Ansicht muss auf NUR GRUPPEN eingestellt sein');
 define('_WHATGROUPS','Welche Gruppe');
-
+define('_GR_MEMBERSHIPS','Mitgliedschaften');
 ?>

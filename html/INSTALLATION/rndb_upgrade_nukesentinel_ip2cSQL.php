@@ -113,9 +113,10 @@ ini_set('display_errors','on');
 ini_set('mysql.connect_timeout',120);
 $dbCheck = array();
 echo '<span class="msg">' , _rnCONFIG_FILE_FOUND , '</span><br />';
-$conn = @mysql_connect($dbhost, $dbuname, $dbpass) or die(rnInstallErr(2));
+global $conn;
+$conn = @mysqli_connect($dbhost, $dbuname, $dbpass) or die(rnInstallErr(2));
 echo '<span class="msg">' , _rnSUCCESS_CONNECT_HOST , '</span>';
-$db = @mysql_select_db($dbname) or die(rnInstallErr(3));
+$db = @mysqli_select_db($conn, $dbname) or die(rnInstallErr(3));
 echo '<span class="msg">' , _rnFOUND_DB , '</span>'
 	, '<span class="msg">' , _rnTABLE_PREFIX , '</span>';
 
@@ -133,15 +134,16 @@ if ($debugShowPathSettings === TRUE) {
 }
 
 function rnInstallErr($errNum,$sqlFileName='',$lineNumberInFile='',$line='') {
+	global $conn;
 	if ($errNum==1)  die('<span class="c3"> ' . _rnERR1 . '</span><br /><span class="c3">&nbsp;</span>');
-	elseif ($errNum==2) die('<span class="c3"> ' . _rnERR2 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysql_error() . '</span>');
-	elseif ($errNum==3) die('<span class="c3"> ' . _rnERR3 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysql_error() . '</span>');
+	elseif ($errNum==2) die('<span class="c3"> ' . _rnERR2 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysqli_error($conn) . '</span>');
+	elseif ($errNum==3) die('<span class="c3"> ' . _rnERR3 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysqli_error($conn) . '</span>');
 	elseif ($errNum==4) die('<span class="c3"> ' . _rnERR4 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' at line ' . __LINE__ . ' in file ' . basename(__FILE__)
-		. ' ==> ' . mysql_error() . '<br /><br /><span class="c2">Error in ' . $sqlFileName . ' at line ' . $lineNumberInFile . ':</span><br />' . $line . '</span>');
-	elseif ($errNum==90) die('<span class="c3"> ' . _rnERR90 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysql_error() . '</span>');
-	elseif ($errNum==91) die('<span class="c3"> ' . _rnERR91 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysql_error() . '</span>');
-	elseif ($errNum==80) die('<span class="c3"> ' . _rnERR80 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysql_error() . '</span>');
-	elseif ($errNum==81) die('<span class="c3"> ' . _rnERR81 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysql_error() . '</span>');
+		. ' ==> ' . mysqli_error($conn) . '<br /><br /><span class="c2">Error in ' . $sqlFileName . ' at line ' . $lineNumberInFile . ':</span><br />' . $line . '</span>');
+	elseif ($errNum==90) die('<span class="c3"> ' . _rnERR90 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysqli_error($conn) . '</span>');
+	elseif ($errNum==91) die('<span class="c3"> ' . _rnERR91 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysqli_error($conn) . '</span>');
+	elseif ($errNum==80) die('<span class="c3"> ' . _rnERR80 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysqli_error($conn) . '</span>');
+	elseif ($errNum==81) die('<span class="c3"> ' . _rnERR81 . '</span><br /><span class="c3">MySQL Error # ' . $errNum .' = ' . mysqli_error($conn) . '</span>');
 }
 ?>
 <hr />
@@ -329,7 +331,7 @@ function rnInstallErr($errNum,$sqlFileName='',$lineNumberInFile='',$line='') {
 <?php
 if ($_GET['setup']) {
 	$sql = 'UPDATE `' . $prefix . '_nsnst_config` SET `config_value`="' . _nsIP2C . '" WHERE `config_name`="ip2c_version"';
-	$rc = @mysql_query($sql);
+	$rc = @mysqli_query($conn, $sql);
 	echo '<div class="c1"><p id="proceed">Your NukeSentinel&trade; IP2COUNTRY and COUNTRIES tables should now be updated.</p>';
 	if ($_SESSION['upgradeRN']) {
 		echo '<form name="rndb" action="rndb_upgrade.php" method="post">'
@@ -370,19 +372,19 @@ reset($_POST);
 if (strlen($_POST[_rnSUBMIT]) > 0 && $isValidOp && $_POST['op'] !== 'lsec') {
 	if ($_POST['op'] == 'lns') {
 		$sql = 'TRUNCATE TABLE `' . $prefix . '_nsnst_countries`';
-		$rc = @mysql_query($sql);
+		$rc = @mysqli_query($conn, $sql);
 		$sql = 'OPTIMIZE TABLE `' . $prefix . '_nsnst_countries`';
-		$rc = @mysql_query($sql);
+		$rc = @mysqli_query($conn, $sql);
 		$rnSql = array('ns_countries'=>'ns_countries.dat.gz');
 	} elseif ($_POST['op'] == 'lip1') {
 		$sql = 'UPDATE `' . $prefix . '_nsnst_config` SET `config_value`="0" WHERE `config_name`="ip2c_version"';
-		$rc = @mysql_query($sql);
+		$rc = @mysqli_query($conn, $sql);
 		$sql = 'TRUNCATE TABLE `' . $prefix . '_nsnst_ip2country`';
-		$rc = @mysql_query($sql);
+		$rc = @mysqli_query($conn, $sql);
 		$sql = 'OPTIMIZE TABLE `' . $prefix . '_nsnst_ip2country`';
-		$rc = @mysql_query($sql);
+		$rc = @mysqli_query($conn, $sql);
 		$sql = 'ALTER TABLE `' . $prefix . '_nsnst_ip2country` DISABLE KEYS';
-		$rc = @mysql_query($sql);
+		$rc = @mysqli_query($conn, $sql);
 		$rnSql = array(
 			'ip2country1sql'=>'ns_ip2c_01.dat.gz',
 			'ip2country2sql'=>'ns_ip2c_02.dat.gz'
@@ -419,7 +421,7 @@ if (strlen($_POST[_rnSUBMIT]) > 0 && $isValidOp && $_POST['op'] !== 'lsec') {
 		);
 	} elseif ($_POST['op'] == 'lip8') {
 		$sql = 'ALTER TABLE `' . $prefix . '_nsnst_ip2country` ENABLE KEYS';
-		$rc = @mysql_query($sql);
+		$rc = @mysqli_query($conn, $sql);
 		$rnSql = array(
 			'ip2country15sql'=>'ns_ip2c_15.dat.gz',
 			'ip2country16sql'=>'ns_ip2c_16.dat.gz'
@@ -463,8 +465,8 @@ MysQL dump comment types
 				$line = 'INSERT INTO `' . $prefix . '_nsnst_ip2country` (`ip_lo`, `ip_hi`, `date`, `c2c`) VALUES ("' . $ip_lo . '", "' . $ip_hi . '", "' . $ip_date . '", "' . $ip_c2c . '")';
 			}
 			$cnt++;
-			$rc = @mysql_query($line);
-			if (!$rc && !in_array(mysql_errno(), $byPassSqlErrors)) {
+			$rc = @mysqli_query($conn, $line);
+			if (!$rc && !in_array(mysqli_errno(), $byPassSqlErrors)) {
 				rnInstallErr(4, $value, $lineNumberInFile, $line);
 				die();
 			}

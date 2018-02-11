@@ -170,12 +170,12 @@ if( ( $total_categories = count($category_rows) ) )
                 default:
    // Modified by Attached Forums MOD
 
-			$sql = "SELECT f.*, p.post_time, p.post_username,  u.username, u.user_id, t.topic_id, t.topic_title
+			$sql = "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id, t.topic_id, t.topic_title
 				FROM ((( " . FORUMS_TABLE . " f
 				LEFT JOIN " . POSTS_TABLE . " p ON p.post_id = f.forum_last_post_id )
 				LEFT JOIN " . USERS_TABLE . " u ON u.user_id = p.poster_id )
 				LEFT JOIN " . TOPICS_TABLE . " t ON t.topic_last_post_id = f.forum_last_post_id)
-				GROUP BY f.forum_id ORDER BY f.cat_id, f.forum_order";
+				GROUP BY f.forum_id, t.topic_id ORDER BY f.cat_id, f.forum_order";
    // END Modified by Attached Forums MOD
                         /*$sql = "SELECT f.*, p.post_time, p.post_username, u.username, u.user_id
                                 FROM (( " . FORUMS_TABLE . " f
@@ -509,42 +509,42 @@ $unread_topics=check_unread($forum_id);
 								$last_post .= '<br /> ';
 								$last_post .= ( $forum_data[$j]['user_id'] == ANONYMOUS ) ? ( ($forum_data[$j]['post_username'] != '' ) ? $forum_data[$j]['post_username'] . ' ' : $lang['Guest'] . ' ' ) : '<a href="' . append_sid("profile.$phpEx?mode=viewprofile&amp;" . POST_USERS_URL . '='  . $forum_data[$j]['user_id']) . '">' . $forum_data[$j]['username'] . '</a> ';
    // END Modified by Attached Forums MOD
-                                                        }
-                                                        else
-                                                        {
-                                                                $last_post = $lang['No_Posts'];
-                                                        }
+														}
+														else
+														{
+															$last_post = $lang['No_Posts'];
+														}
 
-                                                        if ( count($forum_moderators[$forum_id]) > 0 )
-                                                        {
-                                                                $l_moderators = ( count($forum_moderators[$forum_id]) == 1 ) ? $lang['Moderator'] : $lang['Moderators'];
-                                                                $moderator_list = implode(', ', $forum_moderators[$forum_id]);
-                                                        }
-                                                        else
-                                                        {
-                                                                $l_moderators = '&nbsp;';
-                                                                $moderator_list = '';
-                                                        }
+														if (is_array($forum_moderators[$forum_id]) && count($forum_moderators[$forum_id]) > 0 )
+														{
+															$l_moderators = ( count($forum_moderators[$forum_id]) == 1 ) ? $lang['Moderator'] : $lang['Moderators'];
+																$moderator_list = implode(', ', $forum_moderators[$forum_id]);
+														}
+														else
+														{
+															$l_moderators = '&nbsp;';
+															$moderator_list = '';
+														}
 
-                                                        $row_color = ( !($i % 2) ) ? $theme['td_color1'] : $theme['td_color2'];
-                                                        $row_class = ( !($i % 2) ) ? $theme['td_class1'] : $theme['td_class2'];
+														$row_color = ( !($i % 2) ) ? $theme['td_color1'] : $theme['td_color2'];
+														$row_class = ( !($i % 2) ) ? $theme['td_class1'] : $theme['td_class2'];
 
-                                                        $template->assign_block_vars('catrow.forumrow',        array(
-                                                                'ROW_COLOR' => '#' . $row_color,
-                                                                'ROW_CLASS' => $row_class,
-                                                                'FORUM_FOLDER_IMG' => $folder_image,
-                                                                'FORUM_NAME' => $forum_data[$j]['forum_name'],
-                                                                'FORUM_DESC' => $forum_data[$j]['forum_desc'],
-                                                                'POSTS' => $forum_data[$j]['forum_posts'],
-                                                                'TOPICS' => $forum_data[$j]['forum_topics'],
-                                                                'LAST_POST' => $last_post,
-                                                                'MODERATORS' => $moderator_list,
+														$template->assign_block_vars('catrow.forumrow',        array(
+																'ROW_COLOR' => '#' . $row_color,
+																'ROW_CLASS' => $row_class,
+																'FORUM_FOLDER_IMG' => $folder_image,
+																'FORUM_NAME' => $forum_data[$j]['forum_name'],
+																'FORUM_DESC' => $forum_data[$j]['forum_desc'],
+																'POSTS' => $forum_data[$j]['forum_posts'],
+																'TOPICS' => $forum_data[$j]['forum_topics'],
+																'LAST_POST' => $last_post,
+																'MODERATORS' => $moderator_list,
 
-                                                                'L_MODERATOR' => $l_moderators,
-                                                                'L_FORUM_FOLDER_ALT' => $folder_alt,
+																'L_MODERATOR' => $l_moderators,
+																'L_FORUM_FOLDER_ALT' => $folder_alt,
 
-                                                                'U_VIEWFORUM' => append_sid("viewforum.$phpEx?" . POST_FORUM_URL . "=$forum_id"))
-                                                        );
+																'U_VIEWFORUM' => append_sid("viewforum.$phpEx?" . POST_FORUM_URL . "=$forum_id"))
+														);
    // Added by Attached Forums MOD
                      $attached_forum_count = count($attached_forums);
                      if($attached_forum_count)

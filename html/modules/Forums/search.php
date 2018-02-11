@@ -843,7 +843,15 @@ else if ( $search_keywords != '' || $search_author != '' || $search_id )
 
 		$highlight_active = '';
 		$highlight_match = array();
-		for($j = 0; $j < count($split_search); $j++ )
+
+		# neralex php7.2 fix
+		if (is_array($split_search)) {
+			$count_split_search = count($split_search);
+		} else {
+			$count_split_search = 0;
+		}
+
+		for($j = 0; $j < $count_split_search; $j++)
 		{
 			$split_word = $split_search[$j];
 

@@ -138,7 +138,7 @@ $bookmarks["blogmarks"] = array(
 			$bookmarkHTML .= "$sitename";
 		} else {
 			# XHTML fix courtesy of Guardian - http://code-authors.com
-			$bookmarkHTML .= "<img alt=\"\" border=\"0\" class=\"sbicon $imgclass\" src=\"$siteimg\" style=\"opacity:0.4;filter:alpha(opacity=40)\" onmouseover=\"this.style.opacity=1;this.filters.alpha.opacity=100\" onmouseout=\"this.style.opacity=0.4;this.filters.alpha.opacity=40\" />";
+			$bookmarkHTML .= "<img alt=\"\" border=\"0\" class=\"sbicon $imgclass\" src=\"$siteimg\" style=\"opacity:0.4;\" onmouseover=\"this.style.opacity=1;\" onmouseout=\"this.style.opacity=0.4;\" />";
 		}
 		$bookmarkHTML .= "</a>";
 		$numkey = $numkey + 1;

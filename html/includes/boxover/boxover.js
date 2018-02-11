@@ -28,6 +28,7 @@ function init() {
 	oDv.appendChild(dvBdy);
 	oDv.style.position="absolute";
 	oDv.style.visibility='hidden';
+	oDv.style.zIndex='9999'; // added z-index
 	document.body.appendChild(oDv);	
 }
 

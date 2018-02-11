@@ -73,7 +73,7 @@ if (is_mod_admin('admin')) {
 	$total_gain = round($total_gain, 3);
 	echo '<div class="text-center"><span class="thick">' . _OPTIMIZATIONRESULTS . '</span><br /><br />'
 		. _TOTALSPACESAVED . ' ' . $total_gain . ' Kb<br />';
-	$sql_query = 'CREATE TABLE IF NOT EXISTS ' . $prefix . '_optimize_gain(gain decimal(10,3)) TYPE=MyISAM';
+	$sql_query = 'CREATE TABLE IF NOT EXISTS ' . $prefix . '_optimize_gain(gain decimal(10,3)) ENGINE=MyISAM';
 	$result = $db->sql_query($sql_query);
 	$sql_query = 'INSERT INTO ' . $prefix . '_optimize_gain (gain) VALUES (\'' . $total_gain . '\')';
 	$result = $db->sql_query($sql_query);

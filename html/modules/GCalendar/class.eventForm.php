@@ -67,7 +67,7 @@ class EventForm {
 	var $branchDate = '0000-00-00';
 	var $insertId = 0;
 
-	function EventForm($action, $title, $submitText, $config, $startDate = '') {
+	function __construct($action, $title, $submitText, $config, $startDate = '') {
 		$this->action = $action;
 		$this->title = $title;
 		$this->submitText = $submitText;

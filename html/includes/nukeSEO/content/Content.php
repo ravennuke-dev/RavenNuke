@@ -16,7 +16,7 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
 
 class seoContent extends seocontentclass 
 {
-	function seoContent ()
+	function __construct()
   {
 		global $prefix;
 		$this->name                  = 'Content';

@@ -59,7 +59,7 @@ class Paginator {
 	// in the source data and sets the current page ($this->page) and the total
 	// items in the source ($this->total_items).  It also determines if there are any
 	// out-of-bounds conditions and adjusts.
-	function Paginator($page, $num_rows, $per_page) {
+	function __construct($page, $num_rows, $per_page) {
 		if (!$page || $page < 1) {
 			$this->page = 1;
 		} else {

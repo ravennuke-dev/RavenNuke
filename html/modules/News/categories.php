@@ -134,33 +134,33 @@ if ($TON_useTitleLink) $title = $story_link.$title.'</a>'; // Make the title a l
 		$ratetext = '' . _SCORE . ' ' . $rated;
 //Start TON Links
 
-		$bottomlink = '<a href="modules.php?name=News&amp;file=print&amp;sid='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;filter:alpha(opacity=40)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40" class= "newsicon print" src="modules/News/css/images/transparent.gif" border="0" alt="'._PRINTER.'" title="header=['._PRINTER.']body=[]" /></a>';
+		$bottomlink = '<a href="modules.php?name=News&amp;file=print&amp;sid='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;" onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;" class= "newsicon print" src="modules/News/css/images/transparent.gif" border="0" alt="'._PRINTER.'" title="header=['._PRINTER.']body=[]" /></a>';
 		if ($TON_usePDF) {
-			$bottomlink .= '<a target="_blank" href="modules.php?name=News&amp;file=printpdf&amp;id='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;filter:alpha(opacity=40)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40" class= "newsicon pdf" src="modules/News/css/images/transparent.gif" border="0" alt="'._PDF.'" title="header=['._PDF.']body=[]" /></a>';
+			$bottomlink .= '<a target="_blank" href="modules.php?name=News&amp;file=printpdf&amp;id='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;" onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;" class= "newsicon pdf" src="modules/News/css/images/transparent.gif" border="0" alt="'._PDF.'" title="header=['._PDF.']body=[]" /></a>';
 
 		}
 		if ($TON_useSendToFriend) {
-			$bottomlink .= '<a href="modules.php?name=News&amp;file=friend&amp;op=FriendSend&amp;sid='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;filter:alpha(opacity=40)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40" class= "newsicon mail" src="modules/News/css/images/transparent.gif" border="0" alt="'._FRIEND.'" title="header=['._FRIEND.']body=[]" /></a>';
+			$bottomlink .= '<a href="modules.php?name=News&amp;file=friend&amp;op=FriendSend&amp;sid='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;" onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;" class= "newsicon mail" src="modules/News/css/images/transparent.gif" border="0" alt="'._FRIEND.'" title="header=['._FRIEND.']body=[]" /></a>';
 
 		}
 		if ($TON_useRating) {
-			$bottomlink .= '&nbsp;<img style="opacity:0.4;filter:alpha(opacity=40)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40" class= "newsicon rated" src="modules/News/css/images/transparent.gif" border="0" alt="'._SCORE.'" title="header=['.$ratetext.']body=[]" />';
+			$bottomlink .= '&nbsp;<img style="opacity:0.4;" onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;" class= "newsicon rated" src="modules/News/css/images/transparent.gif" border="0" alt="'._SCORE.'" title="header=['.$ratetext.']body=[]" />';
 
 		}
 		if ($articlelink=='1'){
 			if ($fullcount > 0) {
-				$bottomlink .= '<a class="colorbox3 cboxelement" href="modules.php?name=News&amp;file=articlebox&amp;sid=' . $s_sid . '" style="text-decoration: none"> <img style="opacity:0.4;filter:alpha(opacity=40)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40" class= "newsicon readmore" src="modules/News/css/images/transparent.gif" alt="' . _READMORE . '" title="header=[' . _READMORE . ']body=[]" /></a>';
+				$bottomlink .= '<a class="colorbox3 cboxelement" href="modules.php?name=News&amp;file=articlebox&amp;sid=' . $s_sid . '" style="text-decoration: none"> <img style="opacity:0.4;" onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;" class= "newsicon readmore" src="modules/News/css/images/transparent.gif" alt="' . _READMORE . '" title="header=[' . _READMORE . ']body=[]" /></a>';
 			}
 		} elseif ($articlelink=='0') {
 			if ($fullcount > 0) {
-				$bottomlink .= '<a href="modules.php?name=News&amp;file=article&amp;sid=' . $s_sid . '" style="text-decoration: none"> <img style="opacity:0.4;filter:alpha(opacity=40)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40" class= "newsicon readmore" src="modules/News/css/images/transparent.gif" alt="' . _READMORE . '" title="header=[' . _READMORE . ']body=[]" /></a>';
+				$bottomlink .= '<a href="modules.php?name=News&amp;file=article&amp;sid=' . $s_sid . '" style="text-decoration: none"> <img style="opacity:0.4;" onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;" class= "newsicon readmore" src="modules/News/css/images/transparent.gif" alt="' . _READMORE . '" title="header=[' . _READMORE . ']body=[]" /></a>';
 			}
 		}
 
 		if ($articlecomm == 1 AND $acomm == 0 AND $usedisqus == 0) {
-			$bottomlink .= '<a href="modules.php?name=News&amp;file=article&amp;sid='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;filter:alpha(opacity=40)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40" class= "newsicon comment" src="modules/News/css/images/transparent.gif" border="0" alt="'._UCOMMENT.'" title="header=['.$commentnum.']body=[]" /></a>&nbsp;';
+			$bottomlink .= '<a href="modules.php?name=News&amp;file=article&amp;sid='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;" onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;" class= "newsicon comment" src="modules/News/css/images/transparent.gif" border="0" alt="'._UCOMMENT.'" title="header=['.$commentnum.']body=[]" /></a>&nbsp;';
 			}else{
-			$bottomlink .= '<a href="modules.php?name=News&amp;file=article&amp;sid='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;filter:alpha(opacity=40)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40" class= "newsicon more" src="modules/News/css/images/transparent.gif" border="0" alt="'._MOREABOUT.'" title="header=['._MOREABOUT.']body=[]" /></a>&nbsp;';
+			$bottomlink .= '<a href="modules.php?name=News&amp;file=article&amp;sid='.$s_sid.'" style="text-decoration: none"> <img style="opacity:0.4;" onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;" class= "newsicon more" src="modules/News/css/images/transparent.gif" border="0" alt="'._MOREABOUT.'" title="header=['._MOREABOUT.']body=[]" /></a>&nbsp;';
 		}
 
 		$morelink = $bottomlink;

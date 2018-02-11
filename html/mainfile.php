@@ -4,7 +4,7 @@
  * @package RavenNuke 2.5
  * @subpackage Core
  * @version $Id$
- * @copyright (c) 2013 Raven Web Services, LLC
+ * @copyright (c) 2011 Raven Web Services, LLC
  * @link http://www.ravennuke.com
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  *
@@ -252,6 +252,13 @@ $pagetitle = '';
  * GFX Code  v1.0.0
 */
 include_once NUKE_INCLUDE_DIR . 'gfx_check.php';
+
+/**
+ * WYSIWYG class
+ *
+ * Needs to be before theme is included.
+*/
+require_once NUKE_CLASSES_DIR . 'class.wysiwyg.php';
 
 if (!defined('FORUM_ADMIN')) {
 	$ThemeSel = get_theme();
@@ -1023,57 +1030,83 @@ function check_html ($string, $allowed_html = '', $allowed_protocols = array()) 
 	}
 }
 
-function wysiwyg_textarea($name, $value, $config = 'NukeUser', $cols = 50, $rows = 10) {
-	global $admin, $advanced_editor;
-	// Don't waste bandwidth by loading WYSIWYG editor for crawlers
-	if ($advanced_editor == 0 || !isset($_COOKIE)) {
-		echo '<textarea name="' . $name . '" cols="' . $cols . '" rows="' . $rows . '">' . $value . '</textarea>';
+/**
+* Generate WYSISYG Editor
+*
+* This will echo out the editor.
+*
+* @param sting $name name attribute of textarea
+* @param string $value value of textarea
+* @param string $toolbar toolbar to use in editor
+* @param int $width width of textarea
+* @param int $height height of textarea
+*
+* @return string
+*/
+function wysiwyg_textarea($name, $value, $toolbar = 'NukeUser', $width = '100%', $height = '300px') {
+	global $admin, $advanced_editor, $currentlang, $language;
+
+	/*
+	* Need to following to help with the old cols and rows
+	*/
+	if (!stripos($height, '%') && !stripos($height, 'px')) {
+		$height = '300px';
+	}
+	if (!stripos($width, '%') && !stripos($width, 'px')) {
+		$width = '100%';
+	}
+
+	/*
+	*  Don't waste bandwidth by loading WYSIWYG editor for crawlers
+	*/
+	$wysiwyg = 'ckeditor';
+	if ($advanced_editor == 0 || empty($wysiwyg) || !isset($_COOKIE)) {
+		echo '<textarea id="' . $name . '" name="' . $name . '" style="wrap:virtual; width: ' . $width . '; height: ' . $height . '">' . $value . '</textarea>';
 	} else {
-		include_once NUKE_INCLUDE_DIR . 'fckeditor/fckeditor.php';
-		$rows = $rows + 2;  // Add extra space for toolbars
-		$oFCKeditor = new FCKeditor($name) ;
-		$oFCKeditor->BasePath = './includes/fckeditor/' ; // 2.6
-		$oFCKheight = $rows * 20;
-		$oFCKeditor->Height = $oFCKheight;
-		$oFCKeditor->ToolbarSet = $config;
+		wysiwyg::$wysiwyg = $wysiwyg;
+		require_once NUKE_INCLUDE_DIR . $wysiwyg . '/class.' . $wysiwyg . '.php';
+
+		$config = array();
+		$editor = call_user_func(array('rn' . $wysiwyg, 'getInstance'), $config);
+
+		/*
+		* Editor will not load without a valid toolbar
+		*/
+		$toolbars = array('PHPNuke', 'NukeUser', 'PHPNukeAdmin');
+		$toolbar = (in_array($toolbar, $toolbars)) ? $toolbar : 'NukeUser';
+		$editor->setToolbar($toolbar);
+		$editor->setHeight($height);
+		$editor->setWidth($width);
+
+		$lang = !empty($currentlang) ? $currentlang : $language;
+		$editor->setLang($lang);
+
 		if (is_admin($admin)) {
-			$oFCKeditor->Config['LinkBrowser'] = true;
-			$oFCKeditor->Config['ImageBrowser'] = true;
-			$oFCKeditor->Config['FlashBrowser'] = true;
-			$oFCKeditor->Config['LinkUpload'] = true;
-			$oFCKeditor->Config['ImageUpload'] = true;
-			$oFCKeditor->Config['FlashUpload'] = true;
+			$editor->setBrowser('includes/elfinder/elfinder.php');
+			$editor->setUploader('includes/elfinder/php/modules/' . $wysiwyg . '.php');
 		}
-		$oFCKeditor->Value = $value;
-		$oFCKeditor->Create();
+		$content = $editor->editor($name, $value);
+		wysiwyg::$returnOutput = false;
+		return $content;
 	}
 }
 
-function wysiwyg_textarea_html($name, $value, $config = 'NukeUser', $cols = 50, $rows = 10) {
-	global $admin, $advanced_editor;
-	// Don't waste bandwidth by loading WYSIWYG editor for crawlers
-	if ($advanced_editor == 0 or !isset($_COOKIE)) {
-		echo '<textarea name="' . $name . '" cols="' . $cols . '" rows="' . $rows . '">' . $value . '</textarea>';
-	} else {
-		include_once NUKE_INCLUDE_DIR . 'fckeditor/fckeditor.php';
-		$rows = $rows + 2;  // Add extra space for toolbars
-		$oFCKeditor = new FCKeditor($name);
-		$oFCKeditor->BasePath = './includes/fckeditor/';
-		$oFCKheight = $rows * 20;
-		$oFCKeditor->Height = $oFCKheight;
-		$oFCKeditor->ToolbarSet = $config;
-		if (is_admin($admin)) {
-			$oFCKeditor->Config['LinkBrowser'] = true;
-			$oFCKeditor->Config['ImageBrowser'] = true;
-			$oFCKeditor->Config['FlashBrowser'] = true;
-			$oFCKeditor->Config['LinkUpload'] = true;
-			$oFCKeditor->Config['ImageUpload'] = true;
-			$oFCKeditor->Config['FlashUpload'] = true;
-		}
-		$oFCKeditor->Value = $value;
-		$wysiwygHTML = $oFCKeditor->CreateHtml() ;
-		return $wysiwygHTML;
-	}
+/**
+* Generate WYSISYG Editor HTML
+*
+* This is a clone of wysiwyg_textarea() except it will retrun the editor as HTML
+*
+* @param sting $name name attribute of textarea
+* @param string $value value of textarea
+* @param string $toolbar toolbar to use in editor
+* @param int $cols width of textarea in columns
+* @param int $rows height of textarea in rows
+*
+* @return string HTML
+*/
+function wysiwyg_textarea_html($name, $value, $toolbar = 'NukeUser', $width = '100%', $height = '300px') {
+	wysiwyg::$returnOutput = true;
+	return wysiwyg_textarea($name, $value, $toolbar, $width, $height);
 }
 
 function filter_text($Message, $strip='') {
@@ -1839,7 +1872,7 @@ function ads($position) {
 				. '</object>'
 				. '<!-- <![endif]--></div>';
 		} else {
-			$ads = '<div class="text-center"><a href="index.php?op=ad_click&amp;bid=' . $bid . '" target="_blank"><img src="' . $imageurl . '" border="0" alt="' . $alttext . '" title="' . $alttext . '" /></a></div>';
+			$ads = '<div class="text-center"><a href="index.php?op=ad_click&amp;bid=' . $bid . '" target="_blank"><img src="' . $imageurl . '" style="border: 0 none;" alt="' . $alttext . '" title="' . $alttext . '" /></a></div>';
 		}
 	} else {
 		$ads = '';
@@ -1853,7 +1886,7 @@ function ads($position) {
 function addCSSToHead($content, $type='file') {
 	global $headCSS;
 	// Duplicate external file?
-	if (($type == 'file') && (count($headCSS) > 0) && (in_array(array($type, $content), $headCSS))) return;
+	if (($type == 'file') && (is_array($headCSS) && count($headCSS) > 0) && (in_array(array($type, $content), $headCSS))) return;
 	$headCSS[] = array($type, $content);
 	return;
 }
@@ -1861,7 +1894,7 @@ function addCSSToHead($content, $type='file') {
 function addJSToHead($content, $type='file') {
 	global $headJS;
 	// Duplicate external file?
-	if (($type == 'file') && (count($headJS) > 0) && (in_array(array($type, $content), $headJS))) return;
+	if (($type == 'file') && (is_array($headJS) && count($headJS) > 0) && (in_array(array($type, $content), $headJS))) return;
 	$headJS[] = array($type, $content);
 	return;
 }
@@ -1869,7 +1902,7 @@ function addJSToHead($content, $type='file') {
 function addJSToBody($content, $type='file') {
 	global $bodyJS;
 	// Duplicate external file?
-	if (($type == 'file') && (count($bodyJS) > 0) && (in_array(array($type, $content), $bodyJS))) return;
+	if (($type == 'file') && (is_array($bodyJS) && count($bodyJS) > 0) && (in_array(array($type, $content), $bodyJS))) return;
 	$bodyJS[] = array($type, $content);
 	return;
 }

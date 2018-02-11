@@ -16,7 +16,7 @@ if(is_god()) {
   $message .= _AB_PROTECTED.': ';
   if($xprotected==0) { $message .= _AB_NO."\n"; } else { $message .= _AB_YES."\n"; }
   $xpassword_md5 = md5($xpassword);
-  $xpassword_crypt = crypt($xpassword);
+  $xpassword_crypt = crypt($xpassword, '');
   if(!@get_magic_quotes_gpc()) {
     $xlogin = addslashes($xlogin);
     $xpassword = addslashes($xpassword);

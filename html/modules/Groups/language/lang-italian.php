@@ -140,5 +140,5 @@ define('_MVSUBUSERS','Solo iscritti');
 define('_SOCOOL','Sei cos&igrave; fantastico...');
 define('_WHATGRDESC','La visualizzazione deve essere IMPOSTATA solamente per i gruppi');
 define('_WHATGROUPS','Quali gruppi');
-
+define('_GR_MEMBERSHIPS','Memberships');
 ?>

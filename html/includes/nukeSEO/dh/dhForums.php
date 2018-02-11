@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhForums extends dhclass {
-	function dhForums () {
+	function __construct() {
 		global $prefix;
 /*
  * content = topic + first post

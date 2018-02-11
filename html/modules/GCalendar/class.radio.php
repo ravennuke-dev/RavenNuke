@@ -40,7 +40,7 @@ class RadioButtons {
 	//	 E.g. $items = array(4 => array('label' => 'Red'), 5 => array('label' => 'Blue', 'enabled' => false));
 	// $horizontal - when true, the buttons are arranged horizontally; false => vertically
 
-	function RadioButtons($name, $items = array(), $horizontal = true) {
+	function __construct($name, $items = array(), $horizontal = true) {
 		$this->name		 = $name;
 		$this->items		= $items;
 		$this->horizontal = $horizontal;

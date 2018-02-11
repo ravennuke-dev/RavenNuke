@@ -83,7 +83,7 @@ class Legal_DocTypes
 	 * @global string  $prefix is the table prefix set in config.php
 	 * @global integer $db is the object handle for the SQL layer class
 	 */
-	function Legal_DocTypes($modName='', $lang='')
+	function __construct($modName='', $lang='')
 	{
 		global $prefix, $db;
 		if (isset($modName) && !empty($modName)) $this->modName = $modName;

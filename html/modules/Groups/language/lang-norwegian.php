@@ -140,5 +140,5 @@ define('_MVSUBUSERS','Kun Abonnenter');
 define('_SOCOOL','Du er s&aring;&aring;&aring; cool...');
 define('_WHATGRDESC','<span class="italic">Feltet</span> Hvem skal kunne se denne Blokken<span class="italic"> m&aring; v&aelig;re satt til</span> Kun Grupper<span class="italic"> for at Blokken skal bli vist kun til den valgte Gruppen i feltet nedenfor');
 define('_WHATGROUPS','Hvilke Grupper');
-
+define('_GR_MEMBERSHIPS','Memberships');
 ?>

@@ -129,10 +129,10 @@ $dbCheck = array();
 // if (!file_exists($nukeConfigFile)) {rnInstallErr(1); die();}
 echo '<span class="msg">config.php file found!</span><br />';
 require_once INCLUDE_PATH . 'config.php';
-$conn = @mysql_connect($dbhost,$dbuname,$dbpass);
+$conn = @mysqli_connect($dbhost,$dbuname,$dbpass);
 if (!$conn)  {rnInstallErr(2); die();}
 echo '<span class="msg">Successfully connected to '.$dbhost.' as user '.$dbuname.' and assigned password!</span><br />';
-$db = mysql_select_db($dbname);
+$db = mysqli_select_db($conn, $dbname);
 if (!$db)  {rnInstallErr(3); die();}
 echo '<span class="msg">Database '.$dbname.' found!</span><br />';
 ?>
@@ -144,13 +144,13 @@ echo '<span class="msg">Database '.$dbname.' found!</span><br />';
 <?php
 function rnInstallErr($errNum) {
 	if ($errNum==1) die('<span class="c2">It appears that your nuke config.php file is either missing or the permissions are not allowing it to be accessed.  Please verify the config.php is in your root folder where your mainfile.php is located and has permissions of at least 644.  Then try running the Install script again.</span>');
-	elseif ($errNum==2) die('<span class="c2">I was unable to reach your MySQL server using the MySQL connection settings in your nuke config.php file.  The exact error message that your MySQL server reported is <span style="font-weight:bold;">'.mysql_error().'</span>.</span>');
-	elseif ($errNum==3) die('<span class="c2">I was able to reach your MySQL server using the MySQL connection settings in your nuke config.php file, but I was unable to reach/locate the database <span style="font-weight:bold;">'.$dbname.'</span>. The exact error message that your MySQL server reported is <span style="font-weight:bold;">'.mysql_error().'</span>.</span>');
-	elseif ($errNum==4) die('<span class="c2">ERROR!  The exact error message that your MySQL server reported is <span style="font-weight:bold;">'.mysql_error().'</span>.</span>');
+	elseif ($errNum==2) die('<span class="c2">I was unable to reach your MySQL server using the MySQL connection settings in your nuke config.php file.  The exact error message that your MySQL server reported is <span style="font-weight:bold;">'.mysqli_error($conn).'</span>.</span>');
+	elseif ($errNum==3) die('<span class="c2">I was able to reach your MySQL server using the MySQL connection settings in your nuke config.php file, but I was unable to reach/locate the database <span style="font-weight:bold;">'.$dbname.'</span>. The exact error message that your MySQL server reported is <span style="font-weight:bold;">'.mysqli_error($conn).'</span>.</span>');
+	elseif ($errNum==4) die('<span class="c2">ERROR!  The exact error message that your MySQL server reported is <span style="font-weight:bold;">'.mysqli_error($conn).'</span>.</span>');
 	elseif ($errNum==90) die('<span class="c2">You have attempted to crack the Installer Script.  All pertinent information for this session has been saved and will be reviewed by the System Administrator and appropriate action will be taken.</span>');
 	elseif ($errNum==91) die('<span class="c2">It does not appear that there are any tables to be loaded.  Installation stopped.</span>');
-	elseif ($errNum==80) die('<span class="c2">Unable to update AUTHORS table with random password.  MySQL server reported: '.mysql_error().'. Installation stopped.</span>');
-	elseif ($errNum==81) die('<span class="c2">Unable to update NukeSentinel&trade; Admin table with random password.  MySQL server reported: '.mysql_error().'. Installation stopped.</span>');
+	elseif ($errNum==80) die('<span class="c2">Unable to update AUTHORS table with random password.  MySQL server reported: '.mysqli_error($conn).'. Installation stopped.</span>');
+	elseif ($errNum==81) die('<span class="c2">Unable to update NukeSentinel&trade; Admin table with random password.  MySQL server reported: '.mysqli_error($conn).'. Installation stopped.</span>');
 }
 // Mantis: 0001262: setup.php is adding an extra "\" on the Site URL
 $_POST['config_nukeurl'] = (empty($_POST['config_nukeurl'])?'http://'.$_SERVER['SERVER_NAME'].dirname(dirname($_SERVER['REQUEST_URI'])):$_POST['config_nukeurl']);
@@ -256,116 +256,116 @@ if (isset($_POST['updateconfig']) AND $_POST['updateconfig']=='Save Settings') {
 	extract($_POST);
 
 	/* Posting data to nuke_config table */
-	$sql = "UPDATE ".$prefix."_config set sitename='".mysql_real_escape_string(stripslashes($config_sitename))."', nukeurl='$config_nukeurl', slogan='".mysql_real_escape_string(stripslashes($config_slogan))."', startdate='$config_startdate', adminmail='$config_adminmail'";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Update '.$prefix.'_config table. MySQL reported: '.mysql_error()."<br />$sql");
+	$sql = "UPDATE ".$prefix."_config set sitename='".mysqli_real_escape_string($conn, stripslashes($config_sitename))."', nukeurl='$config_nukeurl', slogan='".mysqli_real_escape_string($conn, stripslashes($config_slogan))."', startdate='$config_startdate', adminmail='$config_adminmail'";
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Update '.$prefix.'_config table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 
 	/* Posting data to nuke_authors table */
 	$sql = 'TRUNCATE TABLE '.$prefix.'_authors';
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to truncate '.$prefix.'_authors table. MySQL reported: '.mysql_error());
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to truncate '.$prefix.'_authors table. MySQL reported: '.mysqli_error($conn));
 	$sql = "INSERT INTO ".$prefix."_authors (name,aid,pwd,email,radminsuper) values('God','$authors_aid','".md5($authors_pwd)."','$authors_email','$authors_radminsuper')";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Insert into '.$prefix.'_authors table. MySQL reported: '.mysql_error()."<br />$sql");
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Insert into '.$prefix.'_authors table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 
 	/* Posting data to nuke_bbconfig table */
-	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysql_real_escape_string(stripslashes($bbconfig_server_name))."' WHERE config_name='server_name'";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (server_name). MySQL reported: '.mysql_error()."<br />$sql");
-	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysql_real_escape_string(stripslashes($bbconfig_cookie_domain))."' WHERE config_name='cookie_domain'";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (cookie_domain). MySQL reported: '.mysql_error()."<br />$sql");
+	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysqli_real_escape_string($conn, stripslashes($bbconfig_server_name))."' WHERE config_name='server_name'";
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (server_name). MySQL reported: '.mysqli_error($conn)."<br />$sql");
+	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysqli_real_escape_string($conn, stripslashes($bbconfig_cookie_domain))."' WHERE config_name='cookie_domain'";
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (cookie_domain). MySQL reported: '.mysqli_error($conn)."<br />$sql");
 	if (trim($bbconfig_cookie_path, '/') == '') $bbconfig_cookie_path = '/';
 	else $bbconfig_cookie_path = '/'.trim($bbconfig_cookie_path, '/').'/';
-	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysql_real_escape_string(stripslashes($bbconfig_cookie_path))."' WHERE config_name='cookie_path'";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (cookie_path). MySQL reported: '.mysql_error()."<br />$sql");
-	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysql_real_escape_string(stripslashes($bbconfig_sitename))."' WHERE config_name='sitename'";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (sitename). MySQL reported: '.mysql_error()."<br />$sql");
-	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysql_real_escape_string(stripslashes($bbconfig_board_email))."' WHERE config_name='board_email'";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (board_email). MySQL reported: '.mysql_error()."<br />$sql");
+	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysqli_real_escape_string($conn, stripslashes($bbconfig_cookie_path))."' WHERE config_name='cookie_path'";
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (cookie_path). MySQL reported: '.mysqli_error($conn)."<br />$sql");
+	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysqli_real_escape_string($conn, stripslashes($bbconfig_sitename))."' WHERE config_name='sitename'";
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (sitename). MySQL reported: '.mysqli_error($conn)."<br />$sql");
+	$sql = "UPDATE ".$prefix."_bbconfig set config_value='".mysqli_real_escape_string($conn, stripslashes($bbconfig_board_email))."' WHERE config_name='board_email'";
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Update '.$prefix.'_bbconfig table (board_email). MySQL reported: '.mysqli_error($conn)."<br />$sql");
 
 	/* Posting data to nuke_nsnst_config table */
-	$sql = "UPDATE ".$prefix."_nsnst_config set config_value='".mysql_real_escape_string(stripslashes($nsnst_config_admin_contact))."' WHERE config_name='admin_contact'";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Update '.$prefix.'_nsnst_config table. MySQL reported: '.mysql_error()."<br />$sql");
+	$sql = "UPDATE ".$prefix."_nsnst_config set config_value='".mysqli_real_escape_string($conn, stripslashes($nsnst_config_admin_contact))."' WHERE config_name='admin_contact'";
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Update '.$prefix.'_nsnst_config table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 	$sql = "UPDATE ".$prefix."_nsnst_config set config_value='1' WHERE config_name='track_active'";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Update '.$prefix.'_nsnst_config table. MySQL reported: '.mysql_error()."<br />$sql");
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Update '.$prefix.'_nsnst_config table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 	$sql = 'UPDATE `' . $prefix . '_nsnst_config` SET `config_value`="' . _nsIP2C . '" WHERE `config_name`="ip2c_version"';
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Update ' . $prefix . '_nsnst_config table.  MySQL reported: ' . mysql_error() . '<br />' . $sql);
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Update ' . $prefix . '_nsnst_config table.  MySQL reported: ' . mysqli_error($conn) . '<br />' . $sql);
 
 	/* Posting data to nuke_nsnst_admins table */
 	$sql = 'TRUNCATE TABLE '.$prefix.'_nsnst_admins';
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to truncate '.$prefix.'_nsnst_admins table. MySQL reported: '.mysql_error());
-	$sql = "INSERT INTO ".$prefix."_nsnst_admins (login, password, protected, aid, password_md5, password_crypt) values('$nsnst_admins_login','$nsnst_admins_password','$nsnst_admins_protected','$nsnst_admins_aid','".md5($nsnst_admins_password)."', '".crypt($nsnst_admins_password)."')";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Insert into '.$prefix.'_nsnst_admins table. MySQL reported: '.mysql_error()."<br />$sql");
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to truncate '.$prefix.'_nsnst_admins table. MySQL reported: '.mysqli_error($conn));
+	$sql = "INSERT INTO ".$prefix."_nsnst_admins (login, password, protected, aid, password_md5, password_crypt) values('$nsnst_admins_login','$nsnst_admins_password','$nsnst_admins_protected','$nsnst_admins_aid','".md5($nsnst_admins_password)."', '".crypt($nsnst_admins_password, '')."')";
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Insert into '.$prefix.'_nsnst_admins table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 
 	/* Protecting admins IP */
 	$ip = $_SERVER['REMOTE_ADDR'];
 	$long_ip = sprintf("%u", ip2long($ip));
 	$time = time();
 	$sql = 'TRUNCATE TABLE '.$prefix.'_nsnst_excluded_ranges';
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to truncate '.$prefix.'_nsnst_excluded_ranges table. MySQL reported: '.mysql_error());
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to truncate '.$prefix.'_nsnst_excluded_ranges table. MySQL reported: '.mysqli_error($conn));
 	$sql = "INSERT INTO `".$prefix."_nsnst_excluded_ranges` (`ip_lo`, `ip_hi`, `date`, `notes`, `c2c`) VALUES ('".$long_ip."', '".$long_ip."', '".$time."', '".$authors_aid."\'s personal ip', '00')";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Insert into '.$prefix.'_nsnst_excluded_ranges table. MySQL reported: '.mysql_error()."<br />$sql");
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Insert into '.$prefix.'_nsnst_excluded_ranges table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 	$sql = 'TRUNCATE TABLE '.$prefix.'_nsnst_protected_ranges';
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to truncate '.$prefix.'_nsnst_protected_ranges table. MySQL reported: '.mysql_error());
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to truncate '.$prefix.'_nsnst_protected_ranges table. MySQL reported: '.mysqli_error($conn));
 	$sql = "INSERT INTO `".$prefix."_nsnst_protected_ranges` (`ip_lo`, `ip_hi`, `date`, `notes`, `c2c`) VALUES ('".$long_ip."', '".$long_ip."', '".$time."', '".$authors_aid."\'s personal ip', '00')";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Insert into '.$prefix.'_nsnst_protected_ranges table. MySQL reported: '.mysql_error()."<br />$sql");
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Insert into '.$prefix.'_nsnst_protected_ranges table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 
 	/* Posting data to nuke_users table */
 	$sql = 'TRUNCATE TABLE '.$user_prefix.'_users';
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to truncate '.$user_prefix.'_users table. MySQL reported: '.mysql_error());
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to truncate '.$user_prefix.'_users table. MySQL reported: '.mysqli_error($conn));
 	$sql = "INSERT INTO ".$user_prefix."_users VALUES (1, '', 'Anonymous', '', '', '', 'blank.gif', 'Oct 10, 2008', '', '', '', '', '', 0, 0, '', '', '', '', 10, '', 0, 0, 0, '', 0, '', '', 4096, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 10, NULL, 'english', 'D M d, Y g:i a', 0, 0, 0, NULL, 1, 1, 1, 1, 1, 1, 1, 1, 0, 3, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0)";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Insert into '.$user_prefix.'_users table. MySQL reported: '.mysql_error()."<br />$sql");
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Insert into '.$user_prefix.'_users table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 
 	/* Raven added user_level=2 per Mantis 0001175 */
-	$sql = "INSERT INTO ".$user_prefix."_users (user_id, user_avatar, user_regdate, username, user_email, user_password, name, user_level) values(2, '$users_user_avatar', '$users_user_regdate', '".mysql_real_escape_string(stripslashes($users_username))."','$users_user_email','".md5($users_user_password)."', '".mysql_real_escape_string(stripslashes($users_username))."', 2)";
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to Insert into '.$user_prefix.'_users table. MySQL reported: '.mysql_error()."<br />$sql");
+	$sql = "INSERT INTO ".$user_prefix."_users (user_id, user_avatar, user_regdate, username, user_email, user_password, name, user_level) values(2, '$users_user_avatar', '$users_user_regdate', '".mysqli_real_escape_string($conn, stripslashes($users_username))."','$users_user_email','".md5($users_user_password)."', '".mysqli_real_escape_string($conn, stripslashes($users_username))."', 2)";
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to Insert into '.$user_prefix.'_users table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 
 	/*Added by montego for NSN Group fix 0000291 */
-	//$sql = "UPDATE ".$prefix."_nsngr_users SET uname = '".mysql_real_escape_string(stripslashes($users_username))."'";
-	// $rc = @mysql_query($sql);
-	// if (!$rc) die('Unable to update '.$prefix.'_nsngr_users table. MySQL reported: '.mysql_error()."<br />$sql");
+	//$sql = "UPDATE ".$prefix."_nsngr_users SET uname = '".mysqli_real_escape_string($conn, stripslashes($users_username))."'";
+	// $rc = @mysqli_query($conn, $sql);
+	// if (!$rc) die('Unable to update '.$prefix.'_nsngr_users table. MySQL reported: '.mysqli_error($conn)."<br />$sql");
 
 	/* Updating the image source on block 'Information' to be absolute so will work with the FCKEditor */
 	$sql = 'SELECT `content` FROM `'.$prefix.'_blocks` WHERE `title` = \'Information\'';
-	$rc = @mysql_query($sql);
+	$rc = @mysqli_query($conn, $sql);
 	if ($rc) {
-		list($content) = mysql_fetch_row($rc);
+		list($content) = mysqli_fetch_row($rc);
 		if ($content != '') {
 			/** The next line is Fix per Mantis Issue 0001298 and is suggested by Palbin **/
 			$content = preg_replace('#(' . preg_quote($config_nukeurl) . '/)?images/#i', $config_nukeurl . '/images/', $content);
 			$sql = 'UPDATE `'.$prefix.'_blocks` SET `content` = \''.$content.'\' WHERE `title` = \'Information\'';
-			$rc = @mysql_query($sql);
-			if (!$rc) die('Unable to update '.$prefix.'_blocks table for absolute image src URL replacement. MySQL reported: '.mysql_error().'<br />'.$sql);
+			$rc = @mysqli_query($conn, $sql);
+			if (!$rc) die('Unable to update '.$prefix.'_blocks table for absolute image src URL replacement. MySQL reported: '.mysqli_error($conn).'<br />'.$sql);
 		}
 	}
 
 	/* Updating the image source on message 'Welcome Message' to be absolute so will work with the FCKEditor */
 	$sql = 'SELECT `content` FROM `'.$prefix.'_message` WHERE `mid` = 1';
-	$rc = @mysql_query($sql);
+	$rc = @mysqli_query($conn, $sql);
 	if ($rc) {
-		list($content) = mysql_fetch_row($rc);
+		list($content) = mysqli_fetch_row($rc);
 		if ($content != '') {
 			/** The next line is Fix per Mantis Issue 0001298 and is suggested by Palbin **/
 			$content = preg_replace('#(' . preg_quote($config_nukeurl) . '/)?images/#i', $config_nukeurl . '/images/', $content);
 			$sql = 'UPDATE `'.$prefix.'_message` SET `content` = \''.$content.'\' WHERE `mid` = 1';
-			$rc = @mysql_query($sql);
-			if (!$rc) die('Unable to update '.$prefix.'_message table for absolute image src URL replacement. MySQL reported: '.mysql_error().'<br />'.$sql);
+			$rc = @mysqli_query($conn, $sql);
+			if (!$rc) die('Unable to update '.$prefix.'_message table for absolute image src URL replacement. MySQL reported: '.mysqli_error($conn).'<br />'.$sql);
 		}
 	}
 
@@ -386,7 +386,7 @@ if (isset($_POST['updateconfig']) AND $_POST['updateconfig']=='Save Settings') {
 	reset($themelist);
 
 	$values_add = '';
-	while ( list($id, $theme) = each($themelist) ) {
+	foreach ($themelist as $id => $theme) {
 		if ($theme != '') {
 			$theme = addslashes($theme);
 			if (!$values_add) {
@@ -399,16 +399,16 @@ if (isset($_POST['updateconfig']) AND $_POST['updateconfig']=='Save Settings') {
 
 	if ($values_add) {
 		$sql = 'TRUNCATE TABLE ' . $prefix . '_themes';
-		$rc = @mysql_query($sql);
-		if (!$rc) die('Unable to truncate ' . $prefix . '_themes table. MySQL reported: ' . mysql_error());
+		$rc = @mysqli_query($conn, $sql);
+		if (!$rc) die('Unable to truncate ' . $prefix . '_themes table. MySQL reported: ' . mysqli_error($conn));
 		$sql = 'INSERT INTO `' . $prefix . '_themes` (`theme`, `themename`, `active`, `default`, `guest`, `moveableblocks`, `collapsibleblocks`, `compatible`) VALUES ' . $values_add;
-		$rc = @mysql_query($sql);
-		if (!$rc) die('Unable to update ' . $prefix . '_themes table to populate it with themes. MySQL reported: ' . mysql_error() . '<br />' . $sql);
+		$rc = @mysqli_query($conn, $sql);
+		if (!$rc) die('Unable to update ' . $prefix . '_themes table to populate it with themes. MySQL reported: ' . mysqli_error($conn) . '<br />' . $sql);
 	}
 
 	$sql = 'UPDATE `' . $prefix . '_themes` SET `default`="1", `guest`="1" WHERE `theme`="RavenIce"';
-	$rc = @mysql_query($sql);
-	if (!$rc) die('Unable to update ' . $prefix . '_themes table to set defaults. MySQL reported: ' . mysql_error() . '<br />' . $sql);
+	$rc = @mysqli_query($conn, $sql);
+	if (!$rc) die('Unable to update ' . $prefix . '_themes table to set defaults. MySQL reported: ' . mysqli_error($conn) . '<br />' . $sql);
 
 	echo '<script type="text/javascript">alert(\'Congratulations! Configuration has been completed. Please continue with the next step within the installation instructions.\');</script>';
 }

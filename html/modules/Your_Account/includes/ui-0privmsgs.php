@@ -42,24 +42,20 @@ if (is_active('Private_Messages') && defined('LOGGEDIN_SAME_USER')) {
 	} elseif ($mem_list == '' AND $mod_search == '') {
 		$links = '';
 	}
-	/*
-	* montego - the following was adapted from the 2.20.01 version of RN - gets it all into one SQL call letting MySQL do the "heavy lifting"
-	*/
-	$sql = 'SELECT 1, COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type IN (0, 1, 5) UNION '
-		. 'SELECT 2, COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 0 UNION '
-		. 'SELECT 3, COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 1 UNION '
-		. 'SELECT 4, COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_from_userid = ' . $uid . ' AND privmsgs_type = 2 UNION '
-//		. 'SELECT 5, COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 3 UNION '
-		. 'SELECT 6, COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_from_userid = ' . $uid . ' AND privmsgs_type = 4 UNION '
-		. 'SELECT 7, COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 5';
-	$result = $db->sql_query($sql);
-	list(, $ya_totpms) = $db->sql_fetchrow($result); // 1
-	list(, $ya_oldpms) = $db->sql_fetchrow($result); // 2
-	list(, $ya_newpms) = $db->sql_fetchrow($result); // 3
-	list(, $ya_outpms) = $db->sql_fetchrow($result); // 4
-//	list(, $ya_savpms) = $db->sql_fetchrow($result); // 5
-	list(, $ya_savpms) = $db->sql_fetchrow($result); // 6
-	list(, $ya_outpms) = $db->sql_fetchrow($result); // 7
+
+	$result = $db->sql_query('SELECT COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type IN (0, 1, 5)');
+	list($ya_totpms) = $db->sql_fetchrow($result);
+	$result = $db->sql_query('SELECT COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 0');
+	list($ya_oldpms) = $db->sql_fetchrow($result);
+	$result = $db->sql_query('SELECT COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 1');
+	list($ya_newpms) = $db->sql_fetchrow($result);
+	$result = $db->sql_query('SELECT COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 2');
+	list($ya_outpms) = $db->sql_fetchrow($result);
+	$result = $db->sql_query('SELECT COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 4');
+	list($ya_savpms) = $db->sql_fetchrow($result);
+	$result = $db->sql_query('SELECT COUNT(*) FROM ' . $prefix . '_bbprivmsgs WHERE privmsgs_to_userid = ' . $uid . ' AND privmsgs_type = 5');
+	list($ya_outpms) = $db->sql_fetchrow($result);
+
 	// menelaos: function changed to reflect the default phpbb2 style icons (in a future version they will show the users phpnuke forum theme icons)
 	// montego - modified to remove wasteful SQL calls
 	$configresult = $db->sql_query('SELECT config_name, config_value FROM ' . $prefix . '_bbconfig WHERE config_name = \'default_style\'');

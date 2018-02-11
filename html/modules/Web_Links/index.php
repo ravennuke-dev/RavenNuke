@@ -813,8 +813,8 @@ function viewlink($cid, $min, $orderby, $show) {
 	}
 	$radminsuper = is_mod_admin($module_name);
 	include_once('header.php');
-	if (!isset($min)) $min=0;
-	if (!isset($max)) $max=$min+$perpage;
+	if (!isset($min)) $min = 0;
+	if (!isset($max)) $max=(int)$min+$perpage;
 	if(!empty($orderby)) {
 		$orderby = convertorderbyin($orderby);
 	} else {

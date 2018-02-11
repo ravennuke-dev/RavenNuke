@@ -42,7 +42,13 @@ if ($gid > 0) {
 	$result3 = $db->sql_query('SELECT `user_id`, `username` FROM `' . $user_prefix . '_users` WHERE `user_level`>\'0\' ORDER BY `username` LIMIT ' . $min . ',' . $grconfig['perpage']);
 	while (list($thisUID, $thisUNAME) = $db->sql_fetchrow($result3)) {
 		echo '<tr bgcolor="' . $bgcolor1 . '" onmouseover="this.style.backgroundColor=\'' . $bgcolor2 . '\'" onmouseout="this.style.backgroundColor=\'' . $bgcolor1 . '\'">';
-		echo '<td>' . $thisUNAME . '</td>';
+		echo '<td>';
+		if ($thisUNAME != 'Anonymous') {
+			echo '<a class="rn_csrf" href="' . $admin_file . '.php?op=NSNGroupsMemberships&yauserid=' . $thisUID . '">' . $thisUNAME . '</a>';
+		} else {
+			echo $thisUNAME;
+		}
+		echo '</td>';
 		if (!is_ingroup($thisUID, $gid)) {
 			echo '<td align="center"><input name="add_uid[]" type="checkbox" value="' . $thisUID . '" /></td>';
 		} else {

@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhFeeds extends dhclass {
-	function dhFeeds () {
+	function __construct() {
 		global $prefix;
 		$this->content_id        = 'fid';
 		$this->content_table     = $prefix.'_seo_feed';

@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhContent extends dhclass {
-	function dhContent () {
+	function __construct() {
 		global $prefix;
 		$this->content_id        = 'pid';
 		$this->content_table     = $prefix.'_pages';

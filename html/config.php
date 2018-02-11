@@ -67,7 +67,7 @@ $gfx_chk = 7;
 $subscription_url = '';
 $admin_file = 'admin';
 $tipath = 'images/topics/';
-$display_errors = false;  //This should only be used (set to "true") when testing locally and not in a production environment
+$display_errors = false; //This should only be used (set to "true") when testing locally and not in a production environment
 
 /*********************************************************************
  * You are done with the key database/system settings.  Continue with

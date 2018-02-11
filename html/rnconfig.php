@@ -11,7 +11,7 @@ if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
 //
 // Version define added by montego - can be used by scripts to identify RN CMS and version
 // Do not change this for your site as it might mess up future features and add-ons
-define('RAVENNUKE_VERSION', '025100');
+define('RAVENNUKE_VERSION', '025200');
 // Version Friendly define added by montego and modified by raven - can be used by scripts to identify RN CMS and version
 // Scripts are required to add prefixes, such as v (version) - example: echo 'v' . RAVENNUKE_VERSION_FRIENDLY would print as v02.30.01
 // Do not change this for your site as it might mess up future features and add-ons
@@ -228,7 +228,7 @@ $forceLowerCaseUserName = false;  // Setting this to "true" will force new usern
 * setting nf_CONVERTENCODING to false
 **********************************************************************************/
 define('nf_CONVERTENCODING', false);
-define('nf_ENABLEUPDATECHECK', true);
+define('nf_ENABLEUPDATECHECK', false);
 
 /*********************************************************************************
 * Pagination Control:
@@ -279,7 +279,7 @@ $disableCSRFChecking = false; // Set to "true" in order to disable Cross-Site Re
 //This will not remove depricated warning, but will make it PHP 6 compatable.
 //We do not like suppressing errors, but there is no other way as PHP 5.3+ will produce warnings.
 if (!version_compare(phpversion(), '6.0.0') >= 0) {
-	@set_magic_quotes_runtime(0); // Disable magic_quotes_runtime
+	@ini_set('magic_quotes_runtime', 0); // Disable magic_quotes_runtime
 	@ini_set('allow_call_time_pass_reference', true); // PHP5 may/will throw a warning so this will suppress it
 }
 

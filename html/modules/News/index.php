@@ -226,8 +226,8 @@ function theindex($new_topic = 0) {
 			$ds = $shortname;
 			include_once('includes/jquery/disqus.php');
 			disqusCounter($ds);
-			$hometext = $hometext.'<br /><a href="modules.php?name=News&amp;file=article&amp;sid=' . $sid . '"><img src="images/news/comment.png" style="opacity:0.4;filter:alpha(opacity=40)"'
-				. 'onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40" alt="Comments" title="Comments" /></a>'
+			$hometext = $hometext.'<br /><a href="modules.php?name=News&amp;file=article&amp;sid=' . $sid . '"><img src="images/news/comment.png" style="opacity:0.4;"'
+				. 'onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;" alt="Comments" title="Comments" /></a>'
 				. '&nbsp;<a class="commentlink thick" href="' . $nukeurl . '/modules.php?name=News&amp;file=article&amp;sid=' . $sid . '#disqus_thread" rel="'.$module_name.'-'.$sid.'">' . _COMMENTS . '</a>';
 		}
 		// End Disqus Comment Count
@@ -246,7 +246,7 @@ function theindex($new_topic = 0) {
 		}
 		$ratetext = '' . _SCORE . ' ' . $rated;
 		//Start TON Links
-		$linkopacity ='opacity:0.4;filter:alpha(opacity=40)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" onmouseout="this.style.opacity=0.4;this.filters.alpha.opacity=40';
+		$linkopacity ='opacity:0.4;" onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.4;';
 		$bottomlink = $pdfLinkBottom = $pdfLinkTop = $stfLinkBottom = $stfLinkTop = $rateLinkBottom = $rateLinkTop = '';
 		if ($TON_usePDF) {
 			$pdfLinkBottom = '<a target="_blank" href="modules.php?name=News&amp;file=printpdf&amp;id='.$sid.'" class="normal-text"> <img style="' . $linkopacity . '" class= "newsicon pdf" src="modules/News/css/images/transparent.gif" alt="'._PDF.'" title="cssheader=[tonheaderclass] cssbody=[tonbodyclass] header=['._PDF.']body=[]" /></a>';

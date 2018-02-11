@@ -32,9 +32,9 @@
 
 class RNComm_ReviewsForm extends RNComm_FormBase
 {
-   function RNComm_ReviewsForm($selModule, $modules)
+   function __construct($selModule, $modules)
    {
-      parent::RNComm_FormBase($selModule, $modules);
+      parent::__construct($selModule, $modules);
    }
 
    // Note that there is no function in the Reviews module to display an individual comment,

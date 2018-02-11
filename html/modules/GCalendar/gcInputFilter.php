@@ -52,7 +52,7 @@ class GCInputFilter {
 	 * @param	int		$xssAuto Only auto clean essentials = 0, Allow clean
 	 * blacklisted tags/attr = 1
 	 */
-	function GCInputFilter($tagsArray = array (), $attrArray = array (), $tagsMethod = 0, $attrMethod = 0, $xssAuto = 1, $charset = 'ISO-8859-1') {
+	function __construct($tagsArray = array (), $attrArray = array (), $tagsMethod = 0, $attrMethod = 0, $xssAuto = 1, $charset = 'ISO-8859-1') {
 		/*
 		 * Make sure user defined arrays are in lowercase
 		 */
@@ -420,9 +420,21 @@ class GCInputFilter {
 		// url decode
 		$source = html_entity_decode($source, ENT_QUOTES, $this->charset);
 		// convert decimal
-		$source = preg_replace('/&#(\d+);/me', "chr(\\1)", $source); // decimal notation
+		$source = preg_replace_callback(
+			'/&#(\d+);/mu',
+			function($m) {
+				return chr($m[1]);
+			},
+			$source
+		); #decimal notation
 		// convert hex
-		$source = preg_replace('/&#x([a-f0-9]+);/mei', "chr(0x\\1)", $source); // hex notation
+		$source = preg_replace_callback(
+			'/&#x([a-f0-9]+);/miu',
+			function($m) {
+				return chr('0x'.$m[1]);
+			},
+			$source
+		); # hex notation
 		return $source;
 	}
 

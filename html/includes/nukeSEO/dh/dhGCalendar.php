@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhGCalendar extends dhclass {
-	function dhGCalendar () {
+	function __construct() {
 		global $prefix;
 		$this->dh_sModSuffix   = '%sitename%';
 		$this->content_id        = 'id';

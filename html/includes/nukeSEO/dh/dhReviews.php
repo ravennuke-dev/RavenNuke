@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhReviews extends dhclass {
-	function dhReviews () {
+	function __construct() {
 		global $prefix;
 		$this->content_id        = 'id';
 		$this->content_table     = $prefix.'_reviews';

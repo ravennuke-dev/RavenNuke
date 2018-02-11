@@ -518,14 +518,28 @@ function BannersAdd($name, $cid, $adname, $imptotal, $imageurl, $clickurl, $altt
 		if ($imageurl == 'http://' OR $imageurl == '') {
 			$errormsg .= ' a url is required for your image <br /><br />';
 		}
-		if (!is_numeric($ad_width) || !is_numeric($ad_height)) {
-		$errormsg .= ' a numeric image height and width is required for your image or flash file <br /><br />';
-	}
-	if ($ad_class == 'image') {
-		if ($alttext == '' OR $clickurl == '') {
-			$errormsg .= 'alttext and clickurl are required for images <br /><br />';
+		if ($ad_class == 'flash') {
+			if (!is_numeric($ad_width) || !is_numeric($ad_height)) {
+				$errormsg .= ' a numeric image height and width is required for your flash file <br /><br />';
+				$ad_width = '';
+				$ad_height = '';
+			}
+		} elseif ($ad_class == 'image') {
+			if (!is_numeric($ad_width) || !is_numeric($ad_height)) {
+				$ad_width = '';
+				$ad_height = '';
+			}
+			if ($alttext == '' OR $clickurl == '') {
+				$errormsg .= 'alttext and clickurl are required for images <br /><br />';
+			}
 		}
 	}
+	if ($ad_width == '' || $ad_height == '') {
+		$ad_width = 'NULL';
+		$ad_height = 'NULL';
+	} else {
+		$ad_width = '\'' . $ad_width . '\'';
+		$ad_height = '\'' . $ad_height . '\'';
 	}
 	if (($ad_class == 'code') and ($ad_code == '')) {
 		$errormsg .= 'you must input data for your ad code <br />';
@@ -565,7 +579,7 @@ function BannersAdd($name, $cid, $adname, $imptotal, $imageurl, $clickurl, $altt
 	$ad_code = $db->sql_escape_string(check_html($ad_code, 'nocheck'));
 	$clickurl = $db->sql_escape_string(check_html($clickurl, 'nohtml'));
 	$imageurl = $db->sql_escape_string(check_html($imageurl, 'nohtml'));
-		$db->sql_query('INSERT INTO ' . $prefix . '_banner VALUES (NULL, \'' . $cid . '\', \'' . $adname . '\', \'' . $imptotal . '\', \'1\', \'0\', \'' . $imageurl . '\', \'' . $clickurl . '\', \'' . $alttext . '\', now(), \'00-00-0000 00:00:00\', \'' . $position . '\', \'' . $active . '\', \'' . $ad_class . '\', \'' . $ad_code . '\', \'' . $ad_width . '\', \'' . $ad_height . '\')');
+		$db->sql_query('INSERT INTO ' . $prefix . '_banner VALUES (NULL, \'' . $cid . '\', \'' . $adname . '\', \'' . $imptotal . '\', \'1\', \'0\', \'' . $imageurl . '\', \'' . $clickurl . '\', \'' . $alttext . '\', now(), NULL, \'' . $position . '\', \'' . $active . '\', \'' . $ad_class . '\', \'' . $ad_code . '\', ' . $ad_width . ', ' . $ad_height . ')');
 	Header('Location: ' . $admin_file . '.php?op=AdvertisingAdmin');
 }
 function BannerAddClient($name, $contact, $email, $login, $passwd, $extrainfo) {
@@ -704,7 +718,7 @@ function BannerEdit($bid) {
 			</OBJECT>
 			</div><br /><br />';
 	} else {
-		echo '<div style="text-align: center;"><img src="' . $imageurl . '" border="1" alt="' . $alttext . '" title="' . $alttext . '" width="' . $ad_width . '" height="' . $ad_height . '" /></div><br /><br />';
+		echo '<div style="text-align: center;"><img src="' . $imageurl . '" style="border: 0 none;' . ($ad_width != '' ? ' width: ' . $ad_width . 'px;' : '') . ($ad_height != '' ? ' height: ' . $ad_height . 'px;' : '') . '" alt="' . $alttext . '" title="' . $alttext . '" /></div><br /><br />';
 	}
 	echo '<form action="' . $admin_file . '.php?op=BannerChange" method="post">';
 	echo '<table width="100%">';
@@ -822,14 +836,19 @@ function BannerChange($bid, $cid, $adname, $imptotal, $impadded, $imageurl, $cli
 	$clickurl = $db->sql_escape_string(check_html($clickurl , 'nohtml'));
 	$imageurl = $db->sql_escape_string(check_html($imageurl , 'nohtml'));
 	$position = intval($position);
-	$ad_width = intval($ad_width);
-	$ad_height = intval($ad_height);
+	if (!is_numeric($ad_width) || !is_numeric($ad_height)) {
+		$ad_width = 'NULL';
+		$ad_height = 'NULL';
+	} else {
+		$ad_width = '\'' . intval($ad_width) . '\'';
+		$ad_height = '\'' . intval($ad_height) . '\'';
+	}
 	$cid = intval($cid);
 	$imp = intval($imp);
 	$active = intval($active);
 	$bid = intval($bid);
 
-	$db->sql_query('UPDATE ' . $prefix . '_banner set cid=\'' . $cid . '\', name=\'' . $adname . '\', imptotal=\'' . $imp . '\', imageurl=\'' . $imageurl . '\', clickurl=\'' . $clickurl . '\', alttext=\'' . $alttext . '\', position=\'' . $position . '\', active=\'' . $active . '\', ad_code=\'' . $ad_code . '\', ad_width=\'' . $ad_width . '\', ad_height=\'' . $ad_height . '\' where bid=\'' . $bid . '\'');
+	$db->sql_query('UPDATE ' . $prefix . '_banner SET cid=\'' . $cid . '\', name=\'' . $adname . '\', imptotal=\'' . $imp . '\', imageurl=\'' . $imageurl . '\', clickurl=\'' . $clickurl . '\', alttext=\'' . $alttext . '\', position=\'' . $position . '\', active=\'' . $active . '\', ad_code=\'' . $ad_code . '\', ad_width=' . $ad_width . ', ad_height=' . $ad_height . ' WHERE bid=\'' . $bid . '\'');
 	Header('Location: ' . $admin_file . '.php?op=AdvertisingAdmin');
 }
 function BannerClientDelete($cid, $ok = 0) {

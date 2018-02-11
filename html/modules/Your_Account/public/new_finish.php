@@ -19,15 +19,19 @@ if (!defined('RNYA')) {
 	die();
 }
 include_once 'header.php';
+$stop = '';
 $ya_username = check_html($ya_username, 'nohtml');
 ya_userCheck($ya_username);
 $ya_user_email = check_html($ya_user_email, 'nohtml');
 $ya_user_email = strtolower($ya_user_email);
 ya_mailCheck($ya_user_email);
+// BEGIN:  nukeSPAM(tm)
+if ( function_exists('nukeSPAM') and empty($stop) ) $stop .= nukeSPAM($ya_username, $ya_user_email);
+// END:  nukeSPAM(tm)
 $user_regdate = date('M d, Y');
 if ($forceLowerCaseUserName) $ya_username = strtolower($ya_username); //Added by Raven 7/3/2005  Modified for RN v2.10.00
 $gfx_check = (isset($gfx_check)) ? check_html(trim($gfx_check) , 'nohtml') : '';
-if (!isset($stop)) {
+if (empty($stop)) {
 	/*
 	 * montego - usegfxcheck is not configurable for RN and only the RN captcha security
 	 * code should be used.  Therefore, to avoid conflicts, following code is being commented out.

@@ -648,7 +648,7 @@ function view_banner($cid, $bid) {
 					</OBJECT>
 					</div><br /><br />";
 			} else {
-				echo '<div class="text-center"><img src="' . $imageurl . '" border="1" alt="' . $alttext . '" title="' . $alttext . '" width="' . $ad_width . '" height="' . $ad_height . '" /></div><br /><br />';
+				echo '<div class="text-center"><img src="' . $imageurl . '" alt="' . $alttext . '" title="' . $alttext . '" style="border: 0 none;' . ($ad_width != '' ? ' width: ' . $ad_width . 'px;' : '') . ($ad_height != '' ? ' height: ' . $ad_height . 'px;' : '') . '" /></div><br /><br />';
 			}
 			echo '<div class="text-center">Banner Information: ' . $row['name'] . '</div><br />'
 				. '<table width="100%" border="1"><tr>'

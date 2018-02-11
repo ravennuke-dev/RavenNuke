@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhWeb_Links extends dhclass {
-	function dhWeb_Links () {
+	function __construct() {
 		global $prefix;
 		$this->content_id        = 'lid';
 		$this->content_table     = $prefix.'_links_links';

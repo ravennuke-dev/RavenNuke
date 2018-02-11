@@ -101,7 +101,7 @@ if ($gid == 0) {
 $result = $db->sql_query($sql . ' LIMIT ' . $min . ',' . $grconfig['perpage']);
 
 if ($db->sql_numrows($result) > 0) {
-	while (list($thisGroup, $thisUser, $sDate, $eDate, $thisName) = $db->sql_fetchrow($result)) {
+	while (list($thisGroup, $thisUser, $sDate, $eDate, $thisName, $thisUID) = $db->sql_fetchrow($result)) {
 		list($grpName, $grpMod) = $db->sql_fetchrow($db->sql_query('SELECT gname, muid FROM ' . $prefix . '_nsngr_groups WHERE gid=\'' . $thisGroup . '\''));
 		$thisDate = time();
 		if ($eDate == '0') {
@@ -112,7 +112,7 @@ if ($db->sql_numrows($result) > 0) {
 			$eDate = date('Y-m-d', $eDate);
 		}
 		echo '<tr bgcolor="' . $bgcolor1 . '" onmouseover="this.style.backgroundColor=\'' . $bgcolor2 . '\'" onmouseout="this.style.backgroundColor=\'' . $bgcolor1 . '\'">';
-		echo '<td align="center">&nbsp;' . $thisName . '&nbsp;</td>';
+		echo '<td align="center">&nbsp;<a class="rn_csrf" href="' . $admin_file . '.php?op=NSNGroupsMemberships&yauserid=' . $thisUID . '">' . $thisName . '</a>&nbsp;</td>';
 		echo '<td align="center">&nbsp;' . $grpName . '&nbsp;</td>';
 		echo '<td align="center">&nbsp;' . date('Y-m-d', $sDate) . '&nbsp;</td>';
 		echo '<td align="center">&nbsp;' . $eDate . '&nbsp;</td>';

@@ -61,7 +61,7 @@ class GCalBlock {
 	//					  title on separate lines
 	// 'excludeCats' - an array of category numbers to exclude from the block
 	//
-	function GCalBlock($year, $month, $day, $config, $blockConfig) {
+	function __construct($year, $month, $day, $config, $blockConfig) {
 		$this->year = $year;
 		$this->month = $month;
 		$this->day = $day;

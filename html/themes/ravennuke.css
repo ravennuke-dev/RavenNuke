@@ -99,7 +99,7 @@ a.button1, input.button1{font-weight:bold}
 /* Default Side Block List Styling */
 .ul-box{width:140px}
 .ol-box{width:120px}
-ol.rn-ol,ul.rn-ul,ul.rn-list,ul.ul-none,ul.ul-circle,ul.ul-square,ul.rn-list ul.rn-ul{margin:0;padding:0;overflow:visible;width:100%;list-style-type:none}
+ol.rn-ol,ul.rn-ul,ul.rn-list,ul.ul-none,ul.ul-circle,ul.ul-square,ul.rn-list ul.rn-ul{margin:0;padding:0;overflow:hidden;width:100%;list-style-type:none}
 ul.rn-ul li,ul.ul-circle li,ul.ul-square li{float:left;width:auto;min-width:120px;min-height:10px;margin:0 0 4px;padding:0 4px 0 20px;list-style-image:none;list-style-position:outside;list-style-type:none}
 ol.rn-ol li{float:left;width:auto;min-width:120px;min-height:16px;margin:0 0 4px;padding:0 4px 0 20px;list-style-image:none;list-style-position:outside;list-style-type:none}
 ul.ul-circle li,ul.rn-ul ul.ul-circle li{background-image: url(../images/blocks/bullet-circle-black.png);background-repeat:no-repeat; background-color:transparent}

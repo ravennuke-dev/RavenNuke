@@ -52,7 +52,7 @@ function popElements() {
       else { cookies.innerHTML = testFalse; }
 
       var js = document.getElementById("jsEnabledId");
-      if (navigator.javaEnabled() && document.forms) { js.innerHTML = testTrue; }
+      if (document.getElementById('jsEnabledId') !== null && document.forms) { js.innerHTML = testTrue; }
       else { js.innerHTML = testFalse; }
 
       var ajax = document.getElementById("ajaxEnabledId");

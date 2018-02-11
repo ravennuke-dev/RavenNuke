@@ -198,8 +198,8 @@ switch ($op) {
 				echo '<form action="modules.php?name='.$module_name.'&amp;file=comments" method="post">';
 				echo '<div class="option thick">'._SUBJECT.':</div><br />';
 				if (!stripos_clone($subject,'Re:')) $subject = 'Re: '.$title.' '.substr($subject,0,81);
-				echo '<input type="text" name="subject" size="40" maxlength="85" value="'.$subject.'" /><br />';
-				wysiwyg_textarea("comment", "", "Basic", "20", "8");
+				echo '<input type="text" name="subject" size="40" maxlength="85" value="'.$subject.'" /><br /><br />';
+				wysiwyg_textarea("comment", "", "PHPNuke", "20", "8");
 				if (is_user($user) AND ($anonpost == 1)) {
 					echo '<input type="checkbox" name="xanonpost" /> '._POSTANON.'<br />';
 				}

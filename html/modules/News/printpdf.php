@@ -130,6 +130,7 @@ $pdf->WriteHTML($htmlcontent, true, 0, true, 0);
 
 
 //Close and output PDF document
+ob_end_clean();
 $pdf->Output('articles'.$sid.'.pdf', 'I');
 }else{
 echo 'There was an error';
@@ -137,4 +138,3 @@ echo 'There was an error';
 //============================================================+
 // END OF FILE
 //============================================================+
-?>

@@ -19,7 +19,7 @@ if (!file_exists($nukeConfigFile)) {
 	die();
 }
 @require_once $nukeConfigFile;
-$conn = @mysql_connect($dbhost,$dbuname,$dbpass) or die('No Connection to MySQL Server');
+$conn = @mysqli_connect($dbhost,$dbuname,$dbpass) or die('No Connection to MySQL Server');
 include_once('functions/phpGetSetting.func.php');
 include_once('functions/mysqlTest.func.php');
 include_once('functions/chkFileExists.func.php');
@@ -134,19 +134,19 @@ $version = "RavenNuke&trade; $version_number - Scheduled Release Date: $filedate
 								</tr>
 								<tr>
 									<td>
-										&nbsp; - MySQL support
+										&nbsp; - MySQLi support
 									</td>
 									<td align="left">
-								<?php echo function_exists( 'mysql_connect' ) ? '<span class="greenbold">Available</span>' : '<span class="redbold">Unavailable</span>';?>
+								<?php echo function_exists( 'mysqli_connect' ) ? '<span class="greenbold">Available</span>' : '<span class="redbold">Unavailable</span>';?>
 									</td>
 								</tr>
-						<?php if (function_exists( 'mysql_connect' )) { ?>
+						<?php if (function_exists( 'mysqli_connect' )) { ?>
 							<tr>
 								<td>
 									&nbsp;&nbsp;&nbsp; - MySQL Server API Version
 								</td>
 								<td align="left">
-									<?php echo '<span class="greenbold">'.mysql_get_server_info($conn).'</span>';?>
+									<?php echo '<span class="greenbold">'.mysqli_get_server_info($conn).'</span>';?>
 								</td>
 							</tr>
 							<tr>
@@ -154,10 +154,10 @@ $version = "RavenNuke&trade; $version_number - Scheduled Release Date: $filedate
 									&nbsp;&nbsp;&nbsp; - MySQL Client API Version
 								</td>
 								<td align="left">
-									<?php echo '<span class="greenbold">'.mysql_get_client_info().'</span>';?>
+									<?php echo '<span class="greenbold">'.mysqli_get_client_info().'</span>';?>
 								</td>
 							</tr>
-						<?php if (function_exists( 'mysql_connect' )) { mysql_close($conn); }} ?>
+						<?php if (function_exists( 'mysqli_connect' )) { mysqli_close($conn); }} ?>
 								<tr>
 									<td>
 										&nbsp; - Server API
@@ -251,7 +251,7 @@ $version = "RavenNuke&trade; $version_number - Scheduled Release Date: $filedate
 										<?php
 											} else {
 										?>
-											<span style="color:red font-weight:bold;">
+											<span style="color:red; font-weight:bold;">
 										<?php
 											}
 											echo phpGetSetting($phprec[1]);

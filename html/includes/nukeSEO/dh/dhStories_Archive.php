@@ -10,7 +10,7 @@
 /************************************************************************/
 
 class dhStories_Archive extends dhclass {
-	function dhStories_Archive () {
+	function __construct() {
 	}
 	function getModuleTitlePrefix() {
 		global $sa, $month_l, $year;

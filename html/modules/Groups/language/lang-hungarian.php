@@ -140,5 +140,5 @@ define('_MVSUBUSERS','Subscribers Only');
 define('_SOCOOL','You are so cool...');
 define('_WHATGRDESC','View must be SET to Groups Only');
 define('_WHATGROUPS','What Groups');
-
+define('_GR_MEMBERSHIPS','Memberships');
 ?>

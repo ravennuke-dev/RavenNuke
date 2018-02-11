@@ -25,7 +25,7 @@ class CLinkedSelect
 	  var $fieldValues;
 	  var $selectedPrimary;
      
-    function CLinkedSelect  () 
+    function __construct() 
     {
 		$this->formName = ""; 
 		$this->primaryFieldName = ""; 

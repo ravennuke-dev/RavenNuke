@@ -3,10 +3,9 @@
 /* Tags Module                                                          */
 /* Using RavenNuke(tm) v2.4+                                            */
 /************************************************************************/
-
-if (stristr(htmlentities($_SERVER['PHP_SELF']), 'head-Tags.php')) {
-	Header('Location: ../../index.php');
-	die();
+if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
+	header('Location: ../../index.php');
+	exit('Access Denied');
 }
 $PreferredTagsStyle = 'tags.css';
 $ThemeSel = get_theme();

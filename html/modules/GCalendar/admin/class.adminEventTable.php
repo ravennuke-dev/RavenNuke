@@ -38,7 +38,7 @@ class AdminEventTable {
 	var $showRsvp = false;
 	var $config = array();
 
-	function AdminEventTable($sortBy, $approveMode, $url, $backTo, $config) {
+	function __construct($sortBy, $approveMode, $url, $backTo, $config) {
 		switch ($sortBy) {
 			case 'id':
 			case 'start_date':

@@ -37,7 +37,7 @@ class RNComm_FormFactory
    var $modules = array();    // array of active modules to check comments for
 
    // constructor:
-   function RNComm_FormFactory($path)
+   function __construct($path)
    {
       $this->modPath = $path;
       $this->_getModules();

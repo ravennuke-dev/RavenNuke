@@ -35,7 +35,7 @@ class RNComm_HtmlList
    var $items = array();
    var $ordered;
 
-   function RNComm_HtmlList($items = array(), $ordered = false)
+   function __construct($items = array(), $ordered = false)
    {
       if (is_array($items))
       {

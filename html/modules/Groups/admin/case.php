@@ -37,6 +37,7 @@ switch ($op) {
 	case 'NSNGroupsUsersUpdateSave':
 	case 'NSNGroupsUsersView':
 	case 'NSNGroupsView':
+	case 'NSNGroupsMemberships':
 		include_once('modules/Groups/admin/index.php');
 		break;
 }

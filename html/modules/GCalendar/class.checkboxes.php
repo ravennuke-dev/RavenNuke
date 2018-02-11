@@ -44,9 +44,9 @@ class Checkboxes {
 	//
 	// $horizontal - when true, boxes are arranged horizontally; false => vertically
 
-	function Checkboxes($name, $items = array(), $horizontal = true) {
-		$this->name		 = $name;
-		$this->items		= $items;
+	function __construct($name, $items = array(), $horizontal = true) {
+		$this->name = $name;
+		$this->items = $items;
 		$this->horizontal = $horizontal;
 	}
 

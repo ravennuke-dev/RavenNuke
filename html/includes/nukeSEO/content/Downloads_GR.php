@@ -16,7 +16,7 @@ if (stristr(htmlentities($_SERVER['PHP_SELF']), 'Downloads_GR.php')) {
 
 class seoDownloads_GR extends seocontentclass
 {
-	function seoDownloads_GR ()
+	function __construct()
   {
 		global $prefix;
 		$this->name                  = 'Downloads';

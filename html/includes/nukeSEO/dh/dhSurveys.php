@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhSurveys extends dhclass {
-	function dhSurveys () {
+	function __construct() {
 		global $prefix;
 		$this->content_id        = 'pollID';
 		$this->content_table     = $prefix.'_poll_desc';

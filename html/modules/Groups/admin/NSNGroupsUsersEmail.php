@@ -15,8 +15,11 @@ if (!defined('ADMIN_FILE') || !defined('RN_GROUPS')) {
 }
 
 $pagetitle = _GR_ADMIN . ': ' . _GR_GROUPSEMAIL;
-
 include_once ('header.php');
+
+global $sitename, $adminmail;
+$aname = $sitename;
+$amail = $adminmail;
 
 title($pagetitle);
 NSNGroupsAdmin();

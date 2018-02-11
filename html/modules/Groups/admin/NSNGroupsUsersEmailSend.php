@@ -14,6 +14,10 @@ if (!defined('ADMIN_FILE') || !defined('RN_GROUPS')) {
 	die ('Access Denied');
 }
 
+global $sitename, $adminmail;
+$aname = $sitename;
+$amail = $adminmail;
+
 !empty($_POST['gcontent']) ? $gcontent = check_html($_POST['gcontent'], 'nohtml') : Header('Location: ' . $admin_file . '.php?op=NSNGroupsUsersEmail');
 !empty($_POST['gsubject']) ? $gsubject = check_html($_POST['gsubject'], 'nohtml') : $gsubject = '';
 if (!empty($_POST['gid']) && is_array($_POST['gid'])) {

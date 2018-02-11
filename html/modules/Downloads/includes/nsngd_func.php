@@ -696,11 +696,14 @@ function showresulting($lid) {
 			echo _DL_NOTLIST;
 		}
 		$result2 = $db->sql_query('SELECT * FROM `' . $prefix . '_nsngd_categories` WHERE `cid` = ' . $lidinfo['cid']);
-		$cidinfo = $db->sql_fetchrow($result2);
-		$cidinfo['title'] = '<a href="modules.php?name=' . $module_name . '&amp;cid=' . $lidinfo['cid'] . '">'
-			. htmlspecialchars($cidinfo['title'], ENT_QUOTES, _CHARSET) . '</a>';
-		$cidinfo['title'] = getparentlink($cidinfo['parentid'], $cidinfo['title']);
-		echo '<br /><strong>' . _DL_CATEGORY . ':</strong> ' . $cidinfo['title'];
+		$numrows = $db->sql_numrows($result2);
+		if ($numrows == 1) {
+			$cidinfo = $db->sql_fetchrow($result2);
+			$cidinfo['title'] = '<a href="modules.php?name=' . $module_name . '&amp;cid=' . $lidinfo['cid'] . '">'
+				. htmlspecialchars($cidinfo['title'], ENT_QUOTES, _CHARSET) . '</a>';
+			$cidinfo['title'] = getparentlink($cidinfo['parentid'], $cidinfo['title']);
+		}
+		echo '<br /><strong>' . _DL_CATEGORY . ':</strong> ' . ($numrows == 1 ? $cidinfo['title'] : _DL_NONE);
 	} else {
 		restricted2($lidinfo['sid']);
 	}

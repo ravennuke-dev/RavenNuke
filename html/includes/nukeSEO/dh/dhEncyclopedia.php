@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhEncyclopedia extends dhclass {
-	function dhEncyclopedia () {
+	function __construct() {
 		global $prefix;
 		$this->content_id        = 'tid';
 		$this->content_table     = $prefix.'_encyclopedia_text';

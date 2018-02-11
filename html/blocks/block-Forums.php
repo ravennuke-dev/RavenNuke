@@ -38,7 +38,7 @@ require_once NUKE_MODULES_DIR . 'Forums/includes/constants.php';
 
 if (!function_exists('auth')) {
 	function auth($userdata) {
-		global $db, $prefix;
+		global $db, $prefix, $user;
 
 		$a_sql = 'auth_view, auth_read';
 		$auth_fields = array('auth_view', 'auth_read');
@@ -62,23 +62,26 @@ if (!function_exists('auth')) {
 		*/
 		$u_access = array();
 
-		$sql = 'SELECT a.forum_id, ' . $a_sql . ', a.auth_mod '
-					. 'FROM `' . $prefix . '_bbauth_access` a, `' . $prefix . '_bbuser_group` ug '
-					 . 'WHERE ug.user_id = ' . $userdata['user_id']
-				 		. ' AND ug.user_pending = 0'
-						. ' AND a.group_id = ug.group_id';
-		$result = $db->sql_query($sql);
+		if (is_user($user)) {
+			$sql = 'SELECT a.forum_id, ' . $a_sql . ', a.auth_mod '
+						. 'FROM `' . $prefix . '_bbauth_access` a, `' . $prefix . '_bbuser_group` ug '
+						. 'WHERE ug.user_id = ' . $userdata['user_id']
+							. ' AND ug.user_pending = 0'
+							. ' AND a.group_id = ug.group_id';
+			$result = $db->sql_query($sql);
 
-		if ( $row = $db->sql_fetchrow($result) ) {
-			do{
-					$u_access[$row['forum_id']][] = $row;
-			} while( $row = $db->sql_fetchrow($result) );
+			if ( $row = $db->sql_fetchrow($result) ) {
+				do{
+						$u_access[$row['forum_id']][] = $row;
+				} while( $row = $db->sql_fetchrow($result) );
+			}
+			/*
+			* Is user an admin?
+			*/
+			$is_admin = ( $userdata['user_level'] == 2 ) ? TRUE : 0;
+		} else {
+			$is_admin = 0;
 		}
-
-		/*
-		* Is user an admin?
-		*/
-		$is_admin = ( $userdata['user_level'] == 2 ) ? TRUE : 0;
 
 		$auth_user = array();
 		for($i = 0; $i < count($auth_fields); $i++) {

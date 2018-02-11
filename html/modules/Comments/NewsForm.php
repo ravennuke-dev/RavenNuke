@@ -32,9 +32,9 @@
 
 class RNComm_NewsForm extends RNComm_FormBase
 {
-   function RNComm_NewsForm($selModule, $modules)
+   function __construct($selModule, $modules)
    {
-      parent::RNComm_FormBase($selModule, $modules);
+      parent::__construct($selModule, $modules);
    }
 
    function _getItems($n, $user)

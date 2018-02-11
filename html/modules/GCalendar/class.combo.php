@@ -37,7 +37,7 @@ class Combo {
 	var $attrs = array();
 	var $titles = array();
 
-	function Combo($name, $items, $selKey = '') {
+	function __construct($name, $items, $selKey = '') {
 		$this->attrs['name'] = $name;
 		$this->attrs['id']	= preg_replace('/^(\w+)\[\d*\]$/', '$1', $name);
 		$this->items			= $items;
@@ -111,12 +111,12 @@ class Combo {
 ///////////////////////////////////////////////////////////////////////
 
 class NumericCombo extends Combo {
-	function NumericCombo($name, $min, $max, $selKey = '', $step = 1) {
+	function __construct($name, $min, $max, $selKey = '', $step = 1) {
 		$items = array();
 		for ($i = $min; $i <= $max; $i += $step) {
 			$items[$i] = $i;
 		}
-		$this->Combo($name, $items, $selKey);
+		parent::__construct($name, $items, $selKey);
 	}
 }
 

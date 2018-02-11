@@ -1,0 +1,40 @@
+/**********************************
+
+Name: formAddNewRow Styles
+
+***********************************/
+form.formAddNewRow {
+	width: 600px;
+	font-size: 1.0em;
+}
+
+form.formAddNewRow legend {
+	padding-left: 0;
+}
+
+form.formAddNewRow legend, form.formAddNewRow label {
+}
+
+form.formAddNewRow fieldset {
+	border: none;
+}
+
+form.formAddNewRow fieldset fieldset {
+	background: none;
+}
+
+form.formAddNewRow fieldset p, form.formAddNewRow fieldset fieldset {
+	padding: 5px 10px 7px;
+}
+
+form.formAddNewRow label.error, label.error {
+	/* remove the next line when you have trouble in IE6 with labels in list */
+	color: red;
+	font-style: italic
+}
+label.error, div.error { display: none; }
+input {	border: 1px solid black; }
+input:focus { border: 1px dotted black; }
+input.error { border: 1px dotted red; }
+form.formAddNewRow .gray * { color: gray; }
+div.ui-dialog {min-width: 450px;}

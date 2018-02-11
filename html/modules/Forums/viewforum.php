@@ -467,9 +467,9 @@ $template->set_filenames(array(
 );
    // Added by Attached Forums MOD
 
-if ($forum_row[attached_forum_id]>0)
+if ($forum_row['attached_forum_id']>0)
 {
-	$parent_lookup=$forum_row[attached_forum_id];
+	$parent_lookup = $forum_row['attached_forum_id'];
 }
    // END Added by Attached Forums MOD
 make_jumpbox('viewforum.'.$phpEx);

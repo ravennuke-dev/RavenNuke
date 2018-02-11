@@ -9,7 +9,7 @@
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
 class dhDownloads extends dhclass {
-	function dhDownloads () {
+	function __construct() {
 		global $prefix;
 		$this->content_id        = 'lid';
 		$this->content_table     = $prefix.'_nsngd_downloads';

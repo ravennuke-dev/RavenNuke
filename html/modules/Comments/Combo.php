@@ -40,7 +40,7 @@ class RNComm_Combo
    var $attrs = array();
    var $titles = array();
 
-   function RNComm_Combo($name, $items, $selKey = '')
+   function __construct($name, $items, $selKey = '')
    {
       $this->attrs['name'] = $name;
       $this->attrs['id']   = preg_replace('/^(\w+)\[\d*\]$/', '$1', $name);

@@ -70,7 +70,7 @@ function getusernamefromid($id)
 
 class seoForums extends seocontentclass
 {
-	function seoForums()
+	function __construct()
   {
 		global $prefix, $user_prefix;
     $bbtonukepath = 'modules/Forums/includes/';

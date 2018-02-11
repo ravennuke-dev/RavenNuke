@@ -41,7 +41,7 @@ class RNComm_FormBase {
 	var $formAction = '';
 	var $adminFeatures = false;
 
-	function RNComm_FormBase($selModule, $modules) {
+	function __construct($selModule, $modules) {
 		$this->selModule = $selModule;
 		$this->modules = $modules;
 		$n = isset($_POST['number']) ? intval($_POST['number']) : 10;

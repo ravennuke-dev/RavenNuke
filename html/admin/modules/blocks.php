@@ -39,12 +39,12 @@ if (is_mod_admin('admin')) {
 		$title = !empty($_POST['title']) ? check_html($_POST['title']) : '';
 		$content = !empty($_POST['content']) ? check_html($_POST['content'], 'nocheck') : '';
 		$url = !empty($_POST['url']) ? check_html($_POST['url']) : '';
-		$active = !empty($_POST['active']) ? intval($_POST['active']) : '';
+		$active = !empty($_POST['active']) ? intval($_POST['active']) : 0;
 		$refresh = !empty($_POST['refresh']) ? intval($_POST['refresh']) : '';
 		$headline = !empty($_POST['headline']) ? check_html($_POST['headline']) : '';
 		$blanguage = !empty($_POST['blanguage']) ? check_html($_POST['blanguage'], 'nohtml') : '';
 		$blockfile = !empty($_POST['blockfile']) ? check_html($_POST['blockfile'], 'nohtml') : '';
-		$view = !empty($_POST['view']) ? intval($_POST['view']) : '';
+		$view = !empty($_POST['view']) ? intval($_POST['view']) : 0;
 		$groups = !empty($_POST['groups']) ? check_html($_POST['groups'],'nohtml') : '';
 		$expire = !empty($_POST['expire']) ? intval($_POST['expire']) : '0';
 		if (!empty($_POST['action'])) {

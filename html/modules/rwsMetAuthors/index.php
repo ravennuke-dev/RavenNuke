@@ -308,8 +308,8 @@ Function MetAuthorsStats (){
    $sql = "SELECT t.topictext AS topicname, count( * ) AS mcount, sum( s.counter ) AS `reads`, round( sum( s.counter ) / count( * ) , 0 ) AS avgreads "
          ."FROM ".$prefix."_stories s, ".$prefix."_topics t "
          ."WHERE t.topicid = s.topic "
-         ."GROUP BY t.topicname "
-         ."order by t.topicname asc ";
+         ."GROUP BY t.topictext "
+         ."order by t.topictext asc ";
    //echo $sql;
    $result = $db->sql_query($sql);
    echo "<table><tr><td><span class='thick'>"._TOPIC."</span></td><td><span class='thick'>"._NUMSTORIES."</span></td><td><span class='thick'>"._STORYREADS."</span></td><td><span class='thick'>"._STORYAVGREADS."</span></td></tr>";
@@ -327,8 +327,8 @@ Function MetAuthorsStats (){
          ."FROM `".$prefix."_stories` s "
          ."LEFT JOIN `".$prefix."_stories_cat` c ON s.catid = c.catid "
          ."WHERE 1  "
-         ."GROUP BY category "
-         ."ORDER BY category ASC  ";
+         ."GROUP BY c.Title "
+         ."ORDER BY c.Title ASC  ";
    //echo $sql;
    $result = $db->sql_query($sql);
    echo "<table><tr><td><span class='thick'>"._TOPIC."</span></td><td><span class='thick'>"._NUMSTORIES."</span></td><td><span class='thick'>"._STORYREADS."</span></td><td><span class='thick'>"._STORYAVGREADS."</span></td></tr>";

@@ -990,9 +990,9 @@ $template->set_filenames(array(
    'pollbody' => 'posting_poll_body.tpl',
    'reviewbody' => 'posting_topic_review.tpl')
 );
-if ($post_info[attached_forum_id]>0)
+if ($post_info['attached_forum_id']>0)
 {
-	$parent_lookup=$post_info[attached_forum_id];
+	$parent_lookup = $post_info['attached_forum_id'];
 }
 make_jumpbox('viewforum.'.$phpEx);
 

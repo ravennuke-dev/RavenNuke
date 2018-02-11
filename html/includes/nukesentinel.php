@@ -1029,7 +1029,8 @@ function is_god($axadmin = '') {
 		return 0;
 	}
 	static $adminSave;
-	if (!empty($adminSave)) return 1;
+	# combining isset() && !empty() suggested by montego 2017.12.13
+	if (isset($adminSave) && !empty($adminSave)) return 1;
 	$tmpadm = st_clean_string(base64_decode($axadmin));
 	if (preg_match(REGEX_UNION, $tmpadm)) { block_ip($blocker_array[1]); }
 	if (preg_match(REGEX_UNION, base64_decode($tmpadm))) { block_ip($blocker_array[1]); }

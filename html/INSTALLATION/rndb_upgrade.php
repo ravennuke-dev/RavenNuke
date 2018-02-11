@@ -2,7 +2,7 @@
 /**
  * Written and solely owned by Raven Web Services, LLC
  * Not for distribution other than by Raven Web Services, LLC
- * Copyright 2005-2013
+ * Copyright 2005-2018
  *
  * INSTRUCTIONS FOR NEW VERSION UPDATES:
  *
@@ -125,7 +125,7 @@ if ($phpok && $db->connectionError) {
 require_once INCLUDE_PATH . 'includes/mimetype.php';
 
 echo '<meta name="rating" content="general" />' , "\n"
-	, '<meta name="generator" content="PHP Web Host - Quality Web Hosting For All PHP Applications - Copyright (c) 2002-2013 by http://www.ravenphpscripts.com" />' , "\n"
+	, '<meta name="generator" content="PHP Web Host - Quality Web Hosting For All PHP Applications - Copyright (c) 2002-2018 by http://www.ravenphpscripts.com" />' , "\n"
 	, '<link rel="StyleSheet" href="css/ravenstaller.css" type="text/css" />' , "\n"
 	, '<link rel="stylesheet" href="windowfiles/dhtmlwindow.css" type="text/css" />' , "\n"
 	, '<link rel="stylesheet" href="modalfiles/modal.css" type="text/css" />' , "\n"
@@ -152,7 +152,7 @@ echo '
 <body class="c1">
 <div class="c1">
 	<img style="float:left;" src="images/logo.gif" border="0" alt="" />
-	<span class="c5">' , _rnRAVENNUKE , '&trade; &copy; 2005-2013 - v' , RAVENNUKE_VERSION_FRIENDLY , ' Database Upgrade Script</span>
+	<span class="c5">' , _rnRAVENNUKE , '&trade; &copy; 2005-2018 - v' , RAVENNUKE_VERSION_FRIENDLY , ' Database Upgrade Script</span>
 </div>
 <br /><br /><br />
 <div>
@@ -249,7 +249,7 @@ if ($update == 1) {
 
 echo '<br /><br /><hr />'
 	, '<div align="center" class="msg">'
-	, _rnCOPYRIGHT , ' 2005-2013 &copy;Raven Web Services<span class="c1"><sup>&trade;</sup></span>, LLC -- ' , _rnALL_RIGHTS , ' --<br />'
+	, _rnCOPYRIGHT , ' 2005-2018 &copy;Raven Web Services<span class="c1"><sup>&trade;</sup></span>, LLC -- ' , _rnALL_RIGHTS , ' --<br />'
 	, _rnNO_PORTION , ' Raven Web Services<span class="c1"><sup>&trade;</sup></span>, LLC'
 	, '</div>'
 	, '<hr />'
@@ -1764,7 +1764,7 @@ function rn23002() {
 		.'(11, 0, \'\', 0, 22, \'\', 1, \'INDEX, FOLLOW\'), '
 		.'(12, 0, \'\', 0, 23, \'\', 1, \'1 DAY\'), '
 		.'(13, 0, \'\', 0, 24, \'\', 1, \'GENERAL\'), '
-		.'(14, 0, \'\', 0, 25, \'\', 1, \'RavenNuke(tm) Copyright (c) 2002-2013 by Gaylen Fraley. This is free software, and you may redistribute it under the GPL '
+		.'(14, 0, \'\', 0, 25, \'\', 1, \'RavenNuke(tm) Copyright (c) 2002-2018 by Gaylen Fraley. This is free software, and you may redistribute it under the GPL '
 		.'(http://www.gnu.org/licenses/gpl-2.0.txt). RavenNuke(tm) is supported by the RavenNuke(tm) Team at http://www.ravenphpscripts.com .\')';
 		sqlexec($sql);
 	}
@@ -1795,13 +1795,13 @@ function rn23002() {
 		.'(16, 1500, \'name\', \'RESOURCE-TYPE\', \'DOCUMENT\', 1), '
 		.'(17, 1600, \'name\', \'DISTRIBUTION\', \'GLOBAL\', 1), '
 		.'(18, 1700, \'name\', \'AUTHOR\', \'$sitename\', 1), '
-		.'(19, 1800, \'name\', \'COPYRIGHT\', \'Copyright (c) 2013 by $sitename\', 1), '
+		.'(19, 1800, \'name\', \'COPYRIGHT\', \'Copyright (c) 2018 by $sitename\', 1), '
 		.'(20, 1900, \'name\', \'DESCRIPTION\', \'$slogan\', 1), '
 		.'(21, 2000, \'name\', \'KEYWORDS\', \'news, technology, headlines, nuke, phpnuke, php-nuke, geek, geeks, hacker, hackers\', 1), '
 		.'(22, 2100, \'name\', \'ROBOTS\', \'INDEX, FOLLOW\', 1), '
 		.'(23, 2200, \'name\', \'REVISIT-AFTER\', \'1 DAY\', 1), '
 		.'(24, 2300, \'name\', \'RATING\', \'GENERAL\', 1), '
-		.'(25, 2400, \'name\', \'GENERATOR\', \'RavenNuke(tm) Copyright (c) 2002-2013 by Gaylen Fraley. This is free software, and you may redistribute it under the GPL '
+		.'(25, 2400, \'name\', \'GENERATOR\', \'RavenNuke(tm) Copyright (c) 2002-2018 by Gaylen Fraley. This is free software, and you may redistribute it under the GPL '
 		.'(http://www.gnu.org/licenses/gpl-2.0.txt). RavenNuke(tm) is supported by the RavenNuke(tm) Team at http://www.ravenphpscripts.com .\', 1)';
 		sqlexec($sql);
 	}
@@ -2506,7 +2506,52 @@ function rn25000() {
 	return;
 }
 
-function check_html ($string, $allowed_html = '', $allowed_protocols = array('http', 'https', 'ftp', 'news', 'nntp', 'gopher', 'mailto')) {
+/**
+ * Performs updates needed to go from 2.51.00 to 2.52.00
+ */
+function rn25100() {
+	global $db, $dbErrors, $prefix, $user_prefix;
+	static $already_ran;
+	if (isset($already_ran)) return 1;
+
+	# 2017.12.17 neralex: Change default values for DATE and DATETIME fields
+	# http://dev.mysql.com/doc/refman/5.7/en/datetime.html
+	# http://mysqlblog.fivefarmers.com/2012/05/29/overlooked-mysql-5-6-new-features-timestamp-and-datetime-improvements/
+
+	$sql = 'ALTER TABLE `' . $prefix . '_banned_ip` CHANGE `date` `date` DATE NULL DEFAULT NULL';
+	sqlexec($sql);
+
+	$sql = 'ALTER TABLE `' . $prefix . '_banner` CHANGE `ad_width` `ad_width` INT(4) NULL DEFAULT NULL';
+	# 2018.01.06 neralex: DEFAULT value changed to get an empty field instead of 0
+	sqlexec($sql);
+
+	$sql = 'ALTER TABLE `' . $prefix . '_banner` CHANGE `ad_height` `ad_height` INT(4) NULL DEFAULT NULL';
+	# 2018.01.06 neralex: DEFAULT value changed to get an empty field instead of 0
+	sqlexec($sql);
+
+	$sql = 'ALTER TABLE `' . $prefix . '_links_editorials` CHANGE `editorialtimestamp` `editorialtimestamp` DATETIME NULL DEFAULT NULL';
+	sqlexec($sql);
+
+	$sql = 'ALTER TABLE `' . $prefix . '_links_votedata` CHANGE `ratingtimestamp` `ratingtimestamp` DATETIME NULL DEFAULT NULL';
+	sqlexec($sql);
+
+	$sql = 'ALTER TABLE `' . $prefix . '_nsngd_downloads` CHANGE `date` `date` DATETIME NULL DEFAULT NULL';
+	sqlexec($sql);
+
+	$sql = 'ALTER TABLE `' . $prefix . '_nsngd_new` CHANGE `date` `date` DATETIME NULL DEFAULT NULL';
+	sqlexec($sql);
+
+	$sql = 'ALTER TABLE `' . $prefix . '_queue` CHANGE `timestamp` `timestamp` DATETIME NULL DEFAULT NULL';
+	sqlexec($sql);
+
+	$sql = 'ALTER TABLE `' . $prefix . '_reviews` CHANGE `date` `date` DATE NULL DEFAULT NULL';
+	sqlexec($sql);
+
+	$already_ran = true;
+	return;
+}
+
+function check_html($string, $allowed_html = '', $allowed_protocols = array('http', 'https', 'ftp', 'news', 'nntp', 'gopher', 'mailto')) {
 	require_once INCLUDE_PATH . 'includes/kses/kses.php';
 
 	if (stripos($allowed_html, 'nocheck') === true) {
@@ -2521,7 +2566,12 @@ function check_html ($string, $allowed_html = '', $allowed_protocols = array('ht
 		return htmlspecialchars_decode(kses($string, $allowed_html, $allowed_protocols));
 	}
 }
-
+/* 
+* neralex 2017-11-05:
+* mysql_error() is deprecated in php7, its only mysqli allowed and this needs min. 1 parameter with the db-link, which isn't set in this file.
+* function rnInstallErr is not in use in this file.
+* Is this function really need it here?
+*/
 function rnInstallErr($errNum, $sqlFileName = '', $lineNumberInFile = '', $line = '') {
 	switch($errNum) {
 		case 1:

@@ -78,7 +78,7 @@ class Legal_Document
 	 *
 	 * @param  string  $srcModule is the Module name this object request is for in case its needed for a return link
 	 */
-	function Legal_Document($srcModule='')
+	function __construct($srcModule='')
 	{
 		if (!empty($srcModule)) $this->modFrom = $srcModule;
 		if (defined('ADMIN_FILE')) $this->inAdmin = true;

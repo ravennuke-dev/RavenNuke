@@ -53,6 +53,7 @@ function NSNGroupsAdmin() {
 	echo '<td align="center" valign="top" width="150">';
 	echo '<a href="' . $admin_file . '.php?op=NSNGroupsUsersAdd">' . _GR_GROUPSUSERSADD . '</a><br />';
 	echo '<a href="' . $admin_file . '.php?op=NSNGroupsUsersView">' . _GR_GROUPSUSERSVIEW . '</a> (' . $usrnum . ')<br />';
+	echo '<a href="' . $admin_file . '.php?op=NSNGroupsMemberships">' . _GR_MEMBERSHIPS . '</a><br />';
 	echo '</td></tr>';
 	echo '<tr><td colspan="3" align="center"><a href="' . $admin_file . '.php">' . _MAINADMINMENU . '</a></td></tr>';
 	echo '</table></div>';

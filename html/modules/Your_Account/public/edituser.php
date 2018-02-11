@@ -278,7 +278,8 @@ if ((is_user($user)) AND (strtolower($userinfo['username']) == strtolower($cooki
 	} else {
 		$form_lang = $board_config['default_lang'];
 	}
-	while ( list($displayname, $filename) = each($lang) ) {
+	foreach ($lang as $displayname => $filename) {
+	#while ( list($displayname, $filename) = each($lang) ) {
 		$selected = ( strtolower($form_lang) == strtolower($filename) ) ? ' selected="selected"' : '';
 		echo '<option value="' . $filename . '"' . $selected . '>' . ucwords($displayname) . '</option>';
 	}
@@ -356,13 +357,13 @@ if ((is_user($user)) AND (strtolower($userinfo['username']) == strtolower($cooki
 	@ksort($avatar_images);
 	@reset($avatar_images);
 	if (empty($category)) {
-		list($category,) = each($avatar_images);
+		foreach($avatar_images as $category => $value);
 	}
 	@reset($avatar_images);
 	$s_categories = '<select name="avatarcategory">';
-	while (list($key) = each($avatar_images)) {
+	foreach ($avatar_images as $key => $value) {
 		$selected = ($key == $category) ? ' selected="selected"' : '';
-		if (count($avatar_images[$key])) {
+		if (is_array($avatar_images[$key]) && count($avatar_images[$key])) {
 			$s_categories.='<option value="' . $key . '"' . $selected . '>' . ucfirst($key) . '</option>';
 		}
 	}

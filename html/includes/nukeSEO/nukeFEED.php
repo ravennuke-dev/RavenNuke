@@ -85,7 +85,7 @@ function output_nukeFEED($fid, $type)
 
   if ($fid >0)
   {
-    $feed = $db->sql_fetchrow($db->sql_query('SELECT * FROM '.$prefix.'_seo_feed WHERE fid = '.$fid));
+    $feed = $db->sql_fetchrow($db->sql_query('SELECT * FROM `'.$prefix.'_seo_feed` WHERE `active` = 1 AND `fid` = '.$fid));
     if ($feed['content']=='')
     {
 #      header('HTTP/1.0 404 Not Found');

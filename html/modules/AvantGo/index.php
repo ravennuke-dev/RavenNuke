@@ -40,6 +40,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"'."\n".' "ht
 echo '<html xmlns="http://www.w3.org/1999/xhtml">'."\n"
     .'<head>'."\n"
     .'<title>'."$sitename".' - AvantGo</title>'."\n"
+    .'<meta http-equiv="Content-Type" content="text/html; charset='._CHARSET.'" />'."\n"
     .'<meta name="HandheldFriendly" content="True" />'."\n"
     .'</head>'."\n"
     .'<body>'."\n\n\n"
@@ -58,7 +59,7 @@ if (!$result) {
     for ($m=0; $m < $db->sql_numrows($result); $m++) {
         $row = $db->sql_fetchrow($result);
 	$sid = intval($row['sid']);
-	$title = stripslashes(check_html($row['title'], 'nohtml'));
+	$title = htmlentities($row['title'], ENT_QUOTES, _CHARSET);
 	$time = $row['time'];
         echo "\t\t".'<tr>'."\r\n"
 	    ."\t\t\t".'<td><a href="modules.php?name='."$module_name".'&amp;file=print&amp;sid='.$sid.'">'."$title".'</a></td>'."\r\n"

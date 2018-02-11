@@ -46,6 +46,14 @@ if ($ya_config['doublecheckemail'] == 0) {
 	}
 }
 ya_mailCheck($ya_user_email);
+// BEGIN:  nukeSPAM(tm)
+if (function_exists('nukeSPAM') and empty($errormsg) and empty($stop)) {
+	$nukeSPAM = nukeSPAM($ya_username, $ya_user_email);
+	$errormsg = $nukeSPAM;
+} else {
+	$nukeSPAM = array();
+}
+// END:  nukeSPAM(tm)
 $femail = (isset($femail)) ? check_html($femail, 'nohtml') : '';
 $user_website = (isset($user_website)) ? check_html($user_website) : '';
 $user_aim = (isset($user_aim)) ? check_html($user_aim, 'nohtml') : '';

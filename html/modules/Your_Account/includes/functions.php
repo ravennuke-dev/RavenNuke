@@ -493,4 +493,7 @@ function notuser() {
 	CloseTable();
 	include_once 'footer.php';
 }
+# BEGIN:  nukeSPAM(tm)
+include_once NUKE_MODULES_DIR . 'nukeSPAM/nukeSPAM.php';
+# END:  nukeSPAM(tm)
 ?>
