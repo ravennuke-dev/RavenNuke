@@ -1,0 +1,18 @@
+.nukeNAV,.nukeNAV *{z-index:2;list-style:none;margin:0;padding:0;}
+#navigation .nukeNAV a{border:0;padding:8px 6px;margin:0;}
+.nukeNAV a,.nukeNAV a:visited{color:#fff;}
+#navigation .nukeNAV li{background:transparent;}
+#navigation .nukeNAV li:hover,.nukeNAV li.sfHover,.nukeNAV a:focus,.nukeNAV a:hover,.nukeNAV a:active{background:#330303;color:#fff;outline:0; border:0;}
+#navigation .nukeNAV li li,.nukeNAV li li li{background:#330303}
+#navigation .nukeNAV a.sf-with-ul{padding-right:2.0em;min-width:1px;}
+#navigation .nukeNAV li li a, #navigation .nukeNAV li li li a{font-size:10px;padding-left:0;padding-right:0;width:10em;}
+.nukeNAVmod a,.nukeNAVmod a:visited{color:#ccc;}
+.nukeNAVmod li:hover,.nukeNAVmod li.sfHover,.nukeNAVmod a:focus,.nukeNAVmod a:hover,.nukeNAVmod a:active{color:#ccc;background:#330303;outline:0;}
+.nukeNAVmod li:hover ul,.nukeNAVmod li.sfHover ul{z-index:99;left:17em;top:0;}
+.nukeNAVmod li,.nukeNAVmod li li,.nukeNAVmod li li li{background:#420C0C;}
+.nukeNAVmod li li,.nukeNAVmod li li li{padding:2;margin:0;}
+.nukeNAVmod .sf-sub-indicator{background:url(../../../includes/jquery/css/images/arrows-ffffff.png) no-repeat -10px -100px;}
+.nukeNAV-center .sf-sub-indicator{background:url(../../../includes/jquery/css/images/arrows-ffffff.png) no-repeat -10px -100px;}
+/* open the hover menu on the correct side for right/left blocks */
+.ct-right .nukeNAVmod li:hover ul,.ct-right .nukeNAVmod li.sfHover ul{left:-14.5em;top:0;} /* right column */
+.ct-left .nukeNAVmod li:hover ul,.ct-left .nukeNAVmod li.sfHover ul{left:100%;top:0;}  /* left column */

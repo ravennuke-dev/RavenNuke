@@ -1,0 +1,119 @@
+#####################################################
+#  READ THIS COMPLETELY IF YOU CHOOSE TO USE THIS FILE
+#  THESE INSTRUCTIONS APPLY TO ALL Options DIRECTIVES
+#
+# The lines below this section that begin with Options may cause problems
+# with some server configurations.  They are required for certain functions
+# of Apache and RavenNuke(tm), but may already be set by your server administrator in a way
+# that dissallows changing them in your .htaccess file.  If using any of them causes your server
+# to error out, comment them out (add # to beginning of line), reload your site in your browser
+# and test the functionality that is affected.  If it works, then it has been set by your server
+# administrator and you do not need it set here.
+#####################################################
+
+# 'Options +FollowSymLinks' is required for use of mod_rewrite.
+# Can be commented out if causes errors, see notes above.
+Options +FollowSymLinks
+
+# 'Options +Includes' is required for use of Server Side Includes (SSI), such as custom error pages (like 403.shtml).
+# Can be commented out if causes errors, see notes above.
+Options +Includes
+
+# 'Options -Indexes' is used for controlling directory listings if there is not an index file in a directory (and said directory is readable by the web server).
+# A directory index will be automatically generated and this can prove to be a dangerous security issue.
+# To disable this feature, use: 'Options -Indexes'
+# To enable this feature (not advised), use: 'Options +Indexes'
+# Can be commented out if causes errors, see notes above.
+Options -Indexes
+
+# -------------------------------------------
+# Set search order for index files
+# -------------------------------------------
+DirectoryIndex index.php index.htm index.html
+
+# -------------------------------------------
+# For better performance set FileETag to NONE base on recommendations from
+# http://developer.yahoo.net/blog/archives/2007/07/high_performanc_11.html
+# -------------------------------------------
+FileETag none
+
+# -------------------------------------------
+# Only process if mod_expires is installed
+# For faster load times cache certain types of files for specific amount of time
+# You should adjust these settings based upon your caching requirements
+# -------------------------------------------
+<IfModule mod_expires.c>
+   ExpiresActive On
+   # ExpiresDefault A86400
+   ExpiresByType image/x-icon "access plus 1 month"
+   ExpiresByType text/css "access plus 5 minutes"
+   ExpiresByType image/gif "access plus 1 month"
+   ExpiresByType image/png "access plus 1 month"
+   ExpiresByType image/jpeg "access plus 1 month"
+   ExpiresByType text/plain "access plus 15 minutes"
+   ExpiresByType application/x-shockwave-flash "access plus 1 month"
+   ExpiresByType video/x-flv "access plus 1 month"
+   ExpiresByType application/pdf "access plus 1 month"
+   # ExpiresByType text/html "access plus 5 minutes"
+   ExpiresByType text/javascript "access plus 5 minutes"
+   ExpiresByType application/x-javascript "access plus 5 minutes"
+</IfModule>
+
+# -------------------------------------------
+# Start of NukeSentinel(tm) admin.php Auth
+# -------------------------------------------
+<Files .ftaccess>
+  deny from all
+</Files>
+
+<Files .staccess>
+  deny from all
+</Files>
+
+# -----------------------------------------------------------------------------------------------------
+# Leave this block commented out unless HTTPAuth is NOT available in your NukeSentinel(tm) Admin Panel.
+# This code is mainly for use with CGI Authentication when PHP is compiled as CGI and NOT an Apache module.
+# -----------------------------------------------------------------------------------------------------
+# <Files admin.php>
+#    <Limit GET POST PUT>
+#       require valid-user
+#    </Limit>
+#    AuthName "Restricted"
+#    AuthType Basic
+#   AuthUserFile /path/to/your/.staccess
+# </Files>
+# -----------------------------------------------------------------------------------------------------
+
+# -------------------------------------------
+# If you use TegoNuke(tm) ShortLinks with RavenNuke(tm) then copy your ShortLinks.htaccess file/rules below inbetween
+# the <IfModule> and </IfModule> tags.
+# Only process if mod_rewrite is installed
+# -------------------------------------------
+<IfModule mod_rewrite.c>
+	# TegoNuke(tm) ShortLinks - ShortLinks.htaccess file/rules should go after this line
+
+# -------------------------------------------
+# Error Document Redirects
+# TegoNuke(tm) ShortLinks - ShortLinks.htaccess file MUST be before these directives (See above).
+# If you add a new error redirect then you need to add the corresponding xxx.php file to modules/ErrorDocuments/
+# Format:
+#   ErrorDocument xxx /PATH_TO_ERROR_DOCUMENT_RELATIVE_TO_WEB_SERVER_DOCUMENT_ROOT
+# -------------------------------------------
+
+# -------------------------------------------
+# To prevent a looping redirect anomaly we use this 3 line routine for 404 Page Not Found errors
+# -------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*) /modules.php?name=ErrorDocuments&file=404&rs=$1 [NC,L,R]
+
+ErrorDocument 400 /modules.php?name=ErrorDocuments
+ErrorDocument 401 /modules.php?name=ErrorDocuments
+ErrorDocument 403 /modules.php?name=ErrorDocuments
+ErrorDocument 406 /modules.php?name=ErrorDocuments
+ErrorDocument 500 /modules.php?name=ErrorDocuments
+</IfModule>
+
+# -------------------------------------------
+# Start of NukeSentinel(tm) DENY FROM area
+# -------------------------------------------

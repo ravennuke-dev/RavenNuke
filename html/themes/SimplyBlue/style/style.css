@@ -1,0 +1,960 @@
+@charset "utf-8";
+html
+{
+	height:100%;
+}
+body  {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background: #1e3342;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: #000000;
+	font: 10px Verdana,Helvetica,sans-serif;
+}
+
+#banner_pagetop {
+	padding: 8px 0px 8px 0px;
+	text-align: center;
+	width: 100%;
+}
+
+.thrColFixHdr #container {
+	width: 980px;
+	background: #FFFFFF;
+	margin: 0 auto;
+	border:solid 1px #5a83a1;
+	text-align: left;
+}
+.navigation
+{
+	clear:both;
+	text-align:center;
+}
+.navleft
+{
+	background:url(../images/nav01.png);
+	width:12px;
+	height:39px;
+	float:left;
+	clear:none;
+}
+.navmiddle
+{
+	background:url(../images/nav02.png);
+	background-repeat:repeat-x;
+	float:left;
+	clear:none;
+	width:964px;
+	height:39px;
+}
+.navright
+{
+	background:url(../images/nav03.png);
+	float:left;
+	clear:none;
+	width:4px;
+	height:39px;
+}
+.navlinks, .navlinks a
+{
+	color:#ffffff;
+	font-size:22px;
+	letter-spacing:1px;
+	text-decoration:none;
+	line-height:160%;
+	padding:4px 8px;
+}
+
+.thrColFixHdr #header {
+	clear:both;
+	background:url(../images/header_02.png);
+	background-repeat:no-repeat;
+	width:980px;
+	height:191px;
+}
+
+.thrColFixHdr #header h1
+{
+	margin: 0;
+	padding: 10px 0;
+}
+form {
+	margin: 0;
+	padding: 0;
+}
+
+blockquote {
+	margin: 0 0 0 14px;
+	padding-left: 1em;
+	border-left: 5px solid #DDE6EF;
+	padding-right: 1em;
+}
+a {
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+	color: #1e3342;
+}
+img {
+	border: none;
+}
+hr {
+	border: 1px solid #6fa5ce;
+}
+.thrColFixHdr #sidebar1
+{
+	float: left;
+	width: 190px;
+	background: #FFFFFF;
+	padding: 5px;
+	height:100%;
+}
+.thrColFixHdr #sidebar2
+{
+	float: right;
+	width: 190px;
+	background: #FFFFFF;
+	padding: 5px;
+	height:100%;
+}
+.thrColFixHdr #mainContent
+{
+	margin: 5px 200px;
+}
+
+.thrColFixHdr mainContent_full
+{
+	margin:5px;
+}
+.thrColFixHdr #mainContent_alt
+{
+	margin: 5px 5px 5px 200px;
+}
+.thrColFixHdr #footer
+{
+	clear:none;
+}
+.thrColFixHdr #footer1
+{
+	background:url(../images/footer_02.png);
+	width:980px;
+	height:186px;
+	clear:none;
+}
+.thrColFixHdr #footer2
+{
+	background:url(../images/footer_05.png);
+	width:861px;
+	height:39px;
+	clear:none;
+	float:left;
+	margin-left:-1px;
+	border-left:solid 1px #5a83a1;
+}
+
+.thrColFixHdr #footer3 {
+	width: 119px; height: 39px;
+	float:left;
+	clear:none;
+}
+.thrColFixHdr #footer3 span {
+	float:left;
+	width: 119px; height: 39px;
+	cursor:pointer;
+	border-right:solid 1px #5a83a1;
+}
+
+.thrColFixHdr #footer p
+{
+	margin: 0;
+	padding: 10px 0;
+}
+
+.footimg {
+	background:url(../images/valid-xhtml10.png) no-repeat;
+	width:88px;
+	height:31px;
+	float:left;
+	margin:3px 0px 3px 3px;
+	clear:none;
+}
+
+.footimg img {
+	vertical-align:middle;
+}
+
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+	margin:0px;
+}
+.leftblocks {
+	width:190px;
+	margin-bottom:5px;
+	clear:both;
+}
+.leftleft {
+	background:url(../images/block_08.png);
+	width:2px;
+	height:25px;
+	float:left;
+	clear:none;
+}
+.leftmiddle {
+	background:url(../images/block_09.png) repeat-x;
+	width:185px;
+	height:25px;
+	float:left;
+	clear:none;
+}
+.leftmiddle span {
+	color:#ffffff;
+	font-size:16px;
+	padding:3px 6px;
+	line-height:150%;
+}
+.leftright {
+	background:url(../images/block_11.png);
+	width:3px;
+	height:25px;
+	float:left;
+	clear:none;
+}
+.blockcontent {
+	margin-top:-1px;
+	padding:10px 6px 6px 6px;
+	background:#cee7fa;
+	border-right:1px solid #5a83a1;
+	border-left:1px solid #5a83a1;
+}
+.blockbottom {
+	background:url(../images/blockbottom.gif);
+	margin-top:-3px;
+	width:190px;
+	height:15px;
+}
+
+/*Center Blocks*/
+.centerblockcontent {
+	padding:10px 6px 6px 6px;
+	background:#cee7fa;
+	border:1px solid #5a83a1;
+}
+
+.centerblockcontent h2 {
+	font-size:12px;
+}
+
+.centerblockcontent h1 {
+	font-size: 14px;
+	text-decoration: underline;
+	font-weight: bold;
+	color: #263a49;
+}
+
+.centerblockcontent h2 {
+	font-size: 12px;
+	text-decoration: underline;
+	font-weight: bold;
+	color: #263a49;
+}
+
+.centerblockcontent h3 {
+	font-size: 10px;
+	text-decoration: underline;
+	font-weight: bold;
+	color: #263a49;
+}
+
+.centerbottomleft {
+	background:url(../images/blockbottom_01.png) bottom left;
+	margin-top:-15px;
+	width:5px;
+	height:15px;
+	float:left;
+	clear:none;
+}
+
+.centerbottomright {
+	background:url(../images/blockbottom_04.png) bottom right;
+	margin-top:-15px;
+	width:5px;
+	height:15px;
+	float:right;
+	clear:none;
+}
+
+.centertopleft {
+	background:url(../images/blocktop_01.png) top left;
+	margin-top:0px;
+	width:5px;
+	height:15px;
+	float:left;
+	clear:none;
+}
+
+.centertopright {
+	background:url(../images/blocktop_04.png) top right;
+	margin-top:0px;
+	width:5px;
+	height:15px;
+	float:right;
+	clear:none;
+}
+.centerblocks {
+	margin-bottom:5px;
+	margin-right:5px;
+	margin-left:5px;
+	margin-top:0px;
+	float:left;
+	clear:none;
+	width:98%;
+}
+.centerblocks .centerblocks {
+	margin:5px;
+	float:none;
+}
+
+/* Nuke stuff */
+.storycat, .storycat a {
+	font-size: inherit;
+	color: #516A88;
+}
+.title       {color: #000000; font-size: inherit; font-weight: bold;}
+.content     {color: #000000; font-size: inherit;}
+.block-title {color: #516A88; font-size: inherit;}
+.storytitle  {color: #516A88; font-size: inherit; font-weight: bold;}
+.boxtitle    {color: #000000; font-size: inherit; font-weight: bold;}
+.boxcontent  {color: #000000; font-size: inherit;}
+.option      {color: #000000; font-size: inherit; font-weight: bold;}
+.tiny        {color: #000000; font-size: inherit;}
+.small       {color: #000000; font-size: inherit;}
+.footmsg, .footmsg_1, .footmsg_1 a, .footmsg p {
+	text-align: center;
+	font-size:10px;
+}
+
+
+
+/*  forums */
+
+.bodyline
+{
+	background-color: #cee7fa;
+}
+.forumline
+{
+	background-color: #cee7fa;
+}
+td.row1
+{
+	background-color: #ffffff;
+	border: 1px #ffffff solid;
+}
+td.row2
+{
+	background-color: #ffffff;
+	border: 1px #ffffff solid;
+}
+td.row3
+{
+	background-color: #ffffff;
+	border: 1px #ffffff solid;
+}
+td.spacerow
+{
+	background: #cee7fa;
+	color: #000000;
+}
+td.rowpic
+{
+	background-color: #000000;
+	background-image: url(../forums/images/cellpic6.gif);
+	background-repeat: repeat-x;
+}
+th
+{
+	color: #FFFFFF;
+	font-size: 14px;
+	letter-spacing: 0.1em;
+	font-weight: bold;
+	background-color: #000000;
+	height: 25px;
+	background-image: url(../forums/images/cellpic5.gif);
+}
+td.cat,td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom
+{
+	background-image: url(../forums/images/cellpic6.gif);
+	background-color: #6090bf;
+	font-weight: bold;
+}
+td.cat,td.catHead,td.catBottom
+{
+	padding-left: 10px;
+	height: 26px;
+	border: none;
+}
+td.row3Right,td.spaceRow
+{
+	background-color: #6090bf;
+	border: #000000;
+	border-style: solid;
+}
+th.thHead,td.catHead
+{
+	font-size: 12px;
+	border-width: 1px 1px 0px 1px;
+}
+th.thSides,td.catSides,td.spaceRow
+{
+	border-width: 0px 1px 0px 1px;
+}
+th.thRight,td.catRight,td.row3Right
+{
+	border-width: 0px 1px 0px 0px;
+}
+th.thLeft,td.catLeft
+{
+	border-width: 0px 0px 0px 1px;
+}
+th.thBottom,td.catBottom
+{
+	border-width: 0px 1px 1px 1px;
+}
+th.thTop
+{
+	border-width: 1px 0px 0px 0px;
+}
+th.thCornerL
+{
+	border-width: 1px 0px 0px 1px;
+}
+th.thCornerR
+{
+	border-width: 1px 1px 0px 0px;
+}
+.maintitle,h1,h2
+{
+	font-weight: bold;
+	font-size: 14px;
+	font-family: Verdana,Helvetica,sans-serif;
+	text-decoration: underline;
+	color: #263a49;
+}
+.gen
+{
+	font-size: 12px;
+}
+.genmed
+{
+	font-size: 11px;
+}
+.gensmall
+{
+	font-size: 10px;
+}
+.gen,.genmed,.gensmall
+{
+	color: #000000;
+}
+a.gen,a.genmed,a.gensmall
+{
+	color: #000000;
+	text-decoration: none;
+}
+a.gen:hover,a.genmed:hover,a.gensmall:hover
+{
+	color: #839FBC;
+	text-decoration: underline;
+}
+.mainmenu
+{
+	font-size: 12px;
+	color: #000000;
+}
+a.mainmenu
+{
+	text-decoration: none;
+	color: #000000;
+}
+a.mainmenu:hover
+{
+	text-decoration: underline;
+	color: #839FBC;
+}
+.cattitle
+{
+	font-weight: bold;
+	font-size: 14px;
+	letter-spacing: 1px;
+	color: #000000;
+}
+a.cattitle
+{
+	text-decoration: none;
+	color: #000000;
+}
+a.cattitle:hover
+{
+	color: #839FBC;
+	text-decoration: none;
+}
+.forumlink
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #000000;
+}
+a.forumlink
+{
+	text-decoration: none;
+	color: #000000;
+}
+a.forumlink:hover
+{
+	text-decoration: none;
+	color: #839FBC;
+}
+.nav
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #000000;
+}
+a.nav
+{
+	text-decoration: none;
+	color: #000000;
+}
+a.nav:hover
+{
+	color: #839FBC;
+	text-decoration: none;
+}
+.navbkg2
+{
+	font-size: 11px;
+}
+
+.topictitle
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #000000;
+}
+a.topictitle:link
+{
+	text-decoration: none;
+	color: #000000;
+}
+a.topictitle:visited
+{
+	text-decoration: none;
+	color: #839FBC;
+}
+a.topictitle:hover
+{
+	text-decoration: none;
+	color: #839FBC;
+}
+.name
+{
+	font-size: 12px;
+	color: #000000;
+}
+.postdetails
+{
+	font-size: 12px;
+	color: #000000;
+}
+.postbody
+{
+	font-size: 12px;
+}
+a.postlink:link
+{
+	text-decoration: none;
+	color: #3333FF;
+}
+a.postlink:visited
+{
+	text-decoration: none;
+	color: #3333FF;
+}
+a.postlink:hover
+{
+	text-decoration: underline;
+	color: #839FBC;
+}
+.code
+{
+	font-family: Courier, 'Courier New', sans-serif;
+	font-size: 12px;
+	color: #003399;
+	padding: 8px 8px 8px 8px;
+	background-color: #EAEAEA;
+	border: 1px solid #7A756F;
+}
+.quote
+{
+	font-size: 12px;
+	color: #7A756F;
+	padding: 8px 8px 8px 8px;
+	background-color: #EFEFEF;
+	border: 1px solid #7A756F;
+}
+.copyright
+{
+	font-size: 8px;
+	font-family: Verdana,Helvetica,sans-serif;
+	color: #444444;
+}
+a.copyright
+{
+	color: #444444;
+	text-decoration: none;
+}
+a.copyright:hover
+{
+	color: #839FBC;
+	text-decoration: underline;
+}
+.errorline
+{
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #434343;
+}
+input,textarea, select
+{
+	color: #000000;
+	font: normal 12px Verdana,Helvetica,sans-serif;
+	background-color: #FFFFFF;
+	border: 1px solid #434343;
+}
+input[type=radio], input[type=checkbox]
+{
+	border: none;
+}
+input.post, textarea.post, select
+{
+	color: #000000;
+}
+input
+{
+	text-indent: 2px;
+}
+input.button
+{
+}
+input.mainoption
+{
+	font-weight: bold;
+}
+input.liteoption
+{
+	font-weight: normal;
+}
+.helpline
+{
+	background-color: #FFFFFF;
+	border-style: none;
+	color: #000000;
+}
+
+/* GCalendar sample styles for fisubice theme */
+
+.gcal-error {
+	font-weight: bold;
+	color: red;
+}
+
+form.gcal-event-form legend {
+	font-weight: bold;
+	color: black;
+}
+
+form.gcal-event-form .normal-label {
+	font-weight: bold;
+	color: black;
+}
+
+form.gcal-event-form .error-label {
+	font-weight: bold;
+	color: red;
+}
+
+table.gcal-block-cal {
+	width: 100%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+}
+
+table.gcal-block-cal a {
+}
+
+table.gcal-block-cal a:link {
+	text-decoration: underline;
+}
+table.gcal-block-cal a:visited {
+	text-decoration: underline;
+}
+table.gcal-block-cal a:hover {
+	text-decoration: underline;
+}
+table.gcal-block-cal a:active {
+	text-decoration: underline;
+}
+
+table.gcal-block-cal a.today {
+	color: white;
+}
+
+table.gcal-block-cal th {
+	color: #516A88;
+	text-align: center;
+	background-image: url(../forums/images/cellpic6.gif);
+	border-width: 1px;
+	padding: 1px;
+	border-style: outset;
+	border-color: black;
+	font-size: 10px;
+}
+
+table.gcal-block-cal td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: hidden;
+	text-align: center;
+}
+
+table.gcal-block-cal td.no-day {
+}
+
+table.gcal-block-cal td.day-no-event {
+}
+
+table.gcal-block-cal td.day-event {
+	border: solid 1px teal;
+}
+
+table.gcal-block-cal td.today-no-event {
+	background-image: url(../forums/images/cellpic6.gif);
+	color: #516A88;
+	border-style: outset;
+	border-color: black;
+}
+
+table.gcal-block-cal td.today-event {
+	background-image: url(../forums/images/cellpic6.gif);
+	font-weight: bold;
+	border-style: outset;
+	border-color: black;
+}
+
+table.gcal-block-events {
+	border: solid 1px black;
+	width: 100%;
+}
+
+table.gcal-block-events a:link {
+	text-decoration: underline;
+}
+table.gcal-block-events a:visited {
+	text-decoration: underline;
+}
+table.gcal-block-events a:hover {
+	text-decoration: underline;
+}
+table.gcal-block-events a:active {
+	text-decoration: underline;
+}
+
+
+table.gcal-month {
+	width: 100%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	padding: 1px;
+}
+
+table.gcal-month th {
+	color: #516A88;
+	text-align: center;
+	background-image: url(../forums/images/cellpic6.gif);
+	padding: 2px;
+	border: outset 1px black;
+}
+
+table.gcal-month td {
+	margin: 0px;
+	padding: 2px;
+	border: outset 1px black;
+	height: 75px;
+}
+
+table.gcal-month td.no-day {
+	background-color: #d2d5d8;
+}
+
+table.gcal-month td.day {
+}
+
+table.gcal-month td.weekend {
+	background-color: #c4d2e3;
+}
+
+table.gcal-month td.today {
+	background-color: #88b2e6;
+}
+
+table.gcal-month a {
+}
+
+table.gcal-month a:link {
+	text-decoration: underline;
+}
+table.gcal-month a:visited {
+	text-decoration: underline;
+}
+table.gcal-month a:hover {
+	text-decoration: underline;
+}
+table.gcal-month a:active {
+	text-decoration: underline;
+}
+
+table.gcal-month a.day-link {
+	font-size: 20px;
+	background: none;
+	color: black;
+}
+
+table.gcal-month a.day-link:link {
+	text-decoration: underline;
+}
+table.gcal-month a.day-link:visited {
+	text-decoration: underline;
+}
+table.gcal-month a.day-link:hover {
+	text-decoration: underline;
+}
+table.gcal-month a.day-link:active {
+	text-decoration: underline;
+}
+
+table.gcal-event {
+	width: 80%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	padding: 0px;
+}
+
+table.gcal-event caption {
+	padding-bottom: 5px;
+	font-weight: bold;
+	font-size: 11px;
+	margin: 2px;
+}
+
+table.gcal-event th {
+	background-color: #c9d6e6;
+	color: black;
+	text-align: right;
+	font-size: 11px;
+	padding: 4px;
+	border: solid 1px black;
+}
+
+table.gcal-event td {
+	padding: 4px;
+	border: solid 1px black;
+}
+
+table.gcal-cat-legend {
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	padding: 2px;
+}
+
+table.gcal-cat-legend td {
+	border: none;
+}
+
+table.gcal-cat-legend caption {
+	padding-bottom: 5px;
+	font-weight: bold;
+	font-size: 11px;
+	margin: 2px;
+}
+
+div.lgl_menu {
+	text-align: center;
+	margin: 10px;
+}
+
+/* For Forum Attachment Mod */
+td.attachrow		{ font: normal 11px Verdana, Arial, Helvetica, sans-serif; }
+td.attachheader     { font: normal 11px Verdana, Arial, Helvetica, sans-serif; }
+table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; border-collapse : collapse; }
+/* DEFAULT CSS OVERRIDES */
+/* Block OL List styling */
+ol.rn-ol li{min-height:18px;margin:0 0 4px;padding:1px 4px 0 22px}
+ol.rn-ol li ul.ul-none li{margin:0 0 4px 0;padding:0 10px 0 0;min-height:10px}
+.ol-num {background:transparent url(../../../images/blocks/numbers-blue-sm.png) no-repeat}
+/* If you change background you must redeclare sprite positions */
+/* Shift Default Position of sprites */
+.bnum1{background-position:0 -1px}
+.bnum2{background-position:0 -103px}
+.bnum3{background-position:0 -205px}
+.bnum4{background-position:0 -307px}
+.bnum5{background-position:0 -409px}
+.bnum6{background-position:0 -511px}
+.bnum7{background-position:0 -613px}
+.bnum8{background-position:0 -715px}
+.bnum9{background-position:0 -817px}
+.bnum10{background-position:0 -919px}
+.bnum11{background-position:0 -1021px}
+.bnum12{background-position:0 -1123px}
+.bnum13{background-position:0 -1225px}
+.bnum14{background-position:0 -1327px}
+.bnum15{background-position:0 -1429px}
+.bnum16{background-position:0 -1531px}
+.bnum17{background-position:0 -1633px}
+.bnum18{background-position:0 -1735px}
+.bnum19{background-position:0 -1837px}
+.bnum20{background-position:0 -1949px}
+/* Center Block styling */
+#mainContent div.block-spacer{margin:10px 0 0 0} /* more space below some center blocks */
+#IBblock-center div.block-spacer{margin:0}  /* except for this block */
+.ul-box-center.block-modules ul.rn-ul li {float:left;width:auto;min-width:105px;margin-left:6px;}
+/* Side Block styling */
+.ul-box {width:155px} /* containers for side block lists: for proper display in ie7 */
+.ol-box {width:155px}
+.ul-box ul.rn-ul li,.ul-box ul.ul-circle li,.ul-box ul.ul-square li{width:150px;}
+.ol-box ol.rn-ol li{width:150px;margin-left:2px;}
+.ul-box.block-feeds li.rn-list.li-first {float:left}
+.ul-box.block-old_articles li.rn-list.li-even,.ul-box.block-old_articles li.rn-list.li-odd,.ul-box.block-feeds li.rn-list.li-even,.ul-box.block-feeds li.rn-list.li-odd,.ul-box.block-last_5_articles li.rn-list.li-even,.ul-box.block-last_5_articles li.rn-list.li-odd{float:left;margin-top:4px;}
+#IBblock {margin-left:6px;}
+.ul-box.block-old_articles .small-caps{font-variant:normal}
+#IBblock  ul.rninfobox li {width:155px;}
+.ol-box.block-nsngd_hot,.ol-box.block-nsngd_new,.ol-box.block-top10_downloads,.ol-box.block-top10_links{margin-top:4px;}
+
+

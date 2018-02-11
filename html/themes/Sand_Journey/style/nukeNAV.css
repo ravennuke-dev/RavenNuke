@@ -1,0 +1,22 @@
+.nukeNAV,.nukeNAV *{z-index:2;list-style:none;margin:0;padding:0;}
+.nukeNAV{line-height:12px;margin-bottom:1px;font-weight:bold;font-size:10px;}
+.nukeNAV a{border:0;padding-left:4px;padding-right:4px;font-size: 10px;text-decoration:underline;}
+.nukeNAV a,.nukeNAV a:visited{color:#000;}
+.nukeNAV li:hover,.nukeNAV li.sfHover,.nukeNAV a:focus,.nukeNAV a:hover,.nukeNAV a:active{background:#d8d8c4;color:#000;outline:#000;}
+.nukeNAV li a{padding-bottom:0;padding-top:0;}
+.nukeNAV li li a, .nukeNAV li li li a{padding:.5em .5em;}
+.nukeNAV li,.nukeNAV li li,.nukeNAV li li li{background:#d8d8c4;}
+.sf-sub-indicator{top:0.2em;background:url(../../../includes/jquery/css/images/arrows-000000.png) no-repeat 0 -100px;}
+.nukeNAV a > .sf-sub-indicator{top:.2em;}
+.nukeNAV li li a > .sf-sub-indicator{top:.8em;}
+a:focus > .sf-sub-indicator,a:hover > .sf-sub-indicator,a:active > .sf-sub-indicator,li:hover > a > .sf-sub-indicator,li.sfHover > a > .sf-sub-indicator{background-position:0 -100px;}
+.nukeNAV ul .sf-sub-indicator,.nukeNAV ul a:focus > .sf-sub-indicator,.nukeNAV ul a:hover > .sf-sub-indicator,.nukeNAV ul a:active > .sf-sub-indicator,.nukeNAV ul li:hover > a > .sf-sub-indicator,.nukeNAV ul li.sfHover > a > .sf-sub-indicator{background-position:0 0;}
+.nukeNAVmod,.nukeNAVmod li{width:14em;}
+.nukeNAVmod a,.nukeNAVmod a:visited{color:#000;}
+.nukeNAVmod li:hover,.nukeNAVmod li.sfHover,.nukeNAVmod a:focus,.nukeNAVmod a:hover,.nukeNAVmod a:active{color:#000;background:#d8d8c4;outline:0;}
+.nukeNAVmod li:hover ul,.nukeNAVmod li.sfHover ul{z-index:99;left:14em;top:0;}
+.nukeNAVmod li,.nukeNAVmod li li,.nukeNAVmod li li li{background:#f6f6eb;}
+.nukeNAVmod li li,.nukeNAVmod li li li{padding:2;margin:0;}
+/* open the hover menu on the correct side for right/left blocks */
+.sandjourney-right .nukeNAVmod li:hover ul,.sandjourney-right .nukeNAVmod li.sfHover ul{left:-14.5em;top:0;} /* right column */
+.sandjourney-left .nukeNAVmod li:hover ul,.sandjourney-left .nukeNAVmod li.sfHover ul{left:100%;top:0;} /* left column */

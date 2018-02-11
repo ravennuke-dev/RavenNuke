@@ -1,0 +1,83 @@
+.newsicon {
+background: url('images/link.png');
+}
+.newsposition {
+float:right;
+margin:1px;
+}
+.comment {
+background-position:0 0; width: 16px; height: 16px;
+}
+.more {
+background-position:0 -18px; width: 16px; height: 16px;
+}
+.mail {
+background-position:0 -36px; width: 16px; height: 16px;
+}
+.pdf {
+background-position:0 -54px; width: 16px; height: 16px;
+}
+.print {
+background-position:0 -72px; width: 16px; height: 16px;
+}
+.readmore {
+background-position:0 -90px; width: 16px; height: 16px;
+}
+.rated {
+background-position:0 -108px; width: 16px; height: 16px;
+}
+.tagindex {
+font-size:11px;
+}
+.tonheaderclass2{
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   font-weight:bold;
+   border:1px solid #000000;
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-topleft: 6px;
+  border-top-right-radius: 6px; 	
+  border-top-left-radius: 6px; 
+   background:#000000;
+   color:#FFFFFF;
+   }
+.tonheaderclass{
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   font-weight:bold;
+   border:1px solid #000000;
+ -webkit-border-radius: 6px;
+    -moz-border-radius: 6px; 
+    border-radius: 6px;	
+   background:#000000;
+   color:#FFFFFF;
+   }
+
+.tonbodyclass2{
+   margin-left: 5px;
+   margin-right: 5px;
+   padding:5px;
+   border:1px solid #000000;
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-right-radius: 6px; 	
+  border-bottom-left-radius: 6px; 	
+   background:#FFFFFF;
+   color:#000000;
+    }
+.tonbodyclass{
+   margin-left: 5px;
+   margin-right: 5px;
+   border:1px solid #000000;
+ -webkit-border-radius: 6px;
+    -moz-border-radius: 6px; 
+    border-radius: 6px;	
+   background:#FFFFFF;
+   color:#000000;
+    }

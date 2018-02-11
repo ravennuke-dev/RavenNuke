@@ -1,0 +1,39 @@
+/* ######### CSS for Shade Tabs. Remove if not using ######### */
+.shadetabs{list-style-type: none;
+padding: 0 0 0 0;margin: 0px 2px 0 2px; /* top right bottom left */
+text-align: right; /*set to left, center, or right to align the menu as desired*/
+}
+.shadetabs .left  {background:url(p_left.gif) top left;padding:10px 2px 10px 1px}
+.shadetabs .right {background:url(p_right.gif)top right;padding:10px 2px 10px 1px}
+.shadetabs li {display: inline;}
+.shadetabs li a{
+font-family: Arial, Helvetica, sans-serif; font-size: 10px;text-decoration: none;
+color: #2d2b2b;background: white url('p_middle.gif') top left repeat-x; 
+padding: 10px 0px 10px 0px;float: right;
+}
+.shadetabs li a:visited {color: #2d2b2b;}
+.shadetabs li a:hover {color: #2d2b2b; text-decoration: underline;}
+.shadetabs li a.selected { position: relative;}
+.shadetabs li a.selected { border-bottom-color: white; background-image: url('a_middle.gif');}
+.shadetabs li a.selected:hover{ text-decoration: none;}
+.shadetabs li a.selected span.left {background:url(a_left.gif) top left;padding:10px 2px 10px 1px}
+.shadetabs li a.selected span.right {background:url(a_right.gif) no-repeat top right;padding:10px 2px 10px 1px}
+.tabcontent {display:none;
+font-family: Arial, Helvetica, sans-serif; font-size: 10px;
+color: #000000;background-color: white; 
+}
+.tabcontent td {font-family: Arial, Helvetica, sans-serif; font-size: 10px;color: #000000; }
+.tabcontentiframe {height: 600px}
+
+@media print {
+.tabcontent { display:block !important; }
+}
+/*
+ul {margin:0;padding:0;list-style:none}
+.left {background:url(img/down.gif) top left;padding:5px 9px 5px 5px}
+.right {color:#f63;background:url(img/down.gif)top right;padding:5px 20px 5px 0}
+#navbar {width:100%;background:black;border-bottom:1px solid #333;padding:10px 0 5px 0}
+#current span {background-image:url(img/up.gif) !important;font-weight:600}
+li a:hover {color:red} * MSIE fix *
+li a:hover span {background-image:url(img/up.gif) !important}
+*/

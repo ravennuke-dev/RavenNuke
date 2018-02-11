@@ -1,0 +1,10 @@
+
+/*Default style for SPAN icons. Edit if desired: */
+
+.iconspan{
+float: right;
+margin: 3px;
+cursor:hand;
+cursor:pointer;
+font-weight: bold;
+}

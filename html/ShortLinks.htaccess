@@ -1,0 +1,363 @@
+/**
+ * TegoNuke(tm) ShortLinks: Shorten URLs (Links)
+ *
+ * This script shortens the dynamically produced links from PHP-Nuke,
+ * RavenNuke(tm) and close derivatives to their shorter ".html" equivalents.
+ *
+ * PHP versions 5.2+ ONLY
+ *
+ * LICENSE: GNU/GPL 2 (provided with the download of this script)
+ *
+ * @package     TegoNuke(tm)
+ * @subpackage  ShortLinks
+ * @category    SEO
+ * @category    Usability
+ * @author      Rob Herder (aka: montego) <montego@montegoscripts.com>
+ * @copyright   2006 - 2011 by Montego Scripts
+ * @license     http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt GNU/GPL 2
+ * @version     1.3.1_398
+ * @link        http://montegoscripts.com
+ * @tutorial    http://wiki.montegoscripts.com
+*/
+#
+# This file contains the rewrite rules necessary to force Apache to recognize your
+# shortened links and to rewrite them back to what RavenNuke(tm) is expecting.
+# Copy and paste these rules into your .htaccess file in the root of your
+# Installation.  Whatever you do, make sure these are ABOVE NukeSentinel's area
+# where it is to write its blocked IPs.
+#
+# For better performance, remove sections of rules for modules that you do not have
+# active on your site.
+#
+
+RewriteEngine on
+
+RewriteRule ^index.html index.php
+RewriteRule ^index.htm index.php
+
+#Advertising
+RewriteRule ^advertising-(client_report|view_banner)-([0-9]*)-([0-9]*).html modules.php?name=Advertising&op=$1&cid=$2&bid=$3 [L]
+RewriteRule ^advertising-(sitestats|terms|plans|client_home|client_logout|client|logout).html modules.php?name=Advertising&op=$1 [L]
+RewriteRule ^advertising.html modules.php?name=Advertising [L]
+
+#Articles (News)
+RewriteRule ^article-([0-9]*)-([a-z]*)-([0-9]*)-([-0-9]*).html modules.php?name=News&file=article&sid=$1&mode=$2&order=$3&thold=$4 [L]
+RewriteRule ^article-comments-([0-9]*)-([0-9]*).html modules.php?name=News&file=comments&sid=$1&pid=$2 [L]
+RewriteRule ^article-reply-([0-9]*)-([0-9]*).html modules.php?name=News&file=comments&op=Reply&pid=$1&sid=$2 [L]
+RewriteRule ^article-showreply-([0-9]*)-([0-9]*)-([0-9]*).html modules.php?name=News&file=comments&op=showreply&tid=$1&sid=$2&pid=$3 [L]
+RewriteRule ^article-([0-9-]*)-([a-z]*)-([0-9]*)-([0-9]*).html([0-9#]*) modules.php?name=News&file=article&thold=$1&mode=$2&order=$3&sid=$4$5 [L]
+RewriteRule ^article-topic([0-9]*)-page([0-9]*).html modules.php?name=News&new_topic=$1&pagenum=$2 [L]
+RewriteRule ^article-category([0-9]*)-page([0-9]*).html modules.php?name=News&file=categories&op=newindex&catid=$1&pagenum=$2 [L]
+RewriteRule ^article-category-([0-9]*).html modules.php?name=News&file=categories&op=newindex&catid=$1 [L]
+RewriteRule ^article-print-([0-9]*).html modules.php?name=News&file=print&sid=$1 [L]
+RewriteRule ^article-friend-([0-9]*).html modules.php?name=News&file=friend&op=FriendSend&sid=$1 [L]
+RewriteRule ^article-friend.html modules.php?name=News&file=friend [L]
+RewriteRule ^article-printpdf-([0-9]*).html modules.php?name=News&file=printpdf&id=$1 [L]
+RewriteRule ^article-page-([0-9]*).html modules.php?name=News&pagenum=$1 [L]
+RewriteRule ^article([1-9][0-9]*).* modules.php?name=News&file=article&sid=$1 [L]
+RewriteRule ^articlebox([1-9][0-9]*).* modules.php?name=News&file=articlebox&sid=$1 [L]
+RewriteRule ^article-topic-([0-9]*).html modules.php?name=News&new_topic=$1 [L]
+RewriteRule ^article-comments.html modules.php?name=News&file=comments [L]
+RewriteRule ^allnews.html modules.php?name=News&file=allindex [L]
+RewriteRule ^news.html modules.php?name=News [L]
+
+#AvantGo
+RewriteRule ^avantgo-print-([0-9]*).html modules.php?name=AvantGo&file=print&sid=$1 [L]
+RewriteRule ^avantgo.html modules.php?name=AvantGo [L]
+
+#Comments
+RewriteRule ^article-comment-([0-9]*)-([0-9]*).html modules.php?name=News&file=comments&sid=$1&tid=$2 [L]
+RewriteRule ^survey-comment-([0-9]*)-([0-9]*).html modules.php?name=Surveys&file=comments&pollID=$1&tid=$2 [L]
+RewriteRule ^comments.html modules.php?name=Comments [L]
+
+#Content Plus
+RewriteRule ^content-([0-9]*)-page([0-9]*).html modules.php?name=Content&pa=showpage&pid=$1&page=$2 [L]
+RewriteRule ^content-cat-([0-9]*)-order-([0-9]*)-page([0-9]*).html modules.php?name=Content&pa=list_pages_categories&cid=$1&order=$2&page=$3 [L]
+RewriteRule ^content-cat-([0-9]*)-order-([0-9]*).html modules.php?name=Content&pa=list_pages_categories&cid=$1&order=$2 [L]
+RewriteRule ^content-cat-([0-9]*)-page([0-9]*).html modules.php?name=Content&pa=list_pages_categories&cid=$1&page=$2 [L]
+RewriteRule ^content-cat-([0-9]*).html modules.php?name=Content&pa=list_pages_categories&cid=$1 [L]
+RewriteRule ^content-([0-9]*).html modules.php?name=Content&pa=showpage&pid=$1 [L]
+RewriteRule ^content-send-page.html modules.php?name=Content&pa=send_page [L]
+RewriteRule ^content-preview-page.html modules.php?name=Content&pa=preview_page [L]
+RewriteRule ^content-add-page.html modules.php?name=Content&pa=add_page [L]
+RewriteRule ^content-browse-tag-([/:\-\'{}()\,\._&a-zA-Z0-9+=\ ]*)-page-([0-9]*)-order-([0-9]*).html modules.php?name=Content&pa=browse_tag&tag=$1&page=$2&order=$3 [L]
+RewriteRule ^content-browse-tag-([/:\-\'{}()\,\._&a-zA-Z0-9+=\ ]*)-page-([0-9]*).html modules.php?name=Content&pa=browse_tag&tag=$1&page=$2 [L]
+RewriteRule ^content-browse-tag-([/:\-\'{}()\,\._&a-zA-Z0-9+=\ ]*)-order-([0-9]*).html modules.php?name=Content&pa=browse_tag&tag=$1&order=$2 [L]
+RewriteRule ^content-browse-tag-([/:\-\'{}()\,\._&a-zA-Z0-9+=\ ]*).html modules.php?name=Content&pa=browse_tag&tag=$1 [L]
+RewriteRule ^content-browse-tags.html modules.php?name=Content&pa=browse_tags [L]
+RewriteRule ^content-print-page-([0-9]*).html modules.php?name=Content&pa=print_page&pid=$1 [L]
+RewriteRule ^content-print-pdf-([0-9]*).html modules.php?name=Content&pa=print_pdf&pid=$1 [L]
+RewriteRule ^content-share-page-([0-9]*).html modules.php?name=Content&pa=share_page&op=FriendSend&pid=$1 [L]
+RewriteRule ^content-send-page-([0-9]*).html modules.php?name=Content&pa=share_page&op=SendPage&pid=$1 [L]
+RewriteRule ^content.html modules.php?name=Content [L]
+
+#Downloads
+RewriteRule ^download-mod-([0-9]*).html modules.php?name=Downloads&op=modifydownloadrequest&lid=$1 [L]
+RewriteRule ^download-broken-([0-9]*).html modules.php?name=Downloads&op=brokendownload&lid=$1 [L]
+RewriteRule ^download-file-([0-9]*).html modules.php?name=Downloads&op=getit&lid=$1 [L]
+RewriteRule ^downloads-(NewDownloads|newdownloads).html modules.php?name=Downloads&op=NewDownloads [L]
+RewriteRule ^download-shownew-([0-9]*).html modules.php?name=Downloads&op=NewDownloads&newdownloadshowdays=$1 [L]
+RewriteRule ^download-seldate-([a-zA-Z0-9+]*).html modules.php?name=Downloads&op=NewDownloadsDate&selectdate=$1 [L]
+RewriteRule ^downloads-(MostPopular|mostpopular).html modules.php?name=Downloads&op=MostPopular [L]
+RewriteRule ^download-(MostPopular|mostpopular)-([0-9]*)-(num|percent).html modules.php?name=Downloads&op=MostPopular&ratenum=$2&ratetype=$3 [L]
+RewriteRule ^download-sort-([0-9]*)-orderby-title([aA]).html modules.php?name=Downloads&cid=$1&orderby=titleA [L]
+RewriteRule ^download-sort-([0-9]*)-orderby-title([dD]).html modules.php?name=Downloads&cid=$1&orderby=titleD [L]
+RewriteRule ^download-sort-([0-9]*)-orderby-date([aA]).html modules.php?name=Downloads&cid=$1&orderby=dateA [L]
+RewriteRule ^download-sort-([0-9]*)-orderby-date([dD]).html modules.php?name=Downloads&cid=$1&orderby=dateD [L]
+RewriteRule ^download-sort-([0-9]*)-orderby-hits([aA]).html modules.php?name=Downloads&cid=$1&orderby=hitsA [L]
+RewriteRule ^download-sort-([0-9]*)-orderby-hits([dD]).html modules.php?name=Downloads&cid=$1&orderby=hitsD [L]
+RewriteRule ^download-paging-([0-9]*)-([0-9]*).html modules.php?name=Downloads&min=$1&cid=$2 [L]
+RewriteRule ^download-search-([a-zA-Z0-9\-_\,]*)-([0-9]*)-([a-zA-Z0-9+]*)-([0-9]*).html modules.php?name=Downloads&d_op=search&query=$1&min=$2&orderby=$3&show=$4 [L]
+RewriteRule ^download-search-([a-zA-Z0-9\-_\,]*)-([a-zA-Z0-9+]*).html modules.php?name=Downloads&d_op=search&query=$1&orderby=$2 [L]
+RewriteRule ^download-searchp-([0-9]*)-([a-zA-Z0-9\-_\,]*).html modules.php?name=Downloads&min=$1&d_op=search&query=$2 [L]
+RewriteRule ^download-search.html modules.php?name=Downloads&op=search [L]
+RewriteRule ^download-gfx-([0-9]*).html modules.php?name=Downloads&op=gfx&random_num=$1 [L]
+RewriteRule ^downloads-cat([0-9]*).html modules.php?name=Downloads&cid=$1 [L]
+RewriteRule ^downloads.html&min=([0-9]*)&cid=([0-9]*)$ modules.php?name=Downloads&min=$1&cid=$2 [L]
+RewriteRule ^downloads.html modules.php?name=Downloads [L]
+
+#Encyclopedia
+RewriteRule ^encyclopedia-([0-9]*)-page([0-9]*)-([[:punct:]/:\-\'{}()._&a-zA-Z0-9+=\ ]*).html modules.php?name=Encyclopedia&op=content&tid=$1&page=$2&query=$3 [L]
+RewriteRule ^encyclopedia-([0-9]*)-page([0-9]*).html modules.php?name=Encyclopedia&op=content&tid=$1&page=$2 [L]
+RewriteRule ^encyclopedia-([0-9]*)-([[:punct:]/:\-\'{}()._&a-zA-Z0-9+=\ ]*).html modules.php?name=Encyclopedia&op=content&tid=$1&query=$2 [L]
+RewriteRule ^encyclopedia-([0-9]*).html modules.php?name=Encyclopedia&op=content&tid=$1 [L]
+RewriteRule ^encyclopedia-list-([0-9]*).html modules.php?name=Encyclopedia&op=list_content&eid=$1 [L]
+RewriteRule ^encyclopedia-terms([0-9]*)-([A-Z]*).html modules.php?name=Encyclopedia&op=terms&eid=$1&ltr=$2 [L]
+RewriteRule ^encyclopedia-search-([[:punct:]/:\-\'{}()._&a-zA-Z0-9+=\ ]*).html modules.php?name=Encyclopedia&file=search&query=$1 [L]
+RewriteRule ^encyclopedia-search.html modules.php?name=Encyclopedia&file=search [L]
+RewriteRule ^encyclopedia.html modules.php?name=Encyclopedia [L]
+
+#Feedback
+RewriteRule ^feedback.html modules.php?name=Feedback [L]
+
+#Feeds - nukeFEED
+RewriteRule ^feeds-([0-9]*).html modules.php?name=Feeds&fid=$1&type=HTML [L]
+RewriteRule ^feeds-([0-9]*)-rss([0-9]*).xml modules.php?name=Feeds&fid=$1&type=RSS$2 [L]
+RewriteRule ^feeds-([0-9]*)-atom([0-9]*).xml modules.php?name=Feeds&fid=$1&type=ATOM$2 [L]
+RewriteRule ^feeds-map-opml.xml modules.php?name=Feeds&op=map&type=OPML [L]
+RewriteRule ^feeds.html modules.php?name=Feeds [L]
+
+#FAQ
+RewriteRule ^faq.html modules.php?name=FAQ [L]
+RewriteRule ^faq-([0-9]*)-([a-zA-Z0-9\+\&\-\/%[:punct:]\.\;\ ]*).html modules.php?name=FAQ&myfaq=yes&id_cat=$1&categories=$2 [L]
+
+#Forums
+RewriteRule ^ftopic-([0-9]*)-([0-9]*)-days([0-9]*)-order(desc|asc)-([A-Za-z0-9+_-]*).html modules.php?name=Forums&file=viewtopic&t=$1&start=$2&postdays=$3&postorder=$4&highlight=$5 [L]
+RewriteRule ^ftopic-([0-9]*)-days([0-9]*)-order(desc|asc)-([A-Za-z0-9+_-]*)-([0-9]*).html modules.php?name=Forums&file=viewtopic&t=$1&postdays=$2&postorder=$3&highlight=$4&start=$5 [L]
+RewriteRule ^ftopic-([0-9]*)-days([0-9]*)-order(desc|asc)-([0-9]*).html modules.php?name=Forums&file=viewtopic&t=$1&postdays=$2&postorder=$3&start=$4 [L]
+RewriteRule ^ftopic-voteresults-([0-9]*)-days([0-9]*)-order(desc|asc).html modules.php?name=Forums&file=viewtopic&t=$1&postdays=$2&postorder=$3&vote=viewresult [L]
+RewriteRule ^ftopic-([0-9]*)-([0-9]*).html modules.php?name=Forums&file=viewtopic&t=$1&start=$2 [L]
+RewriteRule ^ftopic-([0-9]*)-(previous|next|newest).html modules.php?name=Forums&file=viewtopic&t=$1&view=$2 [L]
+RewriteRule ^ftopic(t|p)-([0-9]*)-([A-Za-z0-9+_-]*).html modules.php?name=Forums&file=viewtopic&$1=$2&highlight=$3 [L]
+RewriteRule ^ftopic-([0-9]*)-(watch|unwatch)-([0-9]*).html modules.php?name=Forums&file=viewtopic&t=$1&$2=topic&start=$3 [L]
+RewriteRule ^ftopic(t|p)-([0-9]*).html modules.php?name=Forums&file=viewtopic&$1=$2 [L]
+RewriteRule ^ftopic(t|p)-([0-9]*).html#([0-9]*) modules.php?name=Forums&file=viewtopic&$1=$2#$3 [L]
+RewriteRule ^forum-editprofile.html modules.php?name=Forums&file=profile&mode=editprofile [L]
+RewriteRule ^forum-userprofile-([0-9]*).html modules.php?name=Forums&file=profile&mode=viewprofile&u=$1 [L]
+RewriteRule ^forum-register-new.html modules.php?name=Forums&file=profile&mode=register&agreed=true [L]
+RewriteRule ^forum-register-coppa.html modules.php?name=Forums&file=profile&mode=register&agreed=true&coppa=true [L]
+RewriteRule ^forum-register.html modules.php?name=Forums&file=profile&mode=register [L]
+RewriteRule ^forums-posting.html modules.php?name=Forums&file=modules&name=Forums&file=posting [L]
+RewriteRule ^forum-faq-bbcode.html modules.php?name=Forums&file=faq&mode=bbcode [L]
+RewriteRule ^ftopic-post-([0-9]*).html modules.php?name=Forums&file=posting&t=$1 [L]
+RewriteRule ^ftopic-quote-([0-9]*).html modules.php?name=Forums&file=posting&mode=quote&p=$1 [L]
+RewriteRule ^ftopic-vote-([0-9]*).html modules.php?name=Forums&file=posting&mode=vote&t=$1 [L]
+RewriteRule ^ftopic-new-([0-9]*).html modules.php?name=Forums&file=posting&mode=newtopic&f=$1 [L]
+RewriteRule ^ftopic-edit-([0-9]*).html modules.php?name=Forums&file=posting&mode=editpost&p=$1 [L]
+RewriteRule ^ftopic-reply-([0-9]*).html modules.php?name=Forums&file=posting&mode=reply&t=$1 [L]
+RewriteRule ^ftopic-delete-([0-9]*).html modules.php?name=Forums&file=posting&mode=delete&p=$1 [L]
+RewriteRule ^ftopic-smilies.html modules.php?name=Forums&file=posting&mode=smilies&popup=1 [L]
+RewriteRule ^ftopic-topicreview-([0-9]*).html modules.php?name=Forums&file=posting&mode=topicreview&t=$1&popup=1 [L]
+RewriteRule ^forum-posting.html modules.php?name=Forums&file=posting [L]
+RewriteRule ^forums-group([0-9]*)-([0-9]*).html modules.php?name=Forums&file=groupcp&g=$1&start=$2 [L]
+RewriteRule ^forums-group([0-9]*).html modules.php?name=Forums&file=groupcp&g=$1 [L]
+RewriteRule ^fsearch-author-([a-zA-Z0-9_-]*).html modules.php?name=Forums&file=search&search_author=$1 [L]
+RewriteRule ^fsearch-([0-9]*)-([0-9]*).html modules.php?name=Forums&file=search&search_id=$1&start=$2 [L]
+RewriteRule ^fsearch-(unanswered|egosearch|newposts).html modules.php?name=Forums&file=search&search_id=$1 [L]
+RewriteRule ^fsearch-results.html modules.php?name=Forums&file=search&mode=results [L]
+RewriteRule ^forums-([^index][a-zA-Z0-9_-]*).html modules.php?name=Forums&file=$1 [L]
+RewriteRule ^forum-c([0-9]*).html modules.php?name=Forums&file=index&c=$1 [L]
+RewriteRule ^forum-mark.html modules.php?name=Forums&file=index&mark=forums [L]
+RewriteRule ^forums.html modules.php?name=Forums&file=index [L]
+RewriteRule ^forum-viewonline.html modules.php?name=Forums&file=viewonline [L]
+RewriteRule ^forum-([0-9]*)-days([0-9]*)-([0-9]*).html modules.php?name=Forums&file=viewforum&f=$1&topicdays=$2&start=$3 [L]
+RewriteRule ^forum-([0-9]*)-([0-9]*).html modules.php?name=Forums&file=viewforum&f=$1&start=$2 [L]
+RewriteRule ^forum-([0-9]*)-mark.html modules.php?name=Forums&file=viewforum&f=$1&mark=topics [L]
+RewriteRule ^forum-([0-9]*).html modules.php?name=Forums&file=viewforum&f=$1 [L]
+RewriteRule ^forums.html modules.php?name=Forums [L]
+
+#GCalendar
+RewriteRule ^eventscalendar-(viewday|viewweek)-([0-9]*)-([0-9]*)-([0-9]*)-event([0-9]*)-print.html modules.php?name=GCalendar&file=$1&y=$2&m=$3&d=$4&e=$5&printable=1 [L]
+RewriteRule ^eventscalendar-(submit|viewday|viewweek|friend)-([0-9]*)-([0-9]*)-([0-9]*)-event([0-9]*).html modules.php?name=GCalendar&file=$1&y=$2&m=$3&d=$4&e=$5 [L]
+RewriteRule ^eventscalendar-(viewday|viewweek)-([0-9]*)-([0-9]*)-([0-9]*)-print.html modules.php?name=GCalendar&file=$1&y=$2&m=$3&d=$4&printable=1 [L]
+RewriteRule ^eventscalendar-(submit|viewday|viewweek)-([0-9]*)-([0-9]*)-([0-9]*).html modules.php?name=GCalendar&file=$1&y=$2&m=$3&d=$4 [L]
+RewriteRule ^eventscalendar-edit-([0-9]*)-([0-9]*)-([0-9]*)-event([0-9]*).html modules.php?name=GCalendar&file=edit&y=$1&m=$2&d=$3&eventId=$4 [L]
+RewriteRule ^eventscalendar-edit-([0-9]*)-([0-9]*)-([0-9]*).html modules.php?name=GCalendar&file=edit&y=$1&m=$2&d=$3 [L]
+RewriteRule ^eventscalendar-submit-([0-9]*)-([0-9]*).html modules.php?name=GCalendar&file=submit&y=$1&m=$2 [L]
+RewriteRule ^eventscalendar-([0-9]*)-([0-9]*)-print.html modules.php?name=GCalendar&y=$1&m=$2&printable=1 [L]
+RewriteRule ^eventscalendar-([0-9]*)-([0-9]*).html modules.php?name=GCalendar&y=$1&m=$2 [L]
+RewriteRule ^eventscalendar-submit.html modules.php?name=GCalendar&file=submit&op=submit [L]
+RewriteRule ^eventscalendar-(viewweek|rsvp|friend).html modules.php?name=GCalendar&file=$1 [L]
+RewriteRule ^eventscalendar.html modules.php?name=GCalendar [L]
+
+#NSN Groups
+RewriteRule ^groups-([0-9]*).html modules.php?name=Groups&op=GRInfo&gid=$1 [L]
+RewriteRule ^groups.html modules.php?name=Groups [L]
+
+#HTML Newsletter
+RewriteRule ^html_newsletter-([0-9]*).html modules.php?name=HTML_Newsletter&file=index&op=msnl_nls_view&msnl_nid=$1 [L]
+RewriteRule ^html_newsletter-copyright.html modules.php?name=HTML_Newsletter&op=msnl_copyright_credits [L]
+RewriteRule ^html_newsletter.html modules.php?name=HTML_Newsletter [L]
+
+#Legal
+RewriteRule ^legal-([a-zA-Z0-9_-]*).html modules.php?name=Legal&op=$1 [L]
+RewriteRule ^legal.html modules.php?name=Legal [L]
+
+#Members List
+RewriteRule ^members-([a-z]*)-sortasc-([0-9]*).html modules.php?name=Members_List&file=index&mode=$1&order=ASC&start=$2 [L]
+RewriteRule ^members-([a-z]*)-sortdesc-([0-9]*).html modules.php?name=Members_List&file=index&mode=$1&order=DESC&start=$2 [L]
+RewriteRule ^members.html modules.php?name=Members_List [L]
+#MetAuthors - only additional rewrite rules not already present will go here
+RewriteRule ^metauthors.html modules.php?name=rwsMetAuthors [L]
+
+#Project Tracking
+RewriteRule ^project-([0-9]*).html modules.php?name=Project_Tracking&op=PJProject&project_id=$1 [L]
+RewriteRule ^project-task-([0-9]*).html modules.php?name=Project_Tracking&op=PJTask&task_id=$1 [L]
+RewriteRule ^project-([0-9]*)-submit-report.html modules.php?name=Project_Tracking&op=PJReportSubmit&project_id=$1 [L]
+RewriteRule ^project-([0-9]*)-submit-request.html modules.php?name=Project_Tracking&op=PJRequestSubmit&project_id=$1 [L]
+RewriteRule ^project-report-([0-9]*).html modules.php?name=Project_Tracking&op=PJReport&report_id=$1 [L]
+RewriteRule ^project-request-([0-9]*).html modules.php?name=Project_Tracking&op=PJRequest&request_id=$1 [L]
+RewriteRule ^project-report-comment-([0-9]*).html modules.php?name=Project_Tracking&op=PJReportCommentSubmit&report_id=$1 [L]
+RewriteRule ^project-request-comment-([0-9]*).html modules.php?name=Project_Tracking&op=PJRequestCommentSubmit&request_id=$1 [L]
+RewriteRule ^project-task-map.html modules.php?name=Project_Tracking&op=PJTaskMap [L]
+RewriteRule ^project-report-map.html modules.php?name=Project_Tracking&op=PJReportMap [L]
+RewriteRule ^project-request-map.html modules.php?name=Project_Tracking&op=PJRequestMap [L]
+RewriteRule ^project.html modules.php?name=Project_Tracking [L]
+
+#NukeSentinel
+RewriteRule ^nukesentinel.html modules.php?name=NukeSentinel [L]
+
+#Private Messages
+RewriteRule ^messages-read-(savebox|inbox|outbox|sentbox)-([0-9]*).html modules.php?name=Private_Messages&file=index&folder=$1&mode=read&p=$2 [L]
+RewriteRule ^messages-start-(savebox|inbox|outbox|sentbox)-([0-9]*).html modules.php?name=Private_Messages&file=index&folder=$1&start=$2 [L]
+RewriteRule ^messages-(reply|quote|edit)-([0-9]*).html modules.php?name=Private_Messages&file=index&mode=$1&p=$2 [L]
+RewriteRule ^messages-post-([0-9]*).html modules.php?name=Private_Messages&mode=post&u=$1 [L]
+RewriteRule ^messages-new.html modules.php?name=Private_Messages&file=index&mode=post [L]
+RewriteRule ^messages-(sentbox|inbox|savebox|outbox).html modules.php?name=Private_Messages&file=index&folder=$1 [L]
+RewriteRule ^messages-popup.html modules.php?name=Private_Messages&file=index&mode=newpm&popup=1 [L]
+RewriteRule ^messages.html modules.php?name=Private_Messages [L]
+
+#Recommend Us
+RewriteRule ^recommend.html modules.php?name=Recommend_Us [L]
+
+#Reviews
+RewriteRule ^reviews-new.html modules.php?name=Reviews&rop=write_review [L]
+RewriteRule ^reviews-preview.html modules.php?name=Reviews&rop=preview_review [L]
+RewriteRule ^reviews-([0-9]*)-page([0-9]*).html modules.php?name=Reviews&rop=showcontent&id=$1&page=$2 [L]
+RewriteRule ^reviews-([0-9]*).html modules.php?name=Reviews&rop=showcontent&id=$1 [L]
+RewriteRule ^reviews-comment-([0-9]*)-([[:punct:]?/:\-\'{}()._&a-zA-Z0-9+=\%\ ]*).html modules.php?name=Reviews&rop=postcomment&id=$1&title=$2 [L]
+RewriteRule ^reviews-comment-([0-9]*).html modules.php?name=Reviews&rop=postcomment&id=$1 [L]
+RewriteRule ^reviews-([0-9]*)-delete.html modules.php?name=Reviews&rop=del_review&id_del=$1 [L]
+RewriteRule ^reviews-([0-9]*)-edit.html modules.php?name=Reviews&rop=mod_review&id=$1 [L]
+RewriteRule ^reviews-([0-9]*)-delcomment-([0-9]*).html modules.php?name=Reviews&rop=del_comment&cid=$1&id=$2 [L]
+RewriteRule ^reviews-([a-zA-Z0-9]*)-orderby-([a-z]*)-([a-zA-Z]*).html modules.php?name=Reviews&rop=$1&field=$2&order=$3 [L]
+RewriteRule ^reviews-sortby-([a-zA-Z0-9]*).html modules.php?name=Reviews&rop=$1 [L]
+RewriteRule ^reviews.html modules.php?name=Reviews [L]
+
+#Search
+RewriteRule ^search-([a-zA-Z0-9]*)-([0-9]*)-([0-9]*)-([/:\-\'{}()\,\._&a-zA-Z0-9+=\ ]*)-([a-zA-Z]*)-([0-9]*).html modules.php?name=Search&author=$1&topic=$2&min=$3&query=$4&type=$5&category=$6 [L]
+RewriteRule ^search-([a-zA-Z0-9]*)-([0-9]*)-([0-9]*)-([/:\-\'{}()\,\._&a-zA-Z0-9+=\ ]*)-([a-zA-Z]*).html modules.php?name=Search&author=$1&topic=$2&min=$3&query=$4&type=$5 [L]
+RewriteRule ^search-author-([a-zA-Z0-9]*).html modules.php?name=Search&author=$1 [L]
+RewriteRule ^search-comments-([0-9]*).html modules.php?name=Search&type=comments&sid=$1 [L]
+RewriteRule ^search-([/:\-\'{}()\,\._&a-zA-Z0-9+=\ ]*)-([a-zA-Z0-9_-]*).html modules.php?name=Search&query=$1&author=$2 [L]
+RewriteRule ^search-([0-9]*).html modules.php?name=Search&query=&topic=$1 [L]
+RewriteRule ^search-users.html modules.php?name=Search&type=users [L]
+RewriteRule ^search.html* modules.php?name=Search [L]
+
+#Statistics
+RewriteRule ^stats-([0-9]*)-([0-9]*)-([0-9]*).html modules.php?name=Statistics&op=DailyStats&year=$1&month=$2&date=$3 [L]
+RewriteRule ^stats-([0-9]*)-([0-9]*).html modules.php?name=Statistics&op=MonthlyStats&year=$1&month=$2 [L]
+RewriteRule ^stats-([0-9]*).html modules.php?name=Statistics&op=YearlyStats&year=$1 [L]
+RewriteRule ^advstats.html modules.php?name=Statistics&op=Stats [L]
+RewriteRule ^stats.html modules.php?name=Statistics [L]
+
+#Stories Archive
+RewriteRule ^archive-showall-([0-9]*).html modules.php?name=Stories_Archive&sa=show_all&min=$1 [L]
+RewriteRule ^archive-showall.html modules.php?name=Stories_Archive&sa=show_all [L]
+RewriteRule ^archive-([0-9]*)-([0-9]*)-([a-zA-Z]*).* modules.php?name=Stories_Archive&sa=show_month&year=$1&month=$2&month_l=$3 [L]
+RewriteRule ^archive.html modules.php?name=Stories_Archive [L]
+
+#Surveys
+RewriteRule ^survey-results-([0-9]*)-([a-z]*)-([0-9]*)-([0-9\-]*).html modules.php?name=Surveys&op=results&pollID=$1&mode=$2&order=$3&thold=$4 [L]
+RewriteRule ^survey-results-([0-9]*).html modules.php?name=Surveys&op=results&pollID=$1 [L]
+RewriteRule ^survey-([0-9]*).html modules.php?name=Surveys&pollID=$1 [L]
+RewriteRule ^survey-comments-([0-9]*)-([0-9]*).html modules.php?name=Surveys&file=comments&pollID=$1&pid=$2 [L]
+RewriteRule ^survey-comment-([0-9]*)-([0-9]*).html modules.php?name=Surveys&file=comments&pollID=$1&tid=$2 [L]
+RewriteRule ^survey-comment-([0-9]*)-(tid|pid)-([0-9]*)-([a-z]*)-([0-9]*)-([0-9\-]*).html modules.php?name=Surveys&file=comments&pollID=$1&$2=$3&mode=$4&order=$5&thold=$6 [L]
+RewriteRule ^survey-commreply-([0-9]*)-([0-9]*)-([a-z]*)-([0-9]*)-([0-9\-]*).html modules.php?name=Surveys&file=comments&op=Reply&pid=$1&pollID=$2&mode=$3&order=$4&thold=$5 [L]
+RewriteRule ^survey-commreply-([0-9]*)-([0-9]*).html modules.php?name=Surveys&file=comments&op=Reply&pid=$1&pollID=$2 [L]
+RewriteRule ^survey-showreply-([0-9]*)-([0-9]*)-([0-9]*).html modules.php?name=Surveys&file=comments&op=showreply&tid=$1&pollID=$2&pid=$3 [L]
+RewriteRule ^survey-showreply-([0-9]*)-([0-9]*)-([0-9]*)-([a-z]*)-([0-9]*)-([0-9\-]*).html modules.php?name=Surveys&file=comments&op=showreply&tid=$1&pollID=$2&pid=$3&mode=$4&order=$5&thold=$6 [L]
+RewriteRule ^survey-showreply-([0-9]*).html modules.php?name=Surveys&file=comments&op=showreply&tid=$1 [L]
+RewriteRule ^survey-showreply-([0-9]*)-([a-z]*)-([0-9]*)-([0-9\-]*).html modules.php?name=Surveys&file=comments&op=showreply&tid=$1&mode=$2&order=$3&thold=$4 [L]
+RewriteRule ^survey-comments.html modules.php?name=Surveys&file=comments [L]
+RewriteRule ^surveys.html modules.php?name=Surveys [L]
+
+#Submit_Downloads
+RewriteRule ^submit-download-terms.html modules.php?name=Submit_Downloads&op=TermsUse [L]
+RewriteRule ^submit-download.html modules.php?name=Submit_Downloads [L]
+
+#Submit_News
+RewriteRule ^submit.html modules.php?name=Submit_News [L]
+
+#Tags
+RewriteRule ^all-about-([a-zA-Z0-9_\-\+]*).html modules.php?name=Tags&op=list&tag=$1 [L]
+RewriteRule ^tags.html modules.php?name=Tags [L]
+
+#Topics
+RewriteRule ^topics.html modules.php?name=Topics [L]
+
+#Top10
+RewriteRule ^top-([[:print:]]*).html modules.php?name=Top&zx=$1 [L]
+RewriteRule ^top.html modules.php?name=Top [L]
+
+#WebLinks
+RewriteRule ^viewlinkcomments-([0-9]+)-([[:punct:]/:\-\'(){}.&=_a-zA-Z0-9\ ]*).html modules.php?name=Web_Links&l_op=viewlinkcomments&lid=$1&ttitle=$2 [L]
+RewriteRule ^viewlinkcomments-([0-9]+).html modules.php?name=Web_Links&l_op=viewlinkcomments&lid=$1 [L]
+RewriteRule ^viewlinkdetails-([0-9]+)-([[:punct:]/:\-\'(){}.&=_a-zA-Z0-9\ ]*).html modules.php?name=Web_Links&l_op=viewlinkdetails&lid=$1&ttitle=$2 [L]
+RewriteRule ^viewlinkdetails-([0-9]+).html modules.php?name=Web_Links&l_op=viewlinkdetails&lid=$1 [L]
+RewriteRule ^vieweditorial-([0-9]+)-([[:punct:]/:\-\'(){}.&=_a-zA-Z0-9\ ]*).html modules.php?name=Web_Links&l_op=viewlinkeditorial&lid=$1&ttitle=$2 [L]
+RewriteRule ^vieweditorial-([0-9]+).html modules.php?name=Web_Links&l_op=viewlinkeditorial&lid=$1 [L]
+RewriteRule ^modifylink-([0-9]+).html modules.php?name=Web_Links&l_op=modifylinkrequest&lid=$1 [L]
+RewriteRule ^brokenlink-([0-9]+).html modules.php?name=Web_Links&l_op=brokenlink&lid=$1 [L]
+RewriteRule ^outsidelink-([0-9]+).html modules.php?name=Web_Links&l_op=outsidelinksetup&lid=$1 [L]
+RewriteRule ^linkop-(MostPopular|mostpopular)-([0-9]+)-(num|percent).html modules.php?name=Web_Links&l_op=MostPopular&ratenum=$2&ratetype=$3 [L]
+RewriteRule ^linkop-(TopRated|toprated)-([0-9]+)-(num|percent).html modules.php?name=Web_Links&l_op=TopRated&ratenum=$2&ratetype=$3 [L]
+RewriteRule ^newlinks-([0-9]+).html modules.php\?name=Web_Links&l_op=NewLinks&newlinkshowdays=$1 [L]
+RewriteRule ^linksnew-([0-9]+).html modules.php?op=modload&name=Web_Links&file=index&l_op=NewLinksDate&selectdate=$1 [L]
+RewriteRule ^linkop-(AddLink|addlink).html modules.php?op=modload&name=Web_Links&file=index&l_op=AddLink [L]
+RewriteRule ^linkop-(MostPopular|mostpopular).html modules.php?op=modload&name=Web_Links&file=index&l_op=MostPopular [L]
+RewriteRule ^linkop-(NewLinks|newlinks).html modules.php?op=modload&name=Web_Links&file=index&l_op=NewLinks [L]
+RewriteRule ^linkop-(RandomLink|randomlink).html modules.php?op=modload&name=Web_Links&file=index&l_op=RandomLink [L]
+RewriteRule ^linkop-(TopRated|toprated).html modules.php?op=modload&name=Web_Links&file=index&l_op=TopRated [L]
+RewriteRule ^ratelink-([0-9]*)-([[:punct:]/:\-\'(){}.&=_a-zA-Z0-9\ ]*).html modules.php?op=modload&name=Web_Links&file=index&l_op=ratelink&lid=$1&ttitle=$2 [L]
+RewriteRule ^ratelink-([0-9]*).html modules.php?op=modload&name=Web_Links&file=index&l_op=ratelink&lid=$1 [L]
+RewriteRule ^viewlink-([0-9]*).html modules.php?name=Web_Links&l_op=visit&lid=$1 [L]
+RewriteRule ^links-([0-9]*)-([a-zA-Z0-9]*).html modules.php?name=Web_Links&file=index&l_op=viewlink&cid=$1&orderby=$2 [L]
+RewriteRule ^links-([0-9]*)-([0-9]*)-([a-zA-Z0-9]*)-([0-9]*).html modules.php?name=Web_Links&file=index&l_op=viewlink&cid=$1&min=$2&orderby=$3&show=$4 [L]
+RewriteRule ^link-([0-9]*).html modules.php?name=Web_Links&l_op=viewlink&cid=$1 [L]
+RewriteRule ^links-search-([[:punct:]/:\-\'{}()._&a-zA-Z0-9+=\ ]*)-([0-9]*)-orderby-([a-zA-Z]*)-([0-9]*) modules.php?name=Web_Links&l_op=search&query=$1&min=$2&orderby=$3&show=$4 [L]
+RewriteRule ^links-search-([[:punct:]/:\-\'{}()._&a-zA-Z0-9+=\ ]*)-orderby-([a-zA-Z]*).html modules.php?name=Web_Links&l_op=search&query=$1&orderby=$2 [L]
+RewriteRule ^links-search-([[:punct:]/:\-\'{}()._&a-zA-Z0-9+=\ ]*).html modules.php?name=Web_Links&l_op=search&query=$1 [L]
+RewriteRule ^links.html modules.php?name=Web_Links [L]
+
+#Your Account
+RewriteRule ^userinfo-([a-zA-Z0-9_-]*).html modules.php?name=Your_Account&op=userinfo&username=$1 [L]
+RewriteRule ^account-avatarsave-([a-zA-Z0-9_-]*)-([\.a-zA-Z0-9_-]*).html modules.php?name=Your_Account&op=avatarsave&category=$1&avatar=$2 [L]
+RewriteRule ^account-showcookiesredirect.html modules.php?name=Your_Account&op=ShowCookiesRedirect [L]
+RewriteRule ^account-deletecookies.html modules.php?name=Your_Account&op=DeleteCookies [L]
+RewriteRule ^account-showcookies.html modules.php?name=Your_Account&op=ShowCookies [L]
+RewriteRule ^account-bypass-([a-z_]*).html modules.php?name=Your_Account&op=userinfo&bypass=1&username=$1 [L]
+RewriteRule ^account-([a-z_]*).html modules.php?name=Your_Account&op=$1 [L]
+RewriteRule ^account-gfx-([0-9]*).html index.php?gfx=gfx&random_num=$1 [L]
+RewriteRule ^account.html modules.php?name=Your_Account [L]

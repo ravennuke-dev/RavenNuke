@@ -1,0 +1,53 @@
+Before running the installSQL.php script, you need to review the ravenstallerConfigFile.php.
+
+The settings in ravenstallerConfigFile.php are integral to the installation scripts and should not be modified unless the RavenNuke(tm) Team has instructed you to do so, except where noted below.
+
+=================================================================================================
+$useLanguageFile = 'lang-english';					// Change this to one of the files in the language folder
+$byPassTableLock = true;							// If your MySQL setup allows LOCK TABLES then set this to false if you need exclusive table locks (Most don't)
+$debugShowPathSettings = false;						// There is a rudimentary debug routine that will display the paths that the script is trying to use.
+													// Set this to true if you are receiving errors concerning files not found
+$debugSetupScriptShowAllErors = false;				// Sets display_errors to E_ALL
+
+
+/*********************************************************************************
+* These are GLOBAL settings for ADMIN/USER/NUKE_SENTINEL(tm) Passwords.
+* Set these to ZERO to use the INDIVIDUAL length settings.
+* Use these settings to make all PASSWORDS the same minimum/maximum length.
+* The lengths are displayed on the Set Up Form.
+**********************************************************************************/
+define('_rnMINIMUM_PASSWORD_LENGTH',8);				
+define('_rnMAXIMUM_PASSWORD_LENGTH',12);
+
+/*********************************************************************************
+* These are INDIVIDUAL settings for ADMIN/USER/NUKE_SENTINEL(tm) Passwords.
+* These will only be used IF the above GLOBAL settings are set to ZERO.
+* Use these settings to individualize the PASSWORD minimum/maximum lengths.
+* The lengths are displayed on the Set Up Form.
+**********************************************************************************/
+define('_rnADMIN_MINIMUM_PASSWORD_LENGTH',8);
+define('_rnADMIN_MAXIMUM_PASSWORD_LENGTH',32);													
+define('_rnUSER_MINIMUM_PASSWORD_LENGTH',6);													
+define('_rnUSER_MAXIMUM_PASSWORD_LENGTH',32);													
+define('_rnNSADMIN_MINIMUM_PASSWORD_LENGTH',8);
+define('_rnNSADMIN_MAXIMUM_PASSWORD_LENGTH',16);
+
+/*********************************************************************************
+* This is a GLOBAL setting for ALLOWED characters in the ADMIN/USER/NUKE_SENTINEL(tm) name/id 
+* Set this to '*' to use the INDIVIDUAL length settings.
+* Use this setting to make all name/id fields use the same ALLOWED control characters.
+* The ALLOWED values are displayed on the Set Up Form.
+* ONLY 1 DEFINE CAN BE ACTIVE.  COMMENT OUT THE OTHER ONE.
+**********************************************************************************/
+define('_rnALLOWED_USERID_CHARACTERS',"[a-zA-Z0-9-_!@\$\*]*"); // Must use double quotes!
+// define('_rnALLOWED_USERID_CHARACTERS','*');
+
+/*********************************************************************************
+* To use these INDIVIDUAL settings set the above GLOBAL setting to '*'
+**********************************************************************************/
+define('_rnADMIN_ALLOWED_USERID_CHARACTERS','[a-zA-Z0-9]*');
+define('_rnUSER_ALLOWED_USERID_CHARACTERS','[a-z]*');
+define('_rnNSADMIN_ALLOWED_USERID_CHARACTERS','[0-9]*');
+=================================================================================================
+
+Other than that you should NOT change any settings unless instructed to do so by the RavenNuke(tm) Team.

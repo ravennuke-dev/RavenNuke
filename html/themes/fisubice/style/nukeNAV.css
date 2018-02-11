@@ -1,0 +1,17 @@
+.nukeNAV,.nukeNAV *{z-index:2;list-style:none;margin:0;padding:0;}
+.nukeNAV{position:relative;}
+.nukeNAV td{padding:0;margin:0;}
+.nukeNAV a{border:0;padding-left:4px;padding-right:4px;padding-top:4px;padding-bottom:4px;line-height:10px;margin:0;}
+.nukeNAV a,.nukeNAV a:visited{color:#000;font-size:10px;}
+.nukeNAV li:hover,.nukeNAV li.sfHover,.nukeNAV a:focus,.nukeNAV a:hover,.nukeNAV a:active{background:#F4F6FB;color:#32475f;}
+.nukeNAV li{background:transparent;}
+.nukeNAV li li,.nukeNAV li li li{background:#BFCEE0;}
+.sf-sub-indicator{position:absolute;display:block;right:.75em;top:0;}
+a > .sf-sub-indicator{top:4px;background-position:0 -100px;padding:0}
+nukeNAVmod a{border-left:1px solid #fff;border-top:1px solid #F4F6FB;font-size:10px;}
+.nukeNAVmod a,.nukeNAVmod a:visited{color:#32475f;}
+.nukeNAVmod li:hover,.nukeNAVmod li.sfHover,.nukeNAVmod a:focus,.nukeNAVmod a:hover,.nukeNAVmod a:active{color:#000;background:#BFCEE0;outline:0;}
+.nukeNAVmod li,.nukeNAVmod li li,.nukeNAVmod li li li{background:#F4F6FB;}
+/* open the hover menu on the correct side for right/left blocks */
+.fisubice-right .nukeNAVmod li:hover ul,.fisubice-right .nukeNAVmod li.sfHover ul{left:-14.5em;top:0;} /* right column */
+.fisubice-left .nukeNAVmod li:hover ul,.fisubice-left .nukeNAVmod li.sfHover ul{left:100%;top:0;}  /* left column */

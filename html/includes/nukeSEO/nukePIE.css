@@ -1,0 +1,17 @@
+
+.nukePIEhdr {
+	padding:5px;
+	font-weight:bold;
+	border:1px solid #000000;
+	background:#000000;
+	color:#FFFFFF;
+    width:600px;
+}
+
+.nukePIEbody {
+	padding:5px;
+	border:1px solid #000000;
+	background:#FFFFFF;
+	color:#000000;
+    width:600px;
+}

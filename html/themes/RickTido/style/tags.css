@@ -1,0 +1,24 @@
+.class1 A:link {font-size:9px; color:#006400; font-weight:bold;}
+.class1 A:visited {font-size:9px;}
+.class1 A:active {font-size:9px;}
+.class1 A:hover {font-size:9px; color:#000;}
+
+.class2 A:link {font-size:12px; color:#9400d3; font-weight:bold;}
+.class2 A:visited {font-size:12px;}
+.class2 A:active {font-size:12px;}
+.class2 A:hover {font-size:12px; color:#000;}
+
+.class3 A:link {font-size:15px; color:#ff6347; font-weight:bold;}
+.class3 A:visited {font-size:15px;}
+.class3 A:active {font-size:15px;}
+.class3 A:hover {font-size:15px; color:#000;}
+
+.class4 A:link {font-size:18px; color:#5f9ea0; font-weight:bold;}
+.class4 A:visited {font-size:18px;}
+.class4 A:active {font-size:18px;}
+.class4 A:hover {font-size:18px; color:#000;}
+
+.class5 A:link {font-size:20px; color:#00ced1; font-weight:bold;}
+.class5 A:visited {font-size:20px;}
+.class5 A:active {font-size:20px;}
+.class5 A:hover {font-size:20px; color:#000;}

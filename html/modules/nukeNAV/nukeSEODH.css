@@ -1,0 +1,7 @@
+html{height:100%;margin:0;padding:0;}
+BODY{height:100%;font-family:Tahoma, Verdana, Arial, Helvetica;font-weight:400;font-size:10px;color:#000;background-color:#FFF;margin:0;padding:0;}
+.tiny{font-family:arial, helvetica, sans-serif;color:#333;font-size:9px;font-weight:400;text-decoration:none;background:none;}
+TD,P,DIV,INPUT,TEXTAREA,FORM{font:10px Tahoma, Verdana, Arial, Helvetica;color:#505050;}
+A:hover{font-size:10px;color:red;font-family:Tahoma, Verdana, Arial, Helvetica;text-decoration:underline;}
+A:link,A:active{font-size:10px;color:#000;font-family:Tahoma, Verdana, Arial, Helvetica;text-decoration:none;}
+A:visited{font-size:10px;color:#006;font-family:Tahoma, Verdana, Arial, Helvetica;text-decoration:none;}

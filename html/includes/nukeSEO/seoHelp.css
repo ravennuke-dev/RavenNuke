@@ -1,0 +1,16 @@
+.seoHelpHdr {
+	font-weight:bold;
+	border:2px solid #B3C6FF;
+	background: #B3C6FF; 
+  padding:1px;
+	color:#000000;
+    width:408px;
+}
+
+.seoHelpBody {
+	padding:5px;
+	border:2px solid #B3C6FF;
+	background: #FFFFFF;
+	color:#000000;
+    width:400px;
+}

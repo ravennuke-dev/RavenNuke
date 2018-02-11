@@ -1,0 +1,3 @@
+<FilesMatch "(\.js|\.css|index.html)$">
+  allow from all
+</FilesMatch>

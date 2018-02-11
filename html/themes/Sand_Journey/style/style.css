@@ -1,0 +1,35 @@
+font {font-family: Verdana,Helvetica}
+td {font-family: Verdana,Helvetica; font-size: 10px}
+body {font-family: Verdana,Helvetica; font-size: 10px}
+p {font-family: Verdana,Helvetica; font-size: 10px}
+div {font-family: Verdana,Helvetica; font-size: 10px}
+input {border-top-color: #000000; border-left-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1px; border-left-width: 1px; font-size: 10px; border-bottom-width: 1px; font-family: Verdana,Helvetica; border-right-width: 1px}
+textarea {border-top-color: #000000; border-left-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1px; border-left-width: 1px; font-size: 10px; border-bottom-width: 1px; font-family: Verdana,Helvetica; border-right-width: 1px}
+select {border-top-color: #000000; border-left-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1px; border-left-width: 1px; font-size: 10px; border-bottom-width: 1px; font-family: Verdana,Helvetica; border-right-width: 1px}
+form {font-family: Verdana,Helvetica; font-size: 10px}
+a:link {background: none; color: #363636; font-size: 10px; font-family: Verdana, Helvetica; text-decoration: underline}
+a:active {background: none; color: #363636; font-size: 10px; font-family: Verdana, Helvetica; text-decoration: underline}
+a:visited {background: none; color: #363636; font-size: 10px; font-family: Verdana, Helvetica; text-decoration: underline}
+a:hover {background: none; color: #363636; font-size: 10px; font-family: Verdana, Helvetica; text-decoration: underline}
+.title {background: none; color: #000000; font-size: 14px; font-weight: bold; font-family: Verdana, Helvetica; text-decoration: none}
+.content {background: none; color: #000000; font-size: 10px; font-family: Verdana, Helvetica}
+.block-title {background: none; color: #ffffff; font-size: 10px; font-family: Verdana, Helvetica}
+.storytitle {background: none; color: #363636; font-size: 12px; font-weight: bold; font-family: Verdana, Helvetica; text-decoration: none}
+.storycat {background: none; color: #363636; font-size: 14px; font-weight: bold; font-family: Verdana, Helvetica; text-decoration: underline}
+.boxtitle {background: none; color: #363636; font-size: 10px; font-weight: bold; font-family: Verdana, Helvetica; text-decoration: none}
+.boxcontent {background: none; color: #000000; font-size: 10px; font-family: Verdana, Helvetica}
+.option {background: none; color: #000000; font-size: 10px; font-weight: bold; font-family: Verdana, Helvetica; text-decoration: none}
+.tiny {background: none; color: #000000; font-size: 10px; font-weight: normal; font-family: Verdana, Helvetica; text-decoration: none}
+img {border-style: none}
+/* DEFAULT CSS OVERRIDES */
+.ol-box-center ol.rn-ol li {padding-top:2px;}
+.ul-box-center ul.rn-ul li,.ol-box-center ol.rn-ol li,.ul-box-center ul.rn-list li.rn-list{float:left;width:41%;margin-left:2%}
+.ul-box-center ul.rn-ul li.li-even,.ol-box-center ol.rn-ol li.li-even{margin-left:3%}
+.ul-box-center ul.rn-list li.rn-list.li-even{margin-left:3%;padding-left:18px}
+.ul-box-center.block-modules ul.rn-ul li{float:left;width:110px;margin-left:2%}
+/* Side Block styling */
+.ul-box {width:130px;padding:2px 0} /* containers for side block lists: for proper display in ie7 */
+.ol-box {padding:2px 0}
+.ul-box.block-feeds li.rn-list.li-first {float:left}
+.ul-box.block-old_articles li.rn-list.li-even,.ul-box.block-old_articles li.rn-list.li-odd,.ul-box.block-feeds li.rn-list.li-even,.ul-box.block-feeds li.rn-list.li-odd,.ul-box.block-last_5_articles li.rn-list.li-even,.ul-box.block-last_5_articles li.rn-list.li-odd{float:left;margin-top:4px;}
+.ul-box.block-old_articles .small-caps{font-variant:normal}

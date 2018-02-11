@@ -1,0 +1,283 @@
+font {font-family: Verdana,Helvetica,sans-serif;}
+td {font-family: Verdana,Helvetica,sans-serif; font-size: 10px}
+body {font-family: Verdana,Helvetica,sans-serif; font-size: 10px}
+p {font-family: Verdana,Helvetica,sans-serif; font-size: 10px}
+div {font-family: Verdana,Helvetica,sans-serif; font-size: 10px}
+input{margin-bottom:2px;margin-top:2px;text-indent:2px}
+input,textarea,select{border-color:#000000;color:#000000;font-size:11px}
+input,textarea,select{background: #ffffff;border-width:1px;font:normal 11px Verdana,Arial,Helvetica,sans-serif}
+input.catbutton{background:#fafafa;color:#000000;font-size:10px}
+input.button{background:#fafafa;color:#000000;font-size:10px}
+input.liteoption{background: #fafafa;color:#000000}
+input.mainoption{background:#fafafa;color:#000000;font-weight:bold}
+input.post,textarea.post,select{background: #ffffff;color:#000000}
+.helpline{background:#e1e9f2;border-style:none;color:#000000}
+.code{background:#fafafa;border:1px solid #d1d7dc;color:#006600; font:11px Courier,"Courier New",sans-serif;padding:5px}
+.quote{background:#fafafa;border:1px solid #d1d7dc;color:#444444; font:11px/125% Verdana,Arial,Helvetica,sans-serif}
+.bodyline{background: #f7f8fc;color:#000000;border:1px solid #98aab1}
+body{background:#ecf0f6;color:#000000;}
+.hidegoogle{color:#ecf0f6;font-size:0pt;}
+hr{border: 0px solid #516A88;border-top-width:1px;height:0px}
+a:link,a:active,a:visited,a.postlink{color:#32475f;text-decoration:none}
+a:hover,a.topictitle:hover{color:#839fbc;text-decoration:underline}
+.title       {background: none; color: #000000; font-size: 14px; font-weight: bold; font-family: Verdana, Helvetica,sans-serif; text-decoration: none}
+.content     {background: none; color: #000000; font-size: 10px; font-family: Verdana, Helvetica,sans-serif}
+.block-title {background: none; color: #516A88; font-size: 10px; font-family: Verdana, Helvetica,sans-serif}
+.storytitle  {background: none; color: #516A88; font-size: 12px; font-weight: bold; font-family: Verdana, Helvetica,sans-serif; text-decoration: none}
+.storycat    {background: none; color: #000000; font-size: 12px; font-weight: bold; font-family: Verdana, Helvetica,sans-serif; text-decoration: underline}
+.boxtitle    {background: none; color: #000000; font-size: 10px; font-weight: bold; font-family: Verdana, Helvetica,sans-serif; text-decoration: none}
+.boxcontent  {background: none; color: #000000; font-size: 10px; font-family: Verdana, Helvetica,sans-serif}
+.option      {background: none; color: #000000; font-size: 10px; font-weight: bold; font-family: Verdana, Helvetica,sans-serif; text-decoration: none}
+.tiny        {background: none; color: #000000; font-size: 10px; font-weight: normal; font-family: Verdana, Helvetica,sans-serif; text-decoration: none}
+.small       {background: none; color: #000000; font-size: 9px; font-weight: normal; font-family: Verdana, Helvetica,sans-serif; text-decoration: none}
+.sandersh1   {background: none; color: #990000; font-size: 18px; font-weight: bold; font-family: Arial, Verdana, Helvetica,sans-serif; text-decoration: none}
+.sandersh2   {background: none; color: #990000; font-size: 16px; font-weight: bold; font-family: Arial, Verdana, Helvetica,sans-serif; text-decoration: none}
+.sandersh3   {background: none; color: #990000; font-size: 14px; font-weight: bold; font-family: Arial, Verdana, Helvetica,sans-serif; text-decoration: none}
+.sandersp    {background: none; color: #000000; font-size: 12px; font-family: Verdana, Helvetica,sans-serif; text-decoration: none}
+.sandershr   {border: 5px;border-top-width:5px;height:2px}
+img {border-style: none }
+
+/* GCalendar sample styles for fisubice theme */
+
+.gcal-error {
+   font-weight: bold;
+   color: red;
+}
+
+form.gcal-event-form legend {
+   font-weight: bold;
+   color: black;
+}
+
+form.gcal-event-form .normal-label {
+   font-weight: bold;
+   color: black;
+}
+
+form.gcal-event-form .error-label {
+   font-weight: bold;
+   color: red;
+}
+
+table.gcal-block-cal {
+   width: 100%;
+   border-width: 1px;
+   border-style: solid;
+   border-color: black;
+}
+
+table.gcal-block-cal a {
+}
+
+table.gcal-block-cal a:link {
+   text-decoration: underline;
+}
+table.gcal-block-cal a:visited {
+   text-decoration: underline;
+}
+table.gcal-block-cal a:hover {
+   text-decoration: underline;
+}
+table.gcal-block-cal a:active {
+   text-decoration: underline;
+}
+
+table.gcal-block-cal a.today {
+   color: white;
+}
+
+table.gcal-block-cal th {
+   color: white;
+   text-align: center;
+   background-image: url(../../../modules/Forums/templates/subSilver/images/cellpic3.gif);
+   border-width: 1px;
+   padding: 1px;
+   border-style: outset;
+   border-color: black;
+   font-size: 10px;
+}
+
+table.gcal-block-cal td {
+   border-width: 1px;
+   padding: 1px;
+   border-style: hidden;
+   text-align: center;
+}
+
+table.gcal-block-cal td.no-day {
+}
+
+table.gcal-block-cal td.day-no-event {
+}
+
+table.gcal-block-cal td.day-event {
+   border: solid 1px teal;
+}
+
+table.gcal-block-cal td.today-no-event {
+   background-image: url(../../../modules/Forums/templates/subSilver/images/cellpic3.gif);
+   color: white;
+   border-style: outset;
+   border-color: black;
+}
+
+table.gcal-block-cal td.today-event {
+   background-image: url(../../../modules/Forums/templates/subSilver/images/cellpic3.gif);
+   font-weight: bold;
+   border-style: outset;
+   border-color: black;
+}
+
+table.gcal-block-events {
+   border: solid 1px black;
+   width: 100%;
+}
+
+table.gcal-block-events a:link {
+   text-decoration: underline;
+}
+table.gcal-block-events a:visited {
+   text-decoration: underline;
+}
+table.gcal-block-events a:hover {
+   text-decoration: underline;
+}
+table.gcal-block-events a:active {
+   text-decoration: underline;
+}
+
+
+table.gcal-month {
+   width: 100%;
+   border-width: 1px;
+   border-style: solid;
+   border-color: black;
+   padding: 1px;
+}
+
+table.gcal-month th {
+   color: white;
+   text-align: center;
+   background-image: url(../../../modules/Forums/templates/subSilver/images/cellpic3.gif);
+   padding: 2px;
+   border: outset 1px black;
+}
+
+table.gcal-month td {
+   margin: 0px;
+   padding: 2px;
+   border: outset 1px black;
+   height: 75px;
+}
+
+table.gcal-month td.no-day {
+   background-color: #d2d5d8;
+}
+
+table.gcal-month td.day {
+}
+
+table.gcal-month td.weekend {
+   background-color: #c4d2e3;
+}
+
+table.gcal-month td.today {
+   background-color: #88b2e6;
+}
+
+table.gcal-month a {
+}
+
+table.gcal-month a:link {
+   text-decoration: underline;
+}
+table.gcal-month a:visited {
+   text-decoration: underline;
+}
+table.gcal-month a:hover {
+   text-decoration: underline;
+}
+table.gcal-month a:active {
+   text-decoration: underline;
+}
+
+table.gcal-month a.day-link {
+   font-size: 20px;
+   background: none;
+   color: black;
+}
+
+table.gcal-month a.day-link:link {
+   text-decoration: underline;
+}
+table.gcal-month a.day-link:visited {
+   text-decoration: underline;
+}
+table.gcal-month a.day-link:hover {
+   text-decoration: underline;
+}
+table.gcal-month a.day-link:active {
+   text-decoration: underline;
+}
+
+table.gcal-event {
+   width: 80%;
+   border-width: 1px;
+   border-style: solid;
+   border-color: black;
+   padding: 0px;
+}
+
+table.gcal-event caption {
+   padding-bottom: 5px;
+   font-weight: bold;
+   font-size: 11px;
+   margin: 2px;
+}
+
+table.gcal-event th {
+   background-color: #c9d6e6;
+   color: black;
+   text-align: right;
+   font-size: 11px;
+   padding: 4px;
+   border: solid 1px black;
+}
+
+table.gcal-event td {
+   padding: 4px;
+   border: solid 1px black;
+}
+
+table.gcal-cat-legend {
+   border-width: 1px;
+   border-style: solid;
+   border-color: black;
+   padding: 2px;
+}
+
+table.gcal-cat-legend td {
+   border: none;
+}
+
+table.gcal-cat-legend caption {
+   padding-bottom: 5px;
+   font-weight: bold;
+   font-size: 11px;
+   margin: 2px;
+}
+/* For Forum Attachment Mod */
+td.attachrow		{ font: normal 11px Verdana, Arial, Helvetica, sans-serif; }
+td.attachheader     { font: normal 11px Verdana, Arial, Helvetica, sans-serif; }
+table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; border-collapse : collapse; }
+/* DEFAULT CSS OVERRIDES */
+/* Ordered List Sprites (required for IE7 and floating LI) */
+/* Center Block styling */
+.fisubicemain div.block-spacer{margin:0 0 10px 0} /* more space below some center blocks */
+#IBblock-center div.block-spacer{margin:0}  /* except for this block */
+/* Side Block styling */
+.ul-box {width:130px;padding:2px 0} /* containers for side block lists: for proper display in ie7 */
+.ol-box {padding:2px 0}
+.ul-box.block-feeds li.rn-list.li-first {float:left}
+.ul-box.block-old_articles li.rn-list.li-even,.ul-box.block-old_articles li.rn-list.li-odd,.ul-box.block-feeds li.rn-list.li-even,.ul-box.block-feeds li.rn-list.li-odd,.ul-box.block-last_5_articles li.rn-list.li-even,.ul-box.block-last_5_articles li.rn-list.li-odd{float:left;margin-top:4px;}
+.ul-box.block-old_articles .small-caps{font-variant:normal}

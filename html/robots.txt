@@ -1,0 +1,15 @@
+User-agent: *
+Crawl-delay: 5
+Disallow: /abuse/
+Disallow: /admin/
+Disallow: /blocks/
+Disallow: /cgi-bin/
+Disallow: /db/
+Disallow: /images/
+Disallow: /includes/
+Disallow: /language/
+Disallow: /modules/
+Disallow: /ShortLinks/
+Disallow: /themes/
+Disallow: /admin.php
+Disallow: /config.php

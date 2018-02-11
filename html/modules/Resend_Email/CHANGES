@@ -1,0 +1,38 @@
+/********************************************************************/
+/* Resend Email Module by Gaylen Fraley (aka Raven)                 */
+/* http://www.ravenphpscripts.com                                       */
+/* http://www.ravenwebhosting.com                                       */
+/* http://www.ravennuke.com                                             */
+/* For use with nuke 6.5+                           .               */
+/********************************************************************/
+Change History:
+
+02/16/2009 - Version 2.1.1 for RavenNuke(tm)
+           - Security fix for extract() function
+           - This module is depricated as RNYA now covers most if not all of the functionality
+
+04/24/2008 - Modified $prefix to $user_prefix - 0000962: Re-send Email module uses $prefix for users and not $user_prefix
+
+10/27/2007 - Added phpnukemailer for sending mails
+
+06/25/2005 - Version 2.0.2 Released
+           - Fixed bug: the resend password was empty
+
+06/24/2005 - Version 2.0.1 Released
+           - Fixed bug: the buttons were not language independent
+           - German language translation added (Susan) - Thanks to Susann for discovering the bug!
+
+06/12/2005 - Version 2.0.0 Released
+           - Converted to new sql layer
+           - Converted & to &amp; where appropriate
+           - Efficiency modifications
+           - Added auto-refresh code to redirect where appropriate
+           - Added date and timestamp added to the Waiting screen
+           - Added language defines
+           - Miscellaneous other tweaks
+
+05/19/2003 - Added Modification facility to allow the Admin to make selected modifications to the temporary record.
+
+05/18/2003 - Fixed password display in email and added hyperlink to the display to allow the Admin to activate the user right from the module. The password will now be changed when resending the email.
+
+05/09/2003 - Released

@@ -1,0 +1,18 @@
+.nukeNAV a{border:0;padding:8px;}
+.nukeNAV a,.nukeNAV a:visited{color:#fff;font-size:13px;text-decoration:none;	font-weight: bold;}
+.nukeNAV li{background:transparent; color:#fff;}
+.nukeNAV li:hover,.nukeNAV li.sfHover,.nukeNAV a:focus,.nukeNAV a:hover,.nukeNAV a:active{background:#1e3342;color:#fff;}
+.nukeNAV li li,.nukeNAV li li li{background:#1e3342;color:#fff;}
+.nukeNAVmod a{font-size:10px;}
+.nukeNAVmod a,.nukeNAVmod a:visited{color:#32475f;}
+.nukeNAVmod,.nukeNAVmod li{width:16em;}
+.nukeNAVmod li:hover ul,.nukeNAVmod li.sfHover ul{z-index:99;left:16em;top:0;}
+.nukeNAVmod li:hover,.nukeNAVmod li.sfHover,.nukeNAVmod a:focus,.nukeNAVmod a:hover,.nukeNAVmod a:active{color:#000;background:#5a83a1;outline:0;}
+.nukeNAVmod li,.nukeNAVmod li li,.nukeNAVmod li li li{background:#cee7fa;}
+.nukeNAV-center.nukeNAVmod li{float:left;width:254px;margin-left:0;padding-left:2%;}
+.nukeNAV-center.nukeNAVmod li.li-even {width:264px;margin-left:0;padding-left:21px}
+.nukeNAV-center.nukeNAVmod li ul{width:14em;}
+.nukeNAV-center.nukeNAVmod li ul li{width:100%;float:none;margin-left:0;}
+/* open the hover menu on the correct side for right/left blocks */
+#sidebar2 .nukeNAVmod li:hover ul,#sidebar2 .nukeNAVmod li.sfHover ul{left:-14.5em;top:0;} /* right column */
+#sidebar1 .nukeNAVmod li:hover ul,#sidebar1 .nukeNAVmod li.sfHover ul{left:100%;top:0;} /* left column */

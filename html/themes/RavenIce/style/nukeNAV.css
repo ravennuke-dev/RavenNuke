@@ -1,0 +1,17 @@
+ul#nukeNAV{width:auto;margin-left:auto;margin-right:auto;}
+.nukeNAV{width:auto;line-height:24px;float:left;padding-bottom:0px;margin-bottom:0px;font-weight:400;font-size:10px;}
+.nukeNAV a{margin:0 1px 0 0;padding:0px 11px 0px 11px;border:none;text-decoration:none;font-weight:bold;background-color:inherit;color:#000000;}
+.nukeNAV a,.nukeNAV a:visited{background-color:inherit;color:#000000;font-size:10px;}
+.nukeNAV ul{margin:0;padding:0}
+.nukeNAV li{background:transparent;}
+.nukeNAV li li, .nukeNAV li li li{background:#BBCCDC;}
+.nukeNAV li li a{border-left:1px solid #CFDEFF;border-top:1px solid #CFDEFF;text-decoration:none;}
+.nukeNAV li:hover,.nukeNAV li.sfHover,.nukeNAV a:focus,.nukeNAV a:hover,.nukeNAV a:active{ background: url(../images/mh.png) repeat-x;}
+.nukeNAV li li:hover,.nukeNAV li li.sfHover,.nukeNAV li li a:focus,.nukeNAV li li a:hover,.nukeNAV li li a:active{background: #C6D4E5;}
+.nukeNAVmod a{border-left:1px solid #fff;border-top:1px solid #F4F6FB;font-size:10px;}
+.nukeNAVmod a,.nukeNAVmod a:visited{color:#32475f;}
+.nukeNAVmod li:hover,.nukeNAVmod li.sfHover,.nukeNAVmod a:focus,.nukeNAVmod a:hover,.nukeNAVmod a:active{color:#000;background:#BFCEE0;outline:0;}
+.nukeNAVmod li,.nukeNAVmod li li,.nukeNAVmod li li li{background:#F4F6FB;}
+/* open the hover menu on the correct side for right/left blocks */
+#right .nukeNAVmod li:hover ul,#right .nukeNAVmod li.sfHover ul{left:-14.5em;top:0;} /* right column */
+#left .nukeNAVmod li:hover ul,#left .nukeNAVmod li.sfHover ul{left:100%;top:0;}  /* left column */

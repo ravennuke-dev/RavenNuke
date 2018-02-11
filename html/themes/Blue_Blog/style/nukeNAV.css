@@ -1,0 +1,16 @@
+table#nukeNAV{width:760px;margin-left:0;margin-right:auto;}
+table#nukeNAV td{padding-bottom:0;margin:0;}
+table#nukeNAV tr{padding-bottom:0;margin:0;}
+.nukeNAV a{border-right:1px dotted #cccc99;border-left:0;border-top:0;border-bottom:0;font-size: 11px;}
+.nukeNAV a,.nukeNAV a:visited{color:#cccc99;}
+.nukeNAV li:hover,.nukeNAV li.sfHover,.nukeNAV a:focus,.nukeNAV a:hover,.nukeNAV a:active{background:transparent url('../images/blockactive.gif') center center repeat-x;color:#cccc99;outline:0;}
+.nukeNAV li,.nukeNAV li li,.nukeNAV li li li{background:#fff url('../images/blockdefault.gif') center center repeat-x;}
+.sf-sub-indicator,.nukeNAV-center .sf-sub-indicator{background:url(../../../includes/jquery/css/images/arrows-ffffff.png) no-repeat -10px -100px;}
+.nukeNAVmod{font-size:12px;}
+.nukeNAVmod,.nukeNAVmod li{width:13em;}
+.nukeNAVmod a,.nukeNAVmod a:visited{color:#f16c00;}
+.nukeNAVmod li:hover,.nukeNAVmod li.sfHover,.nukeNAVmod a:focus,.nukeNAVmod a:hover,.nukeNAVmod a:active{color:#000000;background:#9a9a72;outline:0;}
+.nukeNAVmod li:hover ul,.nukeNAVmod li.sfHover ul{z-index:99;left:-14.5em;top:0;}
+.nukeNAVmod li,.nukeNAVmod li li,.nukeNAVmod li li li{background:#cccc99;}
+.nukeNAVmod li li,.nukeNAVmod li li li{padding:2px;margin:0;}
+.nukeNAV-center.nukeNAVmod li.li-odd:hover ul,.nukeNAV-center.nukeNAVmod li.li-odd.sfHover ul{left:0;top:3em;}

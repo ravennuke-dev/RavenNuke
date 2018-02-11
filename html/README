@@ -1,0 +1,19 @@
+For full installation instructions, please visit our documentation on-line at:
+
+http://rnwiki.ravennuke.com/wiki/RavenNuke2:Installation
+
+If you are upgrading from a previous RavenNuke(tm) installation or wishing to 
+migrate from a different PHP-Nuke distribution to RavenNuke(tm), there is some
+guidance on how to do this here:
+
+http://rnwiki.ravennuke.com/wiki/RavenNuke2:Upgrades_and_Migrations
+
+For Release Notes, detailed Change Log and other key information for upgraders, 
+please visit our documentation on line at:
+
+http://rnwiki.ravennuke.com/wiki/RavenNuke2:Release_Notes
+
+Remove this README file from your live site as it is unnecessary for operations.
+
+Raven Web Services(tm) LLC
+Copyright 2005-2013

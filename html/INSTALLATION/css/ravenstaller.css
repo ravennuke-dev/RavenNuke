@@ -1,0 +1,280 @@
+/**
+ * -------------------------------------------------------------------
+ * Utility/Miscellaneous css styles for Ravenstaller(tm)
+ * -------------------------------------------------------------------
+ */
+
+body {
+	margin: 3px;
+	padding: 3px;
+	color: #333;
+	background-color: #FFF;
+	font-size: 10pt;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.alert {
+	color: #ff0000;
+	font-weight: bold;
+}
+
+.color-red {
+	color: #ff0000;
+ }
+
+.far-left {
+	position: relative;
+	text-align: left;
+	float: left;
+}
+
+.clr {
+	clear:both;
+}
+
+table.content2 {
+	width: 90%;
+}
+
+table.content2 td {
+	color: #333333;
+	font-size: 8pt;
+	width: 35%;
+}
+
+.content {
+	width: 100%;
+}
+
+.content .item {
+	width: 50%;
+}
+
+.content2 .item {
+	width: 50%;
+}
+
+.form-block {
+	border: 1px solid #6688BB;
+	background-color: #E9ECEF;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+}
+
+.install {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px 15px 5px 15px;
+	background-color: #E9ECEF;
+}
+
+.install h1 {
+	font-size: 10pt;
+	font-weight: bold;
+	color: #6688BB;
+	text-align: left;
+	border-bottom: 1px solid #6688BB;
+	margin-bottom: 10px;
+}
+
+.install-form {
+	position: relative;
+	text-align: left;
+	float: right;
+	width: 69%;
+}
+
+.install-text {
+	position: relative;
+	text-align: left;
+	width: 30%;
+	float: left;
+}
+
+.install-note {
+	font-weight: bold;
+	color: #0000FF;
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+
+.toggle {
+	font-weight: bold;
+}
+
+.greenbold {
+	font-weight: bold;
+	color: green;
+}
+
+.redbold {
+	font-weight: bold;
+	color: red;
+}
+
+.emunbold {
+	font-weight: bold;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.inputbox {
+	padding: 4px;
+	background-color: #E9ECEF;
+	color: #6688BB;
+	font-weight : bold;
+	border : solid 1px #6688BB;
+	z-index: -3;
+	font-size: 8pt;
+}
+
+.ip2countrynote {
+	padding: 4px;
+	background-color: #E9ECEF;
+	color: #0000ff;
+	font-weight: bold;
+	border: none;
+	z-index: -3;
+	font-size: 10pt;
+}
+
+.button {
+	cursor: pointer;
+	border: solid 1px #6688BB;
+	background-color: #E9ECEF;
+	color: #6688BB;
+	font-weight: bold;
+	font-size: 8pt;
+	padding: 4px;
+	width: 350px;
+}
+
+.button2 {
+	cursor: pointer;
+	border: solid 1px #0000FF;
+	background-color: #E9ECEF;
+	color: #0000FF;
+	font-weight: bold;
+	font-size: 8pt;
+	padding: 4px;
+	width: 350px;
+}
+
+.mysql {
+	border: solid 1px #6688BB;
+	background: #E9ECEF;
+	color: #6688BB;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 4px;
+	width: 50%;
+	text-align: center;
+}
+
+.buttonsmall {
+	cursor: pointer;
+	border: solid 1px #0000ff;
+	background-color: #E9ECEF;
+	color: #0000ff;
+	font-weight: bold;
+	font-size: 8pt;
+	padding: 4px;
+	width: 200px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+span.red {
+	color: red;
+}
+
+body.c1 {
+	background-color: #efefef
+}
+
+div.c1 {
+	text-align: center;
+}
+
+input.c1 {
+	width: 300px;
+}
+
+p.c1 {
+	font-weight: bold
+}
+
+.c1 {
+	font-size: small;
+}
+
+p,span.c2 {
+	color: blue;
+	font-weight: bold;
+}
+
+.c3 {
+	color: blue;
+	font-weight: bold;
+}
+
+span.c5 {
+	float: right;
+	font-weight: bold;
+	font-size: 16pt;
+	background: #E9ECEF;
+	color: #6688BB;
+}
+
+table td {
+	font-weight: bold;
+	background-color: #E9ECEF;
+	color: #6688BB;
+}
+
+.msg {
+	font-weight: bold;
+	background-color: #E9ECEF;
+	color: #6688BB;
+}
+
+.sectiontitle {
+	text-decoration: underline;
+	font-weight: bold;
+	background-color: #E9ECEF;
+	color: #0000ff;
+}
+
+hr {
+	font-weight: bold;
+	background-color: #E9ECEF;
+	color: #6688BB;
+}
+
+#proceed {
+	font-weight: bold;
+	font-size: 12pt;
+	background: #E9ECEF;
+	color: #0000ff;
+}
+
+#savesettings {
+	font-weight: bold;
+	font-size: 12pt;
+	background: #E9ECEF;
+	color: #0000ff;
+}
+
+#warning {
+	color: blue;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+#ip2cnote {
+	font-weight: bold;
+	background-color: #E9ECEF;
+	color: #0000ff;
+}

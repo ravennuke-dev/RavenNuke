@@ -1,0 +1,247 @@
+.sbicon {
+background:transparent url(images/service_icons.gif) no-repeat scroll 0 0;width: 16px;height: 16px;border: none;margin-top:6px;margin-left:2px;
+}
+/*remove arrows from links in ravenice*/
+.article .links a {
+padding-left: 4px;
+padding-bottom: 4px;
+background-image: none;
+}
+/* more space in ravenice for social icons*/
+.article .article_bot div {
+   height:40px;
+}
+.donkeytopic {
+background-image: none;
+}
+.aim {
+background-position:0 0;
+}
+.amazon {
+background-position:0 -16px;
+}
+.bebo {
+background-position:0 -32px;
+}
+.brightkite {
+background-position:0 -48px;
+}
+.delicious {
+background-position:0 -64px;
+}
+.digg {
+background-position:0 -80px;
+}
+.digg-this {
+background-position:0 -96px;
+}
+.dopplr {
+background-position:0 -112px;
+}
+.ebay {
+background-position:0 -128px;
+}
+.email {
+background-position:0 -144px;
+}
+.ember {
+background-position:0 -160px;
+}
+.facebook {
+background-position:0 -176px;
+}
+.feed {
+background-position:0 -192px;
+}
+.ffffound {
+background-position:0 -208px;
+}
+.fireeagle {
+background-position:0 -224px;
+}
+.fireeagle-mascot {
+background-position:0 -240px;
+}
+.flickr {
+background-position:0 -256px;
+}
+.geotag {
+background-position:0 -272px;
+}
+.goodreads {
+background-position:0 -288px;
+}
+.google {
+background-position:0 -304px;
+}
+.google-talk {
+background-position:0 -320px;
+}
+.huffduffer {
+background-position:0 -336px;
+}
+.ilike {
+background-position:0 -352px;
+}
+.imdb {
+background-position:0 -368px;
+}
+.imeem {
+background-position:0 -384px;
+}
+.itunes {
+background-position:0 -400px;
+}
+.justgiving {
+background-position:0 -416px;
+}
+.lastfm {
+background-position:0 -432px;
+}
+.linkedin {
+background-position:0 -448px;
+}
+.messenger {
+background-position:0 -464px;
+}
+.mixx {
+background-position:0 -480px;
+}
+.myspace {
+background-position:0 -496px;
+}
+.netvibes {
+background-position:0 -512px;
+}
+.newsvine {
+background-position:0 -528px;
+}
+.nikeplus {
+background-position:0 -544px;
+}
+.ning {
+background-position:0 -560px;
+}
+.openid {
+background-position:0 -576px;
+}
+.opml {
+background-position:0 -592px;
+}
+.orkut {
+background-position:0 -608px;
+}
+.picasa {
+background-position:0 -624px;
+}
+.posterous {
+background-position:0 -640px;
+}
+.readernaut {
+background-position:0 -656px;
+}
+.reddit {
+background-position:0 -672px;
+}
+.sharethis {
+background-position:0 -688px;
+}
+.skype {
+background-position:0 -704px;
+}
+.stumbleupon {
+background-position:0 -720px;
+}
+.technorati {
+background-position:0 -736px;
+}
+.tumblr {
+background-position:0 -752px;
+}
+.twitter {
+background-position:0 -768px;
+}
+.upcoming {
+background-position:0 -784px;
+}
+.vcard {
+background-position:0 -800px;
+}
+.vimeo {
+background-position:0 -816px;
+}
+.virb {
+background-position:0 -832px;
+}
+.website {
+background-position:0 -848px;
+}
+.wikipedia {
+background-position:0 -864px;
+}
+.yahoo {
+background-position:0 -880px;
+}
+.yahoo-buzz {
+background-position:0 -896px;
+}
+.yahoo-messenger {
+background-position:0 -912px;
+}
+.yelp {
+background-position:0 -928px;
+}
+.youtube {
+background-position:0 -944px;
+}
+.windowslive {
+background-position:0 -960px;
+}
+.ask {
+background-position:0 -976px;
+}
+.squidoo {
+background-position:0 -992px;
+}
+.slashdot {
+background-position:0 -1008px;
+}
+.fark {
+background-position:0 -1024px;
+}
+.newsvine {
+background-position:0 -1040px;
+}
+.blinklist {
+background-position:0 -1056px;
+}
+.dzone {
+background-position:0 -1072px;
+}
+.magnolia {
+background-position:0 -1088px;
+}
+.swik {
+background-position:0 -1104px;
+}
+.shoutwire {
+background-position:0 -1120px;
+}
+.faves {
+background-position:0 -1136px;
+}
+.simpy {
+background-position:0 -1152px;
+}
+.blogmarks {
+background-position:0 -1168px;
+}
+.blinkbits {
+background-position:0 -1184px;
+}
+.spurl {
+background-position:0 -1200px;
+}
+.diigo {
+background-position:0 -1216px;
+}

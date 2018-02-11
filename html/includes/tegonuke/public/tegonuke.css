@@ -1,0 +1,35 @@
+/**
+ * TegoNuke(tm) Generic / Default CSS
+ *
+ * Generic tegonuke.css which carries default CSS formatting
+ * used across all TegoNuke(tm) scripts.
+ *
+ * PHP 5
+ *
+ * LICENSE: GNU/GPL 2 (see provided LICENSE file)
+ *
+ * @category    User Interface
+ * @package     TegoNuke(tm)
+ * @subpackage  Core
+ * @author      Rob Herder (aka: montego) <montego@montegoscripts.com>
+ * @copyright   2010 by Montego Scripts
+ * @license     http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt GNU/GPL 2
+ * @version     1.0.0
+ * @link        http://montegoscripts.com
+ * @since       1.1.0
+ */
+.tntnWrap fieldset {
+	padding:5px;
+	margin:5px;
+}
+.tntnWrap legend {
+  font-weight:bold;
+}
+.tntnWrap label {
+  font-weight:bold;
+  padding-right:5px;
+}
+.tntnHideMe {
+  visibility:hidden;
+  display:none;
+}

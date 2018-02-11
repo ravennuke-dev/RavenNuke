@@ -1,0 +1,38 @@
+<?php
+/***************************************************************************
+ *                            lang_faq_attach.php [English]
+ *                              -------------------
+ *     begin                : Tue Feb 12 2002
+ *     copyright			: (C) 2002 torgeir andrew waterhouse
+ *     email				: torgeir.waterhouse@forbrukerradet.no
+ *
+ *     $Id: lang_faq_attach.php,v 1.2 2002/08/11 15:37:32 meik Exp $
+ *
+ *     translated	: Fodor Bertalan
+ *     web			: http://fodorb.uw.hu
+ *     email		: phpbb@fberci.tk
+ *
+ ****************************************************************************/
+
+/***************************************************************************
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version.
+ *
+ ***************************************************************************/
+
+$faq[] = array("--","Csatolm&aacute;nyok");
+$faq[] = array("Hogyan csatolhatok egy f&aacute;jlt?", "F&aacute;jlt csatolni &uacute;j hozz&aacute;sz&oacute;l&aacute;s k&uuml;ld&eacute;s&eacute;n&eacute;l tudsz. Egy <span class='italic'>Csatolm&aacute;ny hozz&aacute;ad&aacute;sa</span> felirat&uacute; &ucirc;rlapot kell l&aacute;tnod. Kattints a <span class='italic'>Tall&oacute;z...</span> (vagy a <span class='italic'>Browse...</span>)-ra, ekkor megjelenik a szok&aacute;sos ablak, ahol ki tudod v&aacute;lasztani, melyik f&aacute;jlt sz&aacute;nd&eacute;kozod felt&ouml;lteni. V&aacute;lassz ki egy f&aacute;jlt, majd klikkelj az OK-ra. Megadhatod a csatolm&aacute;ny c&iacute;m&eacute;t is ha kit&ouml;lt&ouml;d a <span class='italic'>C&iacute;m</span> rubrik&aacute;t, ez&aacute;ltal k&ouml;nnyebb&eacute; v&aacute;lik a f&aacute;jl azonos&iacute;t&aacute;sa. Ha az Adminiszt&aacute;rotr enged&eacute;lyezte, t&ouml;bb f&aacute;jlt is felt&ouml;lthetsz, az el&otilde;bb le&iacute;rt m&oacute;don, am&iacute;g el nem &eacute;red az egy hozz&aacute;sz&oacute;l&aacute;sban k&uuml;ldhet&otilde; maximum k&eacute;pek sz&aacute;m&aacute;t.<br/><br/>Az Adminisztr&aacute;tor mindig meghat&aacute;roz egy f&ouml;ls&otilde; limitet a f&aacute;jl m&eacute;ret&eacute;nek kiterjeszt&eacute;senk&eacute;nt. Felh&iacute;vjuk a figyelmed, hogy ha a csatolm&aacute;ny nem felel meg a f&oacute;rum moder&aacute;l&aacute;si elveinek, az figyelmeztet&eacute;s n&eacute;lk&uuml;l t&ouml;r&ouml;lhet&otilde;.<br/><br/>A webmester, az adminisztr&aacute;tor &eacute;s a moder&aacute;torok nem v&aacute;llalnak semmilyen felel&otilde;ss&eacute;get egy esetleges adatveszt&eacute;s miatt.");
+$faq[] = array("Hogyan csatolhatok egy f&aacute;jlt a m&aacute;r elk&uuml;ld&ouml;tt hozz&aacute;sz&oacute;l&aacute;shoz?", "Ezt a hozz&aacute;sz&oacute;l&aacute;s szerkeszt&eacute;s&eacute;n&eacute;l tudod megtenni. Itt k&ouml;vesd a fent eml&iacute;tett utas&iacute;t&aacute;sokat, majd kattints az <span class='italic'>Elk&uuml;ld</span> gombra.");
+$faq[] = array("Hogyan t&ouml;r&ouml;lhetek egy csatolm&aacute;nyt?", "Ezt is a hozz&aacute;sz&oacute;l&aacute;s szerkeszt&eacute;s&eacute;n&eacute;l tudod megtenni. Egyszer&ucirc;en kattints a megfelel&otilde; f&aacute;jln&aacute;l a <span class='italic'>Csatolm&aacute;ny t&ouml;rl&eacute;se</span> gombra, majd k&uuml;ldd el a hozz&aacute;sz&oacute;l&aacute;st.");
+$faq[] = array("Hogyan tudom friss&iacute;teni a f&aacute;jl c&iacute;m&eacute;t?", "Ezt is a hozz&aacute;sz&oacute;l&aacute;s szerkeszt&eacute;s&eacute;n&eacute;l tudod megtenni. T&ouml;ltsd ki a megfelel&otilde; <span class='italic'>C&iacute;m</span> rubrik&aacute;t, majd kilikkelj a <span class='italic'>C&iacute;m friss&iacute;t&eacute;se</span> gombra. Ezut&aacute;n k&uuml;ldd el a hozz&aacute;sz&oacute;l&aacute;st.");
+$faq[] = array("Mi&eacute;rt nem jelenik meg a csatom&aacute;nyom a hozz&aacute;sz&oacute;l&aacute;sban?", "A legval&oacute;sz&iacute;n&ucirc;bb ok az, hogy a kiterjeszt&eacute;s m&aacute;r nem enged&eacute;lyezett a f&oacute;rumban, vagy a moder&aacute;tor t&ouml;r&ouml;lte a f&aacute;jlt, annak tartalma miatt. M&eacute;g egy lehets&otilde;s&eacute;g, hogy nem vagy jogosult a csatolm&aacute;nyok megtekint&eacute;s&eacute;re az adott f&oacute;rumban.");
+$faq[] = array("Mi&eacute;rt nem tudok csatolni egy f&aacute;jlt?", "N&eacute;h&aacute;ny f&oacute;rumban csak bizonyos csoportok jogosultak f&aacute;jlok csatl&aacute;s&aacute;ra. Ehhez megfelel&otilde; jogokkal kell rendelkezned, melyet csak a moder&aacute;torok vagy az adminisztr&aacute;tor adhat meg, vel&uuml;k kell kapcsolatba l&eacute;pned.");
+$faq[] = array("Megvannak a megfelel&otilde; jogosults&aacute;gaim, m&eacute;gsem tudok f&aacute;jlt csatolni...", "Az adminisztr&aacute;tor meghat&aacute;rozza a f&aacute;jlok m&eacute;ret&eacute;nek fels&otilde; hat&aacute;r&aacute;t, az enged&eacute;lyezett kiterjeszt&eacute;seket, &eacute;s sok m&aacute;s dolgot. A moder&aacute;tor vagy az adminisztr&aacute;tor lehet, hogy megv&aacute;ltoztatta a jogosults&aacute;gaidat, vagy letiltotta f&aacute;jlok csatl&aacute;s&aacute;t a bizonyos f&oacute;rumba. A magyar&aacute;zatot megtal&aacute;lod a hiba&uuml;zenetben, mikor megpr&oacute;b&aacute;lsz csatolni egy f&aacute;jlt, ha m&eacute;gsem l&eacute;pj kapcsolatba a moder&aacute;torokkal, vagy az adminisztr&aacute;torral.");
+$faq[] = array("Mi&eacute;rt nem tudom t&ouml;r&ouml;lni a csatolm&aacute;nyaimat?", "N&eacute;h&aacute;ny f&oacute;rumban csak bizonyos csoportok jogosultak f&aacute;jljaik t&ouml;rl&eacute;s&eacute;re. Ehhez megfelel&otilde; jogokkal kell rendelkezned, melyet csak a moder&aacute;torok vagy az adminisztr&aacute;tor adhat meg, vel&uuml;k kell kapcsolatba l&eacute;pned.");
+$faq[] = array("Mi&eacute;rt nem tudom megn&eacute;zni/let&ouml;lteni a csatolm&aacute;nyokat?", "N&eacute;h&aacute;ny f&oacute;rumban csak bizonyos csoportok jogosultak a csatolm&aacute;nyok megtekint&eacute;s&eacute;re/let&ouml;lt&eacute;s&eacute;re t&ouml;rl&eacute;s&eacute;re. Ehhez megfelel&otilde; jogokkal kell rendelkezned, melyet csak a moder&aacute;torok vagy az adminisztr&aacute;tor adhat meg, vel&uuml;k kell kapcsolatba l&eacute;pned.");
+$faq[] = array("Kivel l&eacute;pjek kapcsolatba (feltehet&otilde;leg) illeg&aacute;lis csatolm&aacute;ny &uuml;gy&eacute;ben?", "L&eacute;pj kapcsolatba az adminisztr&aacute;torral. Ha nem tudod ki ez, el&otilde;sz&ouml;r jelentsd ezt a moder&aacute;toroknak &eacute;s k&eacute;rdezd meg t&otilde;l&uuml;k, kihez fordulj. Ha nem kapsz v&aacute;laszt, l&eacute;pj kapcsolatba a domain tulajdonos&aacute;val (csin&aacute;lj egy whois keres&eacute;st), vagy ha a f&oacute;rum egy ingyenes t&aacute;rhelyen tal&aacute;lhat&oacute; a t&aacute;rhelyszolg&aacute;ltat&oacute; alkalmazottaival. K&eacute;rj&uuml;k vedd figyelembe, hogy a phpBB Csoport semmilyen fel&uuml;gyelettel nem rendelkezik a f&oacute;rum f&ouml;l&ouml;tt, &eacute;s nem tudja meg&aacute;llap&iacute;tani a f&oacute;rum tulajdonos&aacute;t sem. A phpBB csoporttal val&oacute; kapcsolatra l&eacute;p&eacute;s teljesen hi&aacute;baval&oacute;, hacsak nem a phpbb.com weboldallal &eacute;s nem a szoftverrel van kapsolatba. Ha k&uuml;ldesz egy emailt a phpBB csoportnak e szoftver harmadik szem&eacute;ly &aacute;ltali felhaszn&aacute;l&aacute;s&aacute;r&oacute;l, vagy azonnal v&aacute;laszolnak, vagy egy&aacute;ltal&aacute;n nem.");
+
+?>

@@ -1,0 +1,10 @@
+<Files .staccess> 
+deny from all 
+</Files> 
+
+<Limit GET POST PUT> 
+require valid-user 
+</Limit> 
+AuthName "Restricted Forum Area" 
+AuthType Basic 
+AuthUserFile <<change this line to match what is in the root .htaccess file>> 

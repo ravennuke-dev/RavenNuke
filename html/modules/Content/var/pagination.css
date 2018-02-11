@@ -1,0 +1,61 @@
+/*
+* VJ_vdn - A PhpNuke template
+* version 2.0
+* copyright (C) 2008 by Vecchio Joe. All rights reserved!
+* http://www.vecchiojoe.it/ Commercial Software
+@import url("lightbox.css");
+*/
+
+/* PAGING SETTINGS ============================================================================= */
+.pagination {
+	background-color		: #F0F2F4; 
+	border					: 1px solid #A6B0B7; 
+	font-size				: 10px; 
+	height					: 20px; 
+	margin					: 1px; 
+	padding					: 3px 5px 2px 5px; 
+}
+
+.pages {
+	color					: #666666;
+	font-family				: Verdana, Arial, Helvetica, sans-serif; 
+	font-size				: 10px; 
+	font-weight				: bold;
+	margin					: 2px;
+	padding					: 2px 2px 2px 2px;  
+}
+.pagenavi a, .pagenavi a:link, .pagenavi a:active {
+	background-color		: #EEEEEE;	
+	color					: #000;
+	margin					: 2px;
+	padding					: 4px 8px 4px 8px; 
+	text-decoration			: none;
+}
+.pagenavi a:hover {	
+	background-color		: #DDDDDD;
+	color					: #000;
+}
+.pagenavi span.pages {
+	background-color		: #EEEEEE;
+  	border-bottom     		: 1px #333333 solid;
+	color					: #666666;
+	font-family				: Verdana, Arial, Helvetica, sans-serif; 
+	font-size				: 10px; 
+	font-weight				: bold;
+	margin					: 2px;
+	padding					: 4px 8px 4px 8px;  
+}
+.pagenavi span.current {
+	background-color		: #54C1E0;
+	color					: #FFF;
+	font-weight				: bold;
+	margin					: 2px;
+	padding					: 4px 8px 4px 8px; 
+}
+.pagenavi span.extend {
+	background-color		: #54C1E0;
+	color					: #FFF;
+	margin					: 2px;	
+	padding					: 4px 8px 4px 8px;  
+}
+

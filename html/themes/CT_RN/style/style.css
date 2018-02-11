@@ -1,0 +1,204 @@
+@charset "ISO-8859-1";
+
+*{font-family:"Trebuchet MS",Tahoma,Verdana,Arial,Helvetica,Sans-serif; color:#ccc}
+
+#sitebar{ overflow:hidden}
+
+#sitebar a, #sitebar a:link, #sitebar a:visited, #sitebar a:active{ margin:0px 0px 4px 0px;  float:left;  clear:both;  width:100%;  color:#000;   background:#F90;  padding:5px 5px 5px 5px;  text-align:center}
+
+#sitebar a:hover{ color:HighlightText;  background:#fff}
+
+A:link{font-size:12px; color:#ccc; text-decoration:none}
+A:visited{font-size:12px; color:#ccc; text-decoration:none}
+A:active{font-size:12px; color:#ccc; text-decoration:none}
+A:hover{font-size:12px; color:#ccc; text-decoration:none}
+
+
+a img{border:0}
+
+body{cursor:default; text-align:center; background:url('../images/bg.gif'); background-color:#2B2B2B; margin:29px 0 9px 0; font-size:12px}
+
+#container{width:980px; margin:0 auto 0 auto; text-align:left}
+
+#themecontainer{background-color:#330303}
+
+#columns{  display:block;   clear:both;   margin:5px 0 0 0}
+
+#navigation{background:url('../images/nav_bg.jpg') repeat-x; height:38px; clear:both; text-align:center}
+
+#navigation a{height:16px; display:block; float:left; text-decoration:none; padding:16px 14px 16px 20px; text-align:center; font:bold 15px "Trebuchet MS"; text-transform:uppercase; color:#ccc}
+
+#navigation a:hover{background:url('../images/nav_hover.jpg') repeat-x}
+
+#navigation .right{background:url('../images/nav_right.jpg') no-repeat; width:6px; float:right; margin:0 0 0 20px; height:38px}
+
+#navigation .left{background:url('../images/nav_left.jpg') no-repeat; margin:0 20px 0 0; float:left; height:38px}
+
+.col1, .col2, .col2_special{ float:left}
+
+.col1{ width:210px}
+
+.col2{ width:530px;  margin:0 11px 0 12px}
+
+.col2_special{ width:740px;  margin:0 11px 0 12px}
+
+.block_content{ padding: 4px}
+
+.block_header{ margin:0; background:url('../images/nav_bg.jpg') repeat-x; height:28px; clear:both; padding:0; text-transform:uppercase;}
+
+h2{ margin:0; background:url('../images/nav_bg.jpg') repeat-x; height:28px; clear:both; padding:0; font-size:15px; text-transform:uppercase;}
+
+.span1{float:left;background:url('../images/nav_left.jpg') no-repeat; height:28px; padding:4px 0px 0px 10px;color:#fff;}
+
+.span2{float:right;width:4px;background:url('../images/nav_right.jpg') no-repeat;width:6px; height:28px;}
+
+.articlecontent{ padding:5px}
+
+ .articlecontent p{ margin:0;  padding:5px}
+
+ .nolinks a{ text-decoration:none}
+
+/*.col1 ul{ list-style:none;  margin:0;  padding:0;  clear:both;  font-size:11px}
+
+ .col1 ul li{ height:18px;  margin:1px 0 1px 0;  width:190px;  padding:2px 0 0 2px}*/
+
+
+ .col1 li a{text-decoration:none}
+
+ .col1 li a:hover{text-decoration:underline}
+
+#spotlight{background:url('../images/nav_bg.jpg') repeat-x; clear:both; margin:5px 0 0 0; text-align:center; height:   120px}
+
+#spotlight span{float:left; display:block; background:url('../images/nav_left.jpg') no-repeat; height:28px; padding:6px 0 0 10px; margin:0 0 -35px 0}
+
+#spotlight span span{float:right; width:6px; background:url('../images/nav_right.jpg') no-repeat; height:28px; margin:-6px -10px 0 0}
+
+.overlay{z-index:100; position:relative; top:5px; left:5px; float:left}
+
+h1{clear:both; height:232px; margin:0}
+
+roundcont{width:100%}
+
+.roundcont p{margin:0 10px}
+
+.roundtop{background:url(../images/tr.gif) no-repeat top right; background-color:#420C0C}
+
+.roundbottom{background:url(../images/br.gif) no-repeat top right; background-color:#420C0C}
+
+img.corner{ width:15px;  height:15px;  border:none;  display:block !important}
+
+#footer{background:url('../images/foot2.jpg') repeat-x; height:57px; clear:both; text-align:center}
+
+#footer .right{background:url('../images/foot3.jpg') no-repeat; width:6px; float:right; margin:0 0 0 20px; height:57px}
+
+#footer .left{background:url('../images/foot1.jpg') no-repeat; width:6px; margin:0 20px 0 0; float:left; height:57px}
+
+#copyright
+	{
+ font-size:							9px;
+ letter-spacing: 					3px;
+ clear:								both;
+ text-align:						center
+	}
+#copyright :hover{
+ font-size:							9px;
+ letter-spacing: 					3px;
+ text-align: 						center
+}
+#copyright :link{
+font-size:							9px;
+letter-spacing: 					3px;
+text-align: 						center
+}
+#copyright :visited{
+font-size:							9px;
+letter-spacing: 					3px;
+text-align: 						center
+}
+#copyright :active{
+font-size:							9px;
+letter-spacing: 					3px;
+text-align: 						center
+}
+
+.corners_top{  background:url('../images/corners_top.jpg') no-repeat;   display:block;   height:3px}
+
+.corners_bottom{  background:url('../images/corners_bottom.jpg') no-repeat;  display: block;  height:3px}
+
+/*.col1 ul{ margin:0 0 20px 0}*/
+
+.clear{ clear:both}
+
+.right{ float:right}
+
+/*UL{list-style-type:square}*/
+
+H1{font-weight:bold; font-size:13px; color:#4e4e4e}
+
+H2, .maintitle{font-weight:bold; font-size:11px; color:#4e4e4e; letter-spacing:2px}
+
+hr{border-top:1px dashed #000; border-bottom:1px dashed #2D3639; height:2px; width:98%}
+
+iframe{ background-color:#2D3639;  border:#1d2426 1px dashed}
+
+.code{font-family:Courier,'Courier New',sans-serif; font-size:13px; color:#e08b27; background-color:#141C24; border:#454442; border-style:dashed; border-top:#1A1A1A 1px solid; border-bottom:#4e4e4e 1px solid; border-left:#1A1A1A 1px solid; border-right:#4e4e4e 1px solid}
+
+.quote{font-family:Verdana,Arial,Helvetica,sans-serif; font-size:13px; color:#dddf2d; line-height:125%; background-color:#141C24; border:#454442; border-style:dashed; border-top:#1A1A1A 1px solid; border-bottom:#4e4e4e 1px solid; border-left:#1A1A1A 1px solid; border-right:#4e4e4e 1px solid}
+
+
+ #menua{height:30px; overflow:hidden; width:980px; margin-left:auto; margin-right:auto}
+
+#menua * a, #menua * a:visited{color:#ccc; display:block; font-weight:bold; height:30px; overflow:hidden; padding-top:6px; text-decoration:none}
+
+#menua .menup{background:url('../images/forummenu.gif') no-repeat; float:left; height:30px; overflow:hidden; text-align:center; width:100px}
+
+#menua .menup:hover{background:url('../images/forummenu.gif') -100px 0px no-repeat; overflow:hidden}
+
+textarea, select, input, input.noborder, .helpbox{margin:4px; padding:1px; color:#000; font-weight:bold; background:url('../images/txtbg.gif') repeat-x; background-color:#4D4D4D; font-size:12px; border-top:#1A1A1A 1px solid; border-bottom:#4e4e4e 1px solid; border-left:#1A1A1A 1px solid; border-right:#4e4e4e 1px solid}
+
+td.row1, td.row3, td.cat, td.catHead, td.catSides, td.catLeft, td.catRight, td.catBottom{margin:4px; padding:4px; font-size:12px; height:25px; background-color:#330303; border-top:#4e4e4e 1px solid; border-bottom:#1A1A1A 1px solid; border-left:#4e4e4e 1px solid; border-right:#1A1A1A 1px solid}
+td.row2, td.cat, td.bodyline, td.glance, th{margin:4px; padding:4px; font-size:12px; height:25px; background-color:#1D0202; border-top:#4e4e4e 1px solid; border-bottom:#1A1A1A 1px solid; border-left:#4e4e4e 1px solid; border-right:#1A1A1A 1px solid}
+
+input.button, input.mainoption, input.liteoption{background:url('../images/forummenu.gif') no-repeat; color:#ccc; height:30px; overflow:hidden; text-align:center; width:140px}
+/* for Forum Attachment mod */
+td.attachrow		{ font: normal 11px Verdana, Arial, Helvetica, sans-serif; }
+td.attachheader     { font: normal 11px Verdana, Arial, Helvetica, sans-serif; }
+table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; border-collapse : collapse; }
+ /* DEFAULT CSS OVERRIDES */
+/* Block UL-OL List styling */
+.ul-box {width:174px;margin-left:6px;} /* containers for side block lists: for proper display in ie7 */
+.ol-box {width:154px;margin-left:6px;}
+ul.rn-ul li {background-image: url(../../../images/blocks/bullet-offwhite.png); background-repeat:no-repeat; background-color:transparent;background-position:2px 5px}
+ul.ul-circle li,ul.rn-ul ul.ul-circle li {background-image: url(../../../images/blocks/bullet-circle-offwhite.png);background-repeat:no-repeat; background-color:transparent;background-position:0 2px}
+/* Block OL List styling */
+.ol-num {background:transparent url(../../../images/blocks/numbers-offwhite.png) no-repeat}
+/* If you change background you must redeclare sprite positions */
+.bnum1{background-position:0 -1px}
+.bnum2{background-position:0 -103px}
+.bnum3{background-position:0 -205px}
+.bnum4{background-position:0 -307px}
+.bnum5{background-position:0 -409px}
+.bnum6{background-position:0 -511px}
+.bnum7{background-position:0 -613px}
+.bnum8{background-position:0 -715px}
+.bnum9{background-position:0 -817px}
+.bnum10{background-position:0 -919px}
+.bnum11{background-position:0 -1021px}
+.bnum12{background-position:0 -1123px}
+.bnum13{background-position:0 -1225px}
+.bnum14{background-position:0 -1327px}
+.bnum15{background-position:0 -1429px}
+.bnum16{background-position:0 -1531px}
+.bnum17{background-position:0 -1633px}
+.bnum18{background-position:0 -1735px}
+.bnum19{background-position:0 -1837px}
+.bnum20{background-position:0 -1949px}
+/* Center Block styling */
+.ul-box-center.block-modules ul.rn-ul li {float:left;width:auto;min-width:130px;margin-left:12px;}
+/* Side Block styling */
+.ul-box ul.rn-ul li,.ul-box ul.ul-circle li,.ul-box ul.ul-square li{width:166px;}
+.ol-box ol.rn-ol li{width:146px;}
+.ul-box.block-feeds li.rn-list.li-first {float:left}
+.ul-box.block-old_articles li.rn-list.li-even,.ul-box.block-old_articles li.rn-list.li-odd,.ul-box.block-feeds li.rn-list.li-even,.ul-box.block-feeds li.rn-list.li-odd,.ul-box.block-last_5_articles li.rn-list.li-even,.ul-box.block-last_5_articles li.rn-list.li-odd{float:left;margin-top:4px;}
+#IBblock {margin-left:6px;}
+#IBblock-center {padding-left:10px;}

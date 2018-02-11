@@ -1,0 +1,187 @@
+th,td,p {
+color:#616161;
+font:11px "trebuchet ms", helvetica, sans-serif;
+}
+
+.gensmall {
+font-size:10px;
+}
+
+.genmed {
+font-size:11px;
+}
+
+a:link,a:active,a:visited,a.postlink {
+font-size:9pt;
+color:#F16C00;
+text-decoration:none;
+font-family:"trebuchet ms",helvetica,sans-serif;
+}
+
+a:hover,a.topictitle:hover {
+color:#000;
+text-decoration:none;
+}
+
+a.topictitle:visited {
+color:#F16C00;
+}
+
+iframe {
+border:0;
+}
+
+form {
+display:inline;
+}
+
+input {
+margin-bottom:2px;
+margin-top:2px;
+text-indent:2px;
+}
+
+input,textarea,select {
+color:#000;
+font-size:11px;
+border-color:#000;
+}
+
+input,textarea,select,input.button {
+font:normal 11px "trebuchet ms", helvetica, sans-serif;
+border-width:1px;
+}
+
+input.catbutton {
+background:#fafafa;
+color:#000;
+font-size:10px;
+}
+
+input.mainoption {
+background:#fafafa;
+color:#000;
+font-weight:700;
+}
+
+input.post,textarea.post,select {
+background:#fff;
+color:#585858;
+}
+
+td.cat {
+font-weight:700;
+color:#585858;
+background:#cc9 url(../forums/images/cellpic1.gif);
+height:29px;
+}
+
+td.rowpic {
+background:url(../forums/images/cellpic2.jpg) #cc9 repeat-y;
+}
+
+th {
+background:#cc9 url(../forums/images/cellpic3.gif);
+color:#516a88;
+font-size:11px;
+font-weight:700;
+height:28px;
+white-space:nowrap;
+text-align:center;
+}
+
+.code {
+background:#fafafa;
+border:1px dotted #d1d7dc;
+color:#060;
+font:11px "trebuchet ms", helvetica, sans-serif;
+padding:5px;
+}
+
+.errorline {
+background:#add8e6;
+color:#000;
+border:1px solid #069;
+}
+
+.helpline {
+background:#cc9;
+color:#585858;
+border-style:none;
+}
+
+.maintitle,h1 {
+font:bold 20px/120% "trebuchet ms", helvetica, sans-serif;
+text-decoration:none;
+}
+
+.nav {
+font-size:10px;
+font-weight:700;
+}
+
+.postbody {
+font:11px/125% "trebuchet ms", helvetica, sans-serif;
+}
+
+.postdetails {
+color:#000;
+font-size:10px;
+}
+
+.quote {
+background:#fafafa;
+border:1px solid #d1d7dc;
+color:#444;
+font:11px/125% "trebuchet ms", helvetica, sans-serif;
+}
+
+.subtitle,h2 {
+color:#000;
+font:bold 18px/180% "trebuchet ms", helvetica, sans-serif;
+text-decoration:none;
+}
+
+.navbkg {
+font-size:10px;
+height:28px;
+white-space:nowrap;
+background:#cc9 url(../forums/images/cellpic_nav.gif) repeat-x;
+}
+
+.navbkg2 {
+font-size:10px;
+height:28px;
+white-space:nowrap;
+}
+
+.headbkgmain {
+width:749px;
+height:110px;
+background:url(../forums/images/cellpic_bkg_main.jpg) #cc9 repeat-x;
+}
+
+.headbkgright {
+background:url(../forums/images/cellpic_bkg_left.jpg) #cc9 repeat-x;
+}
+
+.topictitle,.name {
+font-size:11px;
+font-weight:700;
+}
+
+input.button,input.liteoption {
+background:#fafafa;
+color:#000;
+}
+
+td.row1,td.row2,td.row3,td.spacerow {
+background:#cc9;
+color:#585858;
+}
+
+.bodyline,.forumline {
+background:#cc9;
+color:#585858;
+border:1px dotted #f2f2f2;
+}

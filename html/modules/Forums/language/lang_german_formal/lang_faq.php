@@ -1,0 +1,113 @@
+<?php
+
+/***************************************************************************
+ *                          lang_faq.php [German formal]
+ *                              -------------------
+ *     begin                : Sat Dec 16 2000
+ *     copyright            : (C) 2001 The phpBB Group
+ *     email                : support@phpbb.com
+ *
+ *
+ ****************************************************************************/
+
+/***************************************************************************
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version.
+ *
+ ***************************************************************************/
+
+/***************************************************************************
+ * German translation by the translation team of phpBB.de:
+ *   http://www.phpbb.de/groupcp.php?g=13086
+ * Team Lead: Philipp Kordowich (PhilippK [at] phpbb.de)
+ * Special Thanks to:
+ *   Joel Ricardo Zick (Rici)
+ *   Manfred Hoffmann, Ingo Köhler, Ingo Migliarina, Christian Wunsch
+ * and all others for their comments and suggestions
+ * 
+ * Release date: 2006-04-08
+ ***************************************************************************/
+
+// 
+// To add an entry to your FAQ simply add a line to this file in this format:
+// $faq[] = array("question", "answer");
+// If you want to separate a section enter $faq[] = array("--","Block heading goes here if wanted");
+// Links will be created automatically
+//
+// DO NOT forget the ; at the end of the line.
+// Do NOT put double quotes (") in your FAQ entries, if you absolutely must then escape them ie. \"something\";
+//
+// The FAQ items will appear on the FAQ page in the same order they are listed in this file
+//
+
+
+$faq[] = array("--","Registrieren und Einloggen");
+$faq[] = array("Warum kann ich mich nicht einloggen?", "Haben Sie sich registriert? Sie müssen sich erst registrieren, bevor Sie sich einloggen können. Wurden Sie vom Board gebannt (in diesem Fall erhalten Sie eine Nachricht)? Wenn dem so ist, sollten Sie den Webmaster oder den Forumsadministrator kontaktieren, um herauszufinden, warum Sie gebannt wurden. Falls Sie registriert und nicht gebannt sind und sich immer noch nicht einloggen können, dann überprüfen Sie Ihren Benutzernamen und das Passwort. Normalerweise liegt hier der Fehler. Falls nicht, kontaktieren Sie bitte den Forumsadministrator; es könnte eine fehlerhafte Forumskonfiguration vorliegen.");
+$faq[] = array("Warum muss ich mich überhaupt registrieren?", "Es kann auch sein, dass Sie das gar nicht müssen; das ist die Entscheidung des Administrators. Auf jeden Fall erhalten Sie nach der Registrierung zusätzliche Funktionen, die Gäste nicht haben, z. B. Avatare, Private Nachrichten, Eintritt in Usergruppen, usw. Es benötigt nur wenig Zeit, um sich zu registrieren. Sie sollten es also gleich tun.");
+$faq[] = array("Warum werde ich automatisch abgemeldet?", "Sollten Sie die Funktion <span class='italic'>Automatisch einloggen</span> beim Einloggen nicht aktiviert haben, bleiben Sie nur für eine gewisse Zeit eingeloggt. Dadurch wird ein Missbrauch Ihres Accounts verhindert. Um eingeloggt zu bleiben, wählen Sie bitte die entsprechende Option beim Einloggen. Dies ist nicht empfehlenswert, wenn Sie an einem fremden Rechner sitzen, z. B. in einer Bücherei oder Universität, im Internetcafé usw.");
+$faq[] = array("Wie kann ich verhindern, dass mein Name in der 'Wer ist online?'-Liste auftaucht?", "In Ihrem Profil befindet sich die Option <span class='italic'>Online-Status verstecken</span>, und wenn Sie diese aktivieren, können Sie nur noch von Administratoren in der Liste gesehen werden. Sie zählen dann als versteckter User.");
+$faq[] = array("Ich habe mein Passwort verloren!", "Kein Problem! Sie können ein neues Passwort anfordern. Klicken Sie dazu auf der Loginseite auf <span class='underline'>Ich habe mein Passwort vergessen</span>. Folgen Sie den Anweisungen und Sie sollten sich bald wieder einloggen können.");
+$faq[] = array("Ich habe mich registriert, kann mich aber nicht einloggen!", "Überprüfen Sie erst, ob Sie den richtigen Benutzernamen und/oder Passwort angegeben haben. Falls sie stimmen, gibt es zwei mögliche Ursachen: Wenn die COPPA-Bestimmungen aktiviert sind und Sie die Option <span class='underline'>Ich bin unter 12 Jahre alt</span> beim Registrieren gewählt haben, müssen Sie den erhaltenen Anweisungen folgen. Falls dies nicht der Fall ist, braucht Ihr Account eine Aktivierung. Auf einigen Boards muss eine Registrierung immer erst aktiviert werden, bevor Sie sich einloggen können - entweder durch Sie selbst oder durch einen Administrator. Bei der Registrierung wird Ihnen gesagt, ob eine Aktivierung erforderlich ist. Falls Ihnen eine E-Mail zugesandt wurde, folgen Sie bitte den enthaltenen Anweisungen; falls Sie diese E-Mail nicht erhalten haben, vergewissern Sie sich bitte, dass die E-Mail-Adresse korrekt war. Ein Grund für den Gebrauch der Account-Aktivierungen ist die Verhinderung eines Missbrauchs des Forums. Wenn Sie sich sicher sind, dass die angegebene E-Mail-Adresse richtig ist, kontaktiere Sie bitte den Administrator.");
+$faq[] = array("Ich habe mich vor einiger Zeit registriert, kann mich aber nicht mehr einloggen!", "Die Gründe dafür sind meistens, dass Sie entweder einen falschen Benutzernamen oder ein falsches Passwort eingegeben haben (überprüfen Sie die E-Mail, die Sie vom Board bekommen haben) oder der Administrator hat Ihren Account gelöscht. Falls Letzteres der Fall ist, haben Sie vielleicht mit dem Account noch keinen Beitrag erstellt? Es ist durchaus üblich, dass Foren regelmäßig User löschen, die keine Beiträge erstellt haben, um die Größe der Datenbank zu verringern. Versuche Sie sich erneut zu registrieren und tauchen Sie wieder in die Welt der Diskussionen ein.");
+
+
+$faq[] = array("--","Benutzerangaben und Einstellungen");
+$faq[] = array("Wie ändere ich meine Einstellungen?", "Ihre Einstellungen (sofern Sie registriert sind) werden in der Datenbank gespeichert. Klicken Sie auf den <span class='underline'>Profil</span>-Link, um sie zu ändern (der Link wird normalerweise am oberen Bildschirmrand angezeigt, dies hängt aber vom verwendeten Style ab). Damit können Sie Ihre Einstellungen ändern");
+$faq[] = array("Die Zeiten stimmen nicht!", "Die Zeiten stimmen wahrscheinlich schon, vermutlich haben Sie nur die Zeitzone nicht richtig eingestellt. Falls dem so ist, sollten Sie die Einstellungen Ihres Profils überprüfen, um die Zeitzone, die für Sie zutreffend ist, zu wählen. Bitte beachten Sie, dass Sie die Zeitzone nur wechseln können, wenn Sie ein registriertes Mitglied sind. Falls Sie noch nicht registriert sind, wäre dies vielleicht ein guter Grund dazu.");
+$faq[] = array("Ich habe die Zeitzone gewechselt und die Zeit ist immer noch falsch!", "Wenn Sie sich sicher sind, die richtige Zeitzone gewählt zu haben und die Zeiten immer noch nicht stimmen, kann es daran liegen, dass das System auf Sommerzeit steht. Das Board ist nicht dazu geschaffen worden, um zwischen Winter- und Sommerzeit zu wechseln, daher kann es im Sommer zu einer Stunde Differenz zwischen der von Ihnen gewählten und der Boardzeit kommen.");
+$faq[] = array("Meine Sprache ist nicht verfügbar!", "Der wahrscheinlichste Grund dafür ist, dass der Administrator die Sprache nicht installiert hat oder dass das Board noch nicht in Ihre Sprache übersetzt wurde. Versuchen Sie, den Board-Administrator davon zu überzeugen, Ihre Sprach-Datei zu installieren oder, falls diese nicht existiert, können Sie auch gerne selber eine Übersetzung schreiben. Weitere Informationen erhalten Sie auf der Website der phpBB Group (Der Link befindet sich am Ende jeder Seite)");
+$faq[] = array("Wie kann ich ein Bild unter meinem Benutzernamen anzeigen?", "Es können sich zwei Bilder unter dem Benutzernamen befinden. Das erste gehört zu Ihrem Rang, z. B. Punkte oder Sterne, die anzeigen, wie viele Beiträge Sie geschrieben haben oder welchen Status Sie im Forum haben. Darunter befindet sich meist ein größeres Bild, Avatar genannt. Dies ist normalerweise ein Einzelstück und an den Benutzer gebunden. Es liegt am Administrator, ob er Avatare erlaubt und ob die Benutzer wählen dürfen, wie sie ihren Avatar zugänglich machen. Wenn Sie keine Avatare benutzen können, ist das eine Entscheidung des Administrators. Sie sollten ihn nach dem Grund fragen (Er wird bestimmt einen guten haben).");
+$faq[] = array("Wie kann ich meinen Rang ändern?", "Normalerweise können Sie nicht direkt den Wortlaut des Ranges ändern (Ränge erscheinen unter deinem Benutzernamen in Themen und in deinem Profil, abhängig davon, welchen Style Sie benutzen). Die meisten Boards benutzen Ränge, um anzuzeigen, wie viele Beiträge geschrieben wurden und bestimmte Benutzer, z. B. Moderatoren oder Administratoren, könnten einen speziellen Rang haben. Bitte belästigen Sie die Mitglieder des Forums nicht mit unnötigen Beiträgen, nur um Ihren Rang zu erhöhen, sonst werden Sie auf einen Moderator oder Administrator treffen, der Ihren Rang einfach wieder senkt.");
+$faq[] = array("Wenn ich auf den E-Mail-Link eines Benutzers klicke, werde ich aufgefordert, mich einzuloggen!", "Nur registrierte Benutzer können über das Forum E-Mails verschicken (falls der Administrator diese Funktion aktiviert hat). Damit sollen obszöne Mails von unbekannten Benutzern unterbunden werden.");
+
+
+$faq[] = array("--","Beiträge schreiben");
+$faq[] = array("Wie schreibe ich ein Thema in ein Forum?", "Klicken Sie dazu einfach auf den entsprechenden Button auf der Forums- oder Beitragsseite. Es kann sein, dass Sie sich erst registrieren müssen, bevor Sie eine Nachricht schreiben können - die jeweils zulässigen Aktionen werden am Ende der Seite aufgelistet (die <span class='italic'>Sie können neue Themen erstellen, Sie können an Umfragen teilnehmen, usw.</span>-Liste)");
+$faq[] = array("Wie editiere oder lösche ich einen Beitrag?", "Sofern Sie nicht der Boardadministrator oder der Forumsmoderator sind, können Sie nur Ihre eigenen Beiträge löschen oder editieren. Sie können einen Beitrag editieren (eventuell nur für eine gewisse Zeit) indem Sie auf den <span class='italic'>Editieren</span>-Button des jeweiligen Beitrages klicken. Sollte jemand bereits auf den Beitrag geantwortet haben, werden Sie einen kleinen Text unterhalb des Beitrags finden können, der anzeigt, wie oft der Text bearbeitet wurde. Er wird nur erscheinen, wenn jemand geantwortet hat, ferner wird er nicht erscheinen, falls ein Moderator oder Administrator den Beitrag editiert hat (Sie sollten eine Nachricht hinterlassen, warum sie den Beitrag editiert haben). Beachten Sie bitte, dass normale Benutzer keine Beiträge löschen können, sobald jemand auf sie geantwortet hat.");
+$faq[] = array("Wie kann ich eine Signatur anhängen?", "Um eine Signatur an einen Beitrag anzuhängen, müssen Sie zuerst in Ihrem Profil eine anlegen. Wenn Sie eine Signatur erstellt haben, aktivieren Sie die <span class='italic'>Signatur anhängen</span>-Funktion während der Beitragserstellung. Sie können auch standardmäßig eine Signatur an alle Beiträge anhängen, indem Sie im Profil die entsprechende Option auswählen (Sie können das Anfügen einer Signatur immer noch unterbinden, indem Sie die Signaturoption beim Schreiben des Beitrags ausschalten).");
+$faq[] = array("Wie erstelle ich eine Umfrage?", "Eine Umfrage zu erstellen ist recht einfach: Wenn Sie ein neues Thema erstellen (oder den ersten Beitrag eines Themas editieren, sofern Sie die entsprechende Berechtigung haben), sollten Sie die <span class='italic'>Umfrage hinzufügen</span>-Option unterhalb der Textbox sehen (falls Sie sie nicht sehen können, haben Sie möglicherweise nicht die erforderlichen Rechte). Sie sollten einen Titel für Ihre Umfrage angeben und mindestens zwei Antwortmöglichkeiten (um eine Antwort anzugeben, klicken Sie bitte auf die <span class='italic'>Antwort hinzufügen</span>-Schaltfläche. Sie können auch ein Zeitlimit für die Umfrage festlegen, 0 steht dabei für eine unbegrenzt dauernde Umfrage. Es gibt eine Grenze bei der Anzahl an Antwortoptionen, diese wird vom Administrator festgelegt.");
+$faq[] = array("Wie editiere oder lösche ich eine Umfrage?", "Genau wie bei den Beiträgen können Umfragen nur vom Verfasser, Forumsmoderator oder Administrator editiert oder gelöscht werden. Um eine Umfrage zu ändern, editieren Sie bitte den ersten Beitrag im Thema (die Umfrage ist immer damit verbunden). Wenn noch niemand bei der Umfrage teilgenommen hat, können Benutzer die Umfrage editieren oder löschen; falls jedoch schon jemand abgestimmt hat, können sie nur Moderatoren oder Administratoren löschen oder ändern. Damit soll verhindert werden, dass Personen ihre Umfragen beeinflussen, indem sie die Antworten verändern.");
+$faq[] = array("Warum kann ich ein Forum nicht betreten?", "Manche Foren können nur von bestimmten Benutzern oder Gruppen betreten werden. Um dort hineinzugelangen, Beiträge zu lesen oder zu schreiben usw., könnten Sie eine spezielle Erlaubnis benötigen. Nur der Forumsmoderator und der Boardadministrator können Ihnen entsprechende Zugangsrechte  geben; Sie sollten sie um Zugang bitten, sofern Sie einen berechtigten Grund dafür haben.");
+$faq[] = array("Warum kann ich bei Abstimmungen nicht teilnehmen?", "Nur registrierte Benutzer können an Umfragen teilnehmen. Dadurch wird eine Beeinflussung des Ergebnisses verhindert. Falls Sie sich registriert haben und immer noch nicht abstimmen können, haben Sie vermutlich nicht die erforderlichen Rechte dazu.");
+
+
+$faq[] = array("--","Was man in und mit Beiträgen tun kann");
+$faq[] = array("Was ist BBCode?", "BBCode ist eine spezielle Art von HTML. Ob Sie BBCode benutzen können, wird vom Administrator festgelegt. Sie können es auch in einzelnen Beiträgen deaktivieren. BBCode selbst ist HTML sehr ähnlich, die Tags sind von den Klammern [ und ] umschlossen und bieten Ihnen große Kontrolle darüber, was und wie etwas angezeigt wird. Für weitere Informationen über BBCode sollten Sie die Anleitung lesen, die Sie von der Beitrag schreiben-Seite aus erreichen können.");
+$faq[] = array("Darf ich HTML benutzen?", "Das hängt davon ab, ob es vom Administrator erlaubt wurde. Falls Sie es nicht dürfen, werden Sie nachher nur ein Klammer-Wirrwarr wieder finden. Dies ist eine <span class='italic'>Sicherung</span>, um Leute davon abzuhalten, das Forum mit unnötigen Tags zu überschwemmen, die das Layout zerstören oder andere Störungen hervorrufen können. Falls HTML aktiviert wurde, können Sie es immer noch manuell für jeden Beitrag deaktivieren, indem Sie beim Schreiben die entsprechende Option aktivieren.");
+$faq[] = array("Was sind Smilies?", "Smilies sind kleine Bilder, die benutzt werden können, um Gefühle auszudrücken. Es werden nur kurze Codes benötigt, z. B. zeigt :) Freude und :( Traurigkeit an. Die komplette Liste der Smilies kann auf der Beitrag schreiben-Seite gesehen werden. Übertreiben Sie es nicht mit zu vielen Smilies; es kann schnell passieren, dass ein Beitrag dadurch völlig unübersichtlich wird. Ein Moderator könnte sich entschließen, den Beitrag zu bearbeiten oder sogar komplett zu löschen.");
+$faq[] = array("Darf ich Bilder einfügen?", "Bilder können tatsächlich im Beitrag angezeigt werden. Allerdings gibt es noch keine Möglichkeit, Bilder direkt auf das Board hochzuladen. Deshalb müssen Sie zu einem bestehenden Bild verlinken, welches sich auf einem für die Öffentlichkeit zugänglichen Server befindet. Z. B. http://www.meineseite.de/meinbild.gif. Sie können weder zu Bildern linken, die sich auf Ihrer Festplatte befinden (außer es handelt sich um einen öffentlich verfügbaren Server) noch zu Bildern, die einen speziellen Zugang brauchen, um sie anzuzeigen (z. B. E-Mail-Konten, Passwort-geschützte Seiten usw). Um das Bild anzuzeigen, benutzen Sie entweder den BB-Code [img] oder HMTL (sofern erlaubt).");
+$faq[] = array("Was sind Ankündigungen?", "Ankündigungen beinhalten meistens wichtige Informationen, und Sie sollten sie so früh wie möglich lesen. Ankündigungen erscheinen immer am Anfang des jeweiligen Forums. Ob Sie eine Ankündigung erstellen können oder nicht, hängt davon ab, was für Befugnisse eingestellt wurden. Diese legt der Board-Administrator fest.");
+$faq[] = array("Was sind Wichtige Themen?", "Wichtige Themen erscheinen unterhalb der Ankündigungen in der Forumsansicht. Sie enthalten auch meistens wichtige Informationen, die Sie gelesen haben sollten. Genau wie mit den Ankündigungen entscheidet auch bei den Wichtigen Themen der Administrator, wer sie erstellen darf.");
+$faq[] = array("Was sind geschlossene Themen?", "Themen werden entweder vom Forumsmoderator oder dem Board-Administrator geschlossen. Man kann auf geschlossene Beiträge nicht antworten. Falls eine Umfrage angefügt wurde, wird diese damit auch beendet. Es gibt verschiedene Gründe, warum ein Thema geschlossen wird.");
+
+
+##End Check##
+$faq[] = array("--","Benutzerebenen und Gruppen");
+$faq[] = array("Was sind Administratoren?", "Administratoren haben die höchste Kontrollebene im gesamten Forum. Sie haben das Recht, jede Forumsaktion zu unterbinden und spezielle Aktionen durchzuführen, wie die Vergabe von Befugnissen, das Bannen von Benutzern, Benutzergruppen erstellen, Moderatoren ernennen usw. Sie haben außerdem in jedem Forum die vollen Moderatorenrechte.");
+$faq[] = array("Was sind Moderatoren?", "Moderatoren sind Personen (oder Gruppen), die auf das tägliche Geschehen in dem jeweiligen Forum achten. Sie haben die Möglichkeit, Beiträge zu editieren und zu löschen, Themen zu schließen, zu öffnen, zu verschieben oder zu löschen. Moderatoren haben die Aufgabe, Benutzer davon abzuhalten, unpassende Themen in einen Beitrag zu schreiben oder sonstigen Blödsinn in das Forum zu setzen.");
+$faq[] = array("Was sind Benutzergruppen?", "In Benutzergruppen werden einige Benutzer vom Administrator zusammengefasst. Jeder Benutzer kann zu mehreren Gruppen gehören und jeder Gruppe können spezielle Zugangsrechte erteilt werden. So ist es für den Administrator einfacher, mehrere Benutzer zu Moderatoren eines bestimmten Forums zu machen, ihnen Rechte für ein privates Forum zu geben und so weiter.");
+$faq[] = array("Wie kann ich einer Benutzergruppe beitreten?", "Um einer Benutzergruppe beizutreten, klicken Sie auf den Benutzergruppen-Link im Menü. Sie erhalten dann einen Überblick über alle Benutzergruppen. Nicht alle Gruppen haben <span class='italic'>offenen Zugang</span>, manche sind geschlossen und andere könnten versteckt sein. Falls die Gruppe neue Mitglieder zulässt, können Sie eine Mitgliedschaft beantragen, indem Sie auf den Beitreten-Button klicken. Der Gruppenmoderator muss noch seine Zustimmung geben; eventuell gibt es Rückfragen, warum Sie der Gruppe beitreten möchten. Bitte belästigen Sie die Gruppenmoderatoren nicht, nur weil sie Sie nicht in die Gruppe aufnehmen wollen. Sie werden ihre Gründe haben.");
+$faq[] = array("Wie werde ich ein Gruppenmoderator?", "Benutzergruppen werden vom Board-Administrator erstellt, er bestimmt ebenfalls den Moderator. Falls Sie daran interessiert sind, eine Benutzergruppe zu erstellen, sollten Sie zuerst den Administrator kontaktieren, zum Beispiel mit einer Privaten Nachricht.");
+
+
+$faq[] = array("--","Private Nachrichten");
+$faq[] = array("Ich kann keine Privaten Nachrichten verschicken!", "Es gibt drei mögliche Gründe dafür: Sie sind nicht registriert bzw. eingeloggt, der Board-Administrator hat das Private Nachrichten-System für das gesamte Board abgeschaltet oder der Administrator hat Ihnen das Schreiben von Privaten Nachrichten untersagt. Falls das letztere zutreffen sollte, sollten Sie ihn fragen, warum.");
+$faq[] = array("Ich erhalte dauernd ungewollte Private Nachrichten!", "In späteren Versionen wird es ein Ignorieren-System für Private Nachrichten geben. Im Moment müssen Sie, falls Sie ununterbrochen unerwünschte Nachrichten von einer Person erhalten, den Administrator informieren. Er kann das Versenden von Privaten Nachrichten durch den jeweiligen Benutzer unterbinden.");
+$faq[] = array("Ich habe eine Spam- oder perverse E-Mail von jemandem auf diesem Board erhalten!", "Das E-Mail-System dieses Boards enthält Sicherheitsvorkehrungen, um solche Aktionen eines Benutzers zu verhindern. Sie sollten dem Board-Administrator eine Kopie der erhaltenen E-Mail schicken; wichtig dabei ist, dass die Kopfzeilen angefügt bleiben (die Details über den Benutzer, der die E-Mail schickte). Erst dann kann er handeln.");
+
+//
+// DIE DREI UNTEN STEHENDEN FRAGEN DER FAQ SOLLEN UNÜBERSETZT BLEIBEN, DA ES SICH UM INTERNATIONALES RECHT HANDELT - LASST DIE DREI EINTRÄGE BITTE ENGLISCH!
+//
+$faq[] = array("--","phpBB 2 Issues");
+$faq[] = array("Who wrote this bulletin board?", "This software (in its unmodified form) is produced, released and is copyright  <a href=\"http://www.phpbb.com/\" target=\"_blank\">phpBB Group</a>. It is made available under the GNU General Public Licence and may be freely distributed, see link for more details");
+$faq[] = array("Why isn't X feature available?", "This software was written by and licensed through phpBB Group. If you believe a feature needs to be added then please visit the phpbb.com website and see what phpBB Group have to say. Please do not post feature requests to the board at phpbb.com, the Group uses sourceforge to handle tasking of new features. Please read through the forums and see what, if any, our position may already be for a feature and then follow the procedure given there.");
+$faq[] = array("Who do I contact about abusive and/or legal matters related to this board?", "You should contact the administrator of this board. If you cannot find who this you should first contact one of the forum moderators and ask them who you should in turn contact. If still get no response you should contact the owner of the domain (do a whois lookup) or, if this is running on a free service (e.g. yahoo, free.fr, f2s.com, etc.), the management or abuse department of that service. Please note that phpBB Group has absolutely no control and cannot in any way be held liable over how, where or by whom this board is used. It is absolutely pointless contacting phpBB Group in relation to any legal (cease and desist, liable, defamatory comment, etc.) matter not directly related to the phpbb.com website or the discrete software of phpBB itself. If you do email phpBB Group about any third party use of this software then you should expect a terse response or no response at all.");
+
+//
+// This ends the FAQ entries
+//
+
+?>

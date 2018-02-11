@@ -1,0 +1,3 @@
+<FilesMatch "(wz_tooltip.js|index.html)$">
+  allow from all
+</FilesMatch>
