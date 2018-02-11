@@ -1,0 +1,26 @@
+Options All -Indexes
+DirectoryIndex index.php index.htm index.html
+
+# -------------------------------------------
+# Start of NukeSentinel(tm) admin.php Auth
+# -------------------------------------------
+<Files .ftaccess>
+  deny from all
+</Files>
+
+<Files .staccess>
+  deny from all
+</Files>
+
+<Files admin.php>
+   <Limit GET POST PUT>
+      require valid-user
+   </Limit>
+   AuthName "Restricted"
+   AuthType Basic
+   AuthUserFile /path/to/your/.staccess
+</Files>
+
+# -------------------------------------------
+# Start of NukeSentinel(tm) DENY FROM area
+# -------------------------------------------

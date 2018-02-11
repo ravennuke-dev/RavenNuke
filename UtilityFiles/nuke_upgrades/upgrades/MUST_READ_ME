@@ -1,0 +1,12 @@
+Use these files at your OWN risk.  They are intended to be for
+reference purposes, but can be used to first upgrade an existing 
+PHP-Nuke installation to 7.6, making migrating to RavenNuke a 
+bit easier.
+
+But, again, use at your OWN risk AND ALWAYS, ALWAYS, ALWAYS backup
+your database PRIOR to running ANY upgrade / downgrade script so 
+that you can very quickly get your database back to what it was
+before you mucked with it.  LOL.
+
+Refer to the HowToInstall Manual for more information on migrating
+from a non-RavenNuke installation to a RavenNuke one.

@@ -1,0 +1,19 @@
+The table compare utilities provided here were intially developed to assist in situations where users needed to run a database structure comparison before upgrading to the latest version of RavenNuke(tm).  In many situations users had an older database from a previous *Nuke version and did not have the capability or desire to install a full "new" RavenNuke(tm) database before running comparisons using a tool such as MYSQLDIFF.  The compare utility only provides information, it is up to you as the administrator to reconcile your data base structures before attempting the RavenNuke(tm) upgrade.
+
+In the table compare directory we provide 2 main programs and one that you can optionally use to do other comparisons.  Note:  to use list_tables and compare tables programs you need to put your database name, database user name and password into the code at the top of these programs.  The easiest way to do it is to copy these from your config.php file.
+
+The two "main" files are:
+
+1.  fieldlist_2_50_00.txt.  This is a structural representation of all the tables and fields and their attributes in a RavenNuke(tm) 2.50 database immediately after install.  You can open it up in your editor to see what this means, just don't make any changes.
+2.  table_compare.php.  This program will compare your current database, whether it be RavenNuke(tm) 2.10.x or RavenNuke(tm) 2.02.x or some previous version of PHPnuke, with the structure from the fieldlist_250_00.txt file.  If discrepancies are shown you will need to resolve them before upgrading to RavenNuke(tm) 2.50.
+3.  The ancillary program is list_tables.php.  This is the program that produces fieldlist_2_50_00.txt.  You can use it (optionally) to produce a structure report for any MYSQL database.  You can name the output file anything you want.
+
+USAGE:
+
+Copy the compare_tables.php and fieldlist_2_50_00.txt to a Utility_Files directory on your server.  Utility_Files should be at the same level as your so_called NukeRoot directory (the html directory in the distribution).  Then modify the setup information in the first few lines (similar to the way you set up config.php in Nuke) to point to your database.  Then run compare tables.
+
+If you decide to run list_tables, you will need to modify the set up information.  We would recommend that you save to some other file besides the fieldlist_2_50_00.txt.  You can then run compare tables against that new output, again changing the setup variables as appropriate, including changing the name of $file to point to your new structure file.
+
+To use these utilities properly you need to take a few seconds to understand how the comparison works and what is being compared to what.  Basically the compare utility reads the structure file (fieldlist_2_50_00.txt by default) in line by line and then attempts to find matching tables and fields in your current Nuke database.  If a discrepancy is found it will be reported in the detail section of the report.  For instance, if there is a table in standard RavenNuke(tm) 2.50 that does not exist in your database a table not found message will be reported together with the name of the table.  If a field is key in RavenNuke(tm) but not in your database that fact will be reported as will missing fields, etc.  However, if you have extra tables in your database that are not in standard RavenNuke(tm) that fact will not be reported.  That's partly because of the way the comparison is written and also because there is no reason you cannot have such extra tables; their presence does not in itself constitute an "error condition".
+
+We have included fieldlist files from older distributions in the unlikely event that they may be of use to someone.  You can run table_compare between any fieldlist text file and any database, for instance.  Let your imagination run riot.
