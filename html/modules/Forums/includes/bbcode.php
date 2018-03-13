@@ -291,7 +291,7 @@ function bbencode_first_pass($text, $uid)
 		$text
 	);
 	// Remove our padding from the string..
-	return substr($text, 1);;
+	return substr($text, 1);
 
 } // bbencode_first_pass()
 
