@@ -368,11 +368,12 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 
         $reg_userid_ary = array();
 
-        if( count($onlinerow_reg) )
+        if(is_array($onlinerow_reg) && count($onlinerow_reg) )
         {
                 $registered_users = 0;
+                $count_onlinerow_reg = count($onlinerow_reg);
 
-                for($i = 0; $i < count($onlinerow_reg); $i++)
+                for($i = 0; $i < $count_onlinerow_reg; $i++)
                 {
                         if( !inarray($onlinerow_reg[$i]['user_id'], $reg_userid_ary) )
                         {
