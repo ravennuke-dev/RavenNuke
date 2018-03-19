@@ -339,6 +339,7 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
         {
                 message_die(GENERAL_ERROR, "Couldn't obtain regd user/online information.", "", __LINE__, __FILE__, $sql);
         }
+        $count_onlinerow_reg = $db->sql_numrows($result);
         $onlinerow_reg = $db->sql_fetchrowset($result);
 
         $sql = "SELECT session_page, session_logged_in, session_time, session_ip, session_start
@@ -350,6 +351,7 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
         {
                 message_die(GENERAL_ERROR, "Couldn't obtain guest user/online information.", "", __LINE__, __FILE__, $sql);
         }
+        $count_onlinerow_guest = $db->sql_numrows($result);
         $onlinerow_guest = $db->sql_fetchrowset($result);
 
         $sql = "SELECT forum_name, forum_id
@@ -368,10 +370,9 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 
         $reg_userid_ary = array();
 
-        if(is_array($onlinerow_reg) && count($onlinerow_reg) )
+        if($count_onlinerow_reg > 0)
         {
                 $registered_users = 0;
-                $count_onlinerow_reg = count($onlinerow_reg);
 
                 for($i = 0; $i < $count_onlinerow_reg; $i++)
                 {
@@ -475,11 +476,11 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
         //
         // Guest users
         //
-        if( count($onlinerow_guest) )
+        if( $count_onlinerow_guest > 0 )
         {
                 $guest_users = 0;
 
-                for($i = 0; $i < count($onlinerow_guest); $i++)
+                for($i = 0; $i < $count_onlinerow_guest; $i++)
                 {
                         $guest_userip_ary[] = $onlinerow_guest[$i]['session_ip'];
                         $guest_users++;
