@@ -338,6 +338,14 @@ if (!defined('ADMIN_FILE') && !file_exists('includes/nukesentinel.php')) {
 	$postString = '';
 	foreach ($_POST as $postkey => $postvalue) {
 		if ($postString > '') {
+			# PHP7 issue (2018-03-13, neralex)
+			# Notice: Array to string conversion in mainfile.php
+			# issue only exists, when $postvalue is an array
+			# return value: Array ( [1] => value )
+			if (is_array($postvalue)) {
+				$postvalue = array();
+				$postvalue = implode(',', $postvalue);
+			}
 			$postString .= '&' . $postkey . '=' . $postvalue;
 		} else {
 			$postString .= $postkey . '=' . $postvalue;
