@@ -101,7 +101,7 @@ $sql = "SELECT user_id, username, user_avatar FROM " . USERS_TABLE . "
 if(!$result = $db->sql_query($sql))
 {
 	$error = $db->sql_error();
-	die("Could not get avatar information! $error['code'] : $error['message']");
+	die('Could not get avatar information! ' . $error['code'] . ' : ' .$error['message']);
 }
 
 // Create a hash to keep track of all the user that is using the uploaded avatar
