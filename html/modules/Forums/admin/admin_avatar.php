@@ -91,7 +91,7 @@ else
 $config_result = $db->sql_query("select config_name,config_value from ". CONFIG_TABLE ."");
 while ($config_row = $db->sql_fetchrow($config_result))
 {
-	$board_config[$config_row[config_name]] = $config_row[config_value];
+	$board_config[$config_row['config_name']] = $config_row['config_value'];
 }
 
 // Select all avatars and usernames that have an uploaded avatar currently
@@ -101,13 +101,13 @@ $sql = "SELECT user_id, username, user_avatar FROM " . USERS_TABLE . "
 if(!$result = $db->sql_query($sql))
 {
 	$error = $db->sql_error();
-	die("Could not get avatar information! $error[code] : $error[message]");
+	die("Could not get avatar information! $error['code'] : $error['message']");
 }
 
 // Create a hash to keep track of all the user that is using the uploaded avatar
 while ($avatar_rowset = $db->sql_fetchrow($result))
 {
-	$avatar_usage[$avatar_rowset[user_avatar]] = $avatar_rowset[username];
+	$avatar_usage[$avatar_rowset['user_avatar']] = $avatar_rowset['username'];
 }
 
 // This is the variable that points to the path of the avatars
@@ -180,7 +180,7 @@ switch( $mode )
 						if(!$result = $db->sql_query($sql))
 						{
 						    $error = $db->sql_error();
-						    die("Could not get user information! $error[code] : $error[message]");
+						    die('Could not get user information! ' . $error['code'] . ' : ' .$error['message']);
 						}
 						$av_uid = $db->sql_fetchrow($result);
 						$avatar_uid = $av_uid['user_id'];
