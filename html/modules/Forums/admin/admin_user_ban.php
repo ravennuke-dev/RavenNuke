@@ -366,8 +366,14 @@ else
 
         $user_list = $db->sql_fetchrowset($result);
 
+        if (is_array($user_list)) {
+            $count_user_list = count($user_list);
+        } else {
+            $count_user_list = 0;
+        }
+
         $select_userlist = '';
-        for($i = 0; $i < count($user_list); $i++)
+        for($i = 0; $i < $count_user_list; $i++)
         {
                 $select_userlist .= '<option value="' . $user_list[$i]['ban_id'] . '">' . $user_list[$i]['username'] . '</option>';
                 $userban_count++;
@@ -388,10 +394,17 @@ else
         }
 
         $banlist = $db->sql_fetchrowset($result);
+
+        if (is_array($banlist)) {
+            $count_banlist = count($banlist);
+        } else {
+            $count_banlist = 0;
+        }
+
         $select_iplist = '';
         $select_emaillist = '';
 
-        for($i = 0; $i < count($banlist); $i++)
+        for($i = 0; $i < $count_banlist; $i++)
         {
                 $ban_id = $banlist[$i]['ban_id'];
 
