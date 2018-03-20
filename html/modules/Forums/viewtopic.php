@@ -1149,20 +1149,28 @@ for($i = 0; $i < $total_posts; $i++)
         $message = preg_replace('#(?!<.*)(?<!\w)(' . $highlight_match . ')(?!\w|[^<>]*>)#i', '<span class="thick" style="color:#'.$theme['fontcolor3'].'">\1</span>', $message);
         }
 
-        //
-        // Replace naughty words
-        //
-        if (count($orig_word))
-        {
-                $post_subject = preg_replace($orig_word, $replacement_word, $post_subject);
-
-                if ($user_sig != '')
-                {
-            $user_sig = str_replace('\"', '"', substr(@preg_replace('#(\>(((?>([^><]+|(?R)))*)\<))#se', "@preg_replace(\$orig_word, \$replacement_word, '\\0')", '>' . $user_sig . '<'), 1, -1));
-                }
-
-        $message = str_replace('\"', '"', substr(@preg_replace('#(\>(((?>([^><]+|(?R)))*)\<))#se', "@preg_replace(\$orig_word, \$replacement_word, '\\0')", '>' . $message . '<'), 1, -1));
-        }
+		//
+		// Replace naughty words
+		//
+		if (count($orig_word)) {
+			$post_subject = preg_replace($orig_word, $replacement_word, $post_subject);
+			if ($user_sig != '') {
+				$user_sig = preg_replace_callback(
+					'#(?!<.*)(?<!\w)([A-Za-z0-9_-]+)(?!\w|[^<>]*>)#i',
+					function ($m1) use ($orig_word, $replacement_word) {
+						return preg_replace($orig_word, $replacement_word, $m1[1]);
+					},
+					$user_sig
+				);
+			}
+			$message = preg_replace_callback(
+				'#(?!<.*)(?<!\w)([A-Za-z0-9_-]+)(?!\w|[^<>]*>)#i',
+				function ($m2) use ($orig_word, $replacement_word) {
+					return preg_replace($orig_word, $replacement_word, $m2[1]);
+				},
+				$message
+			);
+		}
 
         //
         // Replace newlines (we use this rather than nl2br because
