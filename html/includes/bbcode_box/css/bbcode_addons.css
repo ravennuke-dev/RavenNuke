@@ -1,0 +1,81 @@
+/*BBCODE BOX ADDONS*/
+/* basic classes required for forums */
+pre{margin:0;padding:0;white-space:pre-wrap}
+.codetable{white-space:pre-wrap}
+.codetable td{width:100%}
+.codetable,.quotetable{width:98%;table-layout:fixed;margin:0 auto;border: 1px solid #98AAB1;background-color: #FAFAFA;box-shadow: 5px 5px 5px #E0DFE0}
+.codestyle{white-space:pre-wrap;word-wrap:break-word;margin:0;}
+.codestyle,.codestyle .title{font-family: 'Lucida Console', Monaco, monospace;font-size:12px;font-weight:normal;}
+.forum-img-left{margin:0 10px 10px 0}
+.forum-img-right{margin:0 0 10px 10px}
+.arialblack{font-family:'Arial Black',Gadget,sans-serif}
+.centurygothic{font-family:'Century Gothic',futura,'URW Gothic L',Verdana,sans-serif}
+.comicsans{font-family:'Comic Sans MS',cursive}
+.couriernew{font-family:'Courier New',Courier,'Nimbus Mono L',monospace}
+.georgia{font-family:Constantina,Georgia,'Nimbus Roman No9 L',serif}
+.impact{font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif}
+.lucidac{font-family: 'Lucida Console', Monaco, monospace}
+.lucidau{font-family:'Lucida Sans Unicode','Lucida Grande','Lucida Sans','DejaVu Sans Condensed',sans-serif}
+.palatino{font-family:Cambria,'Palatino Linotype','Book Antiqua','URW Palladio L',serif}
+.tahoma{font-family:'Tahoma',sans-serif}
+.trebuchet{font-family:'Trebuchet MS',sans-serif}
+.verdana{font-family:Verdana,Geneva,'DejaVu Sans',sans-serif}
+
+/* Custom Color Swatches (can be styled to match theme) */
+.color1{color:#9d0a0e}
+.color2{color:#a0410d}
+.color3{color:#a36109}
+.color4{color:#aba000}
+.color5{color:#598527}
+.color6{color:#197a30}
+.color7{color:#007236}
+.color8{color:#00736a}
+.color9{color:#0076a3}
+.color10{color:#004a80}
+.color11{color:#9e005d}
+.color12{color:#620460}
+.color13{color:#440e62}
+.color14{color:#000000}
+/* Custom Color Editor Swatches (should match above) */
+.bg-color1{background-color:#9d0a0e}
+.bg-color2{background-color:#a0410d}
+.bg-color3{background-color:#a36109}
+.bg-color4{background-color:#aba000}
+.bg-color5{background-color:#598527}
+.bg-color6{background-color:#197a30}
+.bg-color7{background-color:#007236}
+.bg-color8{background-color:#00736a}
+.bg-color9{background-color:#0076a3}
+.bg-color10{background-color:#004a80}
+.bg-color11{background-color:#9e005d}
+.bg-color12{background-color:#620460}
+.bg-color13{background-color:#440e62}
+.bg-color14{background-color:#000000}
+
+/* auto-add icons to links to certain sites in forum posts */
+a.postlink.ficon{padding:1px 0 1px 20px;max-height:16px;height:16px;background:transparent url(../images/global_telecom.png) no-repeat}
+a.postlink.iarchive{background:transparent url(../images/archive.png) no-repeat}
+a.postlink.youtu{background:transparent url(../images/youtube.png) no-repeat}
+a.postlink.vimeo{background:transparent url(../images/vimeo.png) no-repeat}
+a.postlink.soundcloud{background:transparent url(../images/soundcloud.png) no-repeat}
+a.postlink.mixcloud{background:transparent url(../images/mixcloud.png) no-repeat}
+a.postlink.duck{background:transparent url(../images/duck.png) no-repeat}
+a.postlink.xfire{background:transparent url(../images/xfire.png) no-repeat}
+a.postlink.femail{background:transparent url(../images/email.png) no-repeat;text-transform:none}
+a.postlink.ftags{background:transparent url(../images/tag_blue.png) no-repeat;padding-right:5px}
+a.postlink.ftags:hover{background:transparent url(../images/tag_red.png) no-repeat;}
+a.postlink.wiki,a.postlink.wiki-en{background:transparent url(../images/wikepedia.png) no-repeat}
+a.postlink.wiki:after{content: " (" attr(rel) ") ";font-size:smaller}
+/* youtube and archive audio/video settings */
+.forumvideo{margin:10px 10px 10px 0} /*default video on left*/
+.forumvideo.video-small-left,.forumvideo.video-medium-left,.forumvideo.video-left,.forumvideo.audio-left{float:left;margin:10px 10px 10px 0} /*left floated video*/
+.forumvideo.video-small-right,.forumvideo.video-medium-right,.forumvideo.video-right,.forumvideo.audio-right{float:right;margin:0 10px 10px 10px} /*right floated video*/
+.forumvideo.video-small-center,.forumvideo.video-medium-center,.forumvideo.video-center,.forumvideo.audio-center,.forumvideo.video-large-right,.forumvideo.video-large-left,.forumvideo.video-large-center,.forumvideo.video-large{margin:10px auto;text-align:center} /*by default all large videos do not flaot and are centered */
+div.video iframe,div.video-left iframe,div.video-right iframe,div.video-center iframe{width:420px;height:315px} /*default size*/
+div.video-small iframe,div.video-small-left iframe,div.video-small-right iframe,div.video-small-center iframe{width:210px;height:172px} /*sm size*/
+div.video-medium iframe,div.video-medium-left iframe,div.video-medium-right iframe,div.video-medium-center iframe{width:480px;height:360px} /*med size*/
+div.video-large iframe,div.video-large-left iframe,div.video-large-right iframe,div.video-large-center iframe{width:640px;height:480px} /*large size*/
+div.audio iframe,div.audio-left iframe,div.audio-right iframe,div.audio-center iframe{width:500px;height:30px} /*audio size*/
+.forumvideotagline{padding-top:6px}
+
+td.postbody span,div.postbody span{display:inline;visibility:visible} /*prevent hidden content*/

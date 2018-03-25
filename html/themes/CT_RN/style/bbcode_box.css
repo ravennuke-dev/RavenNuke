@@ -1,0 +1,180 @@
+/*BBCODE BOX*/
+#posttable{border: 1px solid #000000}
+#posttable td{padding:0}
+#colorstatus,#fontfacestatus,#fontfacestatus2,#fontsizestatus,#defaultstatus,#fonthelpstatus,#codehelpstatus,#helpcustomload,#helpcodeload,#colorhelpstatus,#helpcolorload,#emostatus,#archivestatus,#youtubestatus,#vidhelpstatus,#helpvidload,#helputubeload,#codestatus{display:none}
+#helpcustomload,#helpcodeload,#helpcustomclass,#helpcodeclass,#helpcolorload,#helpcolorclass,#emostatus,#archivestatus,#youtubestatus,#vidhelpstatus,#helpvidload,#helpvidclass,#helputube,#helputubeload,#codestatus,#arctype,#arcposition,#utubes,#utubesposition,#codetypes{margin:0}
+label[for="username"],label[for="subject"]{float:left;padding-right:10px}
+.abbctoolbars, .standardbox{height:34px}
+.box-background{margin:0;padding:0;text-align:left}
+/* linear gradients for toolbars */
+.abbctoolbars{vertical-align:middle;
+background-color: transparent;
+background-image: url(../../../includes/bbcode_box/images/bg-crimson.png); /* other browsers */
+background-image: -ms-linear-gradient(top, #330303 0%, #1C0202 100%);/* IE10 */ 
+background-image: -moz-linear-gradient(top, #330303 0%, #1C0202 100%);/* Mozilla Firefox */ 
+background-image: -o-linear-gradient(top, #330303 0%, #1C0202 100%);/* Opera */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #330303), color-stop(1, #1C0202 ));/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-linear-gradient(top, #330303 0%, #1C0202 100%);/* Webkit (Chrome 11+) */ 
+background-image: linear-gradient(top, #330303 0%, #1C0202 100%)}/* Proposed W3C Markup */ 
+.box-select{margin:7px 3px 0 0;padding:0;float:left}
+.abbcshim{margin:2px 0 0 2px}
+.box-dots{float:left;background: transparent url(../../../includes/bbcode_box/images/reddots.png);padding-left: 4px;width:14px;height:22px;border: medium none;margin-top:3px}
+.box-blackdot{background: transparent url(../../../includes/bbcode_box/images/reddot.png);margin: 3px 5px 2px 3px;width:1px;height:22px;border: medium none;padding:0;float:left}
+td div .box-dots,td div .box-blackdot{margin-top: 7px;}
+.postimage{width:20px;height:20px;margin:0 3px 3px 0;border:none;background: transparent url(../../../includes/bbcode_box/images/bbcodebox1-crimson.png);padding:0;float:left}
+.abbctoolbars .postimage{margin:7px 3px 3px 0}
+.postcolor,.xcolor,.postfonts,.posthelps,.posthelps2,.postsizes{margin:7px 3px 3px 0;border:none;background: transparent url(../../../includes/bbcode_box/images/bbcodebox1-colors-crimson.png);padding:0;float:left}
+.postfonts,.posthelps,.posthelps2,.postsizes{width:60px;height:20px}
+.postcolor,.xcolor{width:20px;height:20px}
+#defaultstatus .postimage{margin-top:7px}
+td.abbctoolbars .postimage{margin-top:3px}
+.posthelps,.posthelps2{width:41px}
+input.color,input.xcolor{-moz-border-radius: 2px;border-radius: 2px;width:20px;height:20px;vertical-align:top;font: 10px Verdana,Helvetica,sans-serif;padding:0;float:left;line-height:10px;border:none;background: transparent url(../../../includes/bbcode_box/images/bbcodebox1-colors-crimson.png);margin:7px 3px 3px 0}
+input.color:hover,input.xcolor:hover{cursor:pointer}
+input.nocolor,input.specialclass,.boardstatus,.abbchelpline{height:18px;vertical-align:top;font: 10px Verdana,Helvetica,sans-serif;padding:0;float:left;line-height:10px;border:1px solid #631f1c;background: transparent url(../../../includes/bbcode_box/images/bbcodebox1-colors-crimson.png);color:#c0c0c0;-moz-border-radius: 3px;border-radius: 3px;margin:7px 2px 3px 0}
+.abbchelpline{margin:2px 2px 0 0}
+input.nocolor{width:60px}
+input.specialclass{width:103px}
+div.boardstatus{height:17px;padding:3px 4px 0 4px;font-size:9px;line-height:9px;margin:7px 3px 0 0}
+.boardstatus u{text-decoration:none}
+.box-background img:hover{cursor:pointer}
+.posthelps:hover{cursor:help}
+#abbcjustify.bbc-inactive,#abbcsmall-caps{background-position:0 0}
+#abbcjustify.bbc-inactive:hover{background-position:-20px 0}
+#abbcjustify.bbc-active{background-position:-40px 0}
+#abbcleft.bbc-inactive,#abbcsmall{background-position:0 -20px}
+#abbcleft.bbc-inactive:hover{background-position:-20px -20px}
+#abbcleft.bbc-active{background-position:-40px -20px}
+#abbccenter.bbc-inactive,#abbcnormal{background-position:0 -40px}
+#abbccenter.bbc-inactive:hover{background-position:-20px -40px}
+#abbccenter.bbc-active{background-position:-40px -40px}
+#abbcright.bbc-inactive,#abbclarge{background-position:0 -60px}
+#abbcright.bbc-inactive:hover{background-position:-20px -60px}
+#abbcright.bbc-active{background-position:-40px -60px}
+#abbcsubs.bbc-inactive,#abbcx-large{background-position:0 -80px}
+#abbcsubs.bbc-inactive:hover{background-position:-20px -80px}
+#abbcsubs.bbc-active{background-position:-40px -80px}
+#abbcsupscript.bbc-inactive,#abbcsmaller{background-position:0 -100px}
+#abbcsupscript.bbc-inactive:hover{background-position:-20px -100px}
+#abbcsupscript.bbc-active{background-position:-40px -100px}
+#abbcbold.bbc-inactive,#abbclarger{background-position:0 -120px}
+#abbcbold.bbc-inactive:hover{background-position:-20px -120px}
+#abbcbold.bbc-active{background-position:-40px -120px}
+#abbcitalic.bbc-inactive{background-position:0 -140px}
+#abbcitalic.bbc-inactive:hover{background-position:-20px -140px}
+#abbcitalic.bbc-active{background-position:-40px -140px}
+#abbcunder.bbc-inactive{background-position:0 -160px}
+#abbcunder.bbc-inactive:hover{background-position:-20px -160px}
+#abbcunder.bbc-active{background-position:-40px -160px}
+#abbcstrik.bbc-inactive{background-position:0 -180px}
+#abbcstrik.bbc-inactive:hover{background-position:-20px -180px}
+#abbcstrik.bbc-active{background-position:-40px -180px}
+#abbcdirrtl.bbc-inactive{background-position:0 -200px}
+#abbcdirrtl.bbc-inactive:hover{background-position:-20px -200px}
+#abbcdirrtl.bbc-active{background-position:-40px -200px}
+#abbcdirltr.bbc-inactive{background-position:0 -220px}
+#abbcdirltr.bbc-inactive:hover{background-position:-20px -220px}
+#abbcdirltr.bbc-active{background-position:-40px -220px}
+#abbccode.bbc-inactive,#abbccode2.bbc-inactive{background-position:0 -240px}
+#abbccode.bbc-inactive:hover,#abbccode2.bbc-inactive:hover{background-position:-20px -240px}
+#abbccode.bbc-active,#abbccode2.bbc-active{background-position:-40px -240px}
+#abbcquote.bbc-inactive{background-position:0 -260px}
+#abbcquote.bbc-inactive:hover{background-position:-20px -260px}
+#abbcquote.bbc-active{background-position:-40px -260px}
+#abbcspoil.bbc-inactive,#abbchole,#abbccolor1.bbc-inactive,#abbccolor2.bbc-inactive,#abbccolor3.bbc-inactive,#abbccolor4.bbc-inactive,#abbccolor5.bbc-inactive,#abbccolor6.bbc-inactive,#abbccolor7.bbc-inactive,#abbccolor8.bbc-inactive,#abbccolor9.bbc-inactive,#abbccolor10.bbc-inactive,#abbccolor11.bbc-inactive,#abbccolor12.bbc-inactive,#abbccolor13.bbc-inactive,#abbccolor14.bbc-inactive{background-position:0 -280px}
+#abbcspoil.bbc-inactive:hover,#abbchole:hover,#abbccolor1.bbc-inactive:hover,#abbccolor2.bbc-inactive:hover,#abbccolor3.bbc-inactive:hover,#abbccolor4.bbc-inactive:hover,#abbccolor5.bbc-inactive:hover,#abbccolor6.bbc-inactive:hover,#abbccolor7.bbc-inactive:hover,#abbccolor8.bbc-inactive:hover,#abbccolor9.bbc-inactive:hover,#abbccolor10.bbc-inactive:hover,#abbccolor11.bbc-inactive:hover,#abbccolor12.bbc-inactive:hover,#abbccolor13.bbc-inactive:hover,#abbccolor14.bbc-inactive:hover{background-position:-20px -280px}
+#abbcspoil.bbc-active,#abbchole.bbc-active,#abbccolor1.bbc-active,#abbccolor2.bbc-active,#abbccolor3.bbc-active,#abbccolor4.bbc-active,#abbccolor5.bbc-active,#abbccolor6.bbc-active,#abbccolor7.bbc-active,#abbccolor8.bbc-active,#abbccolor9.bbc-active,#abbccolor10.bbc-active,#abbccolor11.bbc-active,#abbccolor12.bbc-active,#abbccolor13.bbc-active,#abbccolor14.bbc-active{background-position:-40px -280px}
+#abbcurl.bbc-inactive,#abbcpicker{background-position:0 -300px}
+#abbcurl.bbc-inactive:hover,#abbcpicker:hover{background-position:-20px -300px}
+#abbcfontcolor.bbc-inactive{background-position:-40px -420px}
+#abbcfontcolor.bbc-inactive:hover{background-position:-40px -300px}
+#abbcfontcolor.bbc-active{background-position:-40px -360px}
+#abbcfontsize.bbc-inactive{background-position:-40px -440px}
+#abbcfontsize.bbc-inactive:hover{background-position:-40px -320px}
+#abbcfontsize.bbc-active{background-position:-40px -380px}
+#abbcfontface.bbc-inactive{background-position:-40px -460px}
+#abbcfontface.bbc-inactive:hover{background-position:-40px -340px}
+#abbcfontface.bbc-active{background-position:-40px -400px}
+#abbcemail.bbc-inactive,#insertcustomclass{background-position:0 -320px}
+#abbcemail.bbc-inactive:hover{background-position:-20px -320px}
+#abbcimg.bbc-inactive,.boardstatus,.thehelpbox{background-position:0 -340px}
+#customclass,input.nocolor{background-position:0 -342px}
+#abbcimg.bbc-inactive:hover{background-position:-20px -340px}
+#abbcflash.bbc-inactive,#abbcverdana{background-position:0 -360px}
+#abbcflash.bbc-inactive:hover{background-position:-20px -360px}
+#abbcvideo.bbc-inactive,#abbctrebuchet{background-position:0 -380px}
+#abbcvideo.bbc-inactive:hover{background-position:-20px -380px}
+#abbcstream.bbc-inactive,#abbctahoma{background-position:0 -400px}
+#abbcstream.bbc-inactive:hover{background-position:-20px -400px}
+#abbctwitter.bbc-inactive,#abbcpalatino{background-position:0 -420px}
+#abbctwitter.bbc-inactive:hover{background-position:-20px -420px}
+#abbcyoutube.bbc-inactive,#abbcyoutube2.bbc-inactive,#abbclucidau{background-position:0 -440px}
+#abbcyoutube.bbc-inactive:hover,#abbcyoutube2.bbc-inactive:hover{background-position:-20px -440px}
+#abbcxfirevideo.bbc-inactive,#abbclucidac{background-position:0 -460px}
+#abbcxfirevideo.bbc-inactive:hover{background-position:-20px -460px}
+#abbcarchive.bbc-inactive,#abbcarchive2.bbc-inactive{background-position:-40px -520px}
+#abbcarchive.bbc-inactive:hover,#abbcarchive2.bbc-inactive:hover{background-position:-40px -580px}
+#abbclistdf.bbc-inactive,#abbcimpact{background-position:0 -480px}
+#abbclistdf.bbc-inactive:hover{background-position:-20px -480px}
+#abbclistdf.bbc-active{background-position:-40px -480px}
+#abbchr.bbc-inactive,#abbcgeorgia{background-position:0 -500px}
+#abbchr.bbc-inactive:hover{background-position:-20px -500px}
+#abbcwiki.bbc-inactive,#abbccouriernew{background-position:0 -520px}
+#abbcwiki.bbc-inactive:hover{background-position:-20px -520px}
+#abbcduck.bbc-inactive,#abbccomicsans{background-position:0 -540px}
+#abbcduck.bbc-inactive:hover{background-position:-20px -540px}
+#abbcfloatR.bbc-inactive,#abbccenturygothic{background-position:0 -560px}
+#abbcfloatR.bbc-inactive:hover{background-position:-20px -560px}
+#abbctags.bbc-inactive{background-position:-40px -540px}
+#abbctags.bbc-inactive:hover{background-position:-40px -560px}
+#abbcfloatL.bbc-inactive,#abbcarialblack{background-position:0 -580px}
+#abbcfloatL.bbc-inactive:hover{background-position:-20px -580px}
+#abbcsettings.bbc-inactive,#helpcustomclass,#helpcolorclass,#helpvidclass,#helputube,#helpcodeclass{background-position:0 -600px}
+#abbcsettings.bbc-inactive:hover{background-position:-20px -600px}
+#abbcsettings.bbc-active{background-position:-40px -600px}
+#helpcustomload.posthelps2,#helpcolorload.posthelps2,#helpvidload.posthelps2,#abbcexpand.bbc-inactive,#helputubeload.posthelps2,#helpcodeload.posthelps2{background-position:0 -620px}
+#abbcexpand.bbc-inactive:hover{background-position:-20px -620px}
+#abbcexpand.bbc-active{background-position:-40px -620px}
+#abbcsmiles.bbc-inactive{background-position:0 -640px}
+#abbcsmiles.bbc-inactive:hover{background-position:-20px -640px}
+#abbcsmiles.bbc-active{background-position:-40px -640px}
+.bbc-active{-webkit-box-shadow:0 0 15px #ff0000; 
+-moz-box-shadow: 0 0 15px #ff0000; 
+box-shadow:0 0 15px #ff0000; }/**/
+/* hover style on some editor buttons */
+.postfonts:hover,.posthelps:hover,.postsizes:hover{-moz-border-radius: 2px;border-radius: 2px;
+   -moz-box-shadow:    inset 0 0 7px #ff0000;
+   -webkit-box-shadow: inset 0 0 7px #ff0000;
+   box-shadow:         inset 0 0 7px #ff0000;
+}
+/* mouseover help */
+.abbchelpline{width:80%}
+/* main textarea message box */
+.abbcmessage{
+margin:0;
+padding:0;
+background-image:none;
+height:250px;
+width: 500px;
+min-width: 100%;
+max-width: 100%;
+-webkit-box-sizing:border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+box-sizing: border-box;
+background-color:#252525;
+color:#c0c0c0;
+border:none;
+}
+.abbcmessage:focus {
+-webkit-appearance: none;
+outline-color: transparent;
+outline-style: none;
+}
+/* background to match textarea message box to simulate cross-browser padding */
+#posttable td.messageback,.abbchelpbars{background-color:#252525;color:#c0c0c0;padding:6px}
+.abbchelpbars{padding:10px}
+/* smilies size in toolbar */
+.abbcemos{max-width:15px;max-height:15px;border:0px;float:left;margin:10px 3px 0 0}
+#emostatus div.boardstatus{margin-left:6px}
+#ftopic-review{width:100%;height:300px;overflow:auto}

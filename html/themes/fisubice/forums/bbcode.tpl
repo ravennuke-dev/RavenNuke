@@ -9,7 +9,7 @@
 <!-- BEGIN quote_username_open --><table class="quotetable">
 <tr>
 <td><span class="uppercase">{USERNAME} {L_WROTE}:
-<script src="{U_SXBB_JSLIB}"></script>
+
 <script>
    var id = 'SXBB' + (1000 + Math.floor(Math.random() * 5000));
    SXBB[id] = new _SXBB(id);
@@ -28,7 +28,7 @@
 <!-- BEGIN quote_open --><table class="quotetable">
 <tr>
 <td><span class="uppercase">{L_QUOTE}:
-<script src="{U_SXBB_JSLIB}"></script>
+
 <script>
    var id = 'SXBB' + (1000 + Math.floor(Math.random() * 5000));
    SXBB[id] = new _SXBB(id);
@@ -54,7 +54,7 @@
 
 <!-- BEGIN code_open --><table class="codetable">
 <tr>
-<td><span class="uppercase">{L_CODE}:<script src="{U_SXBB_JSLIB}"></script><script>
+<td><span class="uppercase">{L_CODE}:<script>
    var id = 'SXBB' + (1000 + Math.floor(Math.random() * 5000));
    SXBB[id] = new _SXBB(id);
    SXBB[id].T['select'] = '{L_SELECT}';
@@ -68,7 +68,7 @@
 
 <!-- BEGIN pre_open --><table class="codetable">
 <tr>
-<td><span class="uppercase">{PRECLASS} {ITS_CODE}:<script src="{U_SXBB_JSLIB}"></script><script>
+<td><span class="uppercase">{PRECLASS} {ITS_CODE}:<script>
    var id = 'SXBB' + (1000 + Math.floor(Math.random() * 5000));
    SXBB[id] = new _SXBB(id);
    SXBB[id].T['select'] = '{L_SELECT}';
