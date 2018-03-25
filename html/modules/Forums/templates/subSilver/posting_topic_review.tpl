@@ -5,7 +5,7 @@
 		<td class="catHead" height="28" align="center"><span class="cattitle thick">{L_TOPIC_REVIEW}</span></td>
 	</tr>
 	<tr>
-		<td class="row1"><iframe width="100%" height="300" src="{U_REVIEW_TOPIC}" >
+		<td class="row1"><div id="ftopic-review">
 <!-- END switch_inline_mode -->
 <table border="0" cellpadding="3" cellspacing="1" width="100%" class="forumline">
 	<tr>
@@ -37,7 +37,7 @@
 	 <!-- END postrow -->
 </table>
 <!-- BEGIN switch_inline_mode -->
-		</iframe></td>
+		</div></td>
 	</tr>
 </table>
 <!-- END switch_inline_mode -->

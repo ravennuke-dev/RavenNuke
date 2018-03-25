@@ -109,6 +109,55 @@ function prepare_bbcode_template($bbcode_tpl)
 
 	$bbcode_tpl['email'] = str_replace('{EMAIL}', '\\1', $bbcode_tpl['email']);
 
+/************************************************************************/
+/* ================ START Advanced BBCode Box MOD ===================== */
+/*************************version RN2.5.2********************************/
+
+	$bbcode_tpl['left'] = str_replace('{URL}', '\\1', $bbcode_tpl['left']);
+	$bbcode_tpl['right'] = str_replace('{URL}', '\\1', $bbcode_tpl['right']);
+	$bbcode_tpl['spoil_open'] = str_replace('{L_BBCODEBOX_VIEW}', $lang['BBcode_box_view'], $bbcode_tpl['spoil_open']);
+	$bbcode_tpl['align_open'] = str_replace('{ALIGN}', '\\1', $bbcode_tpl['align_open']);
+	$bbcode_tpl['stream'] = str_replace('{URL}', '\\1', $bbcode_tpl['stream']);
+	$bbcode_tpl['flash'] = str_replace('{WIDTH}', '\\1', $bbcode_tpl['flash']);
+	$bbcode_tpl['flash'] = str_replace('{HEIGHT}', '\\2', $bbcode_tpl['flash']);
+	$bbcode_tpl['flash'] = str_replace('{URL}', '\\3', $bbcode_tpl['flash']);
+	$bbcode_tpl['video'] = str_replace('{URL}', '\\3', $bbcode_tpl['video']);
+	$bbcode_tpl['video'] = str_replace('{WIDTH}', '\\1', $bbcode_tpl['video']);
+	$bbcode_tpl['video'] = str_replace('{HEIGHT}', '\\2', $bbcode_tpl['video']);
+	$bbcode_tpl['font_open'] = str_replace('{FONT}', '\\1', $bbcode_tpl['font_open']);
+	$bbcode_tpl['class_open'] = str_replace('{FONTCLASS}', '\\1', $bbcode_tpl['class_open']);
+	$bbcode_tpl['pre_open'] = str_replace('{PRECLASS}', '\\1', $bbcode_tpl['pre_open']);
+	$bbcode_tpl['pre_open'] = str_replace('{ITS_CODE}', $lang['Code'], $bbcode_tpl['pre_open']);
+	$bbcode_tpl['pre_open'] = str_replace('{L_SELECT}', $lang['Select'], $bbcode_tpl['pre_open']);
+	$bbcode_tpl['pre_open'] = str_replace('{L_EXPAND}', $lang['Expand'], $bbcode_tpl['pre_open']);
+	$bbcode_tpl['pre_open'] = str_replace('{L_CONTRACT}', $lang['Contract'], $bbcode_tpl['pre_open']);
+	$bbcode_tpl['archive'] = str_replace('{ARCHIVEID}', '\\2', $bbcode_tpl['archive']);
+	$bbcode_tpl['archive'] = str_replace('{ARCHIVETYPE}', '\\1', $bbcode_tpl['archive']);
+	$bbcode_tpl['youtube'] = str_replace('{YOUTUBEID}', '\\1', $bbcode_tpl['youtube']);
+	$bbcode_tpl['newtube'] = str_replace('{NEWTUBEID}', '\\2', $bbcode_tpl['newtube']);
+	$bbcode_tpl['newtube'] = str_replace('{NEWTUBESIZE}', '\\1', $bbcode_tpl['newtube']);
+	$bbcode_tpl['xfirevideo'] = str_replace('{XFIREID}', '\\1', $bbcode_tpl['xfirevideo']);
+
+	//+MOD: Select Expand BBcodes MOD
+
+	// Replacing BBCode variables, but also adding CR to preserve HTML comment delimiters for JS code.
+	$expand_ary1 = array('<!--', '//-->', '{L_SELECT}', '{L_EXPAND}', '{L_CONTRACT}');
+	$expand_ary2 = array("\r<!--\r", "\r//-->\r", $lang['Select'], $lang['Expand'], $lang['Contract']);
+	$expand_ary3 = array('<!--', '//-->');
+	$expand_ary4 = array("\r<!--\r", "\r//-->\r");
+
+	$bbcode_tpl['quote_open'] = str_replace($expand_ary1, $expand_ary2, $bbcode_tpl['quote_open']);
+	$bbcode_tpl['quote_username_open'] = str_replace($expand_ary1, $expand_ary2, $bbcode_tpl['quote_username_open']);
+	$bbcode_tpl['code_open'] = str_replace($expand_ary1, $expand_ary2, $bbcode_tpl['code_open']);
+
+	$bbcode_tpl['quote_close'] = str_replace($expand_ary3, $expand_ary4, $bbcode_tpl['quote_close']);
+	$bbcode_tpl['code_close'] = str_replace($expand_ary3, $expand_ary4, $bbcode_tpl['code_close']);
+	//-MOD: Select Expand BBcodes MOD
+
+/************************************************************************/
+/* ================= STOP Advanced BBCode Box MOD ===================== */
+/*************************version RN2.5.2********************************/
+
 	define("BBCODE_TPL_READY", true);
 
 	return $bbcode_tpl;
@@ -218,6 +267,132 @@ function bbencode_second_pass($text, $uid)
 	$patterns[] = "#\[email\]([a-z0-9&\-_.]+?@[\w\-]+\.([\w\-\.]+\.)?[\w]+)\[/email\]#si";
 	$replacements[] = $bbcode_tpl['email'];
 
+/************************************************************************/
+/* ================ START Advanced BBCode Box MOD ===================== */
+/*************************version RN2.5.2********************************/
+
+	$text = preg_replace_callback(
+		"#\[tag:$uid\](.*?)\[/tag:$uid\]#is",
+		function ($m) use ($uid, $bbcode_tpl) {
+			$bbcode_tpl['search'] = str_replace('{STRING}', $m[1], $bbcode_tpl['search']);
+			$bbcode_tpl['search'] = str_replace('{KEYWORD}', urlencode(trim($m[1])), $bbcode_tpl['search']);
+			return $bbcode_tpl['search'];
+		},
+		$text
+	);
+
+	// [imgleft]Image URL Here[/imgleft] code..
+	$patterns[] = "#\[imgleft:$uid\](.*?)\[/imgleft:$uid\]#si";
+	$replacements[] = $bbcode_tpl['left'];
+
+	// [imgright]Image URL Here[/imgleft] code..
+	$patterns[] = "#\[imgright:$uid\](.*?)\[/imgright:$uid\]#si";
+	$replacements[] = $bbcode_tpl['right'];
+
+	// duckduckgo
+	$text = preg_replace_callback(
+		"#\[duck:$uid\](.*?)\[/duck:$uid\]#is",
+		function ($m) use ($uid, $bbcode_tpl) {
+			$bbcode_tpl['duck'] = str_replace('{STRING}', trim($m[1]), $bbcode_tpl['duck']);
+			$bbcode_tpl['duck'] = str_replace('{QUERY}', urlencode(trim($m[1])), $bbcode_tpl['duck']);
+			return $bbcode_tpl['duck'];
+		},
+		$text
+	);
+
+	// wikipedia
+	$text = preg_replace_callback(
+		"#\[wiki:$uid\](.*?)\[/wiki:$uid\]#is",
+		function ($m) use ($uid, $bbcode_tpl) {
+			$bbcode_tpl['wiki_default'] = str_replace('{STRING}', trim($m[1]), $bbcode_tpl['wiki_default']);
+			$bbcode_tpl['wiki_default'] = str_replace('{QUERY}', urlencode(str_replace(' ', '_', $m[1])), $bbcode_tpl['wiki_default']);
+			return $bbcode_tpl['wiki_default'];
+		},
+		$text
+	);
+
+	$text = preg_replace_callback(
+		"#\[wiki=(en|de|fr|nl|it|pl|es|ru|ja|pt|sv|zh|uk|vi|ca|no|fi|cs|hu|ko|id|tr|ro|fa|ar|da|eo|sr|lt|sk|sl|ms|he|bg|kk|eu|vo|war|hr|hi|et|az|gl|nn|simple|th|la|el|new|tl|sh|ka|mk|ht|pms|te|ta|ceb|br|sq|lv|be|jv|mg|cy|lb|mr|is|bs|ya|an|bpy|hy|lmo|fy|sw|bn|ml|io|gu|af|pnb|ne|nds|scn|ku|ur|su|qu|diq|ba|ast|tt|ga|nap|ia):$uid\](.*?)\[/wiki:$uid\]#is",
+		function ($m) use ($uid, $bbcode_tpl) {
+			$bbcode_tpl['wiki'] = str_replace('{WIKI}', $m[1], $bbcode_tpl['wiki']);
+			$bbcode_tpl['wiki'] = str_replace('{STRING}', $m[2], $bbcode_tpl['wiki']);
+			$bbcode_tpl['wiki'] = str_replace('{QUERY}', urlencode(str_replace(' ', '_', $m[2])), $bbcode_tpl['wiki']);
+			return $bbcode_tpl['wiki'];
+		},
+		$text
+	);
+
+	// [stream]Sound URL[/stream] code..
+	$patterns[] = "#\[stream:$uid\](.*?)\[/stream:$uid\]#si";
+	$replacements[] = $bbcode_tpl['stream'];
+
+	// [flash width=X height=X]Flash URL[/flash] code..
+	$patterns[] = "#\[flash width=([0-6]?[0-9]?[0-9]) height=([0-4]?[0-9]?[0-9]):$uid\](.*?)\[/flash:$uid\]#si";
+	$replacements[] = $bbcode_tpl['flash'];
+
+	// [video width=X height=X]Video URL[/video] code..
+	$patterns[] = "#\[video width=([0-6]?[0-9]?[0-9]) height=([0-4]?[0-9]?[0-9]):$uid\](.*?)\[/video:$uid\]#si";
+	$replacements[] = $bbcode_tpl['video'];
+	$text = preg_replace($patterns, $replacements, $text);
+
+	// [align=left/center/right/justify]Formatted Code[/align] code..
+	$text = preg_replace("/\[align=(left|right|center|justify):$uid\]/si", $bbcode_tpl['align_open'], $text);
+	$text = str_replace("[/align:$uid]", $bbcode_tpl['align_close'], $text);
+
+	// [font=fonttype]text[/font] code..
+	$text = preg_replace("/\[font=(.*?):$uid\]/si", $bbcode_tpl['font_open'], $text);
+	$text = str_replace("[/font:$uid]", $bbcode_tpl['font_close'], $text);
+
+	// [class=font]text[/class] code..
+	$text = preg_replace("/\[class:$uid=\"([_a-zA-Z0-9- ]*)\"\]/si", $bbcode_tpl['class_open'], $text);
+	$text = str_replace("[/class:$uid]", $bbcode_tpl['class_close'], $text);
+
+	// [pre=php]text[/pre] code..
+	// next line needed due to first preg_replace of this function, to support other languages that end with script a similar replace would be needed
+	$text = str_replace("pre=javascript:", "pre=javascript:", $text);
+	$text = preg_replace("/\[pre=(php|html|python|profile|ruby|perl|scala|go|xml|django|css|javascript|vbscript|lua|delphi|java|cpp|objectivec|vala|cs|rsl|rib|mel|sql|smalltalk|lisp|ini|apache|nginx|diff|dos|bash|cmake|axapta|1c|avrasm|vhdl|parser3|tex|haskell|erlang|erlang_repl):$uid\]/si", $bbcode_tpl['pre_open'], $text);
+	$text = str_replace("[/pre:$uid]", $bbcode_tpl['pre_close'], $text);
+
+	// [hr]
+	$text = str_replace("[hr:$uid]", $bbcode_tpl['hr'], $text);
+
+	// [sub]Subscrip[/sub] code..
+	$text = str_replace("[sub:$uid]", '<sub>', $text);
+	$text = str_replace("[/sub:$uid]", '</sub>', $text);
+
+	// [sup]Superscript[/sup] code..
+	$text = str_replace("[sup:$uid]", '<sup>', $text);
+	$text = str_replace("[/sup:$uid]", '</sup>', $text);
+
+	// [strike]Strikethrough[/strike] code..
+	$text = str_replace("[s:$uid]", '<span class="line-through">', $text);
+	$text = str_replace("[/s:$uid]", '</span>', $text);
+
+	// [spoil]Spoiler[/spoil] code..
+	$text = str_replace("[spoil:$uid]", $bbcode_tpl['spoil_open'], $text);
+	$text = str_replace("[/spoil:$uid]", $bbcode_tpl['spoil_close'], $text);
+
+	// [archive]http://www.archive.org/embed/horror_express_ipod[/archive] code..
+	$patterns[] = "#\[archive:$uid=\"(video|audio|video-small|video-medium|video-large|video-left|video-right|video-center|audio-left|audio-right|audio-center|video-small-left|video-small-right|video-small-center|video-medium-left|video-medium-right|video-medium-center|video-large-left|video-large-right|video-large-center)\"\]http://(?:www\.)?archive\.org/(?:embed|details)/([\w\#$%~/.\-;:=,?@+]*)[^[]*\[/archive:$uid\]#is";
+	$replacements[] = $bbcode_tpl['archive'];
+	 
+	// [youtube]YouTube URL[/youtube] code.. (for support of old method)
+	$patterns[] = "#\[youtube\](?:https?://)?(?:[0-9A-Z-]+\.)?(?:youtu\.be/|youtube\.com\S*[^\w\-\s])([\w\-]{11})(?=[^\w\-]|$)(?![?=&+%;\w]*(?:['\"][^<>]*>|</a>))[?=&+%;\w]*[^[]*\[/youtube\]#is";
+	$replacements[] = $bbcode_tpl['youtube'];
+	
+	// [youtube]YouTube URL[/youtube] code.. (new method)
+	$patterns[] = "#\[youtube:$uid=\"(video|video-small|video-medium|video-large|video-left|video-right|video-center|video-small-left|video-small-right|video-small-center|video-medium-left|video-medium-right|video-medium-center|video-large-left|video-large-right|video-large-center)\"\](?:https?://)?(?:[0-9A-Z-]+\.)?(?:youtu\.be/|youtube\.com\S*[^\w\-\s])([\w\-]{11})(?=[^\w\-]|$)(?![?=&+%;\w]*(?:['\"][^<>]*>|</a>))[?=&+%;\w]*[^[]*\[/youtube:$uid\]#is";
+	$replacements[] = $bbcode_tpl['newtube'];
+
+	// [xfirevideo]XFire URL[/xfirevideo] code..
+	$patterns[] = "#\[xfirevideo\]http://(?:www\.)?xfire.com/video/([0-9A-Za-z-_]*)[^[]*\[/xfirevideo\]#is";
+	$replacements[] = $bbcode_tpl['xfirevideo'];
+
+
+/************************************************************************/
+/* ================= STOP Advanced BBCode Box MOD ===================== */
+/*************************version RN2.5.2********************************/
+
 	$text = preg_replace($patterns, $replacements, $text);
 
 	// Remove our padding from the string..
@@ -282,7 +457,6 @@ function bbencode_first_pass($text, $uid)
 	$text = preg_replace("#\[i\](.*?)\[/i\]#si", "[i:$uid]\\1[/i:$uid]", $text);
 
 	// [img]image_url_here[/img] code..
-	# PHP7 fix: http://php.net/manual/en/reference.pcre.pattern.modifiers.php
 	$text = preg_replace_callback(
 		"#\[img\]((http|ftp|https|ftps)://)([^ \?&=\#\"\n\r\t<]*?(\.(jpg|jpeg|gif|png)))\[/img\]#si",
 		function ($m) use ($uid) {
@@ -290,6 +464,86 @@ function bbencode_first_pass($text, $uid)
 		},
 		$text
 	);
+
+/************************************************************************/
+/* ================ START Advanced BBCode Box MOD ===================== */
+/*************************version RN2.5.2********************************/
+	// strip empty bbcodes
+	$text = preg_replace("#\[(wiki|duck|tag|class|align|font|stream|archive|s|spoil|sub|sup|youtube|pre)(?:=((\\\\&quot;)?[_a-zA-Z0-9- ]*(\\\\&quot;)?))?\]\[/\\1\]#si", "", $text);
+
+	// search tags
+	$text = preg_replace("#\[tag\](.*?)\[/tag\]#si", "[tag:$uid]\\1[/tag:$uid]", $text);
+
+	// Floating Images
+	$text = preg_replace_callback(
+		"#\[imgleft\]((http|ftp|https|ftps)://)([^ \?&=\#\"\n\r\t<]*?(\.(jpg|jpeg|gif|png)))\[/imgleft\]#si",
+		function ($m) use ($uid) {
+			return "[imgleft:$uid]$m[1]" . str_replace(' ', '%20', $m[3]) . "[/imgleft:$uid]";
+		},
+		$text
+	);
+
+	$text = preg_replace_callback(
+		"#\[imgright\]((http|ftp|https|ftps)://)([^ \?&=\#\"\n\r\t<]*?(\.(jpg|jpeg|gif|png)))\[/imgright\]#si",
+		function ($m) use ($uid) {
+			return "[imgright:$uid]$m[1]" . str_replace(' ', '%20', $m[3]) . "[/imgright:$uid]";
+		},
+		$text
+	);
+
+	// DuckDuckGO
+	$text = preg_replace("#\[duck\](.*?)\[/duck\]#si", "[duck:$uid]\\1[/duck:$uid]", $text);
+
+	// Wikipedia
+	$text = preg_replace("#\[wiki\](.*?)\[/wiki\]#si", "[wiki:$uid]\\1[/wiki:$uid]", $text);
+	$text = preg_replace("#\[wiki=(en|de|fr|nl|it|pl|es|ru|ja|pt|sv|zh|uk|vi|ca|no|fi|cs|hu|ko|id|tr|ro|fa|ar|da|eo|sr|lt|sk|sl|ms|he|bg|kk|eu|vo|war|hr|hi|et|az|gl|nn|simple|th|la|el|new|tl|sh|ka|mk|ht|pms|te|ta|ceb|br|sq|lv|be|jv|mg|cy|lb|mr|is|bs|ya|an|bpy|hy|lmo|fy|sw|bn|ml|io|gu|af|pnb|ne|nds|scn|ku|ur|su|qu|diq|ba|ast|tt|ga|nap|ia)\](.*?)\[/wiki\]#si", "[wiki=\\1:$uid]\\2[/wiki:$uid]", $text);
+
+	// [align=left/center/right/justify]Formatted Code[/align] code..
+	$text = preg_replace("#\[align=(left|right|center|justify)\](.*?)\[/align\]#si", "[align=\\1:$uid]\\2[/align:$uid]", $text);
+
+	// [font=fonttype]text[/font] code..
+	$text = preg_replace("#\[font=(.*?)\](.*?)\[/font\]#si", "[font=\\1:$uid]\\2[/font:$uid]", $text);
+
+	// [class="classname classname2"]text[/class] code..
+	$text = bbencode_first_pass_pda($text, $uid, '/\[class=\\\\&quot;([_a-zA-Z0-9- ]*)\\\\&quot;\]/is', '[/class]', '', false, '', "[class:$uid=\\\"\\1\\\"]");
+
+	// [pre=php] and [/pre] for posting code (HTML, PHP, C etc etc) in your posts.
+	$text = bbencode_first_pass_pda($text, $uid, '/\[pre=(php|html|python|profile|ruby|perl|scala|go|xml|django|css|javascript|vbscript|lua|delphi|java|cpp|objectivec|vala|cs|rsl|rib|mel|sql|smalltalk|lisp|ini|apache|nginx|diff|dos|bash|cmake|axapta|1c|avrasm|vhdl|parser3|tex|haskell|erlang|erlang_repl)\]/is', '[/pre]', '', false, 'replace_nestedbbcode', "[pre=\\1:$uid]");
+
+	// [stream]Sound URL[/stream] code..
+	$text = preg_replace("#\[stream\](.*?)\[/stream\]#si", "[stream:$uid]\\1[/stream:$uid]", $text);
+
+	// [archive]http://www.archive.org/embed/horror_express_ipod[/archive] code..
+	$text = preg_replace("#\[archive=\\\\&quot;([_a-zA-Z0-9-]*)\\\\&quot;\](.*?)\[/archive\]#si", "[archive:$uid=\\\"\\1\\\"]\\2[/archive:$uid]", $text);
+
+	// [youtube="class-size"]YouTube URL[/youtube] code..(new method)
+	$text = preg_replace("#\[youtube=\\\\&quot;([_a-zA-Z0-9-]*)\\\\&quot;\](.*?)\[/youtube\]#si", "[youtube:$uid=\\\"\\1\\\"]\\2[/youtube:$uid]", $text);
+
+	// [flash width=X height=X]Flash URL[/flash] code..
+	$text = preg_replace("#\[flash width=([0-6]?[0-9]?[0-9]) height=([0-4]?[0-9]?[0-9])\](([a-z]+?)://([^, \n\r]+))\[\/flash\]#si","[flash width=\\1 height=\\2:$uid\]\\3[/flash:$uid]", $text);
+
+	// [video width=X height=X]Video URL[/video] code..
+	$text = preg_replace("#\[video width=([0-6]?[0-9]?[0-9]) height=([0-4]?[0-9]?[0-9])\](([a-z]+?)://([^, \n\r]+))\[\/video\]#si","[video width=\\1 height=\\2:$uid\]\\3[/video:$uid]", $text);
+
+	// [hr]
+	$text = preg_replace("#\[hr\]#si", "[hr:$uid]", $text);
+		
+	// [strike]Strikethrough[/strike] code..
+	$text = preg_replace("#\[s\](.*?)\[/s\]#si", "[s:$uid]\\1[/s:$uid]", $text);
+
+	// [spoil]Spoiler[/spoil] code..
+	$text = preg_replace("#\[spoil\](.*?)\[/spoil\]#si", "[spoil:$uid]\\1[/spoil:$uid]", $text);
+
+	// [sub]Subscript[/sub] code..
+	$text = preg_replace("#\[sub\](.*?)\[/sub\]#si", "[sub:$uid]\\1[/sub:$uid]", $text);
+
+	// [sup]Superscript[/sup] code..
+	$text = preg_replace("#\[sup\](.*?)\[/sup\]#si", "[sup:$uid]\\1[/sup:$uid]", $text);
+	
+/************************************************************************/
+/* ================= STOP Advanced BBCode Box MOD ===================== */
+/*************************version RN2.5.2********************************/
+
 	// Remove our padding from the string..
 	return substr($text, 1);
 
@@ -626,25 +880,100 @@ function make_clickable($text)
 	// pad it with a space so we can match things at the start of the 1st line.
 	$ret = ' ' . $text;
 
+/************************************************************************/
+/* ================ START Advanced BBCode Box MOD ===================== */
+/*************************version RN2.5.2********************************/
+
+	# look for youtube urls and create video embeds from them (by ridgerunner)
+	# https://stackoverflow.com/questions/5830387/how-do-i-find-all-youtube-video-ids-in-a-string-using-a-regex
+	# ** modified for use in forums
+	$ret = preg_replace('~
+	# Match non-linked youtube URL in the wild. (Rev:20160125_1800)
+	(^|[\n ])         # match space or newline at start**
+	(?:https?://)?    # URL scheme. Either http or https.**
+	(?:[0-9A-Z-]+\.)? # Optional subdomain.
+	(?:               # Group host alternatives.
+	  youtu\.be/      # Either youtu.be,
+	| youtube\.com    # or youtube.com followed by
+	(?:-nocookie)?    # youtube-nocookie.com
+	\.com             # followed by
+	  \S*?            # Allow anything up to VIDEO_ID,
+	  [^\w\-\s]       # but char before ID is non-ID char.
+	)                 # End host alternatives.
+	([\w\-]{11})      # $1: VIDEO_ID is exactly 11 chars.
+	(?=[^\w\-]|$)     # Assert next char is non-ID or EOS.
+	(?!               # Assert URL is not pre-linked.
+	  [?=&+%;\w.-]*   # Allow URL (query) remainder.**
+	  (?:             # Group pre-linked alternatives.
+		[\'"][^<>]*>  # Either inside a start tag,
+	  | </a>          # or inside <a> element text contents.
+	  )               # End recognized pre-linked alts.
+	)                 # End negative lookahead assertion.
+	[?=&+%\w.-]*      # Consume any URL (query) remainder.**
+	~ix', 
+	'\\1<div class="forumvideo video"><iframe src="http://www.youtube.com/embed/\\2" style="border:0 none" allowfullscreen></iframe>
+<div class="forumvideotagline"><a class="postlink youtu ficon" href="http://youtu.be/\\2" target="_blank">youtu.be/\\2</a></div></div>',
+	$ret);
+
+	# Regex Vimeo Parser
+	# http://www.patricktalmadge.com/2011/12/17/regex-vimeo-parser/
+	# ** modified for use in forums
+	$ret = preg_replace('~
+	# Match Vimeo link and embed code
+	(^|[\n ])                  # match space or newline at start**
+	(?:                        # Group vimeo url
+	    https?:\/\/            # Either http or https
+	    (?:[\w]+\.)*           # Optional subdomains
+	    vimeo\.com             # Match vimeo.com
+	    (?:[\/\w]*\/videos?)?  # Optional video sub directory this handles groups links also
+	    \/                     # Slash before Id
+	    ([0-9]+)               # $1: VIDEO_ID is numeric
+	    [^\s]*                 # Not a space
+	)                          # End group
+	~ix',
+	'\\1<div class="forumvideo video"><iframe src="http://player.vimeo.com/video/\\2?title=0&amp;byline=0&amp;portrait=0" style="border:0 none" allowfullscreen></iframe>
+<div class="forumvideotagline"><a class="postlink vimeo ficon" href="https://vimeo.com/\\2" target="_blank">vimeo.com/\\2</a></div></div>',
+	$ret);
+
+/************************************************************************/
+/* ================= STOP Advanced BBCode Box MOD ===================== */
+/*************************version RN2.5.2********************************/
+
 	// matches an "xxxx://yyyy" URL at the start of a line, or after a space.
 	// xxxx can only be alpha characters.
 	// yyyy is anything up to the first space, newline, comma, double quote or <
-	$ret = preg_replace("#(^|[\n ])([\w]+?://[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"\\2\" target=\"_blank\">\\2</a>", $ret);
+	$ret = preg_replace("#(^|[\n ])([\w]+?://[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"\\2\" class=\"postlink\" target=\"_blank\">\\2</a>", $ret);
 
 	// matches a "www|ftp.xxxx.yyyy[/zzzz]" kinda lazy URL thing
 	// Must contain at least 2 dots. xxxx contains either alphanum, or "-"
 	// zzzz is optional.. will contain everything up to the first space, newline,
 	// comma, double quote or <.
-	$ret = preg_replace("#(^|[\n ])((www|ftp)\.[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"http://\\2\" target=\"_blank\">\\2</a>", $ret);
+	$ret = preg_replace("#(^|[\n ])((www|ftp)\.[\w\#$%&~/.\-;:=,?@\[\]+]*)#is", "\\1<a href=\"http://\\2\" class=\"postlink\" target=\"_blank\">\\2</a>", $ret);
 
 	// matches an email@domain type address at the start of a line, or after a space.
 	// Note: Only the followed chars are valid; alphanums, "-", "_" and or ".".
-	$ret = preg_replace("#(^|[\n ])([a-z0-9&\-_.]+?)@([\w\-]+\.([\w\-\.]+\.)*[\w]+)#i", "\\1<a href=\"mailto:\\2@\\3\">\\2@\\3</a>", $ret);
+	$ret = preg_replace("#(^|[\n ])([a-z0-9&\-_.]+?)@([\w\-]+\.([\w\-\.]+\.)*[\w]+)#i", "\\1<a class=\"postlink ficon femail\" href=\"mailto:\\2@\\3\">\\2@\\3</a>", $ret);
 
 	// Remove our padding..
 	$ret = substr($ret, 1);
 
 	return($ret);
+}
+
+/**
+ * This is used to strip bbcode from with [pre=lang][/pre] tags
+ * as they are not run through the same process as [code][/code]
+ * tags.  Also needed to keep emoticons from appearing in code 
+ * samples. Used within function bbencode_first_pass_pda().
+ */
+function replace_nestedbbcode($text, $uid)
+{
+	$stripuid = array(":1:$uid", ":u:$uid", ":o:$uid", ":$uid");
+	$text = str_replace($stripuid, '', $text);
+	$code_entities_match = array('#<#', '#>#', '#"#', '#:#', '#\[#', '#\]#', '#\(#', '#\)#', '#\{#', '#\}#');
+	$code_entities_replace = array('&lt;', '&gt;', '&quot;', '&#58;', '&#91;', '&#93;', '&#40;', '&#41;', '&#123;', '&#125;');
+	$text = preg_replace($code_entities_match, $code_entities_replace, $text);
+	return $text;
 }
 
 /**
