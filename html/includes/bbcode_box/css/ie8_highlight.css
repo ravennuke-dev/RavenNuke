@@ -1,0 +1,4 @@
+/* ie8 fix for code highlighting being double spaced */
+/* note that you lose code indentation, so pick your poison :) */
+/* see customization within the docs for more info */
+.codestyle{white-space:normal}
