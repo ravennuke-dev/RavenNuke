@@ -33,13 +33,13 @@ if ( isset($_GET['mode']) || isset($_POST['mode']) ) {
 		addJSToHead('includes/jquery/jquery.colorbox-min.js','file');
 		addCSSToHead('includes/jquery/css/colorbox.css','file');
 		$inlineJS = '
-<script type="text/javascript">
+<script>
 	$(document).ready(function(){
 		if ($("input[name=\"submit\"]").length != 0 && $("input[name=\"reset\"]").length != 0) {
-			$.fn.colorbox({ open:true, inline:true, href:"#ya_warning", width:"600px", height:"300px" }); 
+			$.colorbox({ open:true, inline:true, href:"#ya_warning", width:"600px", height:"300px" }); 
 		}
 		$("a.close").click(function() {
-			$.fn.colorbox.close()
+			$.colorbox.close()
 		});
 		$("input[name=\"username\"],input[name=\"email\"],input[name=\"cur_password\"],input[name=\"new_password\"],input[name=\"password_confirm\"],input[name=\"confirm_code\"],input[name=\"icq\"],input[name=\"aim\"],input[name=\"msn\"],input[name=\"yim\"],input[name=\"website\"],input[name=\"location\"],input[name=\"occupation\"],input[name=\"interests\"],input[name=\"dateformat\"]").attr("readonly", true);
 		$("textarea[name=\"signature\"]").attr("readonly", true);
@@ -48,7 +48,7 @@ if ( isset($_GET['mode']) || isset($_POST['mode']) ) {
 			if (!this.checked) {
 				$(this).attr("disabled", true);
 			}
-		}); 
+		});
 	});
 </script>';
 		addJSToHead($inlineJS, 'inline');

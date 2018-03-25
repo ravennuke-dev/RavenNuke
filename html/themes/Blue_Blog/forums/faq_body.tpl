@@ -30,9 +30,10 @@
 </tr>
 <!-- BEGIN faq_row -->
 <tr>
-<td class="{faq_block.faq_row.ROW_CLASS}" valign="top"><a name="{faq_block.faq_row.U_FAQ_ID}"></a><strong>{faq_block.faq_row.FAQ_QUESTION}</strong><br />
-<div class="postbody">{faq_block.faq_row.FAQ_ANSWER}<br />
-<a href="#top" class="gensmall">{L_BACK_TO_TOP}</a></div></td>
+<td class="{faq_block.faq_row.ROW_CLASS}" valign="top"><a name="{faq_block.faq_row.U_FAQ_ID}"></a>
+<div class="postbody" id="faq{faq_block.faq_row.U_FAQ_ID}"><strong>{faq_block.faq_row.FAQ_QUESTION}</strong><br />
+{faq_block.faq_row.FAQ_ANSWER}</div><br />
+<a href="#top" class="gensmall">{L_BACK_TO_TOP}</a></td>
 </tr>
 <tr>
 <td class="spacerow" height="1"><img src="themes/Blue_Blog/forums/images/spacer.gif" alt="" width="1" height="1" /></td>

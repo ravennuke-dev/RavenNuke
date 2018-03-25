@@ -27,7 +27,6 @@ if( !empty($setmodules) )
         $module['Forums']['Manage'] = $file;
         return;
 }
-
 //
 // Load default header
 //
@@ -39,8 +38,8 @@ include_once("../includes/functions_admin.php");
 $forum_auth_ary = array(
         "auth_view" => AUTH_ALL,
         "auth_read" => AUTH_ALL,
-	"auth_post" => AUTH_REG,
-	"auth_reply" => AUTH_REG,
+        "auth_post" => AUTH_REG,
+        "auth_reply" => AUTH_REG,
         "auth_edit" => AUTH_REG,
         "auth_delete" => AUTH_REG,
         "auth_sticky" => AUTH_MOD,
@@ -235,7 +234,7 @@ if( isset($HTTP_POST_VARS['addforum']) || isset($HTTP_POST_VARS['addcategory']) 
         if( $mode == "addforum" )
         {
                 list($cat_id) = each($HTTP_POST_VARS['addforum']);
-		$cat_id = intval($cat_id);
+				$cat_id = intval($cat_id);
                 //
                 // stripslashes needs to be run on this because slashes are added when the forum name is posted
                 //
@@ -269,34 +268,34 @@ if( !empty($mode) )
                                 $forumdesc = $row['forum_desc'];
                                 $forumstatus = $row['forum_status'];
 
-   // Added by Attached Forums MOD
-				$forum_attached_id = $row['attached_forum_id'];
-				$sql = 'SELECT * FROM `' . FORUMS_TABLE . '` WHERE `attached_forum_id` = ' . $forum_id;
-				if( !$r = $db->sql_query($sql) ) {
-					message_die(GENERAL_ERROR, 'Couldn\'t get list of children Forums', '', __LINE__, __FILE__, $sql);
-				}
-				if( $db->sql_numrows($r) > 0 ) {
-					$not_attachable = 1;
-					$has_subforums = 1;
-					$template->assign_block_vars('switch_attached_no', array());
-					if (intval($HTTP_POST_VARS['detach_enabled'])) $detach_enabled = 'checked="checked"';
-				} else {
-					// this forum is not a parent of any other forum
-					$sql = 'SELECT * FROM `' . FORUMS_TABLE . '` WHERE `attached_forum_id`=-1 AND `cat_id`=' . $cat_id . ' AND `forum_id`<>' . $forum_id . ' ORDER BY `forum_order`';
-					if( !$result1 = $db->sql_query($sql) ) {
-						message_die(GENERAL_ERROR, 'Couldn\'t get list of attachable Forums', '', __LINE__, __FILE__, $sql);
-					}
-					if( $db->sql_numrows($result1) > 0 ) {
-						$attachable_forums = '<option value="-1"' . ($forum_attached_id == -1 ? ' selected="selected"' : '') . '> NOT ATTACHED TO ANY FORUM ';
-						while( $row1 = $db->sql_fetchrow($result1) ) {
-							$s = ($forum_attached_id == $row1['forum_id']) ? ' selected="selected"' : '';
-							$attachable_forums .= '<option value="' . $row1['forum_id'] . '"' . $s . '>' . $row1['forum_name'] . '</option>' . "\n";
-						}
-					} else {
-						$no_attachable_forums = 1;
-					}
-				}
-   // End Added by Attached Forums MOD
+								// Added by Attached Forums MOD
+								$forum_attached_id = $row['attached_forum_id'];
+								$sql = 'SELECT * FROM `' . FORUMS_TABLE . '` WHERE `attached_forum_id` = ' . $forum_id;
+								if( !$r = $db->sql_query($sql) ) {
+									message_die(GENERAL_ERROR, 'Couldn\'t get list of children Forums', '', __LINE__, __FILE__, $sql);
+								}
+								if( $db->sql_numrows($r) > 0 ) {
+									$not_attachable = 1;
+									$has_subforums = 1;
+									$template->assign_block_vars('switch_attached_no', array());
+									if (intval($HTTP_POST_VARS['detach_enabled'])) $detach_enabled = 'checked="checked"';
+								} else {
+									// this forum is not a parent of any other forum
+									$sql = 'SELECT * FROM `' . FORUMS_TABLE . '` WHERE `attached_forum_id`=-1 AND `cat_id`=' . $cat_id . ' AND `forum_id`<>' . $forum_id . ' ORDER BY `forum_order`';
+									if( !$result1 = $db->sql_query($sql) ) {
+										message_die(GENERAL_ERROR, 'Couldn\'t get list of attachable Forums', '', __LINE__, __FILE__, $sql);
+									}
+									if( $db->sql_numrows($result1) > 0 ) {
+										$attachable_forums = '<option value="-1"' . ($forum_attached_id == -1 ? ' selected="selected"' : '') . '> NOT ATTACHED TO ANY FORUM ';
+										while( $row1 = $db->sql_fetchrow($result1) ) {
+											$s = ($forum_attached_id == $row1['forum_id']) ? ' selected="selected"' : '';
+											$attachable_forums .= '<option value="' . $row1['forum_id'] . '"' . $s . '>' . $row1['forum_name'] . '</option>' . "\n";
+										}
+									} else {
+										$no_attachable_forums = 1;
+									}
+								}
+								// End Added by Attached Forums MOD
 
                                 //
                                 // start forum prune stuff.
@@ -329,26 +328,27 @@ if( !empty($mode) )
                                 $forumstatus = FORUM_UNLOCKED;
                                 $forum_id = '';
                                 $prune_enabled = '';
-   // Added by Attached Forums MOD
-					$sql = 'SELECT * FROM `' . FORUMS_TABLE . '` WHERE `attached_forum_id`=-1 AND `cat_id`=' . $cat_id . ' ORDER BY `forum_order`';
-					if( !$result1 = $db->sql_query($sql) ) {
-						message_die(GENERAL_ERROR, 'Couldn\'t get list of Categories/Forums', '', __LINE__, __FILE__, $sql);
-					}
-					if( $db->sql_numrows($result1) > 0 ) {
-						$attachable_forums = '<option value="-1"' . (($forum_attached_id == -1 || !$forum_attached_id) ? ' selected="selected"' : '') . '> NOT ATTACHED TO ANY FORUM ';
-						while( $row1 = $db->sql_fetchrow($result1) ) {
-							$s = ($forum_attached_id == $row1['forum_id']) ? ' selected="selected"' : ' selected=""';
-							$attachable_forums .= '<option value="' . $row1['forum_id'] . '"' . $s . '>' . $row1['forum_name'] . '</option>' . "\n";
-						}
-					} else {
-						$no_attachable_forums = 1;
-					}
-   // END Added by Attached Forums MOD
+								// Added by Attached Forums MOD
+								$sql = 'SELECT * FROM `' . FORUMS_TABLE . '` WHERE `attached_forum_id`=-1 AND `cat_id`=' . $cat_id . ' ORDER BY `forum_order`';
+								if( !$result1 = $db->sql_query($sql) ) {
+									message_die(GENERAL_ERROR, 'Couldn\'t get list of Categories/Forums', '', __LINE__, __FILE__, $sql);
+								}
+								if( $db->sql_numrows($result1) > 0 ) {
+									$attachable_forums = '<option value="-1"' . (($forum_attached_id == -1 || !$forum_attached_id) ? ' selected="selected"' : '') . '> NOT ATTACHED TO ANY FORUM ';
+									while( $row1 = $db->sql_fetchrow($result1) ) {
+										$s = ($forum_attached_id == $row1['forum_id']) ? ' selected="selected"' : ' selected=""';
+										$attachable_forums .= '<option value="' . $row1['forum_id'] . '"' . $s . '>' . $row1['forum_name'] . '</option>' . "\n";
+									}
+								} else {
+									$no_attachable_forums = 1;
+								}
+								// END Added by Attached Forums MOD
                         }
-   // Added by Attached Forums MOD
 
-			$forum_attached_id = $attachable_forums;
-   // END Added by Attached Forums MOD
+						// Added by Attached Forums MOD
+						$forum_attached_id = $attachable_forums;
+						// END Added by Attached Forums MOD
+
                         $catlist = get_list('category', $cat_id, TRUE);
 
                         $forumstatus == ( FORUM_LOCKED ) ? $forumlocked = "selected=\"selected\"" : $forumunlocked = "selected=\"selected\"";
@@ -366,24 +366,25 @@ if( !empty($mode) )
                         );
 
                         $s_hidden_fields = '<input type="hidden" name="mode" value="' . $newmode .'" /><input type="hidden" name="' . POST_FORUM_URL . '" value="' . $forum_id . '" />';
-   // Added by Attached Forums MOD
 
-			if ($not_attachable or $no_attachable_forums)
-			{
-				if ($has_subforums)
-				{
-					$lang['Attached_Description'] = $lang['Has_attachments'].'<br>'. $lang['Attached_Description'];
-					$s_hidden_fields .='<input type="hidden" name="has_subforums" value="1" />';
-				}
-				if ($no_attachable_forums) $lang['Attached_Description'] = $lang['No_attach_forums'].'<br>'. $lang['Attached_Description'];
-				$s_hidden_fields .='<input type="hidden" name="attached_forum_id" value="-1" />';
-			}
-			else
-			{
-				$template->assign_block_vars('switch_attached_yes', array());
-			}
-				$s_hidden_fields .='<input type="hidden" name="old_cat_id" value="'.$cat_id.'" />';
-   // END Added by Attached Forums MOD
+						// Added by Attached Forums MOD
+						if ($not_attachable or $no_attachable_forums)
+						{
+							if ($has_subforums)
+							{
+								$lang['Attached_Description'] = $lang['Has_attachments'].'<br>'. $lang['Attached_Description'];
+								$s_hidden_fields .='<input type="hidden" name="has_subforums" value="1" />';
+							}
+							if ($no_attachable_forums) $lang['Attached_Description'] = $lang['No_attach_forums'].'<br>'. $lang['Attached_Description'];
+							$s_hidden_fields .='<input type="hidden" name="attached_forum_id" value="-1" />';
+						}
+						else
+						{
+							$template->assign_block_vars('switch_attached_yes', array());
+						}
+						$s_hidden_fields .='<input type="hidden" name="old_cat_id" value="'.$cat_id.'" />';
+						// END Added by Attached Forums MOD
+
                         $template->assign_vars(array(
                                 'S_FORUM_ACTION' => append_sid("admin_forums.$phpEx"),
                                 'S_HIDDEN_FIELDS' => $s_hidden_fields,
@@ -467,16 +468,15 @@ if( !empty($mode) )
                         }
 
                         // There is no problem having duplicate forum names so we won't check for it.
-   // Modified by Attached Forums MOD
 
-			if (intval($HTTP_POST_VARS['old_cat_id']) != intval($HTTP_POST_VARS[POST_CAT_URL]))
-			{
-   				$HTTP_POST_VARS['attached_forum_id']=-1;
-   			}
-
-		$sql = "INSERT INTO " . FORUMS_TABLE . " (forum_id, forum_name, cat_id, attached_forum_id, forum_desc, forum_order, forum_status, prune_enable" . $field_sql . ")
-				VALUES ('" . $next_id . "', '" . str_replace("\'", "''", $HTTP_POST_VARS['forumname']) . "', " . intval($HTTP_POST_VARS[POST_CAT_URL]) .  ", " . intval($HTTP_POST_VARS['attached_forum_id']) . ", '" . str_replace("\'", "''", $HTTP_POST_VARS['forumdesc']) . "', $next_order, " . intval($HTTP_POST_VARS['forumstatus']) . ", " . intval($HTTP_POST_VARS['prune_enable']) . $value_sql . ")";
-   // End Added by Attached Forums MOD
+						// Modified by Attached Forums MOD
+						if (intval($HTTP_POST_VARS['old_cat_id']) != intval($HTTP_POST_VARS[POST_CAT_URL]))
+						{
+							$HTTP_POST_VARS['attached_forum_id']=-1;
+						}
+						$sql = "INSERT INTO " . FORUMS_TABLE . " (forum_id, forum_name, cat_id, attached_forum_id, forum_desc, forum_order, forum_status, prune_enable" . $field_sql . ")
+								VALUES ('" . $next_id . "', '" . str_replace("\'", "''", $HTTP_POST_VARS['forumname']) . "', " . intval($HTTP_POST_VARS[POST_CAT_URL]) .  ", " . intval($HTTP_POST_VARS['attached_forum_id']) . ", '" . str_replace("\'", "''", $HTTP_POST_VARS['forumdesc']) . "', $next_order, " . intval($HTTP_POST_VARS['forumstatus']) . ", " . intval($HTTP_POST_VARS['prune_enable']) . $value_sql . ")";
+						// End Added by Attached Forums MOD
                         //$sql = "INSERT INTO " . FORUMS_TABLE . " (forum_id, forum_name, cat_id, forum_desc, forum_order, forum_status, prune_enable" . $field_sql . ")
                         //        VALUES ('" . $next_id . "', '" . str_replace("\'", "''", $HTTP_POST_VARS['forumname']) . "', " . intval($HTTP_POST_VARS[POST_CAT_URL]) . ", '" . str_replace("\'", "''", $HTTP_POST_VARS['forumdesc']) . "', $next_order, " . intval($HTTP_POST_VARS['forumstatus']) . ", " . intval($HTTP_POST_VARS['prune_enable']) . $value_sql . ")";
                         if( !$result = $db->sql_query($sql) )
@@ -516,35 +516,35 @@ if( !empty($mode) )
                                 }
                         }
 
-  // Modified by Attached Forums MOD
-			if (isset($HTTP_POST_VARS['detach_enabled']) && isset($HTTP_POST_VARS['has_subforums']))
-			{
-				$sql = "UPDATE ". FORUMS_TABLE. " SET attached_forum_id=-1 WHERE attached_forum_id=" . intval($HTTP_POST_VARS[POST_FORUM_URL]);
-				if( !$result = $db->sql_query($sql) )
-				{
-					message_die(GENERAL_ERROR, "Couldn't detach subforums", "", __LINE__, __FILE__, $sql);
-				}
+						// Modified by Attached Forums MOD
+						if (isset($HTTP_POST_VARS['detach_enabled']) && isset($HTTP_POST_VARS['has_subforums']))
+						{
+							$sql = "UPDATE ". FORUMS_TABLE. " SET attached_forum_id=-1 WHERE attached_forum_id=" . intval($HTTP_POST_VARS[POST_FORUM_URL]);
+							if( !$result = $db->sql_query($sql) )
+							{
+								message_die(GENERAL_ERROR, "Couldn't detach subforums", "", __LINE__, __FILE__, $sql);
+							}
 
-			}
+						}
 
- 			if (intval($HTTP_POST_VARS['old_cat_id']) != intval($HTTP_POST_VARS[POST_CAT_URL]))
-   			{
-				$HTTP_POST_VARS['attached_forum_id']=-1;
-				if (isset($HTTP_POST_VARS['has_subforums']) && !isset($HTTP_POST_VARS['detach_enabled']))
-				{
-					$sql = "UPDATE ". FORUMS_TABLE ." SET cat_id=". intval($HTTP_POST_VARS[POST_CAT_URL]) ." WHERE attached_forum_id=" . intval($HTTP_POST_VARS[POST_FORUM_URL]);
-					if( !$result = $db->sql_query($sql) )
-					{
-						message_die(GENERAL_ERROR, "Couldn't update subforums to new category", "", __LINE__, __FILE__, $sql);
-					}
+						if (intval($HTTP_POST_VARS['old_cat_id']) != intval($HTTP_POST_VARS[POST_CAT_URL]))
+						{
+							$HTTP_POST_VARS['attached_forum_id']=-1;
+							if (isset($HTTP_POST_VARS['has_subforums']) && !isset($HTTP_POST_VARS['detach_enabled']))
+							{
+								$sql = "UPDATE ". FORUMS_TABLE ." SET cat_id=". intval($HTTP_POST_VARS[POST_CAT_URL]) ." WHERE attached_forum_id=" . intval($HTTP_POST_VARS[POST_FORUM_URL]);
+								if( !$result = $db->sql_query($sql) )
+								{
+									message_die(GENERAL_ERROR, "Couldn't update subforums to new category", "", __LINE__, __FILE__, $sql);
+								}
 
-				}
-			}
+							}
+						}
 
-			$sql = "UPDATE " . FORUMS_TABLE . "
-				SET forum_name = '" . str_replace("\'", "''", $HTTP_POST_VARS['forumname']) . "', cat_id = " . intval($HTTP_POST_VARS[POST_CAT_URL]) .", attached_forum_id = " . intval($HTTP_POST_VARS['attached_forum_id']) . ", forum_desc = '" . str_replace("\'", "''", $HTTP_POST_VARS['forumdesc']) . "', forum_status = " . intval($HTTP_POST_VARS['forumstatus']) . ", prune_enable = " . intval($HTTP_POST_VARS['prune_enable']) . "
-				WHERE forum_id = " . intval($HTTP_POST_VARS[POST_FORUM_URL]);
-   // End Added by Attached Forums MOD
+						$sql = "UPDATE " . FORUMS_TABLE . "
+							SET forum_name = '" . str_replace("\'", "''", $HTTP_POST_VARS['forumname']) . "', cat_id = " . intval($HTTP_POST_VARS[POST_CAT_URL]) .", attached_forum_id = " . intval($HTTP_POST_VARS['attached_forum_id']) . ", forum_desc = '" . str_replace("\'", "''", $HTTP_POST_VARS['forumdesc']) . "', forum_status = " . intval($HTTP_POST_VARS['forumstatus']) . ", prune_enable = " . intval($HTTP_POST_VARS['prune_enable']) . "
+							WHERE forum_id = " . intval($HTTP_POST_VARS[POST_FORUM_URL]);
+							// End Added by Attached Forums MOD
                         //$sql = "UPDATE " . FORUMS_TABLE . "
                         //        SET forum_name = '" . str_replace("\'", "''", $HTTP_POST_VARS['forumname']) . "', cat_id = " . intval($HTTP_POST_VARS[POST_CAT_URL]) . ", forum_desc = '" . str_replace("\'", "''", $HTTP_POST_VARS['forumdesc']) . "', forum_status = " . intval($HTTP_POST_VARS['forumstatus']) . ", prune_enable = " . intval($HTTP_POST_VARS['prune_enable']) . "
                         //        WHERE forum_id = " . intval($HTTP_POST_VARS[POST_FORUM_URL]);

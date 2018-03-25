@@ -229,7 +229,11 @@ else
 
         $word_rows = $db->sql_fetchrowset($result);
 
-        $word_count = count($word_rows);
+        if (is_array($word_rows)) {
+            $word_count = count($word_rows);
+        } else {
+            $word_count = 0;
+        }
 
         $template->assign_vars(array(
                 "L_WORDS_TITLE" => $lang['Words_title'],

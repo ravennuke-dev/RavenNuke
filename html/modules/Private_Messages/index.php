@@ -1617,6 +1617,8 @@ if ( $mode == 'newpm' ) {
 	//
 	generate_smilies('inline', PAGE_PRIVMSGS);
 
+	if (!defined('ABBC_HIGHLIGHT')) define('ABBC_HIGHLIGHT', 'BBCbasiccode');
+
 	$template->assign_vars(array(
 			'SUBJECT' => $privmsg_subject,
 			'USERNAME' => $to_username,
@@ -1691,6 +1693,8 @@ if ( $mode == 'newpm' ) {
 
 			'L_BBCODE_CLOSE_TAGS' => $lang['Close_Tags'],
 			'L_STYLES_TIP' => $lang['Styles_tip'],
+
+			'S_ABBC_CODETYPE' => ABBC_HIGHLIGHT,
 
 			'S_HTML_CHECKED' => ( !$html_on ) ? ' checked="checked"' : '',
 			'S_BBCODE_CHECKED' => ( !$bbcode_on ) ? ' checked="checked"' : '',

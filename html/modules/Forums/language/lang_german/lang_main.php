@@ -1035,6 +1035,15 @@ $lang['Continue'] = 'Fortsetzen';
 $lang['Go_Your_Account'] = 'Gehe zu deinem Account';
 $lang['YA_Warning'] = 'Ausser du lädst ein Avatar hoch, solltest du %s benutzen, um dein Profil zu editieren';
 
+//+MOD: Start Advanced BBCode Box MOD vRN2.5.2
+$lang['BBcode_box_view'] = 'Click to View Content';
+//-MOD: Advanced BBCode Box MOD vRN2.5.2
+//+MOD: Select Expand BBcodes MOD
+$lang['Select'] = 'Select';
+$lang['Expand'] = 'Expand';
+$lang['Contract'] = 'Contract';
+//-MOD: Select Expand BBcodes MOD
+
 //
 // That's all Folks!
 // -------------------------------------------------

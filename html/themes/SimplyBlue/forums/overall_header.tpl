@@ -1,5 +1,5 @@
 <!-- BEGIN switch_enable_pm_popup -->
-<script language="Javascript" type="text/javascript">
+<script>
 <!--
   if ( {PRIVATE_MESSAGE_NEW_FLAG} )
   {

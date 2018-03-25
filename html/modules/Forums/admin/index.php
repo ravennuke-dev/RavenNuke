@@ -339,6 +339,7 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
         {
                 message_die(GENERAL_ERROR, "Couldn't obtain regd user/online information.", "", __LINE__, __FILE__, $sql);
         }
+        $count_onlinerow_reg = $db->sql_numrows($result);
         $onlinerow_reg = $db->sql_fetchrowset($result);
 
         $sql = "SELECT session_page, session_logged_in, session_time, session_ip, session_start
@@ -350,6 +351,7 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
         {
                 message_die(GENERAL_ERROR, "Couldn't obtain guest user/online information.", "", __LINE__, __FILE__, $sql);
         }
+        $count_onlinerow_guest = $db->sql_numrows($result);
         $onlinerow_guest = $db->sql_fetchrowset($result);
 
         $sql = "SELECT forum_name, forum_id
@@ -368,11 +370,11 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
 
         $reg_userid_ary = array();
 
-        if( count($onlinerow_reg) )
+        if($count_onlinerow_reg > 0)
         {
                 $registered_users = 0;
 
-                for($i = 0; $i < count($onlinerow_reg); $i++)
+                for($i = 0; $i < $count_onlinerow_reg; $i++)
                 {
                         if( !inarray($onlinerow_reg[$i]['user_id'], $reg_userid_ary) )
                         {
@@ -474,11 +476,11 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
         //
         // Guest users
         //
-        if( count($onlinerow_guest) )
+        if( $count_onlinerow_guest > 0 )
         {
                 $guest_users = 0;
 
-                for($i = 0; $i < count($onlinerow_guest); $i++)
+                for($i = 0; $i < $count_onlinerow_guest; $i++)
                 {
                         $guest_userip_ary[] = $onlinerow_guest[$i]['session_ip'];
                         $guest_users++;
@@ -560,65 +562,11 @@ elseif( isset($HTTP_GET_VARS['pane']) && $HTTP_GET_VARS['pane'] == 'right' )
                         "L_NO_GUESTS_BROWSING" => $lang['No_users_browsing'])
                 );
         }
-	// Check for new version
+
+	# Check for new version
 	$current_version = explode('.', '2' . $board_config['version']);
 	$minor_revision = (int) $current_version[2];
-
-	$errno = 0;
-	$errstr = $version_info = '';
-
-	if ($fsock = @fsockopen('www.phpbb.com', 80, $errno, $errstr, 10))
-	{
-		@fputs($fsock, "GET /updatecheck/20x.txt HTTP/1.1\r\n");
-		@fputs($fsock, "HOST: www.phpbb.com\r\n");
-		@fputs($fsock, "Connection: close\r\n\r\n");
-
-		$get_info = false;
-		while (!@feof($fsock))
-		{
-			if ($get_info)
-			{
-				$version_info .= @fread($fsock, 1024);
-			}
-			else
-			{
-				if (@fgets($fsock, 1024) == "\r\n")
-				{
-					$get_info = true;
-				}
-			}
-		}
-		@fclose($fsock);
-
-		$version_info = explode("\n", $version_info);
-		$latest_head_revision = (int) $version_info[0];
-		$latest_minor_revision = (int) $version_info[2];
-		$latest_version = (int) $version_info[0] . '.' . (int) $version_info[1] . '.' . (int) $version_info[2];
-
-		if ($latest_head_revision == 2 && $minor_revision == $latest_minor_revision)
-		{
-			$version_info = '<p style="color:green">' . $lang['Version_up_to_date'] . '</p>';
-		}
-		else
-		{
-			$version_info = '<p style="color:red">' . $lang['Version_not_up_to_date'];
-			$version_info .= '<br />' . sprintf($lang['Latest_version_info'], $latest_version) . ' ' . sprintf($lang['Current_version_info'], '2' . $board_config['version']) . '</p>';
-		}
-	}
-	else
-	{
-		if ($errstr)
-		{
-			$version_info = '<p style="color:red">' . sprintf($lang['Connect_socket_error'], $errstr) . '</p>';
-		}
-		else
-		{
-			$version_info = '<p>' . $lang['Socket_functions_disabled'] . '</p>';
-		}
-	}
-
-	$version_info .= '<p>' . $lang['Mailing_list_subscribe_reminder'] . '</p>';
-
+	$version_info = '<p style="color:green">' . $lang['Version_up_to_date'] . ' ' . sprintf($lang['Current_version_info'], '2' . $board_config['version']) . '</p>';
 
 	$template->assign_vars(array(
 		'VERSION_INFO'	=> $version_info,

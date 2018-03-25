@@ -1013,6 +1013,9 @@ $template->assign_block_vars('switch_not_privmsg', array());
 //
 // Output the data to the template
 //
+
+if (!defined('ABBC_HIGHLIGHT')) define('ABBC_HIGHLIGHT', 'BBCbasiccode');
+
 $template->assign_vars(array(
    'USERNAME' => $username,
    'SUBJECT' => $subject,
@@ -1076,6 +1079,8 @@ $template->assign_vars(array(
 
    'L_BBCODE_CLOSE_TAGS' => $lang['Close_Tags'],
    'L_STYLES_TIP' => $lang['Styles_tip'],
+
+   'S_ABBC_CODETYPE' => ABBC_HIGHLIGHT,
 
    'U_VIEWTOPIC' => ( $mode == 'reply' ) ? append_sid("viewtopic.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;postorder=desc") : '',
    'U_REVIEW_TOPIC' => ( $mode == 'reply' ) ? append_sid("posting.$phpEx?mode=topicreview&amp;" . POST_TOPIC_URL . "=$topic_id&amp;popup=1") : '',

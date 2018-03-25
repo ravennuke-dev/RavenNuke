@@ -175,6 +175,7 @@ RewriteRule ^fsearch-author-([a-zA-Z0-9_-]*).html modules.php?name=Forums&file=s
 RewriteRule ^fsearch-([0-9]*)-([0-9]*).html modules.php?name=Forums&file=search&search_id=$1&start=$2 [L]
 RewriteRule ^fsearch-(unanswered|egosearch|newposts).html modules.php?name=Forums&file=search&search_id=$1 [L]
 RewriteRule ^fsearch-results.html modules.php?name=Forums&file=search&mode=results [L]
+RewriteRule ^hashtag-results-([a-zA-Z0-9_\-\+]*).html modules.php?name=Forums&file=search&search_keywords=$1&mode=results [L]
 RewriteRule ^forums-([^index][a-zA-Z0-9_-]*).html modules.php?name=Forums&file=$1 [L]
 RewriteRule ^forum-c([0-9]*).html modules.php?name=Forums&file=index&c=$1 [L]
 RewriteRule ^forum-mark.html modules.php?name=Forums&file=index&mark=forums [L]

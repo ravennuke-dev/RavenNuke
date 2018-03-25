@@ -13,7 +13,7 @@
 					<!-- BEGIN postrow -->
 					{ATTACHMENTS}
 					<!-- END postrow -->
-					<span class="postbody">{MESSAGE}</span>
+					<div class="postbody">{MESSAGE}</div>
 				</td>
 			</tr>
 		</table></td>
