@@ -636,8 +636,8 @@ else if ( $submit || $confirm )
 
 if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 {
-   $username = ( !empty($HTTP_POST_VARS['username']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['username']))) : '';
-   $subject = ( !empty($HTTP_POST_VARS['subject']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['subject']))) : '';
+   $username = ( !empty($HTTP_POST_VARS['username']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['username'])), ENT_QUOTES, _CHARSET) : '';
+   $subject = ( !empty($HTTP_POST_VARS['subject']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['subject'])), ENT_QUOTES, _CHARSET) : '';
    $message = ( !empty($HTTP_POST_VARS['message']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['message']))) : '';
 
    $poll_title = ( !empty($HTTP_POST_VARS['poll_title']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['poll_title']))) : '';
@@ -682,7 +682,7 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 
       $bbcode_uid = ( $bbcode_on ) ? make_bbcode_uid() : '';
       $preview_message = stripslashes(prepare_message(addslashes(unprepare_message($message)), $html_on, $bbcode_on, $smilies_on, $bbcode_uid));
-      $preview_subject = $subject;
+      $preview_subject = htmlspecialchars_decode(check_html($subject, 'nohtml'), ENT_QUOTES);
       $preview_username = $username;
 
       //
