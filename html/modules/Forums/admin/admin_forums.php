@@ -694,7 +694,7 @@ if( !empty($mode) )
                         $newmode = 'movedelforum';
 
                         $foruminfo = get_info('forum', $forum_id);
-                        $name = $foruminfo['forum_name'];
+                        $name = htmlspecialchars(utf8_encode($foruminfo['forum_name']), ENT_QUOTES, $lang['ENCODING']);
 
                         $template->set_filenames(array(
                                 "body" => "admin/forum_delete_body.tpl")
@@ -881,7 +881,7 @@ if( !empty($mode) )
                         $buttonvalue = $lang['Move_and_Delete'];
                         $newmode = 'movedelcat';
                         $catinfo = get_info('category', $cat_id);
-                        $name = $catinfo['cat_title'];
+                        $name = htmlspecialchars(utf8_encode($catinfo['cat_title']), ENT_QUOTES, $lang['ENCODING']);
 
                         if ($catinfo['number'] == 1)
                         {
