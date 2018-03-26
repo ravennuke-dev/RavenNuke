@@ -264,8 +264,8 @@ if( !empty($mode) )
                                 $row = get_info('forum', $forum_id);
 
                                 $cat_id = $row['cat_id'];
-                                $forumname = $row['forum_name'];
-                                $forumdesc = $row['forum_desc'];
+                                $forumname = utf8_encode($row['forum_name']);
+                                $forumdesc = htmlspecialchars(utf8_decode($row['forum_desc']), ENT_QUOTES, $lang['ENCODING']);
                                 $forumstatus = $row['forum_status'];
 
 								// Added by Attached Forums MOD
@@ -289,7 +289,7 @@ if( !empty($mode) )
 										$attachable_forums = '<option value="-1"' . ($forum_attached_id == -1 ? ' selected="selected"' : '') . '> NOT ATTACHED TO ANY FORUM ';
 										while( $row1 = $db->sql_fetchrow($result1) ) {
 											$s = ($forum_attached_id == $row1['forum_id']) ? ' selected="selected"' : '';
-											$attachable_forums .= '<option value="' . $row1['forum_id'] . '"' . $s . '>' . $row1['forum_name'] . '</option>' . "\n";
+											$attachable_forums .= '<option value="' . $row1['forum_id'] . '"' . $s . '>' . htmlspecialchars(utf8_encode($row1['forum_name']), ENT_QUOTES, $lang['ENCODING']) . '</option>' . "\n";
 										}
 									} else {
 										$no_attachable_forums = 1;
@@ -337,7 +337,7 @@ if( !empty($mode) )
 									$attachable_forums = '<option value="-1"' . (($forum_attached_id == -1 || !$forum_attached_id) ? ' selected="selected"' : '') . '> NOT ATTACHED TO ANY FORUM ';
 									while( $row1 = $db->sql_fetchrow($result1) ) {
 										$s = ($forum_attached_id == $row1['forum_id']) ? ' selected="selected"' : ' selected=""';
-										$attachable_forums .= '<option value="' . $row1['forum_id'] . '"' . $s . '>' . $row1['forum_name'] . '</option>' . "\n";
+										$attachable_forums .= '<option value="' . $row1['forum_id'] . '"' . $s . '>' . htmlspecialchars(utf8_encode($row1['forum_name']), ENT_QUOTES, $lang['ENCODING']) . '</option>' . "\n";
 									}
 								} else {
 									$no_attachable_forums = 1;
@@ -474,8 +474,10 @@ if( !empty($mode) )
 						{
 							$HTTP_POST_VARS['attached_forum_id']=-1;
 						}
+						$forumname = $db->sql_escape_string(htmlspecialchars_decode(check_html(utf8_decode(str_replace("\'", "''", $HTTP_POST_VARS['forumname'])), 'nohtml'), ENT_QUOTES));
+						$forumdesc = $db->sql_escape_string(htmlspecialchars_decode(utf8_decode(str_replace("\'", "''", $HTTP_POST_VARS['forumdesc'])), ENT_QUOTES));
 						$sql = "INSERT INTO " . FORUMS_TABLE . " (forum_id, forum_name, cat_id, attached_forum_id, forum_desc, forum_order, forum_status, prune_enable" . $field_sql . ")
-								VALUES ('" . $next_id . "', '" . str_replace("\'", "''", $HTTP_POST_VARS['forumname']) . "', " . intval($HTTP_POST_VARS[POST_CAT_URL]) .  ", " . intval($HTTP_POST_VARS['attached_forum_id']) . ", '" . str_replace("\'", "''", $HTTP_POST_VARS['forumdesc']) . "', $next_order, " . intval($HTTP_POST_VARS['forumstatus']) . ", " . intval($HTTP_POST_VARS['prune_enable']) . $value_sql . ")";
+								VALUES ('" . $next_id . "', '" . $forumname . "', " . intval($HTTP_POST_VARS[POST_CAT_URL]) .  ", " . intval($HTTP_POST_VARS['attached_forum_id']) . ", '" . $forumdesc . "', $next_order, " . intval($HTTP_POST_VARS['forumstatus']) . ", " . intval($HTTP_POST_VARS['prune_enable']) . $value_sql . ")";
 						// End Added by Attached Forums MOD
                         //$sql = "INSERT INTO " . FORUMS_TABLE . " (forum_id, forum_name, cat_id, forum_desc, forum_order, forum_status, prune_enable" . $field_sql . ")
                         //        VALUES ('" . $next_id . "', '" . str_replace("\'", "''", $HTTP_POST_VARS['forumname']) . "', " . intval($HTTP_POST_VARS[POST_CAT_URL]) . ", '" . str_replace("\'", "''", $HTTP_POST_VARS['forumdesc']) . "', $next_order, " . intval($HTTP_POST_VARS['forumstatus']) . ", " . intval($HTTP_POST_VARS['prune_enable']) . $value_sql . ")";
@@ -540,9 +542,10 @@ if( !empty($mode) )
 
 							}
 						}
-
+						$forumname = $db->sql_escape_string(htmlspecialchars_decode(check_html(utf8_decode(str_replace("\'", "''", $HTTP_POST_VARS['forumname'])), 'nohtml'), ENT_QUOTES));
+						$forumdesc = $db->sql_escape_string(htmlspecialchars_decode(utf8_decode(str_replace("\'", "''", $HTTP_POST_VARS['forumdesc'])), ENT_QUOTES));
 						$sql = "UPDATE " . FORUMS_TABLE . "
-							SET forum_name = '" . str_replace("\'", "''", $HTTP_POST_VARS['forumname']) . "', cat_id = " . intval($HTTP_POST_VARS[POST_CAT_URL]) .", attached_forum_id = " . intval($HTTP_POST_VARS['attached_forum_id']) . ", forum_desc = '" . str_replace("\'", "''", $HTTP_POST_VARS['forumdesc']) . "', forum_status = " . intval($HTTP_POST_VARS['forumstatus']) . ", prune_enable = " . intval($HTTP_POST_VARS['prune_enable']) . "
+							SET forum_name = '" . $forumname . "', cat_id = " . intval($HTTP_POST_VARS[POST_CAT_URL]) .", attached_forum_id = " . intval($HTTP_POST_VARS['attached_forum_id']) . ", forum_desc = '" . $forumdesc . "', forum_status = " . intval($HTTP_POST_VARS['forumstatus']) . ", prune_enable = " . intval($HTTP_POST_VARS['prune_enable']) . "
 							WHERE forum_id = " . intval($HTTP_POST_VARS[POST_FORUM_URL]);
 							// End Added by Attached Forums MOD
                         //$sql = "UPDATE " . FORUMS_TABLE . "
@@ -613,8 +616,9 @@ if( !empty($mode) )
                         //
                         // There is no problem having duplicate forum names so we won't check for it.
                         //
+                        $categoryname = $db->sql_escape_string(htmlspecialchars_decode(check_html(utf8_decode(str_replace("\'", "''", $HTTP_POST_VARS['categoryname'])), 'nohtml'), ENT_QUOTES));
                         $sql = "INSERT INTO " . CATEGORIES_TABLE . " (cat_title, cat_order)
-                                VALUES ('" . str_replace("\'", "''", $HTTP_POST_VARS['categoryname']) . "', $next_order)";
+                                VALUES ('" . $categoryname . "', $next_order)";
                         if( !$result = $db->sql_query($sql) )
                         {
                                 message_die(GENERAL_ERROR, "Couldn't insert row in categories table", "", __LINE__, __FILE__, $sql);
@@ -636,7 +640,7 @@ if( !empty($mode) )
                         $cat_id = intval($HTTP_GET_VARS[POST_CAT_URL]);
 
                         $row = get_info('category', $cat_id);
-                        $cat_title = $row['cat_title'];
+                        $cat_title = utf8_encode($row['cat_title']);
 
                         $template->set_filenames(array(
                                 "body" => "admin/category_edit_body.tpl")
@@ -661,8 +665,9 @@ if( !empty($mode) )
 
                 case 'modcat':
                         // Modify a category in the DB
+                        $categoryname = $db->sql_escape_string(htmlspecialchars_decode(check_html(utf8_decode(str_replace("\'", "''", $HTTP_POST_VARS['cat_title'])), 'nohtml'), ENT_QUOTES));
                         $sql = "UPDATE " . CATEGORIES_TABLE . "
-                                SET cat_title = '" . str_replace("\'", "''", $HTTP_POST_VARS['cat_title']) . "'
+                                SET cat_title = '" . $categoryname . "'
                                 WHERE cat_id = " . intval($HTTP_POST_VARS[POST_CAT_URL]);
                         if( !$result = $db->sql_query($sql) )
                         {
@@ -1095,7 +1100,7 @@ $subforum_rows=$forum_rows;
                         'S_ADD_FORUM_NAME' => "forumname[$cat_id]",
 
                         'CAT_ID' => $cat_id,
-                        'CAT_DESC' => $category_rows[$i]['cat_title'],
+                        'CAT_DESC' => htmlspecialchars(utf8_encode($category_rows[$i]['cat_title']), ENT_COMPAT, $lang['ENCODING']),
 
                         'U_CAT_EDIT' => append_sid("admin_forums.$phpEx?mode=editcat&amp;" . POST_CAT_URL . "=$cat_id"),
                         'U_CAT_DELETE' => append_sid("admin_forums.$phpEx?mode=deletecat&amp;" . POST_CAT_URL . "=$cat_id"),
@@ -1140,9 +1145,9 @@ $subforum_rows=$forum_rows;
 
 				if ($do_template)
 				{
-					$template->assign_block_vars("catrow.forumrow",	array(
-						'FORUM_NAME' => $forum_rows[$j]['forum_name'],
-						'FORUM_DESC' => $forum_rows[$j]['forum_desc'],
+					$template->assign_block_vars("catrow.forumrow", array(
+						'FORUM_NAME' => htmlspecialchars(utf8_encode($forum_rows[$j]['forum_name']), ENT_COMPAT, $lang['ENCODING']),
+						'FORUM_DESC' => htmlspecialchars_decode(utf8_decode($forum_rows[$j]['forum_desc']), ENT_COMPAT),
 						'ROW_COLOR' => $row_color,
 						'NUM_TOPICS' => $forum_rows[$j]['forum_topics'],
 						'NUM_POSTS' => $forum_rows[$j]['forum_posts'],
@@ -1165,9 +1170,9 @@ $subforum_rows=$forum_rows;
 						$subforum_rows[$k]['forum_desc'] = ($subforum_rows[$k]['forum_desc'] == '') ? '&nbsp;' : $subforum_rows[$k]['forum_desc'];
 						if ($subforum_rows[$k]['attached_forum_id'] == $forum_id)
 						{
-							$template->assign_block_vars("catrow.forumrow",	array(
-								'FORUM_NAME' => $subforum_rows[$k]['forum_name'],
-								'FORUM_DESC' => $subforum_rows[$k]['forum_desc'],
+							$template->assign_block_vars("catrow.forumrow", array(
+								'FORUM_NAME' => htmlspecialchars(utf8_encode($subforum_rows[$k]['forum_name']), ENT_COMPAT, $lang['ENCODING']),
+								'FORUM_DESC' => htmlspecialchars_decode(utf8_decode($subforum_rows[$k]['forum_desc']), ENT_COMPAT),
 								'ROW_COLOR' => $row_color,
 								'NUM_TOPICS' => $subforum_rows[$k]['forum_topics'],
 								'NUM_POSTS' => $subforum_rows[$k]['forum_posts'],
