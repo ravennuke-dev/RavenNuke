@@ -145,7 +145,7 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
 
                 if (!empty($poll_title))
                 {
-                        $poll_title = htmlspecialchars(trim($poll_title), ENT_COMPAT, _CHARSET);
+                        $poll_title = htmlspecialchars(check_html($poll_title, 'nohtml'), ENT_COMPAT, _CHARSET);
                 }
 
                 if(!empty($poll_options))
