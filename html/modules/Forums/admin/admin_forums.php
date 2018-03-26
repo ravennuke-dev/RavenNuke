@@ -160,7 +160,7 @@ function get_list($mode, $id, $select)
                 {
                         $s = " selected=\"selected\"";
                 }
-                $catlist .= "<option value=\"$row[$idfield]\"$s>" . $row[$namefield] . "</option>\n";
+                $catlist .= "<option value=\"$row[$idfield]\"$s>" . htmlspecialchars(utf8_encode($row[$namefield]), ENT_QUOTES, $lang['ENCODING']) . "</option>\n";
         }
 
         return($catlist);
