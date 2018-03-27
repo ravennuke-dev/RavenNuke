@@ -150,7 +150,7 @@ if( $ab_config['site_switch'] == 1 AND !stristr($_SERVER['PHP_SELF'], $admin_fil
 // CAUTION: This function can slow your sites load time
 $clearedtime = strtotime(date('Y-m-d 23:59:59', $nsnst_const['ban_time']));
 $cleartime = strtotime(date('Y-m-d 23:59:59', $nsnst_const['ban_time'])) - 86400;
-if( $ab_config['self_expire'] == 1 AND  $ab_config['blocked_clear'] < $cleartime) {
+if( $ab_config['self_expire'] == 1 AND $clearedtime < $cleartime) {
 	$clearresult = $db->sql_query('SELECT * FROM `' . $prefix. '_nsnst_blocked_ips` WHERE (`expires` < "' . $clearedtime . '" AND `expires`!="0")');
 	while($clearblock = $db->sql_fetchrow($clearresult)) {
 		if(!empty($ab_config['htaccess_path'])) {
