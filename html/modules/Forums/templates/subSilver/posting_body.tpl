@@ -1,7 +1,3 @@
-<script src="{L_ABBC_JS}"></script>
-<script src="mods/bbcode_box/js/jscolor.js"></script>
-<script src="mods/bbcode_box/js/jquery.autogrowtextarea.js"></script>
-<script src="mods/bbcode_box/js/textarea-settings.js"></script>
 <form action="{S_POST_ACTION}" method="post" name="post" onsubmit="return checkForm(this)" {S_FORM_ENCTYPE}>
 {POST_PREVIEW_BOX}
 {ERROR_BOX}
@@ -99,7 +95,7 @@
 <img src="images/transparent.gif" class="postimage bbc-inactive" id="abbcduck" onclick="BBCduck()" onmouseover="helpline('abbcduck')" alt="" />
 <img src="images/transparent.gif" class="box-blackdot" alt="" />
 <img src="images/transparent.gif" class="postimage bbc-inactive" id="abbctags" onclick="BBCtags()" onmouseover="helpline('abbctags')" alt="" />
-<div class="postimage bbc-inactive" id="abbcsmiles" onclick="BBCemostatus()" onmouseover="helpline('abbcsmiles')"><img class="abbcshim" src="mods/bbcode_box/images/icon_rolleyes.gif" alt="" /></div>
+<div class="postimage bbc-inactive" id="abbcsmiles" onclick="BBCemostatus()" onmouseover="helpline('abbcsmiles')"><img class="abbcshim" src="includes/bbcode_box/images/icon_rolleyes.gif" alt="" /></div>
 <img src="images/transparent.gif" class="postimage bbc-inactive" id="abbcexpand" onclick="BBCallbars()" onmouseover="helpline('abbcshowall')" alt="" />
 </td>
 </tr>
@@ -121,7 +117,7 @@
 <option value="-right">Right</option>
 </select></div>
 <img src="images/transparent.gif" class="postimage bbc-inactive" id="abbcarchive2" onclick="BBCInternetArchive()" onmouseover="archiveline()" alt="" />
-<div class="posthelps bbc-inactive" onclick="BBCvidhelpstatus()" onmouseover="helpline('abbchelparchive')"><div class="posthelps bbc-inactive" id="helpvidclass"></div><div class="posthelps2" id="helpvidload"><img src="mods/bbcode_box/images/helpload.gif" alt="" /></div></div>
+<div class="posthelps bbc-inactive" onclick="BBCvidhelpstatus()" onmouseover="helpline('abbchelparchive')"><div class="posthelps bbc-inactive" id="helpvidclass"></div><div class="posthelps2" id="helpvidload"><img src="includes/bbcode_box/images/helpload.gif" alt="" /></div></div>
 </div>
 <div id="youtubestatus" class="abbctoolbars"><img src="images/transparent.gif" class="box-dots" alt="" />
 <div class="box-select"><select id="utubes" name="utubes" onchange="youtubeline()">
@@ -138,9 +134,9 @@
 <option value="-right">Right</option>
 </select></div>
 <img src="images/transparent.gif" class="postimage bbc-inactive" id="abbcyoutube2" onclick="BBCyoutube()" onmouseover="youtubeline()" alt="" />
-<div class="posthelps bbc-inactive" onclick="BBCtubestatus()" onmouseover="helpline('abbchelpyoutube')"><div class="posthelps bbc-inactive" id="helputube"></div><div class="posthelps2" id="helputubeload"><img src="mods/bbcode_box/images/helpload.gif" alt="" /></div></div>
+<div class="posthelps bbc-inactive" onclick="BBCtubestatus()" onmouseover="helpline('abbchelpyoutube')"><div class="posthelps bbc-inactive" id="helputube"></div><div class="posthelps2" id="helputubeload"><img src="includes/bbcode_box/images/helpload.gif" alt="" /></div></div>
 </div>
-<div id="vidhelpstatus" class="abbchelpbars"><img src="mods/bbcode_box/images/helpload.png" alt="" /></div>
+<div id="vidhelpstatus" class="abbchelpbars"><img src="includes/bbcode_box/images/helpload.png" alt="" /></div>
 <div id="defaultstatus" class="abbctoolbars">
 <img src="images/transparent.gif" class="box-dots" alt="" />
 <img src="images/transparent.gif" class="postimage bbc-inactive" id="abbcdirrtl" onclick="BBCdir('rtl')" onmouseover="helpline('abbcrtl')" alt="" />
@@ -173,10 +169,10 @@
 </optgroup>
 </select></div>
 <img src="images/transparent.gif" class="postimage bbc-inactive" id="abbccode2" onclick="BBCcode()" onmouseover="codehelpline()" alt="" />
-<div class="posthelps bbc-inactive" onclick="BBCcodehelpstatus()" onmouseover="helpline('abbchelpcodepre')"><div class="posthelps bbc-inactive" id="helpcodeclass"></div><div class="posthelps2" id="helpcodeload"><img src="mods/bbcode_box/images/helpload.gif" alt="" /></div></div>
+<div class="posthelps bbc-inactive" onclick="BBCcodehelpstatus()" onmouseover="helpline('abbchelpcodepre')"><div class="posthelps bbc-inactive" id="helpcodeclass"></div><div class="posthelps2" id="helpcodeload"><img src="includes/bbcode_box/images/helpload.gif" alt="" /></div></div>
 </div>
 
-<div id="codehelpstatus" class="abbchelpbars"><img src="mods/bbcode_box/images/helpload.png" alt="" /></div>
+<div id="codehelpstatus" class="abbchelpbars"><img src="includes/bbcode_box/images/helpload.png" alt="" /></div>
 
 <div id="fontfacestatus" class="abbctoolbars"><img src="images/transparent.gif" class="box-dots" alt="" />
 <img src="images/transparent.gif" class="postfonts bbc-inactive" id="abbcarialblack" onclick="BBCfamily('arialblack','postfonts')" onmouseover="classline('arialblack')" alt="" />
@@ -195,10 +191,10 @@
 <img src="images/transparent.gif" class="postfonts bbc-inactive" id="abbctrebuchet" onclick="BBCfamily('trebuchet','postfonts')" onmouseover="classline('trebuchet')" alt="" />
 <img src="images/transparent.gif" class="postfonts bbc-inactive" id="abbcverdana" onclick="BBCfamily('verdana','postfonts')" onmouseover="classline('verdana')" alt="" />
 <img src="images/transparent.gif" class="postfonts bbc-inactive" id="insertcustomclass" onclick="BBCyourclass()" onmouseover="customclassline()" alt="" />
-<div class="posthelps bbc-inactive" onclick="BBCfonthelpstatus()" onmouseover="helpline('abbchelpclasses')"><div class="posthelps bbc-inactive" id="helpcustomclass"></div><div class="posthelps2" id="helpcustomload"><img src="mods/bbcode_box/images/helpload.gif" alt="" /></div></div>
+<div class="posthelps bbc-inactive" onclick="BBCfonthelpstatus()" onmouseover="helpline('abbchelpclasses')"><div class="posthelps bbc-inactive" id="helpcustomclass"></div><div class="posthelps2" id="helpcustomload"><img src="includes/bbcode_box/images/helpload.gif" alt="" /></div></div>
 </div>
 
-<div id="fonthelpstatus" class="abbchelpbars"><img src="mods/bbcode_box/images/helpload.png" alt="" /></div>
+<div id="fonthelpstatus" class="abbchelpbars"><img src="includes/bbcode_box/images/helpload.png" alt="" /></div>
 
 <div id="colorstatus" class="abbctoolbars"><img src="images/transparent.gif" class="box-dots" alt="" />
 <img src="images/transparent.gif" class="postcolor bbc-inactive bg-color1" id="abbccolor1" onclick="BBCswatches('color1')" onmouseover="classline('color1')" alt="" />
@@ -219,9 +215,9 @@
 <img src="images/transparent.gif" class="xcolor" name="abbchole" id="abbchole" onclick="BBCpicker()" onmouseover="customhelpline()" alt="" />
 <input readonly="readonly" class="color {valueElement:'fc',styleElement:'abbchole',pickerClosable:true}" value="" name="abbcpicker" id="abbcpicker" onmouseover="helpline('abbclaunchpik')" />
 <input class="nocolor" name="fc" id="fc" value="2F8187" onmouseover="helpline('abbchelphex')" />
-<div class="posthelps bbc-inactive" onclick="BBCcolorhelpstatus()" onmouseover="helpline('abbchelpcolor')"><div class="posthelps bbc-inactive" id="helpcolorclass"></div><div class="posthelps2" id="helpcolorload"><img src="mods/bbcode_box/images/helpload.gif" alt="" /></div></div>
+<div class="posthelps bbc-inactive" onclick="BBCcolorhelpstatus()" onmouseover="helpline('abbchelpcolor')"><div class="posthelps bbc-inactive" id="helpcolorclass"></div><div class="posthelps2" id="helpcolorload"><img src="includes/bbcode_box/images/helpload.gif" alt="" /></div></div>
 </div>
-<div id="colorhelpstatus" class="abbchelpbars"><img src="mods/bbcode_box/images/helpload.png" alt="" /></div>
+<div id="colorhelpstatus" class="abbchelpbars"><img src="includes/bbcode_box/images/helpload.png" alt="" /></div>
 
 <div id="fontsizestatus" class="abbctoolbars"><img src="images/transparent.gif" class="box-dots" alt="" />
 <img src="images/transparent.gif" class="postsizes bbc-inactive" id="abbcsmall-caps" onclick="BBCfamily('small-caps','postsizes')" onmouseover="classline('small-caps')" alt="" />
