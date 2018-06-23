@@ -17,17 +17,17 @@ if(is_god()) {
     if($adminrow == 0) {
       $importadded++;
       if($importnamed == '') { $importnamed = $a_aid; } else { $importnamed = $importnamed.', '.$a_aid; }
-      $makepass = "";
-      $strs = "abc2def3ghj4kmn5opq6rst7uvw8xyz9";
+      $makepass = '';
+      $strs = 'abc2def3ghj4kmn5opq6rst7uvw8xyz9';
       for($x=0; $x < 20; $x++) {
         mt_srand ((double) microtime() * 1000000);
         $str[$x] = substr($strs, mt_rand(0, strlen($strs)-1), 1);
         $makepass = $makepass.$str[$x];
       }
       $xpassword_md5 = md5($makepass);
-      $xpassword_crypt = crypt($makepass);
+      $xpassword_crypt = crypt($makepass, '');
       if(!@get_magic_quotes_gpc()) { $makepass = addslashes($makepass); }
-      if(strtolower($a_name) == "god") { $is_god = 1; } else { $is_god = 0; }
+      if(strtolower($a_name) == 'god') { $is_god = 1; } else { $is_god = 0; }
       $result = $db->sql_query("INSERT INTO `".$prefix."_nsnst_admins` (`aid`, `login`, `protected`, `password`, `password_md5`, `password_crypt`) VALUES ('$a_aid', '$a_aid', '$is_god', '$makepass', '$xpassword_md5', '$xpassword_crypt')");
       $db->sql_query("OPTIMIZE TABLE ".$prefix."_nsnst_admins");
       $aidrow = $db->sql_fetchrow($db->sql_query("SELECT * FROM `".$prefix."_nsnst_admins` WHERE `aid`='$a_aid' LIMIT 0,1"));
