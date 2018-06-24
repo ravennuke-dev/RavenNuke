@@ -461,7 +461,8 @@ function autodelete($anid) {
 
 function autoEdit($anid) {
 	global $aid, $bgcolor1, $bgcolor2, $prefix, $db, $multilingual, $admin_file, $language, $radminsuper, $sid;
-	$result2 = $db->sql_query('select aid from '.$prefix.'_stories where sid=\''.$sid.'\'');
+	$anid_escaped = $db->sql_escape_string(check_html($anid, 'nohtml'));
+	$result2 = $db->sql_query('SELECT `aid` FROM `' . $prefix . '_autonews` WHERE `anid` = \'' . $anid_escaped . '\'');
 	list($aaid) = $db->sql_fetchrow($result2);
 	if ($aaid == $aid OR $radminsuper) {
 		include_once 'header.php';
