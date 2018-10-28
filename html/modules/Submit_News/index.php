@@ -136,7 +136,12 @@ function defaultDisplay() {
 }
 
 function PreviewStory($subject, $story, $storyext, $tags, $topic, $alanguage) {
-	global $advanced_editor, $AllowableHTML, $anonymous, $bgcolor1, $bgcolor2, $language, $modGFXChk, $module_name, $multilingual, $user;
+	global $advanced_editor, $AllowableHTML, $anonymous, $bgcolor1, $bgcolor2, $language, $modGFXChk, $module_name, $multilingual, $user, $anonpost;
+
+	if ($anonpost == 0 and !is_user($user)) {
+		header('Location: index.php');
+		exit;
+	}
 
 	include_once 'header.php';
 
