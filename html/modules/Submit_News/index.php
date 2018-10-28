@@ -63,7 +63,12 @@ die();
 */
 
 function defaultDisplay() {
-	global $advanced_editor, $AllowableHTML, $anonymous, $db, $language, $module_name, $multilingual, $prefix, $user;
+	global $advanced_editor, $AllowableHTML, $anonymous, $db, $language, $module_name, $multilingual, $prefix, $user, $anonpost;
+
+	if ($anonpost == 0 and !is_user($user)) {
+		header('Location: index.php');
+		exit;
+	}
 
 	include_once 'header.php';
 
