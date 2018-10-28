@@ -1577,11 +1577,11 @@ function previewAdminStory($automated, $year, $day, $month, $hour, $min, $subjec
 	.'</select>'
 	.'<input type="submit" value="'._OK.'" />';
 
-    echo '<br />';
-    putpoll($pollTitle, $optionText);
-    echo '</form>';
-CloseTable();
-    include_once 'footer.php';
+	echo '<br />';
+	putpoll($pollTitle, $optionText);
+	echo '</form>';
+	CloseTable();
+	include_once 'footer.php';
 }
 
 function postAdminStory($automated, $year, $day, $month, $hour, $min, $subject, $hometext, $bodytext, $notes, $tags, $topic, $catid, $ihome, $alanguage, $acomm, $pollTitle, $optionText, $assotop) {
