@@ -65,7 +65,7 @@ die();
 function defaultDisplay() {
 	global $advanced_editor, $AllowableHTML, $anonymous, $db, $language, $module_name, $multilingual, $prefix, $user, $anonpost;
 
-	if ($anonpost == 0 and !is_user($user)) {
+	if ($anonpost == 0 && !is_user($user)) {
 		header('Location: index.php');
 		exit;
 	}
@@ -138,7 +138,7 @@ function defaultDisplay() {
 function PreviewStory($subject, $story, $storyext, $tags, $topic, $alanguage) {
 	global $advanced_editor, $AllowableHTML, $anonymous, $bgcolor1, $bgcolor2, $language, $modGFXChk, $module_name, $multilingual, $user, $anonpost;
 
-	if ($anonpost == 0 and !is_user($user)) {
+	if ($anonpost == 0 && !is_user($user)) {
 		header('Location: index.php');
 		exit;
 	}
