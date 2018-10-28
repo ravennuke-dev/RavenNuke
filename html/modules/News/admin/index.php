@@ -1593,7 +1593,6 @@ function postAdminStory($automated, $year, $day, $month, $hour, $min, $subject, 
 			$associated .= "$assotop[$i]-";
 		}
 	}
-	$notes = '';
 	if ($automated == 1) {
 		if ($day < 10) {
 			$day = '0'.$day;
