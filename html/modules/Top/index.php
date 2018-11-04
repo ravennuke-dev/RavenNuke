@@ -21,7 +21,7 @@ if (!defined('MODULE_FILE')) {
 	die();
 }
 
-global $prefix, $db, $nume_config;
+global $prefix, $db, $nuke_config;
 
 $top = $nuke_config['top'];
 $module_name = basename(dirname(__FILE__));

@@ -257,15 +257,20 @@ if ($type == 'stories' || !$type) {
 				. '</td></tr></table>';
 		}
 
+		if (!empty($topic)) {
+			$topicid = $row['topic'];
+		} else {
+			$topicid = 0;
+		}
 		$prev = $min - $offset;
 		if ($prev >= 0) {
-			echo '<br /><br /><div class="text-center"><a href="modules.php?name=' . $module_name . '&amp;author=' .  urlencode($author) . '&amp;topic=' . urldecode($row['topic']) . '&amp;min=' . $prev . '&amp;query=' . urlencode($query) . '&amp;type=' . $type . '&amp;category=' . $category . '">';
+			echo '<br /><br /><div class="text-center"><a href="modules.php?name=' . $module_name . '&amp;author=' .  urlencode($author) . '&amp;topic=' . urldecode($topicid) . '&amp;min=' . $prev . '&amp;query=' . urlencode($query) . '&amp;type=' . $type . '&amp;category=' . $category . '">';
 			echo '<span class="thick">' . $min . ' ' . _PREVMATCHES . '</span></a></div>';
 		}
 
 		$next = $min + $offset;
 		if ($nrows > $offset) {
-			echo '<br /><br /><div class="text-center"><a href="modules.php?name=' . $module_name . '&amp;author=' .  urlencode($author) . '&amp;topic=' . $row['topic'] . '&amp;min=' . $max . '&amp;query=' . urlencode($query) . '&amp;type=' . $type . '&amp;category=' . $category . '">';
+			echo '<br /><br /><div class="text-center"><a href="modules.php?name=' . $module_name . '&amp;author=' .  urlencode($author) . '&amp;topic=' . $topicid . '&amp;min=' . $max . '&amp;query=' . urlencode($query) . '&amp;type=' . $type . '&amp;category=' . $category . '">';
 			echo '<span class="thick">' . _NEXTMATCHES . '</span></a></div>';
 		}
 	}
