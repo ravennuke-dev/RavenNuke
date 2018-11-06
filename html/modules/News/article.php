@@ -61,8 +61,10 @@ define('INDEX_FILE', TRUE);
 if (isset($sid)) { $sid = intval($sid); } else { $sid = ''; }
 if (stristr($_SERVER['REQUEST_URI'],'mainfile')) {
 	Header('Location: modules.php?name='.$module_name.'&file=article&sid='.$sid);
-	} elseif (empty($sid) && !isset($tid)) {
+	exit;
+} elseif (empty($sid) && !isset($tid)) {
 	Header('Location: index.php');
+	exit;
 }
 
 $mode = $order = $thold = '';
@@ -95,7 +97,7 @@ if ($op == 'Reply') {
 		die();
 	}
 	$row = $db->sql_fetchrow($result);
-	$catid =$row['catid'];
+	$catid = $row['catid'];
 	$aaid = $row['aid'];
 	$time = $row['time'];
 	$title = htmlentities($row['title'], ENT_QUOTES);
