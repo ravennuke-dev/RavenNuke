@@ -154,9 +154,15 @@ if (empty($errormsg)) {
 } else {
 	OpenTable();
 	echo '<div><form action="modules.php?name=' . $module_name . '&amp;op=new_user" method="post">';
-	echo '<div class="text-center title"><strong>' . _ERRORREG . '</strong></div><br /><br />' . $errormsg;
-	$errormsg = htmlentities($errormsg);
-	echo '<input type="hidden" name="errormsg" value="' . $errormsg . '" /><br />';
+	echo '<div class="text-center title"><strong>' . _ERRORREG . '</strong></div><br /><br />';
+	if (function_exists('nukeSPAM')) {
+		echo '<div class="text-center title">' . $nukeSPAM['constant'] . $nukeSPAM['constant_ext1'] . $nukeSPAM['jsadress'] . '</div>'
+			.'<input type="hidden" name="errormsg" value="' . htmlspecialchars($nukeSPAM['constant'] . $nukeSPAM['constant_ext2'], ENT_QUOTES, _CHARSET) . '" /><br />';
+	} else {
+		echo '<div class="text-center title">' . $errormsg . '</div>';
+		$errormsg = htmlentities($errormsg);
+		echo '<input type="hidden" name="errormsg" value="' . $errormsg . '" /><br />';
+	}
 	echo '<input type="hidden" name="op" value="new_user" />';
 }
 echo '<input type="hidden" name="ya_username" value="' . $ya_username . '" />';
