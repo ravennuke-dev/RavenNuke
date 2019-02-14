@@ -11,19 +11,19 @@
 /* Additional language defines for the block are located in the core     */
 /* language files                                                        */
 /*************************************************************************/
-if (!defined('_INFOBOX_NEW_MEMBERS')) define('_INFOBOX_NEW_MEMBERS','New Members');
-if (!defined('_INFOBOX_LAST_SEEN')) define('_INFOBOX_LAST_SEEN','Last Seen');
+if (!defined('_INFOBOX_NEW_MEMBERS')) define('_INFOBOX_NEW_MEMBERS','Nuovi utenti');
+if (!defined('_INFOBOX_LAST_SEEN')) define('_INFOBOX_LAST_SEEN','Ultima visita');
 if (!defined('_INFOBOX_TOTALHITS')) define('_INFOBOX_TOTALHITS','Totali: ');
-if (!defined('_INFOBOX_TODAYHITS')) define('_INFOBOX_TODAYHITS','Today: ');
-if (!defined('_INFOBOX_SERVERTRAFFIC')) define('_INFOBOX_SERVERTRAFFIC','Server Traffic');
-if (!defined('_INFOBOX_SERVERINFO')) define('_INFOBOX_SERVERINFO','Server Info');
+if (!defined('_INFOBOX_TODAYHITS')) define('_INFOBOX_TODAYHITS','Oggi: ');
+if (!defined('_INFOBOX_SERVERTRAFFIC')) define('_INFOBOX_SERVERTRAFFIC','Traffico sul server');
+if (!defined('_INFOBOX_SERVERINFO')) define('_INFOBOX_SERVERINFO','Informazioni sul server');
 if (!defined('_INFOBOX_EGOPOSTS')) define('_INFOBOX_EGOPOSTS','I tuoi interventi');
 if (!defined('_INFOBOX_CHANGETHEME')) define('_INFOBOX_CHANGETHEME','Cambia tema');
 if (!defined('_INFOBOX_BTD')) define('_INFOBOX_BTD','Nuovi oggi');
 if (!defined('_INFOBOX_BYD')) define('_INFOBOX_BYD','Nuovi ieri');
 if (!defined('_ALT_CHKPROFILE')) define('_ALT_CHKPROFILE','Controlla il profilo di ');
 if (!defined('_SERDT')) define('_SERDT','Data/Orario del server');
-if (!defined('_TTL_RESENDEMAIL')) define('_TTL_RESENDEMAIL','Modulo phpNuke Resend Email su RavenPHPScripts');
+if (!defined('_TTL_RESENDEMAIL')) define('_TTL_RESENDEMAIL','Modulo phpNuke \'Reinvia mail\' su RavenPHPScripts');
 if (!defined('_WAITLINK')) define('_WAITLINK','In attesa');
 if (!defined('_YOURIP')) define('_YOURIP','Il tuo IP: ');
 ?>

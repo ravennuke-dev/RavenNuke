@@ -95,7 +95,7 @@ define('_READWITHCOMMENTS', 'Puoi leggere l\'articolo completo con i suoi commen
 define('_RECOMMEND','Raccommanda questo sito ad un amico');
 define('_REFRESH','Aggiorna');
 define('_REGULAR','Sufficiente');
-define('_RELATED','Link correlati');
+define('_RELATED','Link collegati');
 define('_REPLY','Rispondi a questo');
 define('_REPLYMAIN','Commenta');
 define('_ROOT','Radice');
@@ -122,7 +122,7 @@ if (!defined('_YOUCANREAD')) define('_YOUCANREAD','Puoi leggere articoli interes
 define('_YOURFRIEND','Il tuo amico');
 define('_YOURNAME','Il tuo nome');
 define('_YOUSENDSTORY','Stai inviando questo articolo');
-define('_TONRELATED','Related');
-define('_TONRATETHIS','Rate This');
-define('_TONSHARE','Share');
+define('_TONRELATED','Collegamenti');
+define('_TONRATETHIS','Dai una valutazione');
+define('_TONSHARE','Condividi');
 ?>

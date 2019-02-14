@@ -2,7 +2,7 @@
 define('_rnMYSQL_TABLE_INSTALLER','MySQL Table Installer');
 define('_rnWARNING','This installer is for <span class="underline">NEW</span> installs and will <span class="underline">REPLACE</span> your tables and data each time it is run. This is <span class="underline">NOT</span> recoverable.');
 define('_rnTITLE_1','MySQL Database Connectivity Test Results');
-define('_rnCONFIG_FILE_FOUND','config.php file found!');
+define('_rnCONFIG_FILE_FOUND','file config.php trovato!');
 define('_rnSUCCESS_CONNECT_HOST','<span style="font-weight:bold;">Successfully connected to <span class="c3">'.$dbhost.'</span> as user <span class="c3">'.$dbuname.'</span> and assigned password!</span><br />');
 define('_rnFOUND_DB','<span style="font-weight:bold;">Database <span class="c3">'.$dbname.'</span> found!</span><br />');
 define('_rnTABLE_PREFIX','<span style="font-weight:bold;">Tables will be installed with a prefix of <span class="c3">'.$prefix.'</span>. <br />User Tables will be installed with a prefix of <span class="c3">'.$user_prefix.'</span>.<br />If this is not correct, edit your config.php file and correct the <span class="c2">$prefix</span> or the <span class="c2">$user_prefix</span> settings.</span><br />');
