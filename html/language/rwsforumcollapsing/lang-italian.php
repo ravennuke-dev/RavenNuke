@@ -3,34 +3,34 @@
 /* Raven's Collapsing Forums Block                       */
 /* By: RavenWebServices (tm) (raven@ravenphpscripts.com) */
 /* http://ravenphpscripts.com http://ravenwebhosting.com */
-/* Copyright © 2005 by RavenWebServices                  */
+/* Copyright (C) 2005 by RavenWebServices                */
 /*********************************************************/
 /*********************************************************/
 /*              Collapsing Forums Block                  */
 /*********************************************************/
-define('bfcTOPICLOCKED','Topic Locked');
+define('bfcTOPICLOCKED','Argomento bloccato');
 define('bfcBACKENDTITLE','Syndicate RavenPHPScripts - PHP Web Host - Quality Web Hosting For All PHP Applications');
-define('bfcTOPPOSTERS','Top Posters:');
-define('bfcMYSQLSAID','MySQL said: ');
-define('bfcJUMPFORUM','Jump To Forum');
-define('bfcJUMPFUNCTION','Jump To Function');
-define('bfcGETCATEGORYLISTERROR','Couldn\'t obtain category list. ');
-define('bfcGETFORUMINFOERROR','Couldn\'t obtain forums information. ');
-define('bfcSELECT','Select');
-define('bfcVIEWPOSTSSINCELASTVISIT','View Posts Since Last Visit');
-define('bfcVIEWYOURPOSTS','View Your Posts');
-define('bfcVIEWUNANSWEREDPOSTS','View Unanswered Posts');
-define('bfcFORUMINDEX','Forum Index');
-define('bfcSEARCHFORUMS','Search Forums');
-define('bfcWATCHEDTOPICS','View/Edit Your Watched Posts');
-define('bfcPROFILE','Profile');
-define('bfcPRIVATEMESSAGES','Private Messages');
+define('bfcTOPPOSTERS','Quelli che hanno scritto pi&ugrave; messaggi:');
+define('bfcMYSQLSAID','MySQL ha scritto: ');
+define('bfcJUMPFORUM','Salta al forum');
+define('bfcJUMPFUNCTION','Salta alla funzione');
+define('bfcGETCATEGORYLISTERROR','Non posso ottenere la lista delle categorie. ');
+define('bfcGETFORUMINFOERROR','Non posso ottenere informazioni sui forum. ');
+define('bfcSELECT','Scegli');
+define('bfcVIEWPOSTSSINCELASTVISIT','Visualizza messaggi inviati dopo la tua ultima visita');
+define('bfcVIEWYOURPOSTS','Visualizza i tuoi messaggi');
+define('bfcVIEWUNANSWEREDPOSTS','Visualizza i messaggi senza risposta');
+define('bfcFORUMINDEX','Indice dei forum');
+define('bfcSEARCHFORUMS','Cerca nei forum');
+define('bfcWATCHEDTOPICS','Visualizza/modifica i tuoi messaggi');
+define('bfcPROFILE','Profilo');
+define('bfcPRIVATEMESSAGES','Messaggi privati');
 define('bfcFORUM','Forum');
-define('bfcTOPIC','Topic');
-define('bfcREPLIES','Replies');
-define('bfcAUTHOR','Author');
-define('bfcVIEWS','Views');
-define('bfcLASTPOST','Last Post');
-define('bfcSHOWHIDEBUTTONTEXT','Show/Hide');
-define('bfcSHOWHIDELABELTEXT','Click on the Show/Hide text (on the far right) to expand/collapse this block');
+define('bfcTOPIC','Argomento');
+define('bfcREPLIES','Risposte');
+define('bfcAUTHOR','Autore');
+define('bfcVIEWS','Visualizzazioni');
+define('bfcLASTPOST','Ultimo messaggio');
+define('bfcSHOWHIDEBUTTONTEXT','Mostra/nascondi');
+define('bfcSHOWHIDELABELTEXT','Clicca sul testo Mostra/nascondi (sull\'estrema destra) per espandere/comprimere questo blocco');
 ?>

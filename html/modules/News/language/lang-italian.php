@@ -17,10 +17,10 @@
 /* And, if you use HTML code, please double check it.                     */
 /**************************************************************************/
 //if(!defined('_ADD')) define('_ADD','Add');
-if(!defined('_ALLOWEDHTML')) define('_ALLOWEDHTML','Allowed HTML:');
+if(!defined('_ALLOWEDHTML')) define('_ALLOWEDHTML','HTML permesso:');
 define('_ALREADYVOTEDARTICLE','Spiacente, hai gi&agrave; votato per questo articolo recentemente!');
 define('_ANNOYINGMSG','Dai dati in nostro possesso, l\'argomento al quale stai tentando di rispondere non esiste. Se stai solamente tentando di disturbare, be\' allora molto male.');
-define('_ARCHIVE','Stories Archive');
+define('_ARCHIVE','Archivio notizie');
 define('_ARTICLEPOLL','Sondaggi degli articoli');
 define('_ARTICLERATING','Valutazione articolo');
 define('_AVERAGESCORE','Punteggio medio');
@@ -51,9 +51,9 @@ define('_FYOUREMAIL','La tua email:');
 define('_FYOURNAME','Il tuo nome:');
 define('_GOOD','Buono');
 define('_GOTOHOME','Vai in Homepage');
-define('_GOTONEWSINDEX','Vai all\'indice delle news');
+define('_GOTONEWSINDEX','Vai all\'indice delle notizie');
 define('_HASSENT','E\' stato mandato a');
-define('_HASSENTERROR','L\'articolo non &egrave; stato inviato a causa di problemi sul server di posta. Contatta l\'amministratoredel sito.');
+define('_HASSENTERROR','L\'articolo non &egrave; stato inviato a causa di problemi sul server di posta. Contatta l\'amministratore del sito.');
 if(!defined('_HELLO')) define('_HELLO','Ciao');
 define('_HIGHEST','Punteggi Alti Prima');
 define('_HTMLFORMATED','HTML formattato');
@@ -85,7 +85,7 @@ define('_POSTANON','Commenta in modo anonimo');
 //define('_PREVIEW','Anteprima');
 define('_PRINTER','Pagina stampabile');
 define('_PTOPIC','Argomento:');
-define('_QREPLY','Quick Reply');
+define('_QREPLY','Risposta veloce');
 define('_RATEARTICLE','Valutazione articolo');
 define('_RATETHISARTICLE','Dai un voto a questo articolo:');
 define('_READMORE','Leggi Tutto...');
@@ -95,7 +95,7 @@ define('_READWITHCOMMENTS', 'Puoi leggere l\'articolo completo con i suoi commen
 define('_RECOMMEND','Raccommanda questo sito ad un amico');
 define('_REFRESH','Aggiorna');
 define('_REGULAR','Sufficiente');
-define('_RELATED','Link collegati');
+define('_RELATED','Link correlati');
 define('_REPLY','Rispondi a questo');
 define('_REPLYMAIN','Commenta');
 define('_ROOT','Radice');
@@ -122,7 +122,7 @@ if (!defined('_YOUCANREAD')) define('_YOUCANREAD','Puoi leggere articoli interes
 define('_YOURFRIEND','Il tuo amico');
 define('_YOURNAME','Il tuo nome');
 define('_YOUSENDSTORY','Stai inviando questo articolo');
-define('_TONRELATED','Collegamenti');
-define('_TONRATETHIS','Dai una valutazione');
+define('_TONRELATED','Collegato');
+define('_TONRATETHIS','Valuta questo');
 define('_TONSHARE','Condividi');
 ?>
