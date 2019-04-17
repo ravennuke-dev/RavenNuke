@@ -782,11 +782,13 @@ function BlocksEdit($bid) {
 	} else {
 		$expire = '<input type="text" name="expire" value="0" size="4" maxlength="3" /> '._DAYS;
 	}
-	if ($action == "d") {
+	$selact1 = '';
+	$selact2 = '';
+	if ($action == 'd') {
 		$selact1 = 'selected="selected"';
-		$selact2 = "";
-	} elseif ($action == "r") {
-		$selact1 = "";
+		$selact2 = '';
+	} elseif ($action == 'r') {
+		$selact1 = '';
 		$selact2 = 'selected="selected"';
 	}
 	echo '<tr><td>'._ACTIVATE2.'</td><td><input type="radio" name="active" value="1" '.$sel1.' />'._YES.' &nbsp;&nbsp;'
