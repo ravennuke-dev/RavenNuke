@@ -94,7 +94,7 @@ function messages() {
 	while ($row = $db->sql_fetchrow($result)) {
 		$groups = $row['groups'];
 		$mid = intval($row['mid']);
-		$title = $row['title'];
+		$title = htmlspecialchars($row['title'], ENT_QUOTES, _CHARSET);
 		$msgcontent = $row['content'];
 		$mdate = $row['date'];
 		$expire = intval($row['expire']);
@@ -197,6 +197,7 @@ function editmsg($mid) {
 	$row = $db->sql_fetchrow($db->sql_query('SELECT * from ' . $prefix . '_message WHERE mid=\'' . $mid . '\''));
 	$groups = $row['groups'];
 	$title = $row['title'];
+	$title = htmlspecialchars($row['title'], ENT_QUOTES, _CHARSET);
 	$msgcontent = $row['content'];
 	$mdate = $row['date'];
 	$expire = intval($row['expire']);
@@ -245,7 +246,10 @@ function editmsg($mid) {
 		. '<input type="text" name="title" value="' . $title . '" size="50" maxlength="100" /><br /><br />'
 		. '<span class="thick">' . _MESSAGECONTENT . ':</span><br />';
 	//  ."<textarea name="content" rows="15" wrap="virtual" cols="60">$content</textarea><br /><br />";
-	if (!isset($advanced_editor) || $advanced_editor == 0) $msgcontent = htmlentities($msgcontent, ENT_QUOTES); // Necessary to ensure XHTML compliance if editor is off
+	if (!isset($advanced_editor) || $advanced_editor == 0) {
+		$msgcontent = htmlspecialchars($msgcontent, ENT_QUOTES, _CHARSET);
+		// Necessary to ensure XHTML compliance if editor is off
+	}
 	wysiwyg_textarea('msgcontent', $msgcontent, 'PHPNukeAdmin', '60', '15');
 	echo '<br /><br />';
 	if ($multilingual == 1) {
@@ -311,8 +315,8 @@ function savemsg($mid, $title, $msgcontent, $mdate, $expire, $active, $view, $gr
 		$ingroups = '';
 	}
 	$mid = intval($mid);
-	$title = stripslashes(FixQuotes($title));
-	$msgcontent = stripslashes(FixQuotes($msgcontent));
+	$title = $db->sql_escape_string(html_entity_decode(check_html($title, 'nohtml'),ENT_QUOTES));
+	$msgcontent = $db->sql_escape_string(check_html($msgcontent, ''));
 	if ($chng_date == 1) {
 		$newdate = time();
 	} elseif ($chng_date == 0) {
@@ -330,10 +334,8 @@ function addmsg($add_title, $add_content, $add_mdate, $add_expire, $add_active, 
 	if ($add_view < 6) {
 		$ingroups = '';
 	}
-//	$add_title = addslashes($add_title); // 2.30.01 Mantis 1328 - Palbin
-//	$add_content = addslashes($add_content); // 2.30.01 Mantis 1328 - Palbin
-   $add_title   = stripslashes(FixQuotes($add_title)); // 2.30.01 Mantis 1328 - Palbin
-   $add_content = stripslashes(FixQuotes($add_content)); // 2.30.01 Mantis 1328 - Palbin
+	$title = $db->sql_escape_string(html_entity_decode(check_html($title, 'nohtml'),ENT_QUOTES));
+	$msgcontent = $db->sql_escape_string(check_html($msgcontent, ''));
 	$result = $db->sql_query('INSERT INTO ' . $prefix . '_message values (NULL, \'' . $add_title . '\', \'' . $add_content . '\', \'' . $add_mdate . '\', \'' . $add_expire . '\', \'' . $add_active . '\', \'' . $add_view . '\', \'' . $ingroups . '\', \'' . $add_mlanguage . '\')');
 	if (!$result) {
 		exit();
