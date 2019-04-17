@@ -248,3 +248,8 @@ img.IBuserLG,img.IBglobeLG,img.IBpmsLG,img.IBmembersLG,img.IBnewusersLG,img.IBse
 .minmax{min-width:800px;max-width:1600px;margin:0 auto}
 #noscript-warning{font-family:sans-serif;position:fixed;top:0px;left:0px;width:100%;z-index:101;text-align:center;font-weight:bold;font-size:120%;color:#fff;background-color:#AE0000;padding:5px 0px 5px 0px;}
 #noscript-warning a {text-decoration:underline;color:#fff;}
+.postbody img {max-width: 500px; border:0 none;}
+.forumHideLink{padding:3px;margin:1px;}
+.block-ForumsCollapsing select {width: 100%; cursor: pointer;}
+.block-ForumsCollapsing td {width: 50%;}
+.img-fluid {max-width: 100%; height: auto;}
