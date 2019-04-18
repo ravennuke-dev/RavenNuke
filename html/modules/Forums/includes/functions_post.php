@@ -118,7 +118,7 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
         // Check subject
         if (!empty($subject))
         {
-                $subject = htmlspecialchars(trim($subject), ENT_COMPAT, _CHARSET);
+                $subject = htmlspecialchars(trim($subject), ENT_QUOTES, _CHARSET);
         }
         else if ($mode == 'newtopic' || ($mode == 'editpost' && $post_data['first_post']))
         {
@@ -145,7 +145,7 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
 
                 if (!empty($poll_title))
                 {
-                        $poll_title = htmlspecialchars(check_html($poll_title, 'nohtml'), ENT_COMPAT, _CHARSET);
+                        $poll_title = htmlspecialchars(check_html($poll_title, 'nohtml'), ENT_QUOTES, _CHARSET);
                 }
 
                 if(!empty($poll_options))
@@ -156,7 +156,7 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
                                 $option_text = trim($option_text);
                                 if (!empty($option_text))
                                 {
-					$temp_option_text[intval($option_id)] = htmlspecialchars($option_text, ENT_COMPAT, _CHARSET);
+					$temp_option_text[intval($option_id)] = htmlspecialchars($option_text, ENT_COMPAT);
                                 }
                         }
                         $option_text = $temp_option_text;
@@ -191,8 +191,9 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
 
         $current_time = time();
         $post_subject = $db->sql_escape_string(htmlspecialchars_decode(check_html($post_subject, 'nohtml'), ENT_QUOTES));
-        $post_message = $db->sql_escape_string($post_message);
+        #$post_message = $db->sql_escape_string($post_message);
         $poll_title = $db->sql_escape_string(htmlspecialchars_decode(check_html($poll_title, 'nohtml'), ENT_QUOTES));
+
 
         if ($mode == 'newtopic' || $mode == 'reply' || $mode == 'editpost')
         {
@@ -303,7 +304,7 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
                 {
                         if (!empty($option_text))
                         {
-                                $option_text = str_replace("\'", "''", htmlspecialchars($option_text, ENT_COMPAT, _CHARSET));
+                                $option_text = str_replace("\'", "''", htmlspecialchars($option_text, ENT_COMPAT));
                                 $poll_result = ($mode == "editpost" && isset($old_poll_result[$option_id])) ? $old_poll_result[$option_id] : 0;
 
 				$sql = ($mode != "editpost" || !isset($old_poll_result[$option_id])) ? "INSERT INTO " . VOTE_RESULTS_TABLE . " (vote_id, vote_option_id, vote_option_text, vote_result) VALUES ($poll_id, $poll_option_id, '$option_text', $poll_result)" : "UPDATE " . VOTE_RESULTS_TABLE . " SET vote_option_text = '$option_text', vote_result = $poll_result WHERE vote_option_id = $option_id AND vote_id = $poll_id";
@@ -860,7 +861,7 @@ function clean_html($tag)
 		}
 		else
 		{
-			return  htmlspecialchars('</' . $matches[1] . '>', ENT_COMPAT, _CHARSET);
+			return  htmlspecialchars('</' . $matches[1] . '>', ENT_COMPAT);
         }
 }
 
@@ -877,7 +878,7 @@ function clean_html($tag)
 				{
 					continue;
 				}
-				$attributes .= ' ' . $test[1][$i] . '=' . $test[2][$i] . str_replace(array('[', ']'), array('&#91;', '&#93;'), htmlspecialchars($test[3][$i], ENT_COMPAT, _CHARSET)) . $test[2][$i];
+				$attributes .= ' ' . $test[1][$i] . '=' . $test[2][$i] . str_replace(array('[', ']'), array('&#91;', '&#93;'), htmlspecialchars($test[3][$i], ENT_QUOTES, _CHARSET)) . $test[2][$i];
 			}
 		}
 		if (in_array(strtolower($tag[1]), $allowed_html_tags))
@@ -886,13 +887,13 @@ function clean_html($tag)
 		}
 		else
 		{
-			return htmlspecialchars('<' . $tag[1] . $attributes . '>', ENT_COMPAT, _CHARSET);
+			return htmlspecialchars('<' . $tag[1] . $attributes . '>', ENT_COMPAT);
 		}
 	}
 	// Finally, this is not an allowed tag so strip all the attibutes and escape it
 	else
 	{
-		return htmlspecialchars('<' .   $tag[1] . '>', ENT_COMPAT, _CHARSET);
+		return htmlspecialchars('<' .   $tag[1] . '>', ENT_COMPAT);
 	}
 }
 ?>
