@@ -44,6 +44,8 @@
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  */
 
+
+
 /**
  * SimplePie Name
  */
@@ -52,13 +54,13 @@ define('SIMPLEPIE_NAME', 'SimplePie');
 /**
  * SimplePie Version
  */
-define('SIMPLEPIE_VERSION', '1.5.1');
+define('SIMPLEPIE_VERSION', '1.5.2');
 
 /**
  * SimplePie Build
  * @todo Hardcode for release (there's no need to have to call SimplePie_Misc::get_build() only every load of simplepie.inc)
  */
-define('SIMPLEPIE_BUILD', '20180330154558');
+define('SIMPLEPIE_BUILD', '20190418014214');
 
 /**
  * SimplePie Website URL
@@ -403,6 +405,8 @@ define('SIMPLEPIE_FILE_SOURCE_CURL', 8);
  * file_get_contents() file source
  */
 define('SIMPLEPIE_FILE_SOURCE_FILE_GET_CONTENTS', 16);
+
+
 
 /**
  * SimplePie
@@ -1471,7 +1475,7 @@ class SimplePie
 					// Cache the file if caching is enabled
 					if ($cache && !$cache->save($this))
 					{
-						trigger_error("$this->cache_location is not writeable. Make sure you've set the correct relative or absolute path, and that the location is server-writable.", E_USER_WARNING);
+						trigger_error("$this->cache_location is not writable. Make sure you've set the correct relative or absolute path, and that the location is server-writable.", E_USER_WARNING);
 					}
 					return true;
 				}
@@ -1708,7 +1712,7 @@ class SimplePie
 					$this->data = array('url' => $this->feed_url, 'feed_url' => $file->url, 'build' => SIMPLEPIE_BUILD);
 					if (!$cache->save($this))
 					{
-						trigger_error("$this->cache_location is not writeable. Make sure you've set the correct relative or absolute path, and that the location is server-writable.", E_USER_WARNING);
+						trigger_error("$this->cache_location is not writable. Make sure you've set the correct relative or absolute path, and that the location is server-writable.", E_USER_WARNING);
 					}
 					$cache = $this->registry->call('Cache', 'get_handler', array($this->cache_location, call_user_func($this->cache_name_function, $file->url), 'spc'));
 				}
@@ -2857,6 +2861,7 @@ class SimplePie
 		return null;
 	}
 
+
 	/**
 	 * Get the feed logo's link
 	 *
@@ -3605,6 +3610,8 @@ abstract class SimplePie_Cache_DB implements SimplePie_Cache_Base
 	}
 }
 
+
+
 /**
  * Caches data to the filesystem
  *
@@ -3665,7 +3672,7 @@ class SimplePie_Cache_File implements SimplePie_Cache_Base
 	 */
 	public function save($data)
 	{
-		if (file_exists($this->name) && is_writeable($this->name) || file_exists($this->location) && is_writeable($this->location))
+		if (file_exists($this->name) && is_writable($this->name) || file_exists($this->location) && is_writable($this->location))
 		{
 			if ($data instanceof SimplePie)
 			{
@@ -4387,6 +4394,10 @@ class SimplePie_Cache_MySQL extends SimplePie_Cache_DB
 	}
 }
 
+
+
+
+
 /**
  * Caches data to redis
  *
@@ -4441,6 +4452,12 @@ class SimplePie_Cache_Redis implements SimplePie_Cache_Base {
         $parsed = SimplePie_Cache::parse_URL($location);
         $redis = new Redis();
         $redis->connect($parsed['host'], $parsed['port']);
+        if (isset($parsed['pass'])) {
+            $redis->auth($parsed['pass']);
+        }
+        if (isset($parsed['path'])) {
+            $redis->select((int)substr($parsed['path'], 1));
+        }
         $this->cache = $redis;
 
         if (!is_null($options) && is_array($options)) {
@@ -8994,7 +9011,7 @@ class SimplePie_IRI
 		{
 			$iri .= $this->ipath;
 		}
-		elseif (!empty($this->normalization[$this->scheme]['ipath']) && $iauthority !== null && $iauthority !== '')
+        elseif (!empty($this->normalization[$this->scheme]['ipath']) && $iauthority !== null && $iauthority !== '')
 		{
 			$iri .= $this->normalization[$this->scheme]['ipath'];
 		}
@@ -9038,7 +9055,7 @@ class SimplePie_IRI
 			{
 				$iauthority .= $this->ihost;
 			}
-			if ($this->port !== null)
+            if ($this->port !== null && $this->port !== 0)
 			{
 				$iauthority .= ':' . $this->port;
 			}
@@ -14814,6 +14831,9 @@ class SimplePie_Net_IPv6
 	}
 }
 
+
+
+
 /**
  * Date Parser
  *
@@ -14917,6 +14937,14 @@ class SimplePie_Parse_Date
 		'Παρ' => 5,
 		'Σαβ' => 6,
 		'Κυρ' => 7,
+		// Russian
+		'Пн.' => 1,
+		'Вт.' => 2,
+		'Ср.' => 3,
+		'Чт.' => 4,
+		'Пт.' => 5,
+		'Сб.' => 6,
+		'Вс.' => 7,
 	);
 
 	/**
@@ -15061,7 +15089,33 @@ class SimplePie_Parse_Date
 		'Σεπ' => 9,
 		'Οκτ' => 10,
 		'Νοέ' => 11,
-		'Δεκ' => 12,
+		'Δεκ' => 12,		
+		// Russian
+		'Янв' => 1,
+		'января' => 1,
+		'Фев' => 2,
+		'февраля' => 2,
+		'Мар' => 3,
+		'марта' => 3,
+		'Апр' => 4,
+		'апреля' => 4,
+		'Май' => 5,
+		'мая' => 5,
+		'Июн' => 6,
+		'июня' => 6,
+		'Июл' => 7,
+		'июля' => 7,
+		'Авг' => 8,
+		'августа' => 8,
+		'Сен' => 9,
+		'сентября' => 9,
+		'Окт' => 10,
+		'октября' => 10,
+		'Ноя' => 11,
+		'ноября' => 11,
+		'Дек' => 12,
+		'декабря' => 12,
+
 	);
 
 	/**
@@ -17045,7 +17099,7 @@ class SimplePie_Sanitize
 									}
 									else
 									{
-										trigger_error("$this->cache_location is not writeable. Make sure you've set the correct relative or absolute path, and that the location is server-writable.", E_USER_WARNING);
+										trigger_error("$this->cache_location is not writable. Make sure you've set the correct relative or absolute path, and that the location is server-writable.", E_USER_WARNING);
 									}
 								}
 							}
