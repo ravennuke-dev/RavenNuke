@@ -111,7 +111,9 @@ if(!empty($aid) AND empty($_COOKIE['admin']) AND $op != 'login') { die(_AB_FALSE
 // Stop Santy Worm
 if($ab_config['santy_protection'] == 1) {
 	$bad_uri_content=array('rush', 'highlight=%', 'perl', 'chr(', 'pillar', 'visualcoder', 'sess_');
-	while(list($stid,$uri_content)=each($bad_uri_content)) { if(stristr($_SERVER['REQUEST_URI'], $uri_content)) { die(_AB_SANTY); } }
+	foreach($bad_uri_content as $stid => $uri_content) {
+		if(stristr($_SERVER['REQUEST_URI'], $uri_content)) { die(_AB_SANTY); }
+	}
 }
 
 // Invalid ip check
