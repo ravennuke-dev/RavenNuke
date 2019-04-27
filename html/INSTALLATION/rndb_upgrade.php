@@ -2547,6 +2547,12 @@ function rn25100() {
 	$sql = 'ALTER TABLE `' . $prefix . '_reviews` CHANGE `date` `date` DATE NULL DEFAULT NULL';
 	sqlexec($sql);
 
+	if ($db->sql_numrows($db->sql_query('SELECT * FROM `' . $prefix . '_nsnst_config` WHERE `config_name` = "blocked_clear"')) == 0) {
+		$sql = 'INSERT INTO `' . $prefix . '_nsnst_config` VALUES ("blocked_clear", "0")';
+		# 2019.04.25 neralex: Taken from rndb_upgrade_nukesentinel.php add while upgrading
+		sqlexec($sql);
+	}
+
 	$already_ran = true;
 	return;
 }

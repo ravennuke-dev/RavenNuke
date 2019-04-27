@@ -152,10 +152,18 @@ if( $ab_config['site_switch'] == 1 AND !stristr($_SERVER['PHP_SELF'], $admin_fil
 // CAUTION: This function can slow your sites load time
 $clearedtime = strtotime(date('Y-m-d 23:59:59', $nsnst_const['ban_time']));
 $cleartime = strtotime(date('Y-m-d 23:59:59', $nsnst_const['ban_time'])) - 86400;
-if( $ab_config['self_expire'] == 1 AND $cleartime < $clearedtime) {
+if( $ab_config['self_expire'] == 1 AND $ab_config['blocked_clear'] < $clearedtime) {
+
+	// check if minimum one blocker configured for save in htaccess file
+	$htnum = $db->sql_numrows($db->sql_query('SELECT * FROM `' . $prefix . '_nsnst_blockers` WHERE `htaccess`!="0" '));
+
+	// if the value are 0, there is no need to optimize the tables
+	$optimize_blocked_ips = 0;
+	$optimize_blocked_ranges = 0;
+
 	$clearresult = $db->sql_query('SELECT * FROM `' . $prefix. '_nsnst_blocked_ips` WHERE (`expires` < "' . $clearedtime . '" AND `expires`!="0")');
 	while($clearblock = $db->sql_fetchrow($clearresult)) {
-		if(!empty($ab_config['htaccess_path'])) {
+		if(!empty($ab_config['htaccess_path']) AND $htnum > 0) {
 			$ipfile = file($ab_config['htaccess_path']);
 			$ipfile = implode('', $ipfile);
 			$i = 1;
@@ -169,14 +177,20 @@ if( $ab_config['self_expire'] == 1 AND $cleartime < $clearedtime) {
 			$doit = @fopen($ab_config['htaccess_path'], 'w');
 			@fwrite($doit, $ipfile);
 			@fclose($doit);
+			// count the records, to the check if the table should be optimized
+			$optimize_blocked_ips++;
 		}
 		$db->sql_query('DELETE FROM `' . $prefix . '_nsnst_blocked_ips` WHERE `ip_addr`="' . $clearblock['ip_addr'] . '"');
+		#$db->sql_query('OPTIMIZE TABLE `' . $prefix . '_nsnst_blocked_ips`');
+	}
+	if ($optimize_blocked_ips > 0) {
 		$db->sql_query('OPTIMIZE TABLE `' . $prefix . '_nsnst_blocked_ips`');
 	}
+
 	$clearresult = $db->sql_query('SELECT * FROM `' . $prefix . '_nsnst_blocked_ranges` WHERE (`expires`<"' . $clearedtime . '" AND `expires`!="0")');
 	while($clearblock = $db->sql_fetchrow($clearresult)) {
 		$old_masscidr = ABGetCIDRs($clearblock['ip_lo'], $clearblock['ip_hi']);
-		if(!empty($ab_config['htaccess_path'])) {
+		if(!empty($ab_config['htaccess_path']) AND $htnum > 0) {
 			$old_masscidr = explode('||', $old_masscidr);
 			for ($i=0, $maxi=sizeof($old_masscidr); $i < $maxi; $i++) {
 				if(!empty($old_masscidr[$i])) {
@@ -190,8 +204,13 @@ if( $ab_config['self_expire'] == 1 AND $cleartime < $clearedtime) {
 			$doit = @fopen($ab_config['htaccess_path'], 'w');
 			@fwrite($doit, $ipfile);
 			@fclose($doit);
+			// count the records, to the check if the table should be optimized
+			$optimize_blocked_ranges++;
 		}
 		$db->sql_query('DELETE FROM `' . $prefix . '_nsnst_blocked_ranges` WHERE `ip_lo`="' . $clearblock['ip_lo'] . '" AND `ip_hi`="' . $clearblock['ip_hi'] . '"');
+		#$db->sql_query('OPTIMIZE TABLE `' . $prefix . '_nsnst_blocked_ranges`');
+	}
+	if ($optimize_blocked_ranges > 0) {
 		$db->sql_query('OPTIMIZE TABLE `' . $prefix . '_nsnst_blocked_ranges`');
 	}
 	$db->sql_query('UPDATE `' . $prefix . '_nsnst_config` SET `config_value`="' . $clearedtime . '" WHERE `config_name`="blocked_clear"');

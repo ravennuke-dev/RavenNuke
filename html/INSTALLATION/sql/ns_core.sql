@@ -60,6 +60,7 @@ INSERT INTO $prefix.`_nsnst_cidrs` (`cidr`, `hosts`, `mask`) VALUES(32, 1, '0.0.
 DROP TABLE IF EXISTS $prefix.`_nsnst_config`;
 CREATE TABLE IF NOT EXISTS $prefix.`_nsnst_config` ( `config_name` varchar(255) NOT NULL default '', `config_value` longtext NOT NULL, PRIMARY KEY  (`config_name`)) ENGINE=MyISAM;
 INSERT INTO $prefix.`_nsnst_config` (`config_name`, `config_value`) VALUES('admin_contact', 'webmaster@yoursite.com');
+INSERT INTO $prefix.`_nsnst_config` (`config_name`, `config_value`) VALUES('blocked_clear', '0');
 INSERT INTO $prefix.`_nsnst_config` (`config_name`, `config_value`) VALUES('block_perpage', '50');
 INSERT INTO $prefix.`_nsnst_config` (`config_name`, `config_value`) VALUES('block_sort_column', 'date');
 INSERT INTO $prefix.`_nsnst_config` (`config_name`, `config_value`) VALUES('block_sort_direction', 'desc');
