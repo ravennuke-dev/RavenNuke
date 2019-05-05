@@ -118,7 +118,7 @@ function add_search_words($mode, $post_id, $post_text, $post_title = '')
 	@set_time_limit(0);
         $word = array();
         $word_insert_sql = array();
-        while ( list($word_in, $search_matches) = @each($search_raw_words) )
+        foreach($search_raw_words as $word_in => $search_matches)
         {
                 $word_insert_sql[$word_in] = '';
                 if ( !empty($search_matches) )
@@ -239,7 +239,7 @@ function add_search_words($mode, $post_id, $post_text, $post_title = '')
                 }
         }
 
-        while( list($word_in, $match_sql) = @each($word_insert_sql) )
+        foreach($word_insert_sql as $word_in => $match_sql)
         {
                 $title_match = ( $word_in == 'title' ) ? 1 : 0;
 
