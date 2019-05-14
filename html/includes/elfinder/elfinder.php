@@ -75,7 +75,7 @@ if (!in_array($module . '.php', $plugins)) die('ERROR: The ' . htmlspecialchars(
 				url : 'php/modules/<?PHP echo $_GET['module']; ?>.php',
 				lang : langCode,
 				getFileCallback : function(url) {
-					url = url.replace('../../', '');
+					url = url.url.replace('../../', '');
 					window.opener.CKEDITOR.tools.callFunction(funcNum, url);
 					window.close();
 				},
