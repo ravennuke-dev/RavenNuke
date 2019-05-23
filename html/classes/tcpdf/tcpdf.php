@@ -21618,7 +21618,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 				break;
 			}
 			case 'a': {
-				if (array_key_exists('href', $tag['attribute'])) {
+				if (array_key_exists('href', $tag['attribute']) && (!empty($this->HREF))) {
 					$this->HREF['url'] = $tag['attribute']['href'];
 				}
 				break;
