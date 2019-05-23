@@ -169,7 +169,7 @@ if (($radminsuper==1) OR ($radminuser==1)) {
 		} else {
 			$form_lang = $board_config['default_lang'];
 		}
-		while ( list($displayname, $filename) = each($lang) ) {
+		foreach($lang as $displayname => $filename) {
 			$selected = ( strtolower($form_lang) == strtolower($filename) ) ? ' selected="selected"' : '';
 			echo '<option value="' . $filename . '"' . $selected . '>' . ucwords($displayname) . '</option>';
 		}
