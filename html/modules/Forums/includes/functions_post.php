@@ -298,6 +298,7 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
                 @reset($poll_options);
 
                 $poll_option_id = 1;
+                foreach($poll_options as $option_id => $option_text)
                 while (list($option_id, $option_text) = each($poll_options))
                 {
                         if (!empty($option_text))
@@ -638,7 +639,7 @@ function user_notification($mode, &$post_data, &$topic_title, &$forum_id, &$topi
                                         $topic_title = (count($orig_word)) ? preg_replace($orig_word, $replacement_word, unprepare_message($topic_title)) : unprepare_message($topic_title);
 
                                         @reset($bcc_list_ary);
-                                        while (list($user_lang, $bcc_list) = each($bcc_list_ary))
+                                        foreach($bcc_list_ary as $user_lang => $bcc_list)
                                         {
                                                 $emailer->use_template('topic_notify', $user_lang);
 
