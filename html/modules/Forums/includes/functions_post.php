@@ -151,7 +151,7 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
                 if(!empty($poll_options))
                 {
                         $temp_option_text = array();
-                        foreach($poll_options as $option_id => $$option_text)
+                        while(list($option_id, $option_text) = @each($poll_options))
                         {
                                 $option_text = trim($option_text);
                                 if (!empty($option_text))
