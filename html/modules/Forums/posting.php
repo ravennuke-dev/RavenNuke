@@ -43,7 +43,7 @@ include_once("modules/Forums/includes/functions_post.php");
 // Check and set various parameters
 //
 $params = array('submit' => 'post', 'preview' => 'preview', 'delete' => 'delete', 'poll_delete' => 'poll_delete', 'poll_add' => 'add_poll_option', 'poll_edit' => 'edit_poll_option', 'mode' => 'mode', 'popup' => 'popup');
-while( list($var, $param) = @each($params) )
+foreach($params as $var => $param)
 {
    if ( !empty($HTTP_POST_VARS[$param]) || !empty($HTTP_GET_VARS[$param]) )
    {
@@ -58,7 +58,7 @@ while( list($var, $param) = @each($params) )
 $confirm = isset($HTTP_POST_VARS['confirm']) ? true : false;
 $sid = (isset($HTTP_POST_VARS['sid'])) ? $HTTP_POST_VARS['sid'] : 0;
 $params = array('forum_id' => POST_FORUM_URL, 'topic_id' => POST_TOPIC_URL, 'post_id' => POST_POST_URL);
-while( list($var, $param) = @each($params) )
+foreach($params as $var => $param)
 {
    if ( !empty($HTTP_POST_VARS[$param]) || !empty($HTTP_GET_VARS[$param]) )
    {
