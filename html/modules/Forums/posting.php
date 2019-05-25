@@ -638,9 +638,9 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 {
    $username = ( !empty($HTTP_POST_VARS['username']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['username'])), ENT_QUOTES, _CHARSET) : '';
    $subject = ( !empty($HTTP_POST_VARS['subject']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['subject'])), ENT_QUOTES, _CHARSET) : '';
-   $message = ( !empty($HTTP_POST_VARS['message']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['message']))) : '';
+   $message = ( !empty($HTTP_POST_VARS['message']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['message'])), ENT_QUOTES, _CHARSET) : '';
 
-   $poll_title = ( !empty($HTTP_POST_VARS['poll_title']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['poll_title']))) : '';
+   $poll_title = ( !empty($HTTP_POST_VARS['poll_title']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['poll_title'])), ENT_QUOTES, _CHARSET) : '';
    $poll_length = ( isset($HTTP_POST_VARS['poll_length']) ) ? max(0, intval($HTTP_POST_VARS['poll_length'])) : 0;
 
    $poll_options = array();
@@ -654,14 +654,14 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
          }
          else if ( !empty($option_text) )
          {
-            $poll_options[intval($option_id)] = htmlspecialchars(trim(stripslashes($option_text)));
+            $poll_options[intval($option_id)] = htmlspecialchars(trim(stripslashes($option_text)), ENT_QUOTES, _CHARSET);
          }
       }
    }
 
    if ( isset($poll_add) && !empty($HTTP_POST_VARS['add_poll_option_text']) )
    {
-      $poll_options[] = htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['add_poll_option_text'])));
+      $poll_options[] = htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['add_poll_option_text'])), ENT_QUOTES, _CHARSET);
    }
 
    if ( $mode == 'newtopic' || $mode == 'reply')
@@ -682,7 +682,7 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 
       $bbcode_uid = ( $bbcode_on ) ? make_bbcode_uid() : '';
       $preview_message = stripslashes(prepare_message(addslashes(unprepare_message($message)), $html_on, $bbcode_on, $smilies_on, $bbcode_uid));
-      $preview_subject = htmlspecialchars_decode(check_html($subject, 'nohtml'), ENT_QUOTES);
+      $preview_subject = $subject;
       $preview_username = $username;
 
       //
