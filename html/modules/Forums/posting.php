@@ -646,7 +646,7 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
    $poll_options = array();
    if ( !empty($HTTP_POST_VARS['poll_option_text']) )
    {
-      while( list($option_id, $option_text) = @each($HTTP_POST_VARS['poll_option_text']) )
+      foreach($HTTP_POST_VARS['poll_option_text'] as $option_id => $option_text)
       {
          if( isset($HTTP_POST_VARS['del_poll_option'][$option_id]) )
          {
