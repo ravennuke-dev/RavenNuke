@@ -1086,7 +1086,7 @@ class attach_parent
 
 		if ($this->post_attach) 
 		{
-			$r_file = trim(basename(htmlspecialchars($this->filename, ENT_COMPAT)));
+			$r_file = trim(basename(htmlspecialchars($this->filename, ENT_COMPAT, _CHARSET)));
 			$file = $HTTP_POST_FILES['fileupload']['tmp_name'];
 			$this->type = $HTTP_POST_FILES['fileupload']['type'];
 
