@@ -1204,9 +1204,7 @@ class attach_parent
 					$this->attach_filename = preg_replace_callback(
 						"/([\xC2\xC3])([\x80-\xBF])/",
 						function($matches){
-							foreach($matches as $match){
-								return chr(ord($matches[1])<<6&0xC0|ord($matches[1])&0x3F);
-							}
+							return chr(ord($matches[1])<<6&0xC0|ord($matches[2])&0x3F);
 						}, 
 						$input
 					);
