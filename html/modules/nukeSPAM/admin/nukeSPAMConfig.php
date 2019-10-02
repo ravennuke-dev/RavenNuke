@@ -196,7 +196,7 @@ echo '</select>', PHP_EOL
 	,'<td valign="top">', seoHelp('_SPAM_USE_REG'), ' ', _SPAM_USE_REG, ':</td>', PHP_EOL, chr(10)
 	,'<td>', PHP_EOL;
 $selY = $selN = '';
-if(!empty($seo_config['use_reg']) && $seo_config['use_reg'] == 0) {
+if(empty($seo_config['use_reg'])) {
 	$selN = 'selected="selected"';
 } else {
 	$selY = 'selected="selected"';
@@ -210,7 +210,7 @@ echo '<select name="use_reg">', chr(10), '<option value="1" ', $selY, '>', _YES,
 	,'<td valign="top">', seoHelp('_SPAM_DEBUG'), ' ', _SPAM_DEBUG, ':</td>', PHP_EOL, chr(10)
 	,'<td>', PHP_EOL;
 $selY = $selN = '';
-if(!empty($seo_config['debug']) && $seo_config['debug'] == 0) {
+if(!empty($seo_config['debug'])) {
 	$selN = 'selected="selected"';
 } else {
 	$selY = 'selected="selected"';
@@ -226,7 +226,7 @@ echo '<select name="debug">', PHP_EOL, chr(10)
 	,'<td>', PHP_EOL, chr(10);
 
 $selY = $selN = '';
-if(!empty($seo_config['logToDB']) && $seo_config['logToDB'] == 0) {
+if(!empty($seo_config['logToDB'])) {
 	$selN = 'selected="selected"';
 } else {
 	$selY = 'selected="selected"';
