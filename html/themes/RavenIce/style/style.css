@@ -950,6 +950,7 @@ div.lgl_menu {
 td.attachrow		{ font: normal 11px Verdana, Arial, Helvetica, sans-serif; }
 td.attachheader     { font: normal 11px Verdana, Arial, Helvetica, sans-serif; }
 table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; border-collapse : collapse; }
+table.attachtable img {max-width: 500px; border: 0 none;}
 /* DEFAULT CSS OVERRIDES */
 /* Side Block styling */
 .ul-box {width:130px} /* container for side block lists: for proper display in ie7 */
