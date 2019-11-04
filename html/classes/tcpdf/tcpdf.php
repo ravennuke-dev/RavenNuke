@@ -4102,11 +4102,11 @@ class TCPDF {
 			$cell_height = round(($this->cell_height_ratio * $headerfont[2]) / $this->k, 2);
 			// set starting margin for text data cell
 			if ($this->getRTL()) {
-				$header_x = $this->original_rMargin + ($headerdata['logo_width'] * 1.1);
+				$header_x = $this->original_rMargin + ((int)$headerdata['logo_width'] * 1.1);
 			} else {
-				$header_x = $this->original_lMargin + ($headerdata['logo_width'] * 1.1);
+				$header_x = $this->original_lMargin + ((int)$headerdata['logo_width'] * 1.1);
 			}
-			$cw = $this->w - $this->original_lMargin - $this->original_rMargin - ($headerdata['logo_width'] * 1.1);
+			$cw = $this->w - $this->original_lMargin - $this->original_rMargin - ((int)$headerdata['logo_width'] * 1.1);
 			$this->SetTextColor(0, 0, 0);
 			// header title
 			$this->SetFont($headerfont[0], 'B', $headerfont[2] + 1);
