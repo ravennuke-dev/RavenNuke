@@ -174,7 +174,7 @@ function timeCombos($hName, $mName, $merName, $time, $disabled = false, $time24 
 
 function dateCombos($yName, $mName, $dName, $date, $config, $disabled = false) {
 	$result = validDate($date);
-	if (count($result) == 3) {
+	if (is_array($result) && count($result) == 3) {
 		$y = $result[0];
 		$m = $result[1];
 		$d = $result[2];
