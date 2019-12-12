@@ -22,6 +22,7 @@ if (!file_exists('includes/nukesentinel.php')) {
 $module_name = basename(dirname(__FILE__));
 get_lang($module_name);
 $pagetitle = '- ' . _RECOMMEND;
+if (empty($sid)) {Header('Location: index.php');}
 if (!is_user($user)) {
 	Header('Location: modules.php?name=' . $module_name . '&file=article&sid=' . $sid);
 	die();
