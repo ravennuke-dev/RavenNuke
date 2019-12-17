@@ -343,7 +343,7 @@ function nukeSPAMconfigDB($config, $desc, $key) {
 		,'<td>', constant($desc), '</td>', PHP_EOL,chr(10);
 	if (defined($desc.'_HLP')) echo '<td>', seoHelp($desc), '</td>', PHP_EOL;
 	else echo '<td>&nbsp;</td>', PHP_EOL;
-	if (!empty($key) && !empty($seo_config[$key])) {
+	if (!empty($key) && isset($seo_config[$key])) {
 		echo '<td><input name="', $key, '" type="text" value="', $seo_config[$key], '"/></td>', PHP_EOL;
 	} else {
 		echo '<td>&nbsp;</td>', PHP_EOL;
