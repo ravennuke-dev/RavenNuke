@@ -249,10 +249,11 @@ if (isset($_POST['weekSelect'])) {
 	list($year, $month, $day) = explode('-', $_POST['weekSelect']);
 	$printable = isset($_POST['printable']);
 } else {
-	$year		 = intval($_GET['y']);
-	$month		= intval($_GET['m']);
-	$day		  = intval($_GET['d']);
-	$printable  = isset($_GET['printable']);
+	list($curYear, $curMonth, $curDay) = explode(',', date('Y,n,j'));
+	$year = (isset($_GET['y'])) ? intval($_GET['y']) : $curYear;
+	$month = (isset($_GET['m'])) ? intval($_GET['m']) : $curMonth;
+	$day = (isset($_GET['d'])) ? intval($_GET['d']) : $curDay;
+	$printable = isset($_GET['printable']);
 }
 
 if ($printable) {
