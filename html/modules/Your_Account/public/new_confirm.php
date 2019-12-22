@@ -155,7 +155,7 @@ if (empty($errormsg)) {
 	OpenTable();
 	echo '<div><form action="modules.php?name=' . $module_name . '&amp;op=new_user" method="post">';
 	echo '<div class="text-center title"><strong>' . _ERRORREG . '</strong></div><br /><br />';
-	if (function_exists('nukeSPAM')) {
+	if (function_exists('nukeSPAM') && is_array($nukeSPAM)) {
 		$check_nukeSPAM = array_keys($nukeSPAM, true);
 		if (!empty($check_nukeSPAM)) {
 			echo '<div class="text-center title">' . $nukeSPAM['constant'] . $nukeSPAM['constant_ext1'] . $nukeSPAM['jsadress'] . '</div>'
