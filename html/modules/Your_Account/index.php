@@ -257,14 +257,18 @@ switch ($op) {
 		}
 		break;
 	case 'logout':
-		$r_uid = $cookie[0];
-		$r_username = $cookie[1];
+		$userinfo = '';
+		if (is_user($user)) {
+			$userinfo = getusrinfo($user);
+		}
 		setcookie('user');
 		if (trim($ya_config['cookiepath']) != '') setcookie('user', 'expired', time() -604800, $ya_config['cookiepath']); //correct the problem of path change
-		$db->sql_query('DELETE FROM ' . $prefix . '_session WHERE uname=\'' . $r_username . '\'');
-		$db->sql_query('OPTIMIZE TABLE ' . $prefix . '_session');
-		$db->sql_query('DELETE FROM ' . $prefix . '_bbsessions WHERE session_user_id=\'' . $r_uid . '\'');
-		$db->sql_query('OPTIMIZE TABLE ' . $prefix . '_bbsessions');
+		if ($userinfo != '') {
+			$db->sql_query('DELETE FROM ' . $prefix . '_session WHERE uname=\'' . $userinfo['username'] . '\'');
+			$db->sql_query('OPTIMIZE TABLE ' . $prefix . '_session');
+			$db->sql_query('DELETE FROM ' . $prefix . '_bbsessions WHERE session_user_id=\'' . $userinfo['user_id'] . '\'');
+			$db->sql_query('OPTIMIZE TABLE ' . $prefix . '_bbsessions');
+		}
 		$user = '';
 		include_once 'header.php';
 		if ($redirect != '') {
