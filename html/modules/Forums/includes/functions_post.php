@@ -190,8 +190,6 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
         include_once("modules/Forums/includes/functions_search.php");
 
         $current_time = time();
-        $post_subject = $db->sql_escape_string(htmlspecialchars_decode(check_html($post_subject, 'nohtml'), ENT_QUOTES));
-        $poll_title = $db->sql_escape_string(htmlspecialchars_decode(check_html($poll_title, 'nohtml'), ENT_QUOTES));
 
         if ($mode == 'newtopic' || $mode == 'reply' || $mode == 'editpost')
         {
