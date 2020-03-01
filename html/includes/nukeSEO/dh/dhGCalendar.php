@@ -35,6 +35,8 @@ class dhGCalendar extends dhclass {
 		$m = intval($m);
 		$d = intval($d);
 		$y = intval($y);
+		require_once 'modules/' . $this->getModuleName() . '/language.php';
+		gcalGetLang($this->getModuleName());
 		require_once 'modules/' . $this->getModuleName() . '/gcal.inc.php';
 		require_once 'modules/' . $this->getModuleName() . '/common.inc.php';
 		$config = getConfig();
