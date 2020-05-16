@@ -111,7 +111,7 @@ if ($db->sql_numrows($result) == 1) {
 		. $user_sig . '\', \'' . $user_sig_bbcode_uid . '\', \'' . $bio . '\', \'' . $user_password . '\', \'' . $user_regdate . '\', \'1\')';
 	$db->sql_query($sql);
 	$new_uid = $db->sql_nextid();
-	if ($new_uid !== false && $new_uid != 0) {;
+	if ($new_uid !== false && $new_uid != 0) {
 		$db->sql_query('DELETE FROM ' . $user_prefix . '_users_temp WHERE username=\'' . $username . '\'');
 		$res = $db->sql_query('SELECT * FROM ' . $user_prefix . '_users_temp_field_values WHERE uid = \'' . $row['user_id'] . '\'');
 		while ($sqlvalue = $db->sql_fetchrow($res)) {
