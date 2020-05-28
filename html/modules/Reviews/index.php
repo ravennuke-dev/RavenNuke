@@ -400,15 +400,19 @@ function reviews_index() {
 	$y = 1;
 	for ($x = 0;$x < 10;$x++) {
 		$myrow = $db->sql_fetchrow($result_pop);
-		$id = intval($myrow['id']);
-		$title = $myrow['title'];
-		$hits = intval($myrow['hits']);
-		echo '<tr><td width="50%" bgcolor="' . $bgcolor3 . '">' . $y . ') <a href="modules.php?name=' . $module_name . '&amp;rop=showcontent&amp;id=' . $id . '">' . $title . '</a></td>';
+		if (isset($myrow['id'])) {
+			$id = intval($myrow['id']);
+			$title = $myrow['title'];
+			$hits = intval($myrow['hits']);
+			echo '<tr><td width="50%" bgcolor="' . $bgcolor3 . '">' . $y . ') <a href="modules.php?name=' . $module_name . '&amp;rop=showcontent&amp;id=' . $id . '">' . $title . '</a></td>';
+		}
 		$myrow2 = $db->sql_fetchrow($result_rec);
-		$id = intval($myrow2['id']);
-		$title = $myrow2['title'];
-		$hits = intval($myrow2['hits']);
-		echo '<td width="50%" bgcolor="' . $bgcolor3 . '">' . $y . ') <a href="modules.php?name=' . $module_name . '&amp;rop=showcontent&amp;id=' . $id . '">' . $title . '</a></td></tr>';
+		if (isset($myrow2['id'])) {
+			$id = intval($myrow2['id']);
+			$title = $myrow2['title'];
+			$hits = intval($myrow2['hits']);
+			echo '<td width="50%" bgcolor="' . $bgcolor3 . '">' . $y . ') <a href="modules.php?name=' . $module_name . '&amp;rop=showcontent&amp;id=' . $id . '">' . $title . '</a></td></tr>';
+		}
 		$y++;
 	}
 	echo '<tr><td colspan="2"><br /></td></tr>';
