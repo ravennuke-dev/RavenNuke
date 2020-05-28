@@ -601,7 +601,11 @@ define('_YA_NEED3_REQUIREDNOTE','K&ouml;telez&otilde; a regisztr&aacute;ci&oacut
 define('_YA_NEED4_OPTIONALONLY','Displayed On Registration Only');
 define('_YA_NEED5_REQUIREDONLY','Required During Registration Only');
 define('_YA_NEWAVATAR','Az &Ouml;n &uacute;j Avatarja');
-define('_YA_NICKLENGTH','Felhaszn&aacute;l&oacute;i n&eacute;v hossza legal&aacute;bb '.$ya_config['nick_min'].', maximum '.$ya_config['nick_max'].' karakter.');
+if (is_array($ya_config) && !empty($ya_config['nick_min']) && !empty($ya_config['nick_max'])) {
+	define('_YA_NICKLENGTH','Felhaszn&aacute;l&oacute;i n&eacute;v hossza legal&aacute;bb '.$ya_config['nick_min'].', maximum '.$ya_config['nick_max'].' karakter.');
+} else {
+	define('_YA_NICKLENGTH','[ERROR: $ya_config array not exists!]');
+}
 define('_YA_NICKMAX','Felhaszn&aacute;l&oacute;i n&eacute;v maxim&aacute;lis hossza');
 define('_YA_NICKMIN','Felhaszn&aacute;l&oacute;i n&eacute;v minim&aacute;lis hossza');
 define('_YA_NONEXPIRE','Soha');
@@ -612,7 +616,11 @@ define('_YA_OFFSITE','Link az off-site Avatarhoz');
 define('_YA_ONCAT','kateg&oacute;ri&aacute;ban');
 define('_YA_PAGE','oldal');
 define('_YA_PAGES','oldal');
-define('_YA_PASSLENGTH','Jelsz&oacute; n&eacute;v hossza legal&aacute;bb '.$ya_config['pass_min'].', maximum '.$ya_config['pass_max'].' karakter.');
+if (is_array($ya_config) && !empty($ya_config['pass_min']) && !empty($ya_config['pass_max'])) {
+	define('_YA_PASSLENGTH','Jelsz&oacute; n&eacute;v hossza legal&aacute;bb '.$ya_config['pass_min'].', maximum '.$ya_config['pass_max'].' karakter.');
+} else {
+	define('_YA_PASSLENGTH','[ERROR: $ya_config array not exists!]');
+}
 define('_YA_PASSMAX','Jelsz&oacute; maxim&aacute;lis hossza');
 define('_YA_PASSMIN','Jelsz&oacute; minim&aacute;lis hossza');
 define('_YA_PASSWORD','Jelsz&oacute;');

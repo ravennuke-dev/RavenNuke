@@ -601,7 +601,11 @@ define('_YA_NEED3_REQUIREDNOTE', 'Required During Registration');
 define('_YA_NEED4_OPTIONALONLY','Displayed On Registration Only');
 define('_YA_NEED5_REQUIREDONLY','Required During Registration Only');
 define('_YA_NEWAVATAR', 'Votre nouvel Avatar');
-define('_YA_NICKLENGTH', 'Le Pseudo peut Otre de ' . $ya_config['nick_min'] . ' a ' . $ya_config['nick_max'] . ' caractFres.');
+if (is_array($ya_config) && !empty($ya_config['nick_min']) && !empty($ya_config['nick_max'])) {
+	define('_YA_NICKLENGTH', 'Le Pseudo peut Otre de ' . $ya_config['nick_min'] . ' a ' . $ya_config['nick_max'] . ' caractFres.');
+} else {
+	define('_YA_NICKLENGTH','[ERROR: $ya_config array not exists!]');
+}
 define('_YA_NICKMAX', 'Longueur Maximale du Pseudo');
 define('_YA_NICKMIN', 'Longueur Minimale du Pseudo');
 define('_YA_NONEXPIRE', 'Jamais');
@@ -612,7 +616,11 @@ define('_YA_OFFSITE', 'Lien vers un avatar d\'un autre site');
 define('_YA_ONCAT', 'par catTgorie');
 define('_YA_PAGE', 'Page');
 define('_YA_PAGES', 'Pages');
-define('_YA_PASSLENGTH', 'Le mot de passe peut Otre de ' . $ya_config['pass_min'] . ' a ' . $ya_config['pass_max'] . ' caractFres.');
+if (is_array($ya_config) && !empty($ya_config['pass_min']) && !empty($ya_config['pass_max'])) {
+	define('_YA_PASSLENGTH', 'Le mot de passe peut Otre de ' . $ya_config['pass_min'] . ' a ' . $ya_config['pass_max'] . ' caractFres.');
+} else {
+	define('_YA_PASSLENGTH','[ERROR: $ya_config array not exists!]');
+}
 define('_YA_PASSMAX', 'Longueur Maximale du Mot de Passe');
 define('_YA_PASSMIN', 'Longueur Minimale du Mot de Passe');
 define('_YA_PASSWORD', 'Mot de Passe');

@@ -601,7 +601,11 @@ define('_YA_NEED3_REQUIREDNOTE','P&aring;krevd under registreringen');
 define('_YA_NEED4_OPTIONALONLY','Displayed On Registration Only');
 define('_YA_NEED5_REQUIREDONLY','Required During Registration Only');
 define('_YA_NEWAVATAR','Din nye Avatar');
-define('_YA_NICKLENGTH','Brukernavn m&aring; v&aelig;re fra '.$ya_config['nick_min'].' til '.$ya_config['nick_max'].' tegn langt.');
+if (is_array($ya_config) && !empty($ya_config['nick_min']) && !empty($ya_config['nick_max'])) {
+	define('_YA_NICKLENGTH','Brukernavn m&aring; v&aelig;re fra '.$ya_config['nick_min'].' til '.$ya_config['nick_max'].' tegn langt.');
+} else {
+	define('_YA_NICKLENGTH','[ERROR: $ya_config array not exists!]');
+}
 define('_YA_NICKMAX','Maksimum lengde p&aring; Brukernavn');
 define('_YA_NICKMIN','Minimu lengde p&aring; Brukernavn');
 define('_YA_NONEXPIRE','Aldri');
@@ -612,7 +616,11 @@ define('_YA_OFFSITE','Link til Avatar p&aring; annen side');
 define('_YA_ONCAT','i Kategorien');
 define('_YA_PAGE','Side');
 define('_YA_PAGES','Sider');
-define('_YA_PASSLENGTH','Passordet m&aring; best&aring; av '.$ya_config['pass_min'].' til '.$ya_config['pass_max'].' tegn.');
+if (is_array($ya_config) && !empty($ya_config['pass_min']) && !empty($ya_config['pass_max'])) {
+	define('_YA_PASSLENGTH','Passordet m&aring; best&aring; av '.$ya_config['pass_min'].' til '.$ya_config['pass_max'].' tegn.');
+} else {
+	define('_YA_PASSLENGTH','[ERROR: $ya_config array not exists!]');
+}
 define('_YA_PASSMAX','Maksimum lengde p&aring; Passordet');
 define('_YA_PASSMIN','Minimum lengde p&aring; Passordet');
 define('_YA_PASSWORD','Passord');

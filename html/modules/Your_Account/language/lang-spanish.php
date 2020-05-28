@@ -601,7 +601,11 @@ define('_YA_NEED3_REQUIREDNOTE','Requerido durante el registro');
 define('_YA_NEED4_OPTIONALONLY','Displayed On Registration Only');
 define('_YA_NEED5_REQUIREDONLY','Required During Registration Only');
 define('_YA_NEWAVATAR','Tu nuevo avatar');
-define('_YA_NICKLENGTH','El apodo debe tener entre '.$ya_config['nick_min'].' y '.$ya_config['nick_max'].' caracteres de largo.');
+if (is_array($ya_config) && !empty($ya_config['nick_min']) && !empty($ya_config['nick_max'])) {
+	define('_YA_NICKLENGTH','El apodo debe tener entre '.$ya_config['nick_min'].' y '.$ya_config['nick_max'].' caracteres de largo.');
+} else {
+	define('_YA_NICKLENGTH','[ERROR: $ya_config array not exists!]');
+}
 define('_YA_NICKMAX','Longitud m&aacute;xima del nombre de usuario');
 define('_YA_NICKMIN','longitud m&iacute;nima del nombre de usuario');
 define('_YA_NONEXPIRE','Nunca');
@@ -612,7 +616,11 @@ define('_YA_OFFSITE','Enlace a avatar fuera del sitio');
 define('_YA_ONCAT','en la categor&iacute;a');
 define('_YA_PAGE','P&aacute;gina');
 define('_YA_PAGES','P&aacute;ginas');
-define('_YA_PASSLENGTH','La contrase&ntilde;a debe tener entre '.$ya_config['pass_min'].' y '.$ya_config['pass_max'].' caracteres de largo.');
+if (is_array($ya_config) && !empty($ya_config['pass_min']) && !empty($ya_config['pass_max'])) {
+	define('_YA_PASSLENGTH','La contrase&ntilde;a debe tener entre '.$ya_config['pass_min'].' y '.$ya_config['pass_max'].' caracteres de largo.');
+} else {
+	define('_YA_PASSLENGTH','[ERROR: $ya_config array not exists!]');
+}
 define('_YA_PASSMAX','M&aacute;xima longitud de la contrase&ntilde;a');
 define('_YA_PASSMIN','M&iacute;nima longitud de la contrase&ntilde;a');
 define('_YA_PASSWORD','Contrase&ntilde;a');
