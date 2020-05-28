@@ -49,11 +49,19 @@ Function MetAuthorsUpdateAuthors ($articleid,$author){
 }
 // The following function is experimental and is not used as no DB tables exist - no language defines have been created for this function
 Function MetAuthorsColumnists(){
-   $module_name = basename(dirname(__FILE__));
-   global $db, $prefix,$cookie;
-
+	$module_name = basename(dirname(__FILE__));
+	global $db, $prefix, $cookie, $user;
+	if (is_user($user)) {
+		if(!is_array($user)) {
+			$cookie = cookiedecode($user);
+			$uname = $cookie[1];
+		} else {
+			$uname = $user[1];
+		}
+	} else {
+		$uname = 'Anonymous';
+	}
    include_once("header.php");
-   $uname = $cookie[1];
    MetAuthorsMenu();
    //Display author list
    echo "<a name=\"authorlist\">";
@@ -96,9 +104,18 @@ Function MetAuthorsMenu ($currentmenu=""){
 }
 
 Function MetAuthorsStats (){
-   global $db, $admin, $prefix, $top, $cookie, $sitename, $multilingual, $currentlang;
-   $module_name = basename(dirname(__FILE__));
-   $uname = $cookie[1];
+	global $db, $admin, $prefix, $top, $cookie, $user, $sitename, $multilingual, $currentlang;
+	$module_name = basename(dirname(__FILE__));
+	if (is_user($user)) {
+		if(!is_array($user)) {
+			$cookie = cookiedecode($user);
+			$uname = $cookie[1];
+		} else {
+			$uname = $user[1];
+		}
+	} else {
+		$uname = 'Anonymous';
+	}
    include_once("header.php");
 
    if ($multilingual == 1) {
