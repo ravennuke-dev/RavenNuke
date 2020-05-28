@@ -75,7 +75,7 @@ $nsnst_const['referer'] = get_referer();
 $nsnst_const['ban_time'] = time();
 $nsnst_const['ban_ip'] = '';
 if (isset($_COOKIE['user'])) $uinfo = getusrinfo($_COOKIE['user']); else $uinfo = getusrinfo('');
-if($uinfo['user_id'] > 1 && !empty($uinfo['username'])) {
+if(is_array($uinfo) && $uinfo['user_id'] > 1 && !empty($uinfo['username'])) {
 	$nsnst_const['ban_user_id'] = $uinfo['user_id'];
 	$nsnst_const['ban_username'] = $uinfo['username'];
 } else {
