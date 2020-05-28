@@ -1021,10 +1021,6 @@ function delQuotes($string) {
 function check_html ($string, $allowed_html = '', $allowed_protocols = array()) {
 	include_once NUKE_INCLUDE_DIR . 'kses/kses.php';
 
-	if (get_magic_quotes_gpc() == 1) {
-		$string = stripslashes($string);
-	}
-
 	if (stripos_clone($allowed_html, 'nocheck') === true) {
 		return $string;
 	} else {
