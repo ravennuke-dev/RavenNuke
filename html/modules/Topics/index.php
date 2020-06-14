@@ -74,11 +74,11 @@ if ($db->sql_numrows($result) > 0) {
 				$catid = intval($row2['catid']);
 				$title = stripslashes(check_html($row2['title'], 'nohtml'));
 				$informant = stripslashes(check_html($row2['informant'], 'nohtml'));
-				$row3 = $db->sql_fetchrow($db->sql_query('SELECT title FROM ' . $prefix . '_stories_cat WHERE catid=\'' . $catid . '\''));
-				$rtitle = stripslashes(check_html($row3['title'], 'nohtml'));
 				if ($catid == 0) {
 					$cat_link = '';
 				} else {
+					$row3 = $db->sql_fetchrow($db->sql_query('SELECT title FROM ' . $prefix . '_stories_cat WHERE catid=\'' . $catid . '\''));
+					$rtitle = stripslashes(check_html($row3['title'], 'nohtml'));
 					$cat_link = '<a href="modules.php?name=News&amp;file=categories&amp;op=newindex&amp;catid=' . $catid . '"><span class="thick">' . $rtitle . '</span></a>: ';
 				}
 				echo '<a href="modules.php?name=News&amp;file=article&amp;sid=' . $sid . '">'
