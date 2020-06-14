@@ -63,7 +63,11 @@ if (is_active('Private_Messages') && defined('LOGGEDIN_SAME_USER')) {
 	$sql = 'SELECT template_name FROM ' . $prefix . '_bbthemes WHERE themes_id=\'' . addslashes($bbstyle) . '\'';
 	$result = $db->sql_query($sql);
 	$row = $db->sql_fetchrow($result);
-	$bbtheme = $row['template_name'];
+	if (isset($row['template_name'])) {
+		$bbtheme = $row['template_name'];
+	} else {
+		$bbtheme = '';
+	}
 	//escudero: modification to get the theme from nukemods
 	if (file_exists('./themes/' . $ThemeSel . '/forums/images/whosonline.gif')) {
 		$imagedir = './themes/' . $ThemeSel . '/forums/images';
