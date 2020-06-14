@@ -277,7 +277,11 @@ class dhclass  {
 		if ($this->dt_bUseCustNm) {
 			$result = $db->sql_query('SELECT custom_title FROM `'.$prefix.'_modules` WHERE `title`=\''.$name.'\'');
 			$row = $db->sql_fetchrow($result);
-			$dt_mod_title = $row['custom_title'];
+			if (isset($row['template_name'])) {
+				$dt_mod_title = $row['custom_title'];
+			} else {
+				$dt_mod_title = '';
+			}
 		} else {
 			$dt_mod_title = str_replace('_', ' ', $name);
 		}
