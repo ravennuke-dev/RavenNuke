@@ -81,7 +81,7 @@ if (is_mod_admin($module_name)) {
 		.'<select name="topicimage">';
 		$handle=opendir($tipath);
 		while ($file = readdir($handle)) {
-		if ( (preg_match('/^([\p{L}\p{N}-_]*)(.png|.gif|.jpg)$/', $file)) AND $file != 'AllTopics.gif') {
+		if ( (preg_match('/^([\p{L}\p{N}\-_]*)(.png|.gif|.jpg)$/', $file)) AND $file != 'AllTopics.gif') {
 				$tlist .= $file . ' ';
 			}
 		}
@@ -131,7 +131,7 @@ if (is_mod_admin($module_name)) {
 		.'<select name="topicimage">';
 		$handle=opendir($tipath);
 		while ($file = readdir($handle)) {
-			if ( (preg_match('/^([\p{L}\p{N}-_]*)(.png|.gif|.jpg)$/', $file)) AND $file != 'AllTopics.gif') {
+			if ( (preg_match('/^([\p{L}\p{N}\-_]*)(.png|.gif|.jpg)$/', $file)) AND $file != 'AllTopics.gif') {
 				$tlist .= $file . ' ';
 			}
 		}
