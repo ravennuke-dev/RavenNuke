@@ -1738,9 +1738,9 @@ function encode_mail($email) {
 	for ($i=0; $i < strlen($email); ++$i) {
 		$n = rand(0, 1);
 		if ($n) {
-			$strEncodedEmail .= '&#x'. sprintf("%X", ord($email{$i})) . ';';
+			$strEncodedEmail .= '&#x'. sprintf("%X", ord($email[$i])) . ';';
 		} else {
-			$strEncodedEmail .= '&#' . ord($email{$i}) . ';';
+			$strEncodedEmail .= '&#' . ord($email[$i]) . ';';
 		}
 	}
 	return $strEncodedEmail;
