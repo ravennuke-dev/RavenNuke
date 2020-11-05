@@ -167,13 +167,13 @@ if ($num == 1) {
 				}
 
 				if ($usrinfo['user_sig_bbcode_uid'] != '') {
-					$signature = ($board_config['allow_bbcode'] && $userinfo['user_allowbbcode']) ? parse_bbcode($signature, $usrinfo['user_sig_bbcode_uid']) : preg_replace("/\:".$usrinfo['user_sig_bbcode_uid']."/si", '', $signature);
+					$signature = ($board_config['allow_bbcode'] && isset($userinfo['user_allowbbcode'])) ? parse_bbcode($signature, $usrinfo['user_sig_bbcode_uid']) : preg_replace("/\:".$usrinfo['user_sig_bbcode_uid']."/si", '', $signature);
 				}
 
 				$signature = make_clickable($signature);
 
 				if ($board_config['allow_smilies']) {
-					if ($userinfo['user_allowsmile']) {
+					if (isset($userinfo['user_allowsmile'])) {
 						$signature = smilies_pass($signature);
 					}
 				}
