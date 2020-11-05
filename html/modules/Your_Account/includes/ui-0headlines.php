@@ -115,7 +115,7 @@ function ya_superhtmlentities($text) {
 	$new_text = '';
 	$j = strlen($text);
 	for ($i = 0;$i < $j;++$i) {
-		$num = ord($text{$i});
+		$num = ord($text[$i]);
 		if (array_key_exists($num, $entities)) {
 			switch ($num) {
 				case 150:
@@ -125,7 +125,7 @@ function ya_superhtmlentities($text) {
 					$new_text .= '&' . $entities[$num] . ';';
 			}
 		} else if ($num < 127 || $num > 159) {
-			$new_text .= htmlentities($text{$i});
+			$new_text .= htmlentities($text[$i]);
 		}
 	}
 	$new_text = preg_replace('#  +#', ' ', $new_text); // Remove anything greater than one space.
