@@ -71,7 +71,7 @@ if (is_active('Forums')) {
 			/*
 			* Is user an admin?
 			*/
-			$is_admin = ($userdata['user_level'] == 2) ? TRUE : 0;
+			$is_admin = (isset($userdata['user_level']) && $userdata['user_level'] == 2) ? TRUE : 0;
 
 			$auth_user = array();
 			for($i = 0; $i < count($auth_fields); $i++) {
