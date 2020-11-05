@@ -1425,37 +1425,40 @@ function public_message() {
 			$c_mid = addslashes($c_mid);
 			$c_mid = intval($c_mid);
 			$result2 = $db->sql_query('SELECT mid, content, date, who FROM ' . $prefix . '_public_messages WHERE mid > ' . $c_mid . ' ORDER BY date ASC LIMIT 1');
-			$row2 = $db->sql_fetchrow($result2);
-			$mid = $row2['mid'];
-			$content = $row2['content'];
-			$tdate = $row2['date'];
-			$who = $row2['who'];
-			if ((!isset($c_mid)) OR ($c_mid = $mid)) {
-				$public_msg = '<br /><table width="90%" border="1" cellspacing="2" cellpadding="0" bgcolor="#FFFFFF" align="center"><tr><td>';
-				$public_msg .= '<table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="#FF0000"><tr><td align="left">';
-				$public_msg .= '<span style="color: #FFFFFF; font-size: medium; font-weight: bold;">' . _BROADCASTFROM . ' <a href="modules.php?name=Your_Account&amp;op=userinfo&amp;username=' . $who . '">'
-							. '<span style="font-style: italic;">' . $who . '</span></a>: "' . $content . '"</span>';
-				$public_msg .= $t_off;
-				$public_msg .= '</td></tr></table>';
-				$public_msg .= '</td></tr></table>';
-				$ref_date = $tdate + 600;
-				$actual_date = time();
-				if ($actual_date >= $ref_date) {
-					$public_msg = '';
-					$numrows = $db->sql_numrows($db->sql_query('SELECT * FROM ' . $prefix . '_public_messages'));
-					if ($numrows == 1) {
-						$db->sql_query('DELETE FROM ' . $prefix . '_public_messages');
-						$mid = 0;
-					} else {
-						$db->sql_query('DELETE FROM ' . $prefix . '_public_messages WHERE mid=\'' . $mid . '\'');
+			$numrows_pm = $db->sql_numrows($result2);
+			if ($numrows_pm == 1) {
+				$row2 = $db->sql_fetchrow($result2);
+				$mid = $row2['mid'];
+				$content = $row2['content'];
+				$tdate = $row2['date'];
+				$who = $row2['who'];
+				if ((!isset($c_mid)) OR ($c_mid = $mid)) {
+					$public_msg = '<br /><table width="90%" border="1" cellspacing="2" cellpadding="0" bgcolor="#FFFFFF" align="center"><tr><td>';
+					$public_msg .= '<table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="#FF0000"><tr><td align="left">';
+					$public_msg .= '<span style="color: #FFFFFF; font-size: medium; font-weight: bold;">' . _BROADCASTFROM . ' <a href="modules.php?name=Your_Account&amp;op=userinfo&amp;username=' . $who . '">'
+								. '<span style="font-style: italic;">' . $who . '</span></a>: "' . $content . '"</span>';
+					$public_msg .= $t_off;
+					$public_msg .= '</td></tr></table>';
+					$public_msg .= '</td></tr></table>';
+					$ref_date = $tdate + 600;
+					$actual_date = time();
+					if ($actual_date >= $ref_date) {
+						$public_msg = '';
+						$numrows = $db->sql_numrows($db->sql_query('SELECT * FROM ' . $prefix . '_public_messages'));
+						if ($numrows == 1) {
+							$db->sql_query('DELETE FROM ' . $prefix . '_public_messages');
+							$mid = 0;
+						} else {
+							$db->sql_query('DELETE FROM ' . $prefix . '_public_messages WHERE mid=\'' . $mid . '\'');
+						}
 					}
-				}
-				if ($mid == 0 OR empty($mid)) {
-					setcookie('p_msg');
-				} else {
-					$mid = base64_encode($mid);
-					$mid = addslashes($mid);
-					setcookie('p_msg', $mid, time() + 600);
+					if ($mid == 0 OR empty($mid)) {
+						setcookie('p_msg');
+					} else {
+						$mid = base64_encode($mid);
+						$mid = addslashes($mid);
+						setcookie('p_msg', $mid, time() + 600);
+					}
 				}
 			}
 		}
