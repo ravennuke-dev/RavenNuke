@@ -138,13 +138,13 @@
 <!-- END archive -->
 
 <!-- BEGIN youtube -->
-<div class="forumvideo video"><iframe src="http://www.youtube.com/embed/{YOUTUBEID}" frameborder="0" allowfullscreen></iframe>
-<div class="forumvideotagline"><a class="postlink youtu ficon" href="http://youtu.be/{YOUTUBEID}" target="_blank">youtu.be/{YOUTUBEID}</a></div></div>
+<div class="forumvideo video"><iframe src="https://www.youtube.com/embed/{YOUTUBEID}" frameborder="0" allowfullscreen></iframe>
+<div class="forumvideotagline"><a class="postlink youtu ficon" href="https://youtu.be/{YOUTUBEID}" target="_blank">youtu.be/{YOUTUBEID}</a></div></div>
 <!-- END youtube -->
 
 <!-- BEGIN newtube -->
-<div class="forumvideo {NEWTUBESIZE}"><iframe src="http://www.youtube.com/embed/{NEWTUBEID}" frameborder="0" allowfullscreen></iframe>
-<div class="forumvideotagline"><a class="postlink youtu ficon" href="http://youtu.be/{NEWTUBEID}" target="_blank">youtu.be/{NEWTUBEID}</a></div></div>
+<div class="forumvideo {NEWTUBESIZE}"><iframe src="https://www.youtube.com/embed/{NEWTUBEID}" frameborder="0" allowfullscreen></iframe>
+<div class="forumvideotagline"><a class="postlink youtu ficon" href="https://youtu.be/{NEWTUBEID}" target="_blank">youtu.be/{NEWTUBEID}</a></div></div>
 <!-- END newtube -->
 
 <!-- BEGIN xfirevideo -->

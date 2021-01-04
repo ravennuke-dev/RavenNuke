@@ -911,8 +911,8 @@ function make_clickable($text)
 	)                 # End negative lookahead assertion.
 	[?=&+%\w.-]*      # Consume any URL (query) remainder.**
 	~ix', 
-	'\\1<div class="forumvideo video"><iframe src="http://www.youtube.com/embed/\\2" style="border:0 none" allowfullscreen></iframe>
-<div class="forumvideotagline"><a class="postlink youtu ficon" href="http://youtu.be/\\2" target="_blank">youtu.be/\\2</a></div></div>',
+	'\\1<div class="forumvideo video"><iframe src="https://www.youtube.com/embed/\\2" style="border:0 none" allowfullscreen></iframe>
+<div class="forumvideotagline"><a class="postlink youtu ficon" href="https://youtu.be/\\2" target="_blank">youtu.be/\\2</a></div></div>',
 	$ret);
 
 	# Regex Vimeo Parser
@@ -931,7 +931,7 @@ function make_clickable($text)
 	    [^\s]*                 # Not a space
 	)                          # End group
 	~ix',
-	'\\1<div class="forumvideo video"><iframe src="http://player.vimeo.com/video/\\2?title=0&amp;byline=0&amp;portrait=0" style="border:0 none" allowfullscreen></iframe>
+	'\\1<div class="forumvideo video"><iframe src="https://player.vimeo.com/video/\\2?title=0&amp;byline=0&amp;portrait=0" style="border:0 none" allowfullscreen></iframe>
 <div class="forumvideotagline"><a class="postlink vimeo ficon" href="https://vimeo.com/\\2" target="_blank">vimeo.com/\\2</a></div></div>',
 	$ret);
 
