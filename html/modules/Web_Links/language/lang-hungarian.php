@@ -80,7 +80,7 @@ define("_LINKRATING","Link &eacute;rt&eacute;kel&eacute;se");
 define("_LINKRATINGDET","Link &eacute;rt&eacute;kel&eacute;s&eacute;nek r&eacute;szletei");
 define("_LINKRECEIVED","Az &Ouml;n &aacute;ltal megadott adatokat regisztr&aacute;ltuk. K&ouml;sz&ouml;nj&uuml;k!");
 define("_LINKS","link");
-define("_LINKSDATESTRING","%Y. %m. %d.");
+define('_LINKSDATESTRING','%d-%b-%Y');
 define("_LINKSMAIN","Linkek kezd&otilde;oldala");
 define("_LINKSMAINCAT","Linkek - f&otilde; kateg&oacute;ri&aacute;k");
 define('_LINKSNOCATS1','Legal&aacute;bb egy link kateg&oacute;ri&aacute;t l&eacute;tre kell hoznia a'); //montego for RN0000571

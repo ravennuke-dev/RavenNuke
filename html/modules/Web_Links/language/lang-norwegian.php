@@ -80,7 +80,7 @@ define('_LINKRATING','Link-rangeringer');
 define('_LINKRATINGDET','Linkens rangerings-detaljer');
 define('_LINKRECEIVED','Takk. Vi har mottatt din innsendelse. Linken vil bli sjekket, godkjent og offentliggjort i l&oslash;pet av kort tid!');
 define('_LINKS','Linker');
-define('_LINKSDATESTRING','%d %b - %Y');
+define('_LINKSDATESTRING','%d-%b-%Y');
 define('_LINKSMAIN','Linker Hovedside');
 define('_LINKSMAINCAT','Linker Hovedkategorier');
 define('_LINKSNOCATS1','Det m&aring; v&aelig;re minst &egrave;n Link Kategori satt opp av'); //montego for RN0000571
