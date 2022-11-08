@@ -553,6 +553,10 @@ class sql_db extends mysqli {
 	*
 	* @param string $query the query string
 	*/
+	// PHP8 Deprecated: Return type should either be compatible with mysqli::prepare(string $query): mysqli_stmt|false
+	// Fix for php8: public function prepare($query): mysqli_stmt|false {
+	// Backwards compatibility for php7: #[\ReturnTypeWillChange]
+	#[\ReturnTypeWillChange]
 	public function prepare($query) {
 		$this->preparedStatement = $query;
 		$this->stmt_obj = parent::stmt_init();
