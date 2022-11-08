@@ -34,7 +34,9 @@ if ($ipv4) {
 	$ip_class = explode('.', $ip);
 	$ip = $ip_class[0] . '.' . $ip_class[1] . '.' . $ip_class[2] . '.*';
 	list($ip_address) = $db->sql_fetchrow($db->sql_query('SELECT `ip_address` FROM `' . $prefix . '_banned_ip` WHERE `ip_address`="' . $ip . '"'));
-	$ip_class_banned = explode('.', $ip_address);
+	// PHP8: Deprecated: explode(): Passing null to parameter #2 ($string) of type string is deprecated
+	// PHP8: Use the null coalescing operator to default the value to an empty string if the value is null.
+	$ip_class_banned = explode('.', $ip_address ?? '');
 	if (isset($ip_class_banned[3]) && $ip_class_banned[3] == '*') {
 		if ($ip_class[0] == $ip_class_banned[0] && $ip_class[1] == $ip_class_banned[1] && $ip_class[2] == $ip_class_banned[2]) {
 			echo '<br /><br /><div class="text-center"><img src="images/admin/ipban.gif" /><br /><br /><span class="thick">You have been banned by the administrator</span></div>';
