@@ -402,10 +402,14 @@ class sql_db extends mysqli {
 	*
 	* @param sting $charset (optional) character set as the default is utf8
 	*/
+	// PHP8: Deprecated: Return type should either be compatible with mysqli::set_charset(string $charset): bool
+	// PHP8 fix added type : bool to function call
+	// Backwards compatibility for php7 #[\ReturnTypeWillChange]
+	#[\ReturnTypeWillChange]
 	function set_charset($charset = 'utf8') {
 		if (function_exists('mysqli_set_charset')) {
 			if ($this->set_charset($charset)) {
-				return;
+				return; // PHP8 fix add return 1, when return type :bool is set to the function call to avoid Fatal error: A function with return type must return a value
 			}
 		}
 		$this->sql_query('SET NAMES ' . $charset);
