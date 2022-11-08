@@ -26,7 +26,7 @@ if(!$ipv4 && (!$ipv6 && !$bypassNukeSentinelInvalidIPCheck)) die('Invalid IP Add
 
 $numrow = $db->sql_numrows($db->sql_query('SELECT `id` FROM `' . $prefix . '_banned_ip` WHERE `ip_address`="' . $ip . '"'));
 if ($numrow != 0) {
-	echo '<br /><br /><div class="text-center"><img src="images/admin/ipban.gif" /><br /><br /><span class="thick">You have been banned by the administrator</span></div>';
+	echo '<br /><br /><div class="text-center"><img src="images/admin/ipban.gif" alt="" /><br /><br /><span class="thick">You have been banned by the administrator</span></div>';
 	die();
 }
 
@@ -39,7 +39,7 @@ if ($ipv4) {
 	$ip_class_banned = explode('.', $ip_address ?? '');
 	if (isset($ip_class_banned[3]) && $ip_class_banned[3] == '*') {
 		if ($ip_class[0] == $ip_class_banned[0] && $ip_class[1] == $ip_class_banned[1] && $ip_class[2] == $ip_class_banned[2]) {
-			echo '<br /><br /><div class="text-center"><img src="images/admin/ipban.gif" /><br /><br /><span class="thick">You have been banned by the administrator</span></div>';
+			echo '<br /><br /><div class="text-center"><img src="images/admin/ipban.gif" alt="" /><br /><br /><span class="thick">You have been banned by the administrator</span></div>';
 			die();
 		}
 	}
