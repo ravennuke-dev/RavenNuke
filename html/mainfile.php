@@ -877,7 +877,8 @@ function cookiedecode($user) {
 	global $cookie, $db, $user_prefix;
 	static $pass;
 	if(!is_array($user)) {
-		$user = base64_decode($user);
+		// PHP8: Deprecated: base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated FIX: added ?? ''
+		$user = base64_decode($user ?? '');
 		$user = addslashes($user);
 		$cookie = explode(':', $user);
 	} else {
