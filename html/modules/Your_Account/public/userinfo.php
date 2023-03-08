@@ -162,7 +162,7 @@ if ($num == 1) {
 			include_once('./modules/' . $module_name . '/includes/phpbb_bbstuff.php');
 
 			if ($signature != '') {
-				if ( !$board_config['allow_html'] || !$userinfo['user_allowhtml']) {
+				if ( !$board_config['allow_html'] || (isset($userinfo['user_allowhtml']) && !$userinfo['user_allowhtml'])) {
 					$signature = preg_replace('#(<)([\/]?.*?)(>)#is', "&lt;\\2&gt;", $signature);
 				}
 
