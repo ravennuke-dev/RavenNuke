@@ -302,8 +302,8 @@ function getparent($parentid, $title) {
 	global $prefix, $db;
 	$result = $db->sql_query('SELECT `title`, `parentid` FROM `' . $prefix . '_nsngd_categories` WHERE `cid` = ' . (int)$parentid);
 	$cidinfo = $db->sql_fetchrow($result);
-	if ($cidinfo['title'] != '') $title = htmlspecialchars($cidinfo['title'], ENT_QUOTES, _CHARSET) . ' -&gt; ' . $title;
-	if ($cidinfo['parentid'] != 0) {
+	if (isset($cidinfo['title']) && $cidinfo['title'] != '') $title = htmlspecialchars($cidinfo['title'], ENT_QUOTES, _CHARSET) . ' -&gt; ' . $title;
+	if (isset($cidinfo['parentid']) && $cidinfo['parentid'] != 0) {
 		$title = getparent($cidinfo['parentid'], $title);
 	}
 	return $title;
@@ -313,11 +313,11 @@ function getparentlink($parentid, $title) {
 	$parentid = intval($parentid);
 	$sql = 'SELECT `cid`, `title`, `parentid` FROM `' . $prefix . '_nsngd_categories` WHERE `cid` = ' . $parentid;
 	if ($cidinfo = $db->sql_fetchrow($db->sql_query($sql))) {
-		if ($cidinfo['title'] != '') {
+		if (isset($cidinfo['title']) && $cidinfo['title'] != '') {
 			$title = '<a href="modules.php?name=' . $module_name . '&amp;cid=' . $cidinfo['cid'] . '">'
 				. htmlspecialchars($cidinfo['title'], ENT_QUOTES, _CHARSET) . '</a> -&gt; ' . $title;
 		}
-		if ($cidinfo['parentid'] != 0) {
+		if (isset($cidinfo['parentid']) && $cidinfo['parentid'] != 0) {
 			$title = getparentlink($cidinfo['parentid'], $title);
 		}
 	}
