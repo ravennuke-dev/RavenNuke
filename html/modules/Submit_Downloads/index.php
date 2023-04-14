@@ -197,7 +197,15 @@ switch ($op) {
 				echo '<textarea name="description" cols="50" rows="12"></textarea>';
 			}
 			echo '</div></td></tr>';
-			$usrinfo = $db->sql_fetchrow($db->sql_query('SELECT * FROM `' . $user_prefix . '_users` WHERE `user_id` = \'' . $cookie[0] . '\''));
+			global $anonymous;
+			if (is_user($user)) {
+				$usrinfo = getusrinfo($user);
+			} else {
+				$usrinfo = array();
+				$usrinfo['username'] = $anonymous;
+				$usrinfo['user_email'] = '';
+				$usrinfo['user_website'] = '';
+			}
 			if ($usrinfo['user_website'] == 'http://') {
 				$usrinfo['user_website'] = '';
 			}
@@ -465,8 +473,8 @@ die();
 function getparent($parentid, $title) {
 	global $prefix, $db;
 	$cidinfo = $db->sql_fetchrow($db->sql_query('SELECT * FROM `' . $prefix . '_nsngd_categories` WHERE `cid` = ' . (int)$parentid));
-	if ($cidinfo['title'] != '') $title = $cidinfo['title'] . ' -> ' . $title;
-	if ($cidinfo['parentid'] != 0) {
+	if (isset($cidinfo['title']) && $cidinfo['title'] != '') $title = $cidinfo['title'] . ' -> ' . $title;
+	if (isset($cidinfo['parentid']) && $cidinfo['parentid'] != 0) {
 		$title = getparent($cidinfo['parentid'], $title);
 	}
 	return $title;
