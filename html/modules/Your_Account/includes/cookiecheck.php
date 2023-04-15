@@ -147,7 +147,7 @@ function ShowCookies() {
 	echo '<span class="title">' . _YA_CURRENTCOOKIE . '</span></td></tr>';
 	echo '<tr><td nowrap="nowrap"><span class="thick">' . _YA_COOKIENAME . '</span></td><td width="100%"><span class="thick">' . _YA_COOKIEVAL . '</span></td></tr>';
 	if (is_array($CookieArray) && !empty($CookieArray)) {
-		while (list($cName, $cValue) = each($CookieArray)) {
+		foreach($CookieArray as $cName => $cValue) {
 			$cName = str_replace(' ', '', $cName);
 			if ($cValue == '') $cValue = '(empty)';
 			$cMore = substr($cValue, 36, 1);
@@ -195,7 +195,7 @@ function DeleteCookies() {
 	echo '<span class="title">' . _YA_CURRENTCOOKIE . '</span></td></tr>';
 	echo '<tr><td nowrap="nowrap"><span class="thick">' . _YA_COOKIENAME . '</span></td><td width="100%"><span class="thick">' . _YA_COOKIESTAT . '</span></td></tr>';
 	if (is_array($CookieArray) && !empty($CookieArray)) {
-		while (list($cName, $cValue) = each($CookieArray)) {
+		foreach($CookieArray as $cName => $cValue) {
 			$cName = str_replace(' ', '', $cName);
 			// Multiple cookie paths used to expire cookies that are no longer in use as well.
 			setcookie($cName, '1', time() - 604800, ''); // Directory only path
