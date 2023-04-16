@@ -175,11 +175,8 @@ else if ( $search_keywords != '' || $search_author != '' || $search_id )
 		//
 		// Flood control
 		//
-		$where_sql = ($userdata['user_id'] == ANONYMOUS) ? "se.session_ip = '$user_ip'" : 'se.session_user_id = ' . $userdata['user_id'];
-		$sql = 'SELECT MAX(sr.search_time) AS last_search_time
-			FROM ' . SEARCH_TABLE . ' sr, ' . SESSIONS_TABLE . " se
-			WHERE sr.session_id = se.session_id
-				AND $where_sql";
+		$where_sql = ($userdata['session_user_id'] == ANONYMOUS) ? "se.session_ip = '$user_ip'" : 'se.session_user_id = ' . $userdata['user_id'];
+		$sql = 'SELECT MAX(sr.search_time) AS last_search_time FROM ' . SEARCH_TABLE . ' sr, ' . SESSIONS_TABLE . " se WHERE sr.session_id = se.session_id AND $where_sql";
 		if ($result = $db->sql_query($sql))
 		{
 			if ($row = $db->sql_fetchrow($result))
