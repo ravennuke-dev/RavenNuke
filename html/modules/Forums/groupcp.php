@@ -827,10 +827,10 @@ else if ( $group_id )
         }
 
         $modgroup_pending_list = $db->sql_fetchrowset($result);
-		$modgroup_pending_count = false;
-		if (is_array($modgroup_pending_list)) {
-			$modgroup_pending_count = count($modgroup_pending_list);
-		}
+        $modgroup_pending_count = false;
+        if (is_array($modgroup_pending_list)) {
+                $modgroup_pending_count = count($modgroup_pending_list);
+        }
         $db->sql_freeresult($result);
 
         $is_group_member = 0;
