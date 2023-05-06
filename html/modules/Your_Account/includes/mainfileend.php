@@ -21,13 +21,15 @@
 
 if (isset($user)) {
 	$uinfo = getusrinfo($user);
-	$ulevel = $uinfo['user_level'];
-	$uactive = $uinfo['user_active'];
-	if (($ulevel < 1) OR ($uactive < 1)) {
-		unset($user);
-		unset($cookie);
-		$sql = 'DELETE FROM `' . $prefix . '_bbsessions` WHERE `session_user_id`="' . $uinfo['user_id'] . '"';
-		$db->sql_query($sql);
+	if ($uinfo !== null && is_array($uinfo)) {
+		$ulevel = $uinfo['user_level'];
+		$uactive = $uinfo['user_active'];
+		if (($ulevel < 1) OR ($uactive < 1)) {
+			unset($user);
+			unset($cookie);
+			$sql = 'DELETE FROM `' . $prefix . '_bbsessions` WHERE `session_user_id`="' . $uinfo['user_id'] . '"';
+			$db->sql_query($sql);
+		}
 	}
 }
 if ((isset($_GET['name']) && $_GET['name'] == 'Forums') && (isset($_GET['file']) && $_GET['file'] == 'profile') && (isset($_GET['mode']) && $_GET['mode'] == 'register')) Header('Location: modules.php?name=Your_Account&op=new_user');
